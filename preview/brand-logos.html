@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:#f0f0f4;padding:20px;-webkit-font-smoothing:antialiased;}
+  .label{font-size:9.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;margin-bottom:10px;margin-top:18px;}
+  .label:first-child{margin-top:0;}
+  .row{display:flex;gap:12px;flex-wrap:wrap;}
+  .logo-card{border-radius:12px;overflow:hidden;flex:1;min-width:140px;box-shadow:0 2px 8px rgba(0,0,0,0.10);}
+  .logo-bg{height:110px;display:flex;align-items:center;justify-content:center;padding:18px;}
+  .logo-bg img{max-height:70px;max-width:180px;object-fit:contain;}
+  .logo-meta{padding:8px 12px;}
+  .logo-meta-name{font-size:10px;font-weight:700;color:#374151;}
+  .logo-meta-note{font-size:9.5px;color:#9ca3af;margin-top:2px;}
+  .rule-box{background:#fff;border-radius:12px;padding:14px 16px;border:1px solid #e8e8ec;}
+  .rule-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+  .rule-row:last-child{margin-bottom:0;}
+  .rule-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+  .rule-text{font-size:11px;color:#374151;line-height:1.5;}
+  .rule-text strong{color:#CE0E2D;}
+</style>
+</head><body>
+
+<div class="label">妙利散® — 主 Logo (紅底白字橢圓)</div>
+<div class="row">
+  <div class="logo-card">
+    <div class="logo-bg" style="background:#fff;border:1px solid #e8e8ec;">
+      <img src="../assets/logo-red.png" alt="Logo 標準版">
+    </div>
+    <div class="logo-meta" style="background:#fff;">
+      <div class="logo-meta-name">標準版 — 白底</div>
+      <div class="logo-meta-note">logo-red.png · 一般使用</div>
+    </div>
+  </div>
+  <div class="logo-card">
+    <div class="logo-bg" style="background:#172F60;">
+      <img src="../assets/logo-red.png" alt="Logo on Navy">
+    </div>
+    <div class="logo-meta" style="background:#fff;">
+      <div class="logo-meta-name">標準版 — 深藍底</div>
+      <div class="logo-meta-note">#172F60 · 展板/深色頁面</div>
+    </div>
+  </div>
+  <div class="logo-card">
+    <div class="logo-bg" style="background:#111827;">
+      <img src="../assets/logo-red.png" alt="Logo on Dark">
+    </div>
+    <div class="logo-meta" style="background:#fff;">
+      <div class="logo-meta-name">標準版 — 深黑底</div>
+      <div class="logo-meta-note">#111827 · 頁尾</div>
+    </div>
+  </div>
+  <div class="logo-card">
+    <div class="logo-bg" style="background:#CE0E2D;">
+      <img src="../assets/logo-white.png" alt="白字版 on Red">
+    </div>
+    <div class="logo-meta" style="background:#fff;">
+      <div class="logo-meta-name">白字版 — 紅底</div>
+      <div class="logo-meta-note">logo-white.png · #CE0E2D</div>
+    </div>
+  </div>
+</div>
+
+<div class="label">R-CHEVER 裕心 — 母公司 Logo</div>
+<div class="row">
+  <div class="logo-card">
+    <div class="logo-bg" style="background:#fff;border:1px solid #e8e8ec;">
+      <img src="../assets/logo-rchever.png" alt="R-CHEVER">
+    </div>
+    <div class="logo-meta" style="background:#fff;">
+      <div class="logo-meta-name">R-CHEVER on White</div>
+      <div class="logo-meta-note">標準使用版本</div>
+    </div>
+  </div>
+  <div class="logo-card">
+    <div class="logo-bg" style="background:#CE0E2D;">
+      <img src="../assets/logo-rchever.png" alt="R-CHEVER on Red" style="filter:brightness(0) invert(1);">
+    </div>
+    <div class="logo-meta" style="background:#fff;">
+      <div class="logo-meta-name">R-CHEVER on Red</div>
+      <div class="logo-meta-note">#CE0E2D</div>
+    </div>
+  </div>
+  <div class="logo-card">
+    <div class="logo-bg" style="background:#172F60;">
+      <img src="../assets/logo-rchever.png" alt="R-CHEVER on Navy" style="filter:brightness(0) invert(1);">
+    </div>
+    <div class="logo-meta" style="background:#fff;">
+      <div class="logo-meta-name">R-CHEVER on Navy</div>
+      <div class="logo-meta-note">#172F60</div>
+    </div>
+  </div>
+</div>
+
+<div class="label">使用規則</div>
+<div class="rule-box">
+  <div class="rule-row"><div class="rule-dot" style="background:#CE0E2D;"></div><div class="rule-text"><strong>標準版（紅底白字橢圓）</strong>可用於白底、深色底、彩色底</div></div>
+  <div class="rule-row"><div class="rule-dot" style="background:#172F60;"></div><div class="rule-text">深藍 #172F60 背景優先使用標準版 logo，保持品牌辨識度</div></div>
+  <div class="rule-row"><div class="rule-dot" style="background:#e8e8ec;border:1px solid #d0d0d6;"></div><div class="rule-text">純白背景建議搭配紅色或深藍色框線區隔，避免 logo 浮空</div></div>
+</div>
+
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:'FZLanTingHei';src:url('../fonts/____GBK.TTF') format('truetype');font-weight:400;}
+  @font-face{font-family:'FZLanTingHei';src:url('../fonts/2-_____GBK.TTF') format('truetype');font-weight:700;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'FZLanTingHei','PingFang TC',sans-serif;background:#f9f9fb;padding:22px 24px;-webkit-font-smoothing:antialiased;}
+  .section{margin-bottom:20px;}
+  .label{font-size:9.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#bbb;margin-bottom:10px;font-family:'Inter',sans-serif;}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+
+  /* Pill — outline style */
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:99px;font-size:12px;font-weight:600;letter-spacing:0.04em;border:1.5px solid;transition:all .15s;}
+  .pill-red{color:#DC411E;border-color:#DC411E;background:transparent;}
+  .pill-navy{color:#172F60;border-color:#172F60;background:transparent;}
+  .pill-gray{color:#6b7280;border-color:#e0e0e5;background:transparent;}
+
+  /* Badge — solid fill */
+  .badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:6px;font-size:11.5px;font-weight:700;letter-spacing:0.04em;}
+  .badge-red{background:#DC411E;color:#fff;}
+  .badge-navy{background:#172F60;color:#fff;}
+  .badge-red-soft{background:#fff0ed;color:#DC411E;}
+  .badge-navy-soft{background:#eef1f8;color:#172F60;}
+  .badge-gray{background:#f0f0f4;color:#6b7280;}
+  .badge-green{background:#f0fdf4;color:#16a34a;}
+  .badge-gold{background:linear-gradient(90deg,#D4A832,#F5C842);color:#fff;}
+
+  /* Eyebrow */
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#DC411E;}
+  .eyebrow::before{content:'';width:18px;height:2px;background:#DC411E;border-radius:2px;flex-shrink:0;}
+
+  /* Live dot pill */
+  .live-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.05em;background:#fff0ed;color:#DC411E;border:1px solid rgba(220,65,30,0.2);}
+  .live-dot{width:6px;height:6px;border-radius:50%;background:#DC411E;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+  /* Numbered circle */
+  .num-circle{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;flex-shrink:0;}
+  .num-red{background:#DC411E;color:#fff;}
+  .num-navy{background:#172F60;color:#fff;}
+  .num-outline{background:transparent;border:1.5px solid #DC411E;color:#DC411E;}
+
+  /* Step tag */
+  .step-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#DC411E;}
+  .step-tag::after{content:'';width:32px;height:1px;background:#e8e8ec;flex-shrink:0;}
+</style>
+</head><body>
+
+<div class="section">
+  <div class="label">Live / Eyebrow Pills</div>
+  <div class="row">
+    <span class="live-pill"><span class="live-dot"></span>醫療級益生菌</span>
+    <span class="live-pill"><span class="live-dot"></span>藥字號認證</span>
+    <span class="eyebrow">MADE IN JAPAN</span>
+    <span class="eyebrow">臨床研究摘要</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">Outline Pills</div>
+  <div class="row">
+    <span class="pill pill-red">整腸劑</span>
+    <span class="pill pill-red">藥字號</span>
+    <span class="pill pill-navy">醫療院所</span>
+    <span class="pill pill-navy">藥局零售</span>
+    <span class="pill pill-gray">CBM588</span>
+    <span class="pill pill-gray">宮入菌</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">Solid Badges</div>
+  <div class="row">
+    <span class="badge badge-red">藥字號</span>
+    <span class="badge badge-navy">醫療級</span>
+    <span class="badge badge-red-soft">50+ 年歷史</span>
+    <span class="badge badge-navy-soft">日本進口</span>
+    <span class="badge badge-green">✓ 通過認證</span>
+    <span class="badge badge-gray">科學教育</span>
+    <span class="badge badge-gold">日本 No.1</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">Section Markers</div>
+  <div class="row" style="gap:12px;">
+    <span class="step-tag">條件 01</span>
+    <span class="step-tag">條件 02</span>
+    <span class="step-tag">條件 03</span>
+  </div>
+  <div class="row" style="margin-top:10px;">
+    <span class="num-circle num-red">1</span>
+    <span class="num-circle num-navy">2</span>
+    <span class="num-circle num-red">3</span>
+    <span class="num-circle num-outline">4</span>
+  </div>
+</div>
+
+</body></html>

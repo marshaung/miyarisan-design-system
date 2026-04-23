@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family:'FZLanTingHei'; src:url('../fonts/____GBK.TTF') format('truetype'); font-weight:400; }
+  @font-face { font-family:'FZLanTingHei'; src:url('../fonts/2-_____GBK.TTF') format('truetype'); font-weight:700; }
+  @font-face { font-family:'FZLanTingHei'; src:url('../fonts/______GBK.TTF') format('truetype'); font-weight:900; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'FZLanTingHei','Noto Sans TC',sans-serif; background:#f0f2f5; padding:20px; -webkit-font-smoothing:antialiased; }
+  .row { display:flex; gap:16px; align-items:stretch; }
+  /* Pillar card */
+  .pillar { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:28px 24px; flex:1; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .pillar-no { font-size:11px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#8b1a2e; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .pillar-no::after { content:''; flex:1; height:1px; background:#e5e7eb; }
+  .pillar h3 { font-size:15px; font-weight:700; line-height:1.4; margin-bottom:8px; }
+  .pillar p { font-size:12.5px; color:#6b7280; line-height:1.85; }
+  /* Stat card */
+  .stat-box { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:24px 20px; flex:1; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .stat-num { font-size:32px; font-weight:900; color:#8b1a2e; letter-spacing:-0.03em; line-height:1; font-family:'Inter',sans-serif; }
+  .stat-unit { font-size:15px; }
+  .stat-label { font-size:12px; color:#6b7280; margin-top:6px; line-height:1.5; }
+  /* Feature tag */
+  .ftag { display:inline-block; margin-top:14px; padding:3px 12px; border-radius:9999px; font-size:11px; font-weight:700; color:#8b1a2e; background:#fdf2f4; border:1px solid rgba(139,26,46,0.15); }
+  .label { font-size:10px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:10px; margin-top:16px; font-family:'Inter',sans-serif; }
+  .label:first-child { margin-top:0; }
+</style>
+</head><body>
+
+<div class="label">Pillar Cards (3-col grid)</div>
+<div class="row">
+  <div class="pillar">
+    <div class="pillar-no">條件 01</div>
+    <h3>菌株身份精確可追溯</h3>
+    <p>必須精確到菌株層級，才能對應可重複驗證的臨床試驗。</p>
+    <span class="ftag">短鏈脂肪酸代謝路徑</span>
+  </div>
+  <div class="pillar">
+    <div class="pillar-no">條件 02</div>
+    <h3>醫療環境中的實際穩定性</h3>
+    <p>芽孢形式通過胃酸屏障，pH 2 環境存活率達 60–90%。</p>
+    <span class="ftag">芽孢萌發機制</span>
+  </div>
+  <div class="pillar">
+    <div class="pillar-no">條件 03</div>
+    <h3>人體臨床試驗的直接支持</h3>
+    <p>CBM588 自 1967 年起被核准為處方藥，涵蓋兒科、高齡多族群。</p>
+    <span class="ftag">50+ 年醫療研究</span>
+  </div>
+</div>
+
+<div class="label">Stat Bar (4-col)</div>
+<div class="row">
+  <div class="stat-box"><div class="stat-num">50<span class="stat-unit">+</span></div><div class="stat-label">年醫療使用歷史</div></div>
+  <div class="stat-box"><div class="stat-num">60–90<span class="stat-unit">%</span></div><div class="stat-label">pH 2 芽孢存活率</div></div>
+  <div class="stat-box"><div class="stat-num">94<span class="stat-unit">%</span></div><div class="stat-label">H. pylori 除菌成功率</div></div>
+  <div class="stat-box"><div class="stat-num">2.9<span class="stat-unit">%</span></div><div class="stat-label">抗生素腹瀉率（3g 組）</div></div>
+</div>
+</body></html>

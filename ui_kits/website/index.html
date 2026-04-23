@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>妙利散 Miyarisan — Landing Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+@font-face{font-family:'FZLanTingHei';src:url('../../fonts/_____GBK.TTF') format('truetype');font-weight:200;}
+@font-face{font-family:'FZLanTingHei';src:url('../../fonts/1-_____GBK.TTF') format('truetype');font-weight:300;}
+@font-face{font-family:'FZLanTingHei';src:url('../../fonts/____GBK.TTF') format('truetype');font-weight:400;}
+@font-face{font-family:'FZLanTingHei';src:url('../../fonts/2-_____GBK.TTF') format('truetype');font-weight:700;}
+@font-face{font-family:'FZLanTingHei';src:url('../../fonts/______GBK.TTF') format('truetype');font-weight:900;}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --red:#CC2030;
+  --red-dark:#a8192a;
+  --red-bright:#E5186E;
+  --pink-gradient:linear-gradient(135deg,#CC2030 0%,#E5186E 100%);
+  --navy:#1a2744;
+  --navy-dark:#111827;
+  --white:#ffffff;
+  --gray-bg:#f5f5f7;
+  --gray-light:#f0f0f2;
+  --text:#1a1a2e;
+  --text-2:#444;
+  --text-3:#888;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'FZLanTingHei','PingFang TC','Microsoft JhengHei',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* ── NAV ── */
+.nav{background:var(--red);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:200;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo img{height:36px;border-radius:50%;}
+.nav-logo-text{color:#fff;font-size:15px;font-weight:700;letter-spacing:0.04em;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links li a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:background .15s;}
+.nav-links li a:hover{background:rgba(255,255,255,0.15);color:#fff;}
+.nav-no1{background:#fff;color:var(--red);font-size:11px;font-weight:900;padding:4px 12px;border-radius:4px;letter-spacing:0.04em;line-height:1.3;text-align:center;}
+.nav-no1 span{display:block;font-size:16px;font-weight:900;line-height:1;}
+
+/* ── HERO ── */
+.hero{position:relative;width:100%;overflow:hidden;}
+.hero-img{width:100%;height:420px;object-fit:cover;object-position:center 20%;display:block;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(180,20,30,0.72) 0%, rgba(180,20,30,0.18) 55%, transparent 75%);}
+.hero-content{position:absolute;inset:0;display:flex;align-items:center;padding:0 48px;}
+.hero-left{max-width:480px;}
+.hero-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.hero-pill{background:rgba(255,255,255,0.22);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;border:1px solid rgba(255,255,255,0.4);letter-spacing:0.04em;}
+.hero-name{font-size:36px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.01em;text-shadow:0 2px 12px rgba(0,0,0,0.2);}
+.hero-name-en{font-size:20px;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:0.06em;margin-top:4px;font-family:'Inter',sans-serif;}
+.hero-right{position:absolute;right:48px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;}
+.hero-product{width:160px;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.3));}
+.no1-badge{background:#fff;border-radius:8px;padding:8px 14px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.no1-badge .no1-jp{font-size:10px;font-weight:800;color:var(--red);letter-spacing:0.06em;}
+.no1-badge .no1-num{font-size:22px;font-weight:900;color:var(--red);line-height:1;font-family:'Inter',sans-serif;}
+.no1-badge .no1-sub{font-size:10px;color:#888;font-weight:500;}
+
+/* Hero bottom banner */
+.hero-bottom{background:var(--red);padding:18px 48px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+.hero-bottom-title{font-size:15px;font-weight:900;color:#fff;letter-spacing:0.02em;line-height:1.5;}
+.hero-bottom-desc{font-size:12.5px;color:rgba(255,255,255,0.82);line-height:1.7;letter-spacing:0.03em;}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.hero-tag{background:rgba(255,255,255,0.18);color:#fff;font-size:11px;font-weight:600;padding:4px 14px;border-radius:99px;border:1px solid rgba(255,255,255,0.3);}
+
+/* ── RED BANNER ── */
+.red-banner{background:var(--red);padding:32px 48px;text-align:center;}
+.red-banner p{font-size:17px;font-weight:700;color:#fff;line-height:1.7;letter-spacing:0.04em;}
+.red-banner p em{font-style:normal;font-weight:900;}
+
+/* ── IMPACT SECTION ── */
+.impact{background:#fff;padding:56px 48px 40px;text-align:center;}
+.impact-eyebrow{font-size:13px;font-weight:700;color:var(--text-2);letter-spacing:0.06em;margin-bottom:14px;}
+.impact-title{font-size:clamp(64px,10vw,108px);font-weight:900;color:var(--navy);letter-spacing:0.04em;line-height:1;margin-bottom:0;}
+.impact-divider{height:4px;background:var(--red);width:80%;max-width:640px;margin:20px auto;}
+.impact-sub{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:32px;}
+.impact-mascot{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#ffb3c1,#ff6b8a);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.impact-sub-text{font-size:16px;font-weight:700;color:var(--text-2);letter-spacing:0.03em;}
+.impact-sub-text em{font-style:normal;color:var(--red);}
+
+/* Symptom tags grid */
+.symptom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:640px;margin:0 auto 16px;}
+.symptom-tag{background:var(--gray-light);color:var(--text-2);font-size:13px;font-weight:600;padding:10px 16px;border-radius:8px;text-align:center;border:1px solid #e0e0e4;}
+
+/* ── PINK BANNER ── */
+.pink-banner{background:var(--pink-gradient);padding:36px 48px;text-align:center;}
+.pink-banner h2{font-size:20px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:0.02em;}
+.pink-banner p{font-size:14px;color:rgba(255,255,255,0.88);letter-spacing:0.04em;}
+
+/* ── CHANNEL SECTION ── */
+.channel{background:#fff;padding:56px 48px;}
+.channel-inner{max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+.channel-product{width:200px;margin-bottom:32px;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.12));}
+.channel-cols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-light);border:1px solid #e5e5e8;border-radius:12px;overflow:hidden;width:100%;}
+.channel-col{background:#fff;padding:28px 32px;text-align:center;}
+.channel-col h3{font-size:17px;font-weight:900;color:var(--text);margin-bottom:8px;}
+.channel-col p{font-size:13px;color:var(--text-3);line-height:1.7;}
+
+/* ── DOCTOR SECTION ── */
+.doctor{position:relative;overflow:hidden;min-height:300px;}
+.doctor-img{width:100%;height:320px;object-fit:cover;object-position:center 20%;display:block;}
+.doctor-overlay{position:absolute;inset:0;background:linear-gradient(to left, rgba(20,30,60,0.88) 0%, rgba(20,30,60,0.5) 55%, transparent 75%);}
+.doctor-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding:0 64px;}
+.doctor-text{max-width:380px;text-align:right;}
+.doctor-text h2{font-size:28px;font-weight:900;color:#fff;line-height:1.3;letter-spacing:0.02em;margin-bottom:10px;}
+.doctor-text p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;letter-spacing:0.04em;}
+
+/* ── CHOOSE SECTION ── */
+.choose{background:var(--gray-bg);padding:64px 48px;}
+.choose-inner{max-width:900px;margin:0 auto;}
+.choose-eyebrow{text-align:center;font-size:13px;font-weight:700;color:var(--red);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+.choose-title{text-align:center;font-size:clamp(26px,3.5vw,40px);font-weight:900;color:var(--text);margin-bottom:40px;}
+.cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.cert-card{background:#fff;border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1px solid #e8e8ec;}
+.cert-icon{width:64px;height:64px;border-radius:50%;background:var(--red-pale,#fdf2f4);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:28px;}
+.cert-card h3{font-size:17px;font-weight:900;color:var(--text);margin-bottom:10px;}
+.cert-card p{font-size:13px;color:var(--text-3);line-height:1.75;}
+
+/* ── CTA ── */
+.cta{background:#fff;padding:52px 48px;text-align:center;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;font-size:17px;font-weight:900;padding:18px 56px;border-radius:99px;letter-spacing:0.06em;cursor:pointer;border:none;font-family:inherit;box-shadow:0 6px 24px rgba(204,32,48,0.3);transition:all .2s;}
+.cta-btn:hover{background:var(--red-dark);box-shadow:0 8px 32px rgba(204,32,48,0.4);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-dark);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.footer-logos{display:flex;align-items:center;gap:20px;}
+.footer-logos img{height:32px;filter:brightness(0) invert(1);opacity:0.7;}
+.footer-text{font-size:11.5px;color:rgba(255,255,255,0.45);line-height:1.7;letter-spacing:0.02em;}
+
+/* ── TWEAKS ── */
+.tweaks-panel{position:fixed;bottom:24px;right:24px;background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);padding:18px 20px;width:220px;z-index:999;display:none;}
+.tweaks-panel.visible{display:block;}
+.tweaks-title{font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3af;margin-bottom:12px;font-family:'Inter',sans-serif;}
+.tweak-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.tweak-label{font-size:12px;color:#374151;font-weight:500;}
+select{padding:3px 8px;border:1px solid #e5e7eb;border-radius:6px;color:#374151;cursor:pointer;font-family:inherit;font-size:12px;}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hero-img{height:280px;}
+  .hero-content{padding:0 20px;}
+  .hero-right{right:16px;}
+  .hero-product{width:100px;}
+  .hero-bottom{grid-template-columns:1fr;padding:16px 24px;}
+  .red-banner,.pink-banner,.impact,.channel,.choose,.cta{padding-left:24px;padding-right:24px;}
+  .impact-title{font-size:60px;}
+  .symptom-grid{grid-template-columns:repeat(2,1fr);}
+  .cert-grid{grid-template-columns:1fr;}
+  .doctor-content{padding:0 24px;}
+  .doctor-text{max-width:100%;text-align:left;}
+  footer{flex-direction:column;align-items:flex-start;padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="../../assets/logo-brand.png" alt="妙利散">
+    <span class="nav-logo-text">妙利散® MIYARISAN</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">整腸劑</a></li>
+    <li><a href="#">益生菌</a></li>
+    <li><a href="#">妙利散整腸化製劑</a></li>
+    <li><a href="#">宮入菌</a></li>
+  </ul>
+  <div class="nav-no1">
+    <div class="no1-jp">日本益生菌</div>
+    <div class="no1-num">No.1</div>
+    <div class="no1-sub">益生菌</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=85" alt="健康家庭"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-pills">
+        <span class="hero-pill">整腸劑</span>
+        <span class="hero-pill">整腸化</span>
+        <span class="hero-pill">妙利散整腸化製劑</span>
+        <span class="hero-pill">宮入菌</span>
+      </div>
+      <div class="hero-name">妙利散<br/>Miyarisan CBM588</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="no1-badge">
+      <div class="no1-jp">日本益生菌</div>
+      <div class="no1-num">No.1</div>
+      <div class="no1-sub">益生菌</div>
+    </div>
+    <img class="hero-product" src="../../assets/product-box.png" alt="妙利散BM"/>
+  </div>
+</div>
+
+<!-- HERO BOTTOM BANNER -->
+<div class="hero-bottom">
+  <div>
+    <div class="hero-bottom-title">日本原開發廠「妙利散製藥株式會社」</div>
+    <div class="hero-bottom-desc">
+      腸胞宮入菌 LBP Clostridium Butyricum Miyairi（588株）酪酸菌<br/>
+      整腸消化、調節腸道菌相、整便（調節排便）、舒便
+    </div>
+  </div>
+  <div>
+    <div class="hero-tags">
+      <span class="hero-tag">整腸劑</span>
+      <span class="hero-tag">藥字號</span>
+      <span class="hero-tag">醫療級</span>
+      <span class="hero-tag" style="cursor:pointer;">點我了解更多 →</span>
+    </div>
+  </div>
+</div>
+
+<!-- RED BANNER -->
+<div class="red-banner">
+  <p>腸道菌 CBM588 能協助<em>維持腸道環境穩定</em><br/>一旦失衡，痛、硬、脹、洩就會更容易出現</p>
+</div>
+
+<!-- IMPACT SECTION -->
+<div class="impact">
+  <div class="impact-eyebrow">腸道菌相失衡會做生什麼事</div>
+  <div class="impact-title">痛硬脹洩</div>
+  <div class="impact-divider"></div>
+  <div class="impact-sub">
+    <div class="impact-mascot">🦠</div>
+    <div class="impact-sub-text">好菌、壞菌<em>不平衡</em>，迫迫不消找 上門</div>
+  </div>
+  <div class="symptom-grid">
+    <div class="symptom-tag">腸胃問題</div>
+    <div class="symptom-tag">卡便</div>
+    <div class="symptom-tag">頭痛</div>
+    <div class="symptom-tag">多汁獲湊</div>
+    <div class="symptom-tag">腸胃感應</div>
+    <div class="symptom-tag">腹脹</div>
+    <div class="symptom-tag">多氣</div>
+    <div class="symptom-tag">水保</div>
+    <div class="symptom-tag">加藍超等</div>
+    <div class="symptom-tag">便秘</div>
+    <div class="symptom-tag">悶痛</div>
+    <div class="symptom-tag">敏便</div>
+  </div>
+</div>
+
+<!-- PINK BANNER -->
+<div class="pink-banner">
+  <h2>妙利散醫療級益生菌</h2>
+  <p>累積多項臨床研究，協助維持腸道平衡</p>
+</div>
+
+<!-- CHANNEL SECTION -->
+<div class="channel">
+  <div class="channel-inner">
+    <img class="channel-product" src="../../assets/product-box.png" alt="妙利散BM"/>
+    <div class="channel-cols">
+      <div class="channel-col">
+        <h3>醫療院所</h3>
+        <p>用於特定藥物消炎<br/>及輔助療程使用</p>
+      </div>
+      <div class="channel-col">
+        <h3>藥局零售</h3>
+        <p>日常保健/保護備品<br/>腸道日常維護使用</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTOR SECTION -->
+<div class="doctor">
+  <img class="doctor-img" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1400&q=85" alt="醫師"/>
+  <div class="doctor-overlay"></div>
+  <div class="doctor-content">
+    <div class="doctor-text">
+      <h2>從菌株到 LBP 製劑<br/>決定益生菌定位</h2>
+      <p>以服品研究基準，確就定益生菌<br/>以最嚴謹的科學標準，守護您的腸道健康</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHOOSE SECTION -->
+<div class="choose">
+  <div class="choose-inner">
+    <div class="choose-eyebrow">回到專業標準</div>
+    <h2 class="choose-title">益生菌怎麼選？</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">📋</div>
+        <h3>法規合格</h3>
+        <p>通過台灣衛福部藥字號認證，符合醫療級益生菌標準，安全有效有保障。</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🚚</div>
+        <h3>通路合格</h3>
+        <p>透過正規醫療院所及合法藥局販售，確保產品來源可追溯，品質穩定。</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏆</div>
+        <h3>效果合格</h3>
+        <p>CBM588 菌株有 50+ 年人體臨床試驗支持，研究成果已發表於國際期刊。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <button class="cta-btn">了解購買途徑 →</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logos">
+    <img src="../../assets/logo-white.svg" alt="妙利散" style="height:28px;opacity:0.7;filter:brightness(0) invert(1);">
+  </div>
+  <div class="footer-text">
+    佑心企業有限公司｜ミヤリサン製薬株式会社 Miyarisan Pharmaceutical Co., Ltd.<br/>
+    本頁所有內容僅供衛教資訊參考，不構成醫療建議。©2026 妙利散台灣官方代理商
+  </div>
+</footer>
+
+<!-- TWEAKS -->
+<div class="tweaks-panel" id="tweaks">
+  <div class="tweaks-title">Tweaks</div>
+  <div class="tweak-row">
+    <span class="tweak-label">主色調</span>
+    <select onchange="setColor(this.value)">
+      <option value="#CC2030">標準紅</option>
+      <option value="#C8194B">品牌桃紅</option>
+      <option value="#a8192a">深暗紅</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <span class="tweak-label">衝擊字</span>
+    <select onchange="setImpact(this.value)">
+      <option value="痛硬脹洩">痛硬脹洩</option>
+      <option value="整腸消化">整腸消化</option>
+      <option value="腸道平衡">腸道平衡</option>
+    </select>
+  </div>
+</div>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"primary":"#CC2030","impactText":"痛硬脹洩"}/*EDITMODE-END*/;
+
+function setColor(c){
+  document.documentElement.style.setProperty('--red', c);
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{primary:c}},'*');
+}
+function setImpact(t){
+  document.querySelector('.impact-title').textContent = t;
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{impactText:t}},'*');
+}
+
+window.addEventListener('message', e => {
+  if(e.data?.type==='__activate_edit_mode') document.getElementById('tweaks').classList.add('visible');
+  if(e.data?.type==='__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('visible');
+});
+window.parent.postMessage({type:'__edit_mode_available'},'*');
+</script>
+</body>
+</html>

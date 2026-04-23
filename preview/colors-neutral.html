@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter',sans-serif; background: #f7f8fa; padding: 24px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); flex: 1; min-width: 72px; }
+  .swatch-color { height: 52px; }
+  .swatch-info { background: #fff; padding: 8px 10px; }
+  .swatch-name { font-size: 10px; font-weight: 700; color: #374151; }
+  .swatch-hex { font-size: 10px; color: #9ca3af; font-family: monospace; margin-top: 1px; }
+  .label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; margin-bottom: 8px; margin-top: 16px; }
+  .label:first-child { margin-top: 0; }
+  .semantic { display: flex; gap: 10px; }
+  .sem-card { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); flex: 1; }
+  .sem-top { height: 40px; display: flex; align-items: center; justify-content: center; }
+  .sem-label { font-size: 10px; font-weight: 700; color: #fff; }
+  .sem-bot { background: #fff; padding: 6px 10px; }
+  .sem-name { font-size: 10px; font-weight: 700; color: #374151; }
+  .sem-hex { font-size: 10px; color: #9ca3af; font-family: monospace; }
+</style>
+</head><body>
+<div class="label">Text & Neutrals</div>
+<div class="row">
+  <div class="swatch"><div class="swatch-color" style="background:#111827;"></div><div class="swatch-info"><div class="swatch-name">Text</div><div class="swatch-hex">#111827</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#374151;"></div><div class="swatch-info"><div class="swatch-name">Text 2</div><div class="swatch-hex">#374151</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#6b7280;"></div><div class="swatch-info"><div class="swatch-name">Text 3</div><div class="swatch-hex">#6b7280</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#9ca3af;"></div><div class="swatch-info"><div class="swatch-name">Text 4</div><div class="swatch-hex">#9ca3af</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#e5e7eb; border-bottom:1px solid #d1d5db;"></div><div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex">#e5e7eb</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#f0f2f5; border-bottom:1px solid #e5e7eb;"></div><div class="swatch-info"><div class="swatch-name">BG Gray 2</div><div class="swatch-hex">#f0f2f5</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#f7f8fa; border-bottom:1px solid #e5e7eb;"></div><div class="swatch-info"><div class="swatch-name">BG Gray</div><div class="swatch-hex">#f7f8fa</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#ffffff; border:1px solid #e5e7eb;"></div><div class="swatch-info"><div class="swatch-name">BG White</div><div class="swatch-hex">#ffffff</div></div></div>
+</div>
+
+<div class="label">Semantic</div>
+<div class="semantic">
+  <div class="sem-card"><div class="sem-top" style="background:#16a34a;"><span class="sem-label">Success</span></div><div class="sem-bot"><div class="sem-name">Green</div><div class="sem-hex">#16a34a</div></div></div>
+  <div class="sem-card"><div class="sem-top" style="background:#2563eb;"><span class="sem-label">Info</span></div><div class="sem-bot"><div class="sem-name">Blue</div><div class="sem-hex">#2563eb</div></div></div>
+  <div class="sem-card"><div class="sem-top" style="background:#d97706;"><span class="sem-label">Warning</span></div><div class="sem-bot"><div class="sem-name">Amber</div><div class="sem-hex">#d97706</div></div></div>
+  <div class="sem-card"><div class="sem-top" style="background:#dc2626;"><span class="sem-label">Danger</span></div><div class="sem-bot"><div class="sem-name">Red</div><div class="sem-hex">#dc2626</div></div></div>
+</div>
+</body></html>

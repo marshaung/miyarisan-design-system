@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter',sans-serif; background: #f0f2f5; padding: 24px; }
+  .row { display: flex; gap: 20px; flex-wrap: wrap; }
+  .card { background: #fff; border-radius: 16px; padding: 20px 22px; flex: 1; min-width: 120px; }
+  .card-name { font-size: 11px; font-weight: 700; color: #374151; margin-bottom: 4px; }
+  .card-val { font-size: 9.5px; color: #9ca3af; font-family: monospace; line-height: 1.6; }
+  .card-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); }
+  .card-md { box-shadow: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04); }
+  .card-lg { box-shadow: 0 12px 40px rgba(0,0,0,0.09), 0 4px 12px rgba(0,0,0,0.05); }
+  .card-red { box-shadow: 0 4px 16px rgba(139,26,46,0.25); border: 1px solid rgba(139,26,46,0.1); }
+  .card-nav { box-shadow: none; border: 1px solid #e5e7eb; background: rgba(255,255,255,0.92); }
+</style>
+</head><body>
+<div class="row">
+  <div class="card card-sm"><div class="card-name">shadow-sm</div><div class="card-val">0 1px 3px rgba(0,0,0,0.06)<br>0 1px 2px rgba(0,0,0,0.04)</div></div>
+  <div class="card card-md"><div class="card-name">shadow</div><div class="card-val">0 4px 16px rgba(0,0,0,0.07)<br>0 1px 4px rgba(0,0,0,0.04)</div></div>
+  <div class="card card-lg"><div class="card-name">shadow-lg</div><div class="card-val">0 12px 40px rgba(0,0,0,0.09)<br>0 4px 12px rgba(0,0,0,0.05)</div></div>
+  <div class="card card-red"><div class="card-name">shadow-red</div><div class="card-val">0 4px 16px rgba(139,26,46,0.25)<br>Buttons / CTA glow</div></div>
+  <div class="card card-nav"><div class="card-name">Nav / Frosted</div><div class="card-val">backdrop-filter: blur(16px)<br>bg: rgba(255,255,255,0.92)</div></div>
+</div>
+</body></html>
