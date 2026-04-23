@@ -1,6 +1,6 @@
 # MIYARISAN 妙利散® — Design System
 
-> 版本 1.0 | 品牌：妙利散® / R-CHEVER 裕心 | 領域：醫藥・保健
+> 版本 1.1 | 品牌：妙利散® / R-CHEVER 裕心 | 領域：醫藥・保健
 > 風格定位：日本藥廠美學 × 科學公信力 × 溫暖親近
 
 ---
@@ -276,10 +276,396 @@ color: #DC411E;
 
 ---
 
+---
+
+## 13. Button 規格
+
+### 尺寸
+
+| 尺寸 | Padding | 字體 | 高度 | 用途 |
+|------|---------|------|------|------|
+| `sm` | `8px 16px` | 13px / 600 | 32px | Badge 旁、行內輔助 |
+| `md`（預設） | `12px 24px` | 15px / 600 | 44px | 一般 CTA |
+| `lg` | `16px 32px` | 16px / 700 | 52px | Hero 主要行動 |
+
+圓角統一：`6px`（同 Badge 風格，不用 pill 圓角）
+最小寬度：`120px`（避免過窄）
+最小點擊區域：`44×44px`（行動版 touch target 標準）
+
+---
+
+### 樣式
+
+#### Primary（主要行動）
+```css
+background: #CE0E2D;
+color: #ffffff;
+border: none;
+border-radius: 6px;
+
+/* Hover */
+background: #a80c24;
+transition: background 150ms ease-out;
+
+/* Active / Pressed */
+transform: scale(0.97);
+background: #8f0a1e;
+
+/* Disabled */
+background: #f0f0f4;
+color: #9ca3af;
+cursor: not-allowed;
+```
+
+#### Secondary（次要行動）
+```css
+background: #ffffff;
+color: #CE0E2D;
+border: 1.5px solid #CE0E2D;
+
+/* Hover */
+background: #fdf0f2;
+
+/* Disabled */
+border-color: #e5e7eb;
+color: #9ca3af;
+```
+
+#### Ghost — Navy（深色主題）
+```css
+background: transparent;
+color: #172F60;
+border: 1.5px solid #172F60;
+
+/* Hover */
+background: #eef1f8;
+```
+
+#### Text Link Button（文字連結按鈕）
+```css
+background: transparent;
+color: #CE0E2D;
+border: none;
+padding: 0;
+text-decoration: underline;
+text-underline-offset: 3px;
+
+/* Hover */
+color: #a80c24;
+```
+> 見截圖 — 卡片底部「OTC 藥品規範」、「醫療通路規範」即為此樣式
+
+#### Icon Button（純圖示）
+```css
+width: 40px; height: 40px;
+border-radius: 6px;
+display: flex; align-items: center; justify-content: center;
+/* 補 hitSlop / padding 讓實際點擊區達 44px */
+```
+
+---
+
+### Dark Theme 按鈕
+
+| 場景 | 樣式 |
+|------|------|
+| 深藍背景主 CTA | Primary 不變（紅底白字） |
+| 深藍背景次要 | `border: 1.5px solid rgba(255,255,255,0.6)` + 白字 |
+| 深藍背景 Ghost | `background: rgba(255,255,255,0.1)` + 白字 + hover `rgba(255,255,255,0.2)` |
+
+---
+
+### Button 狀態總表
+
+| 狀態 | 視覺變化 | 時長 |
+|------|----------|------|
+| Default | — | — |
+| Hover | 背景深一階 | 150ms ease-out |
+| Active | scale(0.97) | 80ms |
+| Loading | 顯示 spinner（16px），禁用點擊，opacity 0.8 | — |
+| Disabled | opacity 0.5，cursor not-allowed，不響應 hover | — |
+| Success（短暫） | 綠色底 `#16a34a` + ✓ 圖示，1.5s 後恢復 | — |
+
+---
+
+## 14. 響應式斷點系統
+
+### 斷點定義
+
+| Token | 寬度 | 對應裝置 |
+|-------|------|----------|
+| `xs` | < 375px | 小型手機（少見，兼容用） |
+| `sm` | 375px | 標準手機（iPhone SE, 12 mini） |
+| `md` | 768px | 平板豎向 |
+| `lg` | 1024px | 平板橫向 / 小桌機 |
+| `xl` | 1280px | 標準桌機 |
+| `2xl` | 1440px | 寬螢幕桌機 |
+
+```css
+/* Tailwind / CSS custom properties */
+--screen-sm:  375px;
+--screen-md:  768px;
+--screen-lg:  1024px;
+--screen-xl:  1280px;
+--screen-2xl: 1440px;
+```
+
+---
+
+### Container 寬度
+
+| 斷點 | 內容最大寬 | 左右 padding |
+|------|-----------|--------------|
+| < 768px | 100% | 16px |
+| 768px–1023px | 100% | 24px |
+| 1024px–1279px | 960px | 32px |
+| ≥ 1280px | 1200px | auto（置中） |
+
+```css
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+@media (min-width: 768px)  { .container { padding: 0 24px; } }
+@media (min-width: 1024px) { .container { padding: 0 32px; } }
+```
+
+---
+
+### Grid 欄數
+
+| 斷點 | 欄數 | 用途 |
+|------|------|------|
+| < 768px | 1 欄 | 全寬單欄 |
+| 768px | 2 欄 | 卡片兩兩並排 |
+| 1024px+ | 3 欄 | 標準三欄（Criteria、Feature 等） |
+| 1280px+ | 4 欄 | 統計數據、小卡片格 |
+
+```css
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 768px)  { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+```
+
+---
+
+### 字型 — 響應式縮放
+
+| 元素 | Mobile (<768px) | Desktop (≥1024px) |
+|------|-----------------|-------------------|
+| Hero 主標 | 28–32px | 48–56px |
+| 頁面 H1 | 24px | 36px |
+| 區塊 H2 | 20px | 28px |
+| 卡片 H3 | 18px | 20–22px |
+| Body | 15px | 16px |
+
+```css
+/* Fluid typography — Hero */
+font-size: clamp(28px, 5vw, 56px);
+```
+
+---
+
+### Section 間距 — 響應式
+
+| 斷點 | Section 上下 padding | 區塊間 gap |
+|------|---------------------|-----------|
+| Mobile | 48px | 32px |
+| Tablet | 64px | 40px |
+| Desktop | 96px | 64px |
+
+---
+
+### 元件行為 — 斷點變化
+
+| 元件 | Mobile | Desktop |
+|------|--------|---------|
+| Criteria 卡片 | 單欄堆疊，各有獨立邊框 | 三欄共享外框，中間線分隔 |
+| Hero | 文字上、圖下（垂直排列） | 左文右圖（水平排列） |
+| Nav | Hamburger 選單 | 水平頂部導覽 |
+| Badge 群組 | 換行堆疊，gap 8px | 單行水平排列 |
+| Button 群組 | 全寬 100% | 自動寬度，inline |
+
+---
+
+## 15. 元件應用模式
+
+### A. Criteria 分隔卡片（共享邊框三欄）
+
+> 源自截圖：「益生菌怎麼選？」區塊
+
+**結構特徵**：
+- 三個卡片共用一個外框（不是各自獨立的卡片陰影）
+- 中間用垂直 `1px solid #e5e7eb` 分隔，不加額外留白
+- 每格內部 padding：32px
+- 無背景色差異，全白
+
+```css
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.criteria-card {
+  padding: 32px;
+  border-right: 1px solid #e5e7eb;
+}
+.criteria-card:last-child {
+  border-right: none;
+}
+```
+
+**卡片內部結構（從上到下）**：
+1. **Step tag**：`CRITERIA 01` — 10–11px / 700 / letter-spacing 0.12em / uppercase / `#6b7280`
+2. 間距 16px
+3. **卡片標題 H3**：22–24px / 700 / `#111827`
+4. 間距 12px
+5. **Body 內文**：16px / 400 / `#374151` / line-height 1.65
+6. 彈性留白（`flex-grow: 1` 將連結推到底部）
+7. **Text Link**：紅色底線文字連結
+
+```html
+<div class="criteria-grid">
+  <div class="criteria-card">
+    <span class="step-label">CRITERIA 01</span>
+    <h3>法規合格</h3>
+    <p>符合台灣 OTC 醫療級相關規範...</p>
+    <a class="text-link">OTC 藥品規範</a>
+  </div>
+  <!-- × 3 -->
+</div>
+```
+
+**Mobile 行為**：三欄改為單欄，border-right 移除，改用 `border-bottom` 分隔。
+
+---
+
+### B. Section 標準結構
+
+每個內容區塊的標準層次：
+
+```
+[Eyebrow 標題眉]      ← 選用，紅色 uppercase 小標
+[H2 主標題]           ← 區塊核心訴求
+[副標說明]            ← 選用，14–16px 灰色補充
+[主要內容區]          ← 卡片 / 列表 / 圖文
+[CTA 按鈕]            ← 選用，Primary 或 Text Link
+```
+
+Eyebrow 與 H2 之間間距：8–12px
+H2 與副標之間：12px
+副標與主內容之間：40–48px
+
+---
+
+### C. Text Link（內文連結）
+
+```css
+.text-link {
+  color: #CE0E2D;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  font-weight: 600;
+  font-size: inherit;
+  transition: color 120ms ease-out;
+}
+.text-link:hover {
+  color: #a80c24;
+}
+```
+
+用途：卡片底部延伸連結、內文引用、「了解更多」類連結。
+
+---
+
+### D. Hero 區塊結構
+
+```
+[Eyebrow / Live Pill]
+[主標題]  ← 最大字，品牌紅或白（深色底）
+[副標語]  ← 16–18px，灰或半透明白
+[Badge 群組]  ← 信任標籤（藥字號、日本進口、CBM588）
+[CTA Button 群組]  ← Primary + Secondary
+[產品盒圖]  ← 右置（桌機），下置（手機）
+```
+
+---
+
+### E. 數據統計條
+
+用於「70+ 年歷史」「500+ 億活菌」等數字訴求：
+
+```css
+.stat-item {
+  text-align: center;
+}
+.stat-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 40–48px;
+  font-weight: 700;
+  color: #CE0E2D;   /* 白底時紅字；深色底時白字 */
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.stat-unit {
+  font-size: 20px;
+  font-weight: 600;
+  color: #CE0E2D;
+}
+.stat-label {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+```
+
+---
+
+### F. Divider（分隔線）
+
+```css
+/* 水平分隔 */
+border-top: 1px solid #e5e7eb;
+
+/* 有文字的分隔（居中標籤） */
+display: flex; align-items: center; gap: 12px;
+/* 兩側線段用 flex-grow: 1 的 hr 元素 */
+
+/* 紅色重點分隔（Section 頂部裝飾線） */
+width: 40px; height: 3px; background: #CE0E2D; border-radius: 2px;
+```
+
+---
+
+### G. 導覽列（Nav）
+
+```
+桌機：
+[Logo 左置] ─────────────────── [主導覽連結] [CTA Button 右置]
+高度：64–72px，背景白，底部 border 1px #e5e7eb
+
+手機：
+[Logo 左置] [Hamburger 右置]
+展開：全寬 Drawer，連結垂直排列，間距 16px
+```
+
+Active 狀態：連結顏色 `#CE0E2D`，可加底線或左側 3px 紅色指示條。
+
+---
+
 ## 12. 速查 Cheat Sheet
 
 ```
-Brand Red:    #CE0E2D   (hover: #a80c24)
+Brand Red:    #CE0E2D   (hover: #a80c24 / active: #8f0a1e)
 Brand Navy:   #172F60   (hover: #1e3d7a)
 Brand Gradient: 135deg, #CE0E2D → #E5186E
 
@@ -293,4 +679,11 @@ Font EN/Num:  Inter
 Card:         bg #fff, radius 12px, shadow 0 2px 8px rgba(0,0,0,0.08)
 Badge:        radius 6px, padding 4px 12px
 Pill:         radius 99px, padding 5px 14px, border 1.5px
+Button (md):  padding 12px 24px, radius 6px, min-h 44px
+Text Link:    color #CE0E2D, underline, offset 3px
+
+Breakpoints:  sm 375 / md 768 / lg 1024 / xl 1280 / 2xl 1440
+Container:    max-width 1200px, padding 16/24/32px
+Grid:         1col(mobile) → 2col(768) → 3col(1024)
+Section gap:  48px(mobile) → 64px(tablet) → 96px(desktop)
 ```
