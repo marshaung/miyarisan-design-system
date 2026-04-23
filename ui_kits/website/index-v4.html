@@ -206,34 +206,60 @@ section { padding: 80px 0; }
   .hero-inner { grid-template-columns: 540px 1fr; gap: 64px; }
 }
 
-.hero-content { max-width: 540px; }
-.hero-pretag { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.hero-content { max-width: 600px; }
+
+/* 前置品牌眉：妙利散® MIYARISAN */
+.hero-brand-label {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.hero-brand-label img { height: 28px; width: auto; }
+.hero-brand-label .sep {
+  width: 1px; height: 18px;
+  background: rgba(255,255,255,0.3);
+}
+.hero-brand-label span {
+  font-family: var(--font-en);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+/* 主標：最大最醒目 */
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(36px, 5.5vw, 60px);
-  font-weight: 900; line-height: 1.08;
-  letter-spacing: -0.01em; margin-bottom: 8px;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 900; line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 0;
 }
-.hero-title .en {
-  font-family: var(--font-en);
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 700; letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.65);
-  display: block; margin-top: 6px;
+.hero-title .dot { color: var(--red); margin: 0 2px; }
+
+/* 次標：品牌信賴背書 */
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 350; line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+  margin: 18px 0 0;
 }
-.hero-subtitle {
-  font-size: clamp(14px, 1.6vw, 16px);
-  font-weight: 350; line-height: 1.7;
-  color: rgba(255,255,255,0.78);
-  margin: 18px 0 28px;
+.hero-sub strong {
+  font-weight: 700; color: rgba(255,255,255,0.92);
 }
+
+/* 輔助小標：CBM588、通路 */
+.hero-aux {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin: 20px 0 32px;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
 .hero-origin {
   font-family: var(--font-en);
-  font-size: 11.5px; letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.45); margin-top: 10px;
+  font-size: 11px; letter-spacing: 0.07em;
+  color: rgba(255,255,255,0.38); margin-top: 14px;
 }
-.hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* 右側：產品盒浮動 */
 .hero-visual {
@@ -632,29 +658,34 @@ section { padding: 80px 0; }
     <div class="hero-inner">
 
       <div class="hero-content">
-        <div class="hero-pretag">
-          <span class="badge badge-red">藥字號</span>
+
+        <!-- 前置眉：品牌 logo + 系列名 -->
+        <div class="hero-brand-label">
+          <img src="../../assets/logo-white.png" alt="妙利散® MIYARISAN">
+          <div class="sep"></div>
+          <span>CBM588 · 日本整腸藥</span>
+        </div>
+
+        <!-- 主標：最大最醒目 -->
+        <h1 class="hero-title">
+          整腸<span class="dot">・</span>消化<span class="dot">・</span><br>
+          次世代益生菌製劑
+        </h1>
+
+        <!-- 次標：品牌信賴背書 -->
+        <p class="hero-sub">
+          <strong>日本 No.&thinsp;1 整腸藥</strong>，70 年以上にわたり愛されています<br>
+          宮入菌 CBM588 次世代 LBP 製劑，醫療院所藥局通路
+        </p>
+
+        <!-- 輔助 badges -->
+        <div class="hero-aux">
+          <span class="badge badge-red">藥字號認證</span>
           <span class="badge badge-gold">日本 No.1</span>
           <span class="badge" style="color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);">70+ 年歷史</span>
         </div>
 
-        <h1 class="hero-title">
-          妙利散<sup style="font-size:0.4em;vertical-align:super;">®</sup>
-          <span class="en">MIYARISAN CBM588</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          整腸・消化・次世代益生菌製劑<br>
-          70 年以上にわたり愛されています<br>
-          日本整腸藥 No.&thinsp;1 益生菌
-        </p>
-
-        <div class="hero-badges">
-          <span class="pill" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.3);">整腸劑</span>
-          <span class="pill" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.3);">宮入菌 CBM588</span>
-          <span class="pill" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.3);">日本進口</span>
-        </div>
-
+        <!-- CTA -->
         <div class="hero-actions">
           <a href="#solution" class="btn btn-primary btn-lg">了解產品</a>
           <a href="#buy" class="btn btn-ghost-white btn-lg">購買途徑</a>
