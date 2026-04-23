@@ -631,6 +631,53 @@ section { padding: 80px 0; }
   font-size: 12px;
 }
 .footer-bottom img { height: 20px; opacity: 0.5; }
+
+/* ══════════════════════════════════
+   桌機文字尺寸覆寫（≥1024px）
+   所有正文/說明文字統一往上提升
+══════════════════════════════════ */
+@media (min-width: 1024px) {
+  /* Solution — lead 段落（使用者回報主要問題） */
+  .solution-content .lead        { font-size: 19px; line-height: 1.8; }
+
+  /* Solution — feature list */
+  .feat-text strong              { font-size: 17px; }
+  .feat-text span                { font-size: 16px; line-height: 1.65; }
+
+  /* Criteria 卡片 body */
+  .criteria-card p               { font-size: 16px; line-height: 1.75; }
+  .criteria-card h3              { font-size: 24px; }
+
+  /* Research cards */
+  .research-card p               { font-size: 15.5px; line-height: 1.7; }
+  .research-card h4              { font-size: 20px; }
+
+  /* Trust section 副標 */
+  .trust-header p                { font-size: 17px; }
+
+  /* Doctor section body */
+  .doctor-content p              { font-size: 17px; line-height: 1.8; }
+
+  /* Pain section 副標 */
+  .pain-sub                      { font-size: 18px; }
+  .pain-tag-label                { font-size: 14px; }
+
+  /* CTA section */
+  .cta-section p                 { font-size: 18px; line-height: 1.7; }
+
+  /* Trust bar */
+  .trust-item                    { font-size: 14px; }
+
+  /* Nav */
+  .nav-links a                   { font-size: 15px; }
+
+  /* Stats */
+  .stat-label                    { font-size: 14px; }
+  .stat-unit                     { font-size: 15px; }
+
+  /* Footer */
+  .footer-brand p                { font-size: 14px; }
+}
 </style>
 </head>
 <body>
