@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>妙利散® MIYARISAN — 醫療級益生菌製劑</title>
+
+<!-- Noto Serif TC (authority headings) + Inter (precision numbers) -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+<style>
+/* ── FZLanTingHei (body) ── */
+@font-face{font-family:'FZ';src:url('../../fonts/fzlt-w200.ttf') format('truetype');font-weight:200;font-display:swap;}
+@font-face{font-family:'FZ';src:url('../../fonts/fzlt-w300.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'FZ';src:url('../../fonts/fzlt-w400.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'FZ';src:url('../../fonts/fzlt-w700.ttf') format('truetype');font-weight:700;font-display:swap;}
+@font-face{font-family:'FZ';src:url('../../fonts/fzlt-w900.ttf') format('truetype');font-weight:900;font-display:swap;}
+
+/* ── TOKENS ── */
+:root{
+  /* Brand */
+  --red:        #CE0E2D;
+  --red-dk:     #a80c24;
+  --red-pale:   #fdf2f4;
+  --navy:       #172F60;
+
+  /* Neutral — warm clinical white */
+  --bg:         #FFFFFF;
+  --bg-warm:    #FAFAF8;
+  --bg-rule:    #F3F0ED;
+  --text:       #1A1A1A;
+  --text-2:     #3D3D3D;
+  --text-3:     #6B6B6B;
+  --text-4:     #9B9B9B;
+  --rule:       #E2DDD8;
+  --rule-lt:    #EDE9E4;
+
+  /* Typography */
+  --serif:      'Noto Serif TC', 'Georgia', serif;
+  --sans:       'FZ','PingFang TC','Microsoft JhengHei',sans-serif;
+  --mono:       'Inter', system-ui, sans-serif;
+
+  /* Spacing */
+  --section-v:  112px;
+  --container:  1160px;
+
+  /* Transitions */
+  --ease:       0.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+p{font-family:var(--sans);font-size:15px;font-weight:400;line-height:2;letter-spacing:.03em;color:var(--text-3);}
+
+.wrap{max-width:var(--container);margin:0 auto;padding:0 48px;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.d1{transition-delay:.08s;} .d2{transition-delay:.16s;} .d3{transition-delay:.24s;} .d4{transition-delay:.32s;}
+
+/* ════════════════════════════
+   NAV — transparent → white
+════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:68px;
+  background:rgba(255,255,255,0);
+  border-bottom:1px solid transparent;
+  transition:background var(--ease), border-color var(--ease);
+}
+.nav.scrolled{
+  background:rgba(255,255,255,.97);
+  border-bottom-color:var(--rule);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:32px;}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nav-logo img{height:30px;border-radius:50%;}
+.nav-wordmark{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--text);}
+.nav-links{display:flex;list-style:none;gap:0;}
+.nav-links a{font-family:var(--sans);font-size:12.5px;font-weight:500;color:var(--text-3);padding:6px 16px;letter-spacing:.03em;transition:color var(--ease);}
+.nav-links a:hover,.nav-links a.on{color:var(--text);}
+.nav-btn{
+  font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;
+  color:#fff;background:var(--red);
+  padding:8px 20px;
+  border:none;cursor:pointer;
+  transition:background var(--ease);
+  flex-shrink:0;
+}
+.nav-btn:hover{background:var(--red-dk);}
+
+/* ════════════════════════════
+   HERO — full-bleed photo
+════════════════════════════ */
+.hero{
+  position:relative;
+  height:100vh;min-height:680px;max-height:900px;
+  overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.hero-photo{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=85&auto=format') center/cover no-repeat;
+}
+.hero-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    105deg,
+    rgba(23,47,96,.82) 0%,
+    rgba(23,47,96,.60) 40%,
+    rgba(23,47,96,.10) 75%,
+    transparent 100%
+  );
+}
+.hero .wrap{
+  position:relative;z-index:1;
+  padding-bottom:80px;
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:64px;align-items:flex-end;
+  width:100%;
+}
+.hero-left{max-width:580px;}
+.hero-kicker{
+  display:inline-block;
+  font-family:var(--sans);font-size:10px;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);
+  border-bottom:1px solid rgba(255,255,255,.25);
+  padding-bottom:8px;margin-bottom:24px;
+}
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(40px,5.5vw,68px);
+  font-weight:900;
+  color:#fff;
+  line-height:1.15;
+  letter-spacing:.01em;
+  margin-bottom:20px;
+}
+.hero-h1 em{font-style:normal;color:rgba(255,255,255,.6);}
+.hero-body{
+  font-family:var(--sans);font-size:14px;font-weight:400;
+  color:rgba(255,255,255,.60);line-height:1.95;letter-spacing:.03em;
+  max-width:440px;margin-bottom:36px;
+}
+.hero-body strong{color:rgba(255,255,255,.85);font-weight:500;}
+.hero-actions{display:flex;align-items:center;gap:12px;}
+.btn-hero{
+  font-family:var(--sans);font-size:13px;font-weight:700;
+  letter-spacing:.06em;color:#fff;
+  background:var(--red);padding:12px 28px;
+  border:none;cursor:pointer;transition:background var(--ease);
+}
+.btn-hero:hover{background:var(--red-dk);}
+.btn-hero-ghost{
+  font-family:var(--sans);font-size:12.5px;font-weight:500;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.65);
+  background:transparent;
+  padding:11px 20px;
+  border:1px solid rgba(255,255,255,.25);cursor:pointer;
+  transition:all var(--ease);
+}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff;}
+/* hero right — product + badge */
+.hero-right{
+  display:flex;flex-direction:column;align-items:flex-end;gap:16px;
+  padding-bottom:8px;
+}
+.hero-product{
+  width:180px;
+  filter:drop-shadow(0 20px 48px rgba(0,0,0,.5));
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.hero-product:hover{transform:translateY(-6px);}
+.hero-badge-card{
+  background:#fff;padding:12px 20px;
+  border-left:3px solid var(--red);
+}
+.hero-badge-label{font-family:var(--sans);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:2px;}
+.hero-badge-val{font-family:var(--mono);font-size:26px;font-weight:900;color:var(--text);letter-spacing:-.02em;line-height:1;}
+.hero-badge-sub{font-family:var(--sans);font-size:10px;color:var(--text-4);margin-top:3px;letter-spacing:.03em;}
+
+/* ════════════════════════════
+   BRIEF — key claims bar
+════════════════════════════ */
+.brief{
+  background:var(--navy);
+  padding:0;
+}
+.brief .wrap{
+  display:flex;
+  border-left:1px solid rgba(255,255,255,.08);
+}
+.brief-item{
+  flex:1;
+  padding:20px 28px;
+  border-right:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;gap:12px;
+}
+.brief-icon{
+  width:32px;height:32px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.brief-icon svg{width:18px;height:18px;stroke:rgba(255,255,255,.5);stroke-width:1.5;fill:none;}
+.brief-text{font-family:var(--sans);font-size:12px;font-weight:500;color:rgba(255,255,255,.65);letter-spacing:.03em;line-height:1.5;}
+.brief-text strong{color:rgba(255,255,255,.90);display:block;margin-bottom:1px;}
+
+/* ════════════════════════════
+   STATS
+════════════════════════════ */
+.stats{background:var(--bg);padding:var(--section-v) 0;}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);}
+.stat{padding:0 40px 0 0;border-right:1px solid var(--rule);}
+.stat:last-child{border-right:none;padding-right:0;}
+.stat-n{
+  font-family:var(--mono);
+  font-size:52px;font-weight:900;
+  color:var(--text);letter-spacing:-.03em;
+  line-height:1;margin-bottom:8px;
+}
+.stat-n sup{font-size:24px;letter-spacing:0;vertical-align:.1em;}
+.stat-accent{display:inline-block;width:24px;height:2px;background:var(--red);margin-bottom:10px;}
+.stat-label{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--text-3);line-height:1.6;letter-spacing:.03em;}
+.stat-source{font-family:var(--mono);font-size:10px;color:var(--text-4);margin-top:4px;letter-spacing:.02em;}
+
+/* ════════════════════════════
+   INTRO STATEMENT
+════════════════════════════ */
+.intro{background:var(--bg-warm);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:72px 0;}
+.intro .wrap{display:grid;grid-template-columns:240px 1fr;gap:80px;align-items:start;}
+.intro-label{
+  font-family:var(--sans);font-size:10px;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--red);padding-top:6px;
+}
+.intro-body{
+  font-family:var(--serif);
+  font-size:clamp(22px,2.8vw,32px);
+  font-weight:500;
+  color:var(--text);
+  line-height:1.65;
+  letter-spacing:.01em;
+}
+.intro-body em{font-style:italic;color:var(--text-3);}
+
+/* ════════════════════════════
+   PAIN
+════════════════════════════ */
+.pain{background:var(--bg);padding:var(--section-v) 0;}
+.pain .wrap{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start;}
+.pain-left{}
+.section-kicker{
+  font-family:var(--sans);font-size:10px;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--red);
+  margin-bottom:16px;display:block;
+}
+.section-h2{
+  font-family:var(--serif);
+  font-size:clamp(28px,3.2vw,40px);
+  font-weight:700;color:var(--text);
+  line-height:1.3;letter-spacing:.01em;
+  margin-bottom:20px;
+}
+.pain-desc{margin-bottom:36px;}
+/* impact typography — editorial, not oversized */
+.pain-words{
+  display:flex;gap:6px;flex-wrap:wrap;
+  padding:28px 0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  margin-bottom:36px;
+}
+.pain-w{
+  font-family:var(--serif);
+  font-size:clamp(36px,5vw,54px);
+  font-weight:900;
+  color:var(--text);
+  letter-spacing:.02em;
+  line-height:1.1;
+  position:relative;
+}
+.pain-w::after{
+  content:attr(data-sub);
+  position:absolute;
+  bottom:-16px;left:0;
+  font-family:var(--sans);font-size:10px;font-weight:600;
+  color:var(--text-4);letter-spacing:.06em;
+  white-space:nowrap;
+}
+.pain-footnote{font-family:var(--sans);font-size:12px;color:var(--text-4);letter-spacing:.03em;line-height:1.7;padding-top:24px;}
+/* symptom grid — clinical list style */
+.pain-right{padding-top:4px;}
+.pain-grid-label{
+  font-family:var(--sans);font-size:10px;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-4);
+  margin-bottom:16px;
+}
+.symptom-list{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1px solid var(--rule);
+}
+.symptom-item{
+  padding:12px 16px;
+  border-bottom:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  color:var(--text-2);letter-spacing:.02em;
+  transition:background var(--ease),color var(--ease);
+  display:flex;align-items:center;gap:8px;
+}
+.symptom-item:nth-child(even){border-right:none;}
+.symptom-item:nth-last-child(-n+2){border-bottom:none;}
+.symptom-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--rule);flex-shrink:0;transition:background var(--ease);}
+.symptom-item:hover{background:var(--red-pale);color:var(--red);}
+.symptom-item:hover::before{background:var(--red);}
+
+/* ════════════════════════════
+   SOLUTION
+════════════════════════════ */
+.solution{background:var(--bg-warm);border-top:1px solid var(--rule);padding:var(--section-v) 0;}
+.solution .wrap{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start;}
+.solution-left{}
+.solution-right{}
+.product-display{
+  border:1px solid var(--rule);
+  padding:48px;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;
+}
+.product-display img{width:180px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.10));}
+.cert-row{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 0;border-bottom:1px solid var(--rule);
+}
+.cert-row:first-child{border-top:1px solid var(--rule);}
+.cert-no{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:.08em;color:var(--text-4);
+  min-width:20px;text-align:right;
+}
+.cert-text{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--text-2);letter-spacing:.02em;line-height:1.5;}
+.cert-text span{display:block;font-size:11px;color:var(--text-4);margin-top:2px;font-weight:400;}
+
+/* channel blocks */
+.channel-split{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1px solid var(--rule);
+  margin-top:24px;
+}
+.channel-block{
+  padding:24px 20px;
+  transition:background var(--ease);
+}
+.channel-block:first-child{border-right:1px solid var(--rule);}
+.channel-block:hover{background:#fff;}
+.channel-icon{width:36px;height:36px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;}
+.channel-icon svg{width:18px;height:18px;stroke:var(--text-3);stroke-width:1.5;fill:none;transition:stroke var(--ease);}
+.channel-block:hover .channel-icon svg{stroke:var(--red);}
+.channel-title{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;letter-spacing:.02em;}
+.channel-body{font-size:12px;color:var(--text-4);line-height:1.7;letter-spacing:.02em;}
+
+/* ════════════════════════════
+   SCIENCE / DATA
+════════════════════════════ */
+.science{background:var(--bg);border-top:1px solid var(--rule);padding:var(--section-v) 0;}
+.science-hd{margin-bottom:64px;}
+.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);}
+.data-card{
+  padding:40px 36px;
+  border-right:1px solid var(--rule);
+  transition:background var(--ease);
+  position:relative;
+}
+.data-card:last-child{border-right:none;}
+.data-card:hover{background:var(--bg-warm);}
+.data-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--rule);
+  transition:background var(--ease);
+}
+.data-card:hover::before{background:var(--red);}
+.data-seq{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--text-4);margin-bottom:20px;}
+.data-num{
+  font-family:var(--mono);
+  font-size:48px;font-weight:900;
+  color:var(--text);letter-spacing:-.03em;
+  line-height:1;margin-bottom:6px;
+}
+.data-unit{font-family:var(--sans);font-size:13px;color:var(--red);font-weight:600;letter-spacing:.02em;margin-bottom:16px;}
+.data-title{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;letter-spacing:.01em;line-height:1.4;}
+.data-body{font-size:13px;line-height:1.85;}
+.data-cite{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:.03em;margin-top:20px;padding-top:16px;border-top:1px solid var(--rule-lt);}
+
+/* ════════════════════════════
+   COMPARISON
+════════════════════════════ */
+.comparison{background:var(--bg-warm);border-top:1px solid var(--rule);padding:var(--section-v) 0;}
+.compare-wrap{border:1px solid var(--rule);overflow:hidden;margin-top:56px;}
+.compare-thead{
+  display:grid;grid-template-columns:2.5fr 1fr 1fr;
+  background:var(--bg-rule);
+  border-bottom:2px solid var(--rule);
+}
+.compare-th{
+  padding:14px 20px;
+  font-family:var(--sans);font-size:11px;font-weight:800;
+  letter-spacing:.10em;text-transform:uppercase;color:var(--text-4);
+}
+.compare-th.hi{color:var(--red);background:var(--red-pale);}
+.compare-tr{
+  display:grid;grid-template-columns:2.5fr 1fr 1fr;
+  border-bottom:1px solid var(--rule);
+  transition:background var(--ease);
+}
+.compare-tr:last-child{border-bottom:none;}
+.compare-tr:hover{background:#fff;}
+.compare-td{
+  padding:15px 20px;
+  display:flex;align-items:center;
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  color:var(--text-2);letter-spacing:.02em;
+}
+.compare-td.center{justify-content:center;}
+.compare-td.hi{background:rgba(253,242,244,.5);}
+.chk{width:18px;height:18px;border-radius:50%;background:#f0fdf4;border:1px solid rgba(22,163,74,.2);display:flex;align-items:center;justify-content:center;}
+.chk svg{width:9px;height:9px;stroke:#16a34a;stroke-width:2.5;fill:none;}
+.xmark{width:18px;height:18px;border-radius:50%;background:var(--bg-rule);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;}
+.xmark svg{width:8px;height:8px;stroke:var(--text-4);stroke-width:2;fill:none;}
+
+/* ════════════════════════════
+   CRITERIA
+════════════════════════════ */
+.criteria{background:var(--bg);border-top:1px solid var(--rule);padding:var(--section-v) 0;}
+.criteria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);margin-top:56px;}
+.crit{
+  padding:40px 36px;
+  border-right:1px solid var(--rule);
+  transition:background var(--ease);
+  position:relative;overflow:hidden;
+}
+.crit:last-child{border-right:none;}
+.crit:hover{background:var(--bg-warm);}
+.crit-num{
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:.12em;color:var(--text-4);
+  margin-bottom:20px;
+}
+.crit-title{
+  font-family:var(--serif);font-size:22px;font-weight:700;
+  color:var(--text);margin-bottom:14px;line-height:1.3;
+}
+.crit-body{font-size:13px;line-height:1.9;}
+.crit-pill{
+  display:inline-block;margin-top:20px;
+  font-family:var(--sans);font-size:10px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--red);
+  border-bottom:1px solid var(--red);
+  padding-bottom:2px;
+}
+
+/* ════════════════════════════
+   CTA
+════════════════════════════ */
+.cta{
+  background:var(--navy);
+  padding:96px 0;
+  text-align:center;
+}
+.cta-eyebrow{
+  font-family:var(--sans);font-size:10px;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:20px;
+}
+.cta-h2{
+  font-family:var(--serif);
+  font-size:clamp(28px,4vw,48px);
+  font-weight:700;color:#fff;
+  line-height:1.25;letter-spacing:.01em;
+  margin-bottom:12px;
+}
+.cta-sub{
+  font-family:var(--sans);font-size:14px;
+  color:rgba(255,255,255,.45);
+  line-height:1.8;letter-spacing:.03em;
+  margin-bottom:40px;
+}
+.btn-cta{
+  font-family:var(--sans);font-size:14px;font-weight:700;
+  letter-spacing:.08em;color:#fff;
+  background:var(--red);
+  padding:15px 48px;
+  border:none;cursor:pointer;
+  transition:background var(--ease);
+  display:inline-block;
+}
+.btn-cta:hover{background:var(--red-dk);}
+.cta-legal{
+  font-family:var(--sans);font-size:11px;
+  color:rgba(255,255,255,.20);
+  letter-spacing:.02em;line-height:1.9;
+  margin-top:24px;
+}
+
+/* ════════════════════════════
+   FOOTER
+════════════════════════════ */
+footer{background:var(--text);padding:40px 0;}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.ft-logo img{height:24px;filter:brightness(0) invert(1);opacity:.4;}
+.ft-info{font-family:var(--sans);font-size:11px;color:rgba(255,255,255,.25);line-height:1.9;letter-spacing:.02em;}
+
+/* ════════════════════════════
+   RESPONSIVE
+════════════════════════════ */
+@media(max-width:1024px){
+  .wrap{padding:0 28px;}
+  :root{--section-v:80px;}
+}
+@media(max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;padding-bottom:60px;}
+  .hero-right{position:absolute;right:28px;bottom:48px;flex-direction:row;align-items:flex-end;gap:12px;}
+  .hero-product{width:110px;}
+  .brief .wrap{flex-direction:column;}
+  .brief-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);}
+  .stats .wrap{grid-template-columns:1fr 1fr;gap:40px;}
+  .stat{border-right:none;padding-right:0;padding-bottom:32px;border-bottom:1px solid var(--rule);}
+  .stat:nth-child(odd){border-right:1px solid var(--rule);padding-right:40px;}
+  .stat:nth-last-child(-n+2){border-bottom:none;}
+  .intro .wrap{grid-template-columns:1fr;}
+  .pain .wrap,.solution .wrap{grid-template-columns:1fr;}
+  .data-grid{grid-template-columns:1fr;}
+  .data-card{border-right:none;border-bottom:1px solid var(--rule);}
+  .data-card:last-child{border-bottom:none;}
+  .compare-thead,.compare-tr{grid-template-columns:1.8fr 1fr 1fr;}
+  .criteria-grid{grid-template-columns:1fr;}
+  .crit{border-right:none;border-bottom:1px solid var(--rule);}
+  .crit:last-child{border-bottom:none;}
+  .nav-links,.nav-btn{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <div class="nav-logo">
+      <img src="../../assets/logo-brand.png" alt="妙利散">
+      <span class="nav-wordmark">妙利散® MIYARISAN</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="on">整腸製劑</a></li>
+      <li><a href="#">CBM588 菌株</a></li>
+      <li><a href="#">臨床研究</a></li>
+      <li><a href="#">購買通路</a></li>
+    </ul>
+    <button class="nav-btn">了解購買途徑</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="wrap">
+    <div class="hero-left reveal">
+      <span class="hero-kicker">醫療級整腸製劑 · 藥字號認證 · 日本原裝進口</span>
+      <h1 class="hero-h1">整腸・消化<br/><em>次世代</em>益生菌製劑</h1>
+      <p class="hero-body">
+        日本原開發廠「妙利散製藥株式會社」原裝進口。<br/>
+        含 <strong>LBP Clostridium Butyricum Miyairi（588 株）</strong>酪酸菌，<br/>
+        緩解腹瀉、腹痛及便祕，整腸（調整排便），軟便。
+      </p>
+      <div class="hero-actions">
+        <button class="btn-hero">了解菌株特色</button>
+        <button class="btn-hero-ghost">查看研究報告</button>
+      </div>
+    </div>
+    <div class="hero-right reveal d1">
+      <img class="hero-product" src="../../assets/product-box.png" alt="妙利散 BM">
+      <div class="hero-badge-card">
+        <div class="hero-badge-label">日本醫師推薦</div>
+        <div class="hero-badge-val">No.1</div>
+        <div class="hero-badge-sub">益生菌・70年以上</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIEF BAR -->
+<div class="brief">
+  <div class="wrap">
+    <div class="brief-item">
+      <div class="brief-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="brief-text"><strong>衛署藥輸字第 014618 號</strong>台灣衛福部藥字號認證</div>
+    </div>
+    <div class="brief-item">
+      <div class="brief-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round"/><path d="M12 8v4l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="brief-text"><strong>70+ 年醫療實績</strong>1952 年起持續研究使用</div>
+    </div>
+    <div class="brief-item">
+      <div class="brief-icon"><svg viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="brief-text"><strong>芽孢型態耐酸耐熱</strong>pH 2 存活率 60–90%</div>
+    </div>
+    <div class="brief-item">
+      <div class="brief-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="brief-text"><strong>多項 RCT 臨床支持</strong>人體試驗，國際期刊發表</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stat reveal">
+      <div class="stat-n">70<sup>+</sup></div>
+      <div class="stat-accent"></div>
+      <div class="stat-label">年醫療使用歷史<br/>1952 年首次核准</div>
+      <div class="stat-source">Miyarisan Pharmaceutical Co., Ltd.</div>
+    </div>
+    <div class="stat reveal d1">
+      <div class="stat-n" style="font-size:40px;">60–90<sup>%</sup></div>
+      <div class="stat-accent"></div>
+      <div class="stat-label">pH 2 芽孢存活率<br/>胃酸環境穩定性</div>
+      <div class="stat-source">In vitro stability study</div>
+    </div>
+    <div class="stat reveal d2">
+      <div class="stat-n">94<sup>%</sup></div>
+      <div class="stat-accent"></div>
+      <div class="stat-label">H. pylori 除菌成功率<br/>三聯療法 RCT</div>
+      <div class="stat-source">Miki et al., 2021</div>
+    </div>
+    <div class="stat reveal d3">
+      <div class="stat-n">2.9<sup>%</sup></div>
+      <div class="stat-accent"></div>
+      <div class="stat-label">抗生素相關腹瀉率<br/>3g 劑量組</div>
+      <div class="stat-source">Imase et al., 2008</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO STATEMENT -->
+<div class="intro">
+  <div class="wrap">
+    <div class="intro-label reveal">核心主張</div>
+    <p class="intro-body reveal d1">
+      不是所有益生菌，<br/>
+      都能在醫療情境中發揮作用。<br/>
+      <em>CBM588 是以藥品標準研發的例外。</em>
+    </p>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <div class="pain-left">
+      <span class="section-kicker reveal">腸道菌相失衡</span>
+      <h2 class="section-h2 reveal">當菌相失衡，<br/>症狀找上門</h2>
+      <p class="pain-desc reveal">酪酸菌 CBM588 能協助維持腸道環境穩定。一旦失衡，痛、硬、脹、洩就會更容易出現。</p>
+      <div class="pain-words reveal">
+        <span class="pain-w" data-sub="腹部不適">痛</span>
+        <span class="pain-w" data-sub="排便困難" style="margin-left:clamp(16px,3vw,32px)">硬</span>
+        <span class="pain-w" data-sub="腹部脹氣" style="margin-left:clamp(16px,3vw,32px)">脹</span>
+        <span class="pain-w" data-sub="腹瀉症狀" style="margin-left:clamp(16px,3vw,32px)">洩</span>
+      </div>
+      <p class="pain-footnote reveal">好菌、壞菌不平衡，腸道不適找上門。以上症狀可能與腸道菌相失衡相關。</p>
+    </div>
+    <div class="pain-right reveal d1">
+      <div class="pain-grid-label">常見症狀分類</div>
+      <div class="symptom-list">
+        <div class="symptom-item">腹部悶痛</div>
+        <div class="symptom-item">卡便・難排</div>
+        <div class="symptom-item">腹部脹氣</div>
+        <div class="symptom-item">多次腹瀉</div>
+        <div class="symptom-item">高壓迫感</div>
+        <div class="symptom-item">多氣</div>
+        <div class="symptom-item">腸道痙攣</div>
+        <div class="symptom-item">水便</div>
+        <div class="symptom-item">便阻</div>
+        <div class="symptom-item">悶脹感</div>
+        <div class="symptom-item">腸道敏感</div>
+        <div class="symptom-item">軟便</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="wrap">
+    <div class="solution-left reveal">
+      <div class="product-display">
+        <img src="../../assets/product-box.png" alt="妙利散 BM 產品盒裝">
+      </div>
+      <div>
+        <div class="cert-row">
+          <span class="cert-no">01</span>
+          <div class="cert-text">衛署藥輸字第 014618 號<span>台灣衛福部藥品查驗登記核准</span></div>
+        </div>
+        <div class="cert-row">
+          <span class="cert-no">02</span>
+          <div class="cert-text">日本原裝進口製劑<span>妙利散製藥株式會社 · 東京都中央區</span></div>
+        </div>
+        <div class="cert-row">
+          <span class="cert-no">03</span>
+          <div class="cert-text">1g × 42 包規格<span>每包含活性 CBM588 芽孢菌</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="solution-right">
+      <span class="section-kicker reveal">解決方案</span>
+      <h2 class="section-h2 reveal">妙利散® BM<br/>醫療級益生菌製劑</h2>
+      <p class="reveal d1" style="margin-bottom:28px;">累積多項臨床研究，協助調整腸道平衡。透過醫療院所與合法藥局兩大通路取得，確保來源合法、品質穩定。</p>
+      <div class="channel-split reveal d2">
+        <div class="channel-block">
+          <div class="channel-icon"><svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0H5m0 0H3m2 0v-5a1 1 0 011-1h6a1 1 0 011 1v5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="channel-title">醫療院所</div>
+          <p class="channel-body">搭配療程使用，醫師處方開立，納入正規醫療紀錄。</p>
+        </div>
+        <div class="channel-block">
+          <div class="channel-icon"><svg viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 5h12M9 19a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="channel-title">藥局零售</div>
+          <p class="channel-body">日常腸道保健，合法藥局購買，確認藥字號標示。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCIENCE / DATA -->
+<section class="science">
+  <div class="wrap">
+    <div class="science-hd">
+      <span class="section-kicker reveal">臨床數據</span>
+      <h2 class="section-h2 reveal" style="max-width:500px;">從菌株到 LBP 製劑<br/>決定益生菌定位</h2>
+    </div>
+    <div class="data-grid">
+      <div class="data-card reveal">
+        <div class="data-seq">01 / STRAIN IDENTITY</div>
+        <div class="data-num">1952</div>
+        <div class="data-unit">年首次分離記錄</div>
+        <div class="data-title">菌株精確鑑定</div>
+        <p class="data-body">必須精確到菌株層級（strain level），才能對應可重複驗證的臨床試驗。CBM588 為完整記錄、持續追蹤的單一分離菌株。</p>
+        <div class="data-cite">Ref: Miyarisan Pharmaceutical archive · Clostridium butyricum MIYAIRI 588</div>
+      </div>
+      <div class="data-card reveal d1">
+        <div class="data-seq">02 / ACID RESISTANCE</div>
+        <div class="data-num">60–90<span style="font-size:22px;letter-spacing:0">%</span></div>
+        <div class="data-unit">pH 2 環境芽孢存活率</div>
+        <div class="data-title">耐酸・耐熱穩定性</div>
+        <p class="data-body">芽孢（spore）型態通過胃酸屏障，耐高溫可加入溫牛奶沖泡。抗生素存在下仍可萌發定植，可與抗生素同時使用。</p>
+        <div class="data-cite">Ref: In vitro stability study · Miyarisan Pharmaceutical</div>
+      </div>
+      <div class="data-card reveal d2">
+        <div class="data-seq">03 / CLINICAL EVIDENCE</div>
+        <div class="data-num">70<span style="font-size:24px;letter-spacing:0">+</span></div>
+        <div class="data-unit">年人體 RCT 臨床試驗支持</div>
+        <div class="data-title">人體臨床試驗支持</div>
+        <p class="data-body">1967 年起核准為處方藥，多項 RCT 覆蓋兒科、高齡族群，研究成果發表於國際同儕審閱期刊（Lancet, J Gastroenterol 等）。</p>
+        <div class="data-cite">Ref: Miki et al. 2021 · Imase et al. 2008 · Pediatric RCT series</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <div class="wrap">
+    <span class="section-kicker reveal">比較分析</span>
+    <h2 class="section-h2 reveal">CBM588 與一般益生菌</h2>
+    <div class="compare-wrap reveal d1">
+      <div class="compare-thead">
+        <div class="compare-th">比較項目</div>
+        <div class="compare-th hi">妙利散® CBM588</div>
+        <div class="compare-th">一般益生菌</div>
+      </div>
+      <div class="compare-tr"><div class="compare-td">菌株精確鑑定（strain level）</div><div class="compare-td center hi"><div class="chk"><svg viewBox="0 0 9 9"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="compare-td center"><div class="xmark"><svg viewBox="0 0 8 8"><line x1="1.5" y1="1.5" x2="6.5" y2="6.5" stroke-linecap="round"/><line x1="6.5" y1="1.5" x2="1.5" y2="6.5" stroke-linecap="round"/></svg></div></div></div>
+      <div class="compare-tr"><div class="compare-td">台灣衛福部藥字號認證</div><div class="compare-td center hi"><div class="chk"><svg viewBox="0 0 9 9"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="compare-td center"><div class="xmark"><svg viewBox="0 0 8 8"><line x1="1.5" y1="1.5" x2="6.5" y2="6.5" stroke-linecap="round"/><line x1="6.5" y1="1.5" x2="1.5" y2="6.5" stroke-linecap="round"/></svg></div></div></div>
+      <div class="compare-tr"><div class="compare-td">pH 2 耐酸（胃酸環境存活）</div><div class="compare-td center hi"><div class="chk"><svg viewBox="0 0 9 9"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="compare-td center"><div class="xmark"><svg viewBox="0 0 8 8"><line x1="1.5" y1="1.5" x2="6.5" y2="6.5" stroke-linecap="round"/><line x1="6.5" y1="1.5" x2="1.5" y2="6.5" stroke-linecap="round"/></svg></div></div></div>
+      <div class="compare-tr"><div class="compare-td">可與抗生素同時服用</div><div class="compare-td center hi"><div class="chk"><svg viewBox="0 0 9 9"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="compare-td center"><div class="xmark"><svg viewBox="0 0 8 8"><line x1="1.5" y1="1.5" x2="6.5" y2="6.5" stroke-linecap="round"/><line x1="6.5" y1="1.5" x2="1.5" y2="6.5" stroke-linecap="round"/></svg></div></div></div>
+      <div class="compare-tr"><div class="compare-td">人體 RCT 臨床試驗（國際期刊）</div><div class="compare-td center hi"><div class="chk"><svg viewBox="0 0 9 9"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="compare-td center"><div class="xmark"><svg viewBox="0 0 8 8"><line x1="1.5" y1="1.5" x2="6.5" y2="6.5" stroke-linecap="round"/><line x1="6.5" y1="1.5" x2="1.5" y2="6.5" stroke-linecap="round"/></svg></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CRITERIA -->
+<section class="criteria">
+  <div class="wrap">
+    <span class="section-kicker reveal">專業標準</span>
+    <h2 class="section-h2 reveal">益生菌怎麼選？</h2>
+    <div class="criteria-grid">
+      <div class="crit reveal">
+        <div class="crit-num">CRITERIA 01</div>
+        <div class="crit-title">法規合格</div>
+        <p class="crit-body">符合台灣 OTC 醫療級相關規範，依規定進行登錄與管理，外包裝標示清楚，批號可追，並接受主管機關監督，作為藥品專業度與安全性的基本條件。</p>
+        <span class="crit-pill">OTC 藥品規範</span>
+      </div>
+      <div class="crit reveal d1">
+        <div class="crit-num">CRITERIA 02</div>
+        <div class="crit-title">通路合格</div>
+        <p class="crit-body">僅於正規醫療通路（醫院、藥局）流通，是判斷益生菌專業度的重要基礎。符合藥事管理相關規範，並接受完整的來源與流向管理。</p>
+        <span class="crit-pill">醫療通路規範</span>
+      </div>
+      <div class="crit reveal d2">
+        <div class="crit-num">CRITERIA 03</div>
+        <div class="crit-title">效果合格</div>
+        <p class="crit-body">基於菌株特性與製劑設計，具耐酸與耐熱特性，具備因應環境變化確保活菌的穩定性，並有可重複驗證的人體 RCT 臨床研究支持。</p>
+        <span class="crit-pill">臨床實證要求</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap reveal">
+    <div class="cta-eyebrow">了解購買途徑</div>
+    <h2 class="cta-h2">妙利散® BM<br/>透過正規通路取得</h2>
+    <p class="cta-sub">醫師、藥師諮詢，或前往合法藥局</p>
+    <button class="btn-cta">了解購買途徑</button>
+    <div class="cta-legal">
+      衛署藥輸字第 014618 號 · 高市衛藥廣字第 11008003 號<br/>
+      本頁資訊為科學文獻背景介紹，供衛教參考目的，不構成醫療建議。
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-logo"><img src="../../assets/logo-white.svg" alt="妙利散"></div>
+    <div class="ft-info">
+      裕心企業有限公司 · ミヤリサン製薬株式会社 Miyarisan Pharmaceutical Co., Ltd.<br/>
+      © 2026 裕心企業有限公司版權所有 · 本頁所有內容僅供衛教資訊參考，不構成醫療建議。
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
