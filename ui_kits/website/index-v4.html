@@ -451,6 +451,30 @@ section { padding: 80px 0; }
   font-size: 28px; font-weight: 900;
   letter-spacing: -0.01em; color: #fff;
 }
+.channel-cards {
+  display: flex; gap: 16px; width: 100%;
+}
+.channel-card {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 16px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+.channel-card img {
+  height: 160px; width: auto; max-width: 100%;
+  object-fit: contain; margin-bottom: 24px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.12));
+}
+.channel-label {
+  font-size: 22px; font-weight: 700; color: var(--text-1);
+  margin-bottom: 8px;
+}
+.channel-desc {
+  font-size: 14px; color: var(--text-3); line-height: 1.5;
+}
 .strain-id span { color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 400; }
 
 /* ══════════════════════════════════
@@ -851,14 +875,17 @@ section { padding: 80px 0; }
       </div>
 
       <div class="solution-visual">
-        <img class="solution-product-img"
-          src="../../assets/product-box.png"
-          alt="妙利散® BM 產品">
-
-        <div class="strain-card">
-          <div class="strain-card-title">核心菌株</div>
-          <div class="strain-card-sub">Clostridium Butyricum Miyairi</div>
-          <div class="strain-id">CBM588 <span>宮入菌</span></div>
+        <div class="channel-cards">
+          <div class="channel-card">
+            <img src="../../assets/大黃去背1.png" alt="妙利散® BM 醫療院所包裝">
+            <div class="channel-label">醫療院所</div>
+            <div class="channel-desc">用於特定疾病治療</div>
+          </div>
+          <div class="channel-card">
+            <img src="../../assets/product-box.png" alt="妙利散® BM 藥局零售包裝">
+            <div class="channel-label">藥局零售</div>
+            <div class="channel-desc">日常保健常備藥品</div>
+          </div>
         </div>
       </div>
 
