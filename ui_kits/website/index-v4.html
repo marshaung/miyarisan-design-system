@@ -206,9 +206,9 @@ section { padding: 80px 0; }
 }
 @media (min-width: 1024px) {
   .hero-inner {
-    grid-template-columns: minmax(0, 1fr) 400px;
-    gap: 48px;
-    align-items: stretch;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: center;
   }
   /* 桌機：headline 不換行，字體固定讓 13 字一行放得進去 */
   .hero-title { font-size: 52px; white-space: nowrap; }
@@ -273,9 +273,10 @@ section { padding: 80px 0; }
 /* 右側：產品盒浮動 */
 .hero-visual {
   display: none;
+  position: absolute;
+  right: 8%; bottom: 0;
+  z-index: 3;
   align-items: flex-end; justify-content: center;
-  position: relative;
-  padding-bottom: 48px;
 }
 @media (min-width: 1024px) { .hero-visual { display: flex; } }
 
@@ -722,6 +723,14 @@ section { padding: 80px 0; }
 <!-- ══ A — HERO ══ -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
+
+  <!-- 產品圖：絕對定位於 Hero 右下角 -->
+  <div class="hero-visual">
+    <img class="hero-product-img"
+      src="../../assets/product-box.png"
+      alt="妙利散® BM 產品盒">
+  </div>
+
   <div class="container">
     <div class="hero-inner">
 
@@ -760,12 +769,6 @@ section { padding: 80px 0; }
         </div>
 
         <p class="hero-origin">原廠：ミヤリサン製薬株式会社 · 台灣代理：R-CHEVER 裕心</p>
-      </div>
-
-      <div class="hero-visual">
-        <img class="hero-product-img"
-          src="../../assets/product-box.png"
-          alt="妙利散® BM 產品盒">
       </div>
 
     </div>
