@@ -370,38 +370,23 @@ section { padding: 80px 0; }
   line-height: 1.6; margin-top: 16px;
 }
 
-.pain-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  max-width: 720px; margin: 48px auto 0;
+/* Pain → Flowing pill group（Carbon Tag / Read-only 模式）*/
+.pain-tags {
+  display: flex; flex-wrap: wrap;
+  gap: 12px; justify-content: center;
+  margin-top: 48px;
 }
-@media (min-width: 600px) { .pain-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1024px) { .pain-grid { grid-template-columns: repeat(6, 1fr); } }
-
-.pain-tag {
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  padding: 20px 12px; background: var(--white);
-  border: 1px solid var(--border); border-radius: 12px;
-  text-align: center;
-  transition: all 150ms ease-out;
+.pain-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 99px;
+  font-size: 14px; font-weight: 600; color: var(--text-2);
+  transition: border-color 150ms, color 150ms;
 }
-.pain-tag:hover {
-  border-color: var(--red);
-  box-shadow: 0 4px 16px rgba(206,14,45,0.08);
-  transform: translateY(-2px);
-}
-.pain-tag-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--red-pale);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.pain-tag-icon svg { color: var(--red); }
-.pain-tag-label {
-  font-size: 13px; font-weight: 600; color: var(--text-2);
-  line-height: 1.3;
-}
+.pain-chip:hover { border-color: var(--red); color: var(--red); }
+.pain-chip svg { color: var(--red); flex-shrink: 0; }
 
 /* ══════════════════════════════════
    C — SOLUTION
@@ -661,6 +646,7 @@ section { padding: 80px 0; }
   /* Pain section 副標 */
   .pain-sub                      { font-size: 18px; }
   .pain-tag-label                { font-size: 14px; }
+  .pain-chip                     { font-size: 15px; }
 
   /* CTA section */
   .cta-section p                 { font-size: 18px; line-height: 1.7; }
@@ -796,50 +782,31 @@ section { padding: 80px 0; }
       <p class="pain-sub">好菌、壞菌不平衡，腸道不適找上門。</p>
     </div>
 
-    <div class="pain-grid" style="max-width:840px;margin:0 auto;">
-
-      <div class="pain-tag">
-        <div class="pain-tag-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/></svg>
-        </div>
-        <span class="pain-tag-label">好菌減少</span>
-      </div>
-
-      <div class="pain-tag">
-        <div class="pain-tag-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
-        </div>
-        <span class="pain-tag-label">壞菌增生</span>
-      </div>
-
-      <div class="pain-tag">
-        <div class="pain-tag-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/></svg>
-        </div>
-        <span class="pain-tag-label">腹脹脹氣</span>
-      </div>
-
-      <div class="pain-tag">
-        <div class="pain-tag-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        </div>
-        <span class="pain-tag-label">消化不良</span>
-      </div>
-
-      <div class="pain-tag">
-        <div class="pain-tag-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <span class="pain-tag-label">便秘腹瀉</span>
-      </div>
-
-      <div class="pain-tag">
-        <div class="pain-tag-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        </div>
-        <span class="pain-tag-label">腸胃不適</span>
-      </div>
-
+    <div class="pain-tags">
+      <span class="pain-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/></svg>
+        好菌減少
+      </span>
+      <span class="pain-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+        壞菌增生
+      </span>
+      <span class="pain-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/></svg>
+        腹脹脹氣
+      </span>
+      <span class="pain-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        消化不良
+      </span>
+      <span class="pain-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        便秘腹瀉
+      </span>
+      <span class="pain-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        腸胃不適
+      </span>
     </div>
   </div>
 </section>
