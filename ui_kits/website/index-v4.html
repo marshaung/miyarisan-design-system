@@ -71,6 +71,8 @@ section { padding: 80px 0; }
   content: ''; width: 18px; height: 2px;
   background: var(--red); border-radius: 2px; flex-shrink: 0;
 }
+.trust-header .eyebrow::before,
+.research-header .eyebrow::before { display: none; }
 
 /* ─── Badges ─── */
 .badge {
@@ -277,7 +279,8 @@ section { padding: 80px 0; }
 @media (min-width: 1024px) { .hero-visual { display: flex; } }
 
 .hero-product-img {
-  width: 100%; max-width: 400px;
+  width: 100%; max-width: 340px;
+  max-height: 340px; object-fit: contain;
   filter: drop-shadow(0 24px 56px rgba(0,0,0,0.6));
   animation: float 4s ease-in-out infinite;
 }
