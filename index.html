@@ -157,6 +157,8 @@ section { padding: 80px 0; }
 .nav-links a.active { color: var(--red); }
 .nav-cta { display: none; }
 @media (min-width: 768px) { .nav-cta { display: block; } }
+.btn-line { background: #00B900; color: #fff; }
+.btn-line:hover { background: #00a000; }
 .nav-hamburger {
   display: flex; flex-direction: column; gap: 5px;
   cursor: pointer; padding: 8px;
@@ -165,6 +167,39 @@ section { padding: 80px 0; }
 .nav-hamburger span {
   width: 22px; height: 2px; background: var(--text-1); border-radius: 2px;
 }
+
+/* ── Dropdown ── */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 14px; font-weight: 600; color: var(--text-2);
+  cursor: pointer; transition: color 120ms;
+  background: none; border: none; padding: 0; font-family: var(--font-ui);
+}
+.nav-dropdown-toggle:hover { color: var(--red); }
+.nav-dropdown-toggle svg { transition: transform 200ms; }
+.nav-dropdown:hover .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute; top: calc(100% + 16px); right: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  min-width: 140px;
+  overflow: hidden;
+  z-index: 200;
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a {
+  display: block;
+  padding: 13px 24px;
+  font-size: 14px; font-weight: 600; color: var(--text-2);
+  text-align: center;
+  transition: background 120ms, color 120ms;
+}
+.nav-dropdown-menu a:hover { background: var(--bg-gray); color: var(--red); }
+.nav-dropdown-menu a + a { border-top: 1px solid var(--border); }
 
 /* ══════════════════════════════════
    A — HERO
@@ -296,7 +331,7 @@ section { padding: 80px 0; }
 ══════════════════════════════════ */
 .doctor-section {
   position: relative; overflow: hidden;
-  min-height: 480px; display: flex; align-items: center;
+  display: flex; align-items: center;
 }
 .doctor-bg {
   position: absolute; inset: 0; z-index: 0;
@@ -317,7 +352,7 @@ section { padding: 80px 0; }
       rgba(247,248,250,0.9) 65%,
       rgba(247,248,250,1) 100%);
 }
-.doctor-section > .container { position: relative; z-index: 2; padding-top: 64px; padding-bottom: 80px; }
+.doctor-section > .container { position: relative; z-index: 2; padding-top: 40px; padding-bottom: 40px; }
 .doctor-content {
   margin-left: auto; max-width: 480px;
 }
@@ -693,6 +728,45 @@ section { padding: 80px 0; }
   /* Footer */
   .footer-brand p                { font-size: 14px; }
 }
+
+/* ══════════════════════════════════
+   手機版修正（iPhone 標準）
+══════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Hero：縮短最小高度，移除下方多餘留白 */
+  .hero {
+    min-height: auto;
+    padding: 72px 0 56px;
+  }
+
+  /* Trust Bar：強制 2×2 網格 */
+  .trust-bar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+    justify-items: center;
+  }
+  .trust-divider { display: none; }
+  .trust-item { font-size: 13px; gap: 6px; }
+
+  /* Footer：品牌欄全寬，連結欄左右並排 */
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-brand p { max-width: 100%; }
+
+  /* Footer bottom：版權文字與 logo 上下排 */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -705,14 +779,22 @@ section { padding: 80px 0; }
         <img src="assets/logo-red.png" alt="妙利散® MIYARISAN">
       </a>
       <ul class="nav-links">
-        <li><a href="#pain">腸道困擾</a></li>
-        <li><a href="#solution">產品介紹</a></li>
-        <li><a href="#trust">為何選擇</a></li>
+        <li><a href="#pain">醫療級酪酸菌</a></li>
         <li><a href="ngp.html">次世代益生菌</a></li>
-        <li><a href="#buy" class="active">購買途徑</a></li>
+        <li><a href="#buy">購買通路</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle">
+            了解更多
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#">產品列表</a>
+            <a href="#">常見問題</a>
+          </div>
+        </li>
       </ul>
       <div class="nav-cta">
-        <a href="#buy" class="btn btn-primary" style="padding:10px 20px;font-size:14px;">了解購買途徑</a>
+        <a href="#buy" class="btn btn-line" style="padding:10px 20px;font-size:14px;">LINE</a>
       </div>
       <div class="nav-hamburger" aria-label="選單">
         <span></span><span></span><span></span>
@@ -752,8 +834,8 @@ section { padding: 80px 0; }
 
         <!-- 次標：品牌信賴背書 -->
         <p class="hero-sub">
-          <strong>日本 No.&thinsp;1 整腸藥</strong>，70 年以上にわたり愛されています<br>
-          宮入菌 CBM588 次世代 LBP 製劑，醫療院所藥局通路
+          <strong>日本 No.&thinsp;1 整腸藥</strong>，70年以上にわたり愛されています<br>
+          MIYARISAN CBM588 次世代LBP製劑，醫院藥局販売
         </p>
 
         <!-- 輔助 badges -->
@@ -769,7 +851,7 @@ section { padding: 80px 0; }
           <a href="#buy" class="btn btn-ghost-white btn-lg">購買途徑</a>
         </div>
 
-        <p class="hero-origin">原廠：ミヤリサン製薬株式会社 · 台灣代理：R-CHEVER 裕心</p>
+        <p class="hero-origin">ミヤリサン製薬株式会社 · 台灣總代理：裕心企業有限公司</p>
       </div>
 
     </div>
@@ -792,7 +874,7 @@ section { padding: 80px 0; }
       <div class="trust-divider"></div>
       <div class="trust-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        醫療院所・藥局通路
+        醫療院所指定
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
@@ -915,12 +997,10 @@ section { padding: 80px 0; }
       </div>
       <div>
         <div class="stat-num">OTC</div>
-        <div class="stat-unit">Drug</div>
         <div class="stat-label">台灣藥字號認證</div>
       </div>
       <div>
         <div class="stat-num">LBP</div>
-        <div class="stat-unit">認證</div>
         <div class="stat-label">次世代益生菌製劑</div>
       </div>
     </div>
@@ -953,6 +1033,7 @@ section { padding: 80px 0; }
   <div class="container">
 
     <div class="trust-header">
+      <div class="section-divider" style="margin:0 auto 20px;"></div>
       <span class="eyebrow">專業標準</span>
       <h2>益生菌怎麼選？</h2>
       <p>從菌株到 LBP 製劑，決定益生菌定位</p>
@@ -985,26 +1066,20 @@ section { padding: 80px 0; }
       <h2>認明這三點，選好益生菌</h2>
     </div>
 
-    <div class="research-grid">
-      <div class="research-card">
-        <div class="research-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        </div>
-        <h4>認明菌株</h4>
+    <div class="criteria-grid">
+      <div class="criteria-card">
+        <span class="criteria-step">CRITERIA 01</span>
+        <h3>認明菌株</h3>
         <p>選益生菌關鍵在菌株。CBM588 宮入菌株通過多項臨床驗證，能有效幫助維持消化道機能、促進腸道環境平衡。</p>
       </div>
-      <div class="research-card">
-        <div class="research-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <h4>有效認證</h4>
+      <div class="criteria-card">
+        <span class="criteria-step">CRITERIA 02</span>
+        <h3>有效認證</h3>
         <p>CBM588 宮入菌株擁有台灣雙專利認證，並榮獲 Nutra Ingredients Awards 國際大獎肯定，科學背書有所依據。</p>
       </div>
-      <div class="research-card">
-        <div class="research-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4>好菌延長</h4>
+      <div class="criteria-card">
+        <span class="criteria-step">CRITERIA 03</span>
+        <h3>好菌延長</h3>
         <p>擁有活加益生菌技術，能提高益生菌的強度與存活率，確保有效活菌數量能安全抵達腸道發揮作用。</p>
       </div>
     </div>
@@ -1029,10 +1104,10 @@ section { padding: 80px 0; }
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="assets/logo-rchever.png" alt="R-CHEVER 裕心" style="filter:brightness(0) invert(1);opacity:0.7;">
-        <p>台灣總代理：R-CHEVER 裕心<br>
-        原廠：ミヤリサン製薬株式会社<br>
-        妙利散® 為日本原廠製造醫療級整腸劑，<br>依台灣藥事法規販售。</p>
+        <img src="assets/logo-rchever.png" alt="R-CHEVER 裕心" style="height:40px;width:auto;">
+        <p>RICHEVER 裕心企業<br>ミヤリサン製薬株式会社<br>Miyarisan®日本原廠醫療級整腸益生菌<br>
+        衛署藥輸字第014618號<br>
+        高市衛藥廣字第11008003號</p>
       </div>
       <div class="footer-col">
         <h5>產品資訊</h5>
