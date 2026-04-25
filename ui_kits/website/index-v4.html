@@ -728,7 +728,45 @@ section { padding: 80px 0; }
   /* Footer */
   .footer-brand p                { font-size: 14px; }
 }
-</style>
+
+/* ══════════════════════════════════
+   手機版修正（iPhone 標準）
+══════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Hero：縮短最小高度，移除下方多餘留白 */
+  .hero {
+    min-height: auto;
+    padding: 72px 0 56px;
+  }
+
+  /* Trust Bar：強制 2×2 網格 */
+  .trust-bar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 12px;
+    justify-items: center;
+  }
+  .trust-divider { display: none; }
+  .trust-item { font-size: 13px; gap: 6px; }
+
+  /* Footer：品牌欄全寬，連結欄左右並排 */
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-brand p { max-width: 100%; }
+
+  /* Footer bottom：版權文字與 logo 上下排 */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
 </head>
 <body>
 
