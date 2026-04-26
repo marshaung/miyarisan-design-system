@@ -324,19 +324,15 @@ a    { text-decoration: none; color: inherit; }
   line-height: 1.7; margin-bottom: 36px;
 }
 
+.auth-right { display: flex; align-items: center; justify-content: center; }
+
 .auth-image-wrap {
   display: flex; align-items: center; justify-content: center;
-  position: relative;
 }
 .auth-image-wrap img {
-  max-width: 340px; width: 100%;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
-}
-.auth-image-glow {
-  position: absolute;
-  width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(206,14,45,0.18) 0%, transparent 70%);
-  pointer-events: none;
+  max-width: 100%; width: 520px;
+  filter: drop-shadow(0 24px 56px rgba(0,0,0,0.6));
+  mix-blend-mode: screen;
 }
 
 /* Verification list */
@@ -611,19 +607,12 @@ a    { text-decoration: none; color: inherit; }
   <div class="container">
     <div class="auth-inner">
 
-      <!-- Left: image -->
+      <!-- Left: headline + verify list -->
       <div class="auth-left">
         <p class="auth-eyebrow">AUTHENTICITY</p>
         <h2 class="auth-title">請認明<span class="red">正牌</span>妙利散 BM<br>拒絕成分來源不明的益生菌</h2>
-        <p class="auth-subtitle">宮入菌屬酪酸菌的一種，主要成份為 <em>Clostridium butyricum MIYAIRI</em>。<br>市面上仿品眾多，購買前請確認以下四大正版標誌。</p>
-        <div class="auth-image-wrap">
-          <div class="auth-image-glow"></div>
-          <img src="../../assets/product-box.png" alt="妙利散® BM 正版包裝">
-        </div>
-      </div>
+        <p class="auth-subtitle">僅能於合規實體通路購買，購買前請確認以下四大正版標誌。</p>
 
-      <!-- Right: verify list -->
-      <div class="auth-right">
         <div class="auth-verify-list">
 
           <div class="auth-verify-item">
@@ -677,6 +666,13 @@ a    { text-decoration: none; color: inherit; }
           </div>
 
         </div><!-- /auth-verify-list -->
+      </div><!-- /auth-left -->
+
+      <!-- Right: product image -->
+      <div class="auth-right">
+        <div class="auth-image-wrap">
+          <img src="../../assets/open.png" alt="妙利散® BM 展開包裝">
+        </div>
       </div><!-- /auth-right -->
 
     </div><!-- /auth-inner -->
