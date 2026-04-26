@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>購買通路 — 妙利散® MIYARISAN</title>
+
+<style>
+@font-face { font-family:'FZLanTingHei'; src:url('../../fonts/fzlt-w200.ttf') format('truetype'); font-weight:200; font-display:swap; }
+@font-face { font-family:'FZLanTingHei'; src:url('../../fonts/fzlt-w300.ttf') format('truetype'); font-weight:300; font-display:swap; }
+@font-face { font-family:'FZLanTingHei'; src:url('../../fonts/fzlt-w350.ttf') format('truetype'); font-weight:350; font-display:swap; }
+@font-face { font-family:'FZLanTingHei'; src:url('../../fonts/fzlt-w400.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'FZLanTingHei'; src:url('../../fonts/fzlt-w700.ttf') format('truetype'); font-weight:700; font-display:swap; }
+@font-face { font-family:'FZLanTingHei'; src:url('../../fonts/fzlt-w900.ttf') format('truetype'); font-weight:900; font-display:swap; }
+@font-face { font-family:'JFJinxuan'; src:url('../../fonts/jf-jinxuan-ultralight.otf') format('opentype'); font-weight:200; font-display:swap; }
+@font-face { font-family:'JFJinxuan'; src:url('../../fonts/JF-JINXUAN-BOOK.OTF') format('opentype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'JFJinxuan'; src:url('../../fonts/JF-JINXUAN-MEDIUM.OTF') format('opentype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'JFJinxuan'; src:url('../../fonts/JF-JINXUAN-BOLD.OTF') format('opentype'); font-weight:700; font-display:swap; }
+@font-face { font-family:'JFJinxuan'; src:url('../../fonts/jf-jinxuan-heavy.otf') format('opentype'); font-weight:900; font-display:swap; }
+
+/* ── Reset & Tokens ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red:       #CE0E2D;
+  --red-dark:  #a80c24;
+  --red-pale:  #fdf0f2;
+  --navy:      #172F60;
+  --text-1:    #111827;
+  --text-2:    #374151;
+  --text-3:    #6b7280;
+  --text-4:    #9ca3af;
+  --border:    #e5e7eb;
+  --bg-gray:   #f7f8fa;
+  --bg-gray-2: #f0f2f5;
+  --white:     #ffffff;
+  --font-ui:      'FZLanTingHei','PingFang TC','Noto Sans TC',sans-serif;
+  --font-display: 'JFJinxuan','FZLanTingHei','PingFang TC',sans-serif;
+  --font-en:      'Inter',system-ui,sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-ui); color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; }
+img  { display: block; max-width: 100%; }
+a    { text-decoration: none; color: inherit; }
+
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 768px)  { .container { padding: 0 24px; } }
+@media (min-width: 1024px) { .container { padding: 0 40px; } }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 28px; border-radius: 6px;
+  font-family: var(--font-ui); font-size: 15px; font-weight: 600;
+  cursor: pointer; border: none; transition: all 150ms ease-out;
+  min-width: 120px; min-height: 44px; white-space: nowrap;
+}
+.btn-line { background: #00B900; color: #fff; gap: 8px; }
+.btn-line:hover { background: #00a000; }
+.btn-primary { background: var(--red); color: #fff; }
+.btn-primary:hover { background: var(--red-dark); }
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white); border-bottom: 1px solid var(--border);
+  height: 68px; display: flex; align-items: center;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.nav-logo img { height: 36px; width: auto; }
+.nav-links { display: none; gap: 28px; list-style: none; }
+@media (min-width: 1024px) { .nav-links { display: flex; } }
+.nav-links a { font-size: 15px; font-weight: 600; color: var(--text-2); transition: color 120ms; }
+.nav-links a:hover { color: var(--red); }
+.nav-links a.active { color: var(--red); }
+.nav-cta { display: none; }
+@media (min-width: 768px) { .nav-cta { display: block; } }
+.nav-hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+@media (min-width: 1024px) { .nav-hamburger { display: none; } }
+.nav-hamburger span { width: 22px; height: 2px; background: var(--text-1); border-radius: 2px; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: var(--bg-gray);
+  border-bottom: 1px solid var(--border);
+  padding: 52px 0 44px; text-align: center;
+}
+.page-header-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--red);
+}
+.page-header-eyebrow::before { content:''; width:18px; height:2px; background:var(--red); border-radius:2px; }
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 900; color: var(--text-1);
+  line-height: 1.2; margin-bottom: 12px;
+}
+.page-header p {
+  font-size: 16px; color: var(--text-3);
+  max-width: 480px; margin: 0 auto; line-height: 1.75;
+}
+
+/* ── STORE SECTION ── */
+.store-section { padding: 0 0 80px; }
+@media (min-width: 1024px) { .store-section { padding-bottom: 96px; } }
+
+/* ── TAB BAR ── */
+.tab-bar {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  margin: 48px 0 0;
+  border-radius: 4px; overflow: hidden;
+}
+.tab-btn {
+  padding: 18px 0; text-align: center;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; border: none; background: var(--white);
+  color: var(--text-2); transition: background 150ms, color 150ms;
+  font-family: var(--font-ui);
+}
+.tab-btn + .tab-btn { border-left: 1px solid var(--border); }
+.tab-btn.active { background: var(--red); color: #fff; }
+
+/* ── TAB PANELS ── */
+.tab-panel { display: none; padding-top: 40px; }
+.tab-panel.active { display: block; }
+
+/* ── CHAIN CAROUSEL ── */
+.carousel-wrap {
+  position: relative; display: flex; align-items: center; gap: 0;
+}
+.carousel-arrow {
+  flex-shrink: 0; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 50%; cursor: pointer;
+  color: var(--text-2); font-size: 20px;
+  transition: all 150ms; z-index: 2;
+  user-select: none;
+}
+.carousel-arrow:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.carousel-arrow:disabled { opacity: 0.3; cursor: default; }
+.carousel-arrow:disabled:hover { background: var(--white); border-color: var(--border); color: var(--text-2); }
+.carousel-viewport { flex: 1; overflow: hidden; margin: 0 12px; }
+.chain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  transition: transform 400ms cubic-bezier(0.4,0,0.2,1);
+}
+@media (max-width: 640px) { .chain-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.chain-card { cursor: default; }
+.chain-logo-box {
+  aspect-ratio: 4/3;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px; padding: 16px;
+  border-radius: 4px; overflow: hidden;
+}
+.chain-logo-box .chain-en {
+  font-family: var(--font-en); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7;
+}
+.chain-logo-box .chain-name-label {
+  font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; line-height: 1.2;
+}
+.chain-card-name {
+  text-align: center; padding: 10px 4px 12px;
+  font-size: 14px; font-weight: 600; color: var(--text-2);
+  border: 1px solid var(--border); border-top: none;
+}
+
+/* ── DRUGSTORE PANEL ── */
+.filter-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 32px;
+}
+@media (max-width: 640px) { .filter-row { grid-template-columns: 1fr; } }
+
+.filter-select-wrap {
+  position: relative;
+  border: 1px solid var(--border); border-radius: 4px;
+  background: var(--white); overflow: hidden;
+}
+.filter-select-wrap select {
+  width: 100%; padding: 14px 40px 14px 16px;
+  font-size: 15px; font-weight: 500; color: var(--text-1);
+  font-family: var(--font-ui);
+  background: transparent; border: none; outline: none;
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+}
+.filter-select-wrap select:disabled { color: var(--text-4); cursor: default; }
+.filter-select-wrap .sel-arrow {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  pointer-events: none; color: var(--text-3);
+}
+
+/* ── PHARMACY LIST ── */
+.pharmacy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 640px) { .pharmacy-grid { grid-template-columns: 1fr; } }
+
+.pharmacy-item {
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid transparent;
+}
+@media (min-width: 641px) {
+  .pharmacy-item:nth-child(odd) { border-right: 1px solid var(--border); }
+}
+.pharmacy-item-name { font-size: 15px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
+.pharmacy-item-addr { font-size: 13px; color: var(--text-2); margin-bottom: 6px; line-height: 1.5; }
+.pharmacy-item-phone { font-size: 13px; font-weight: 600; color: var(--red); }
+
+.pharmacy-empty {
+  grid-column: 1 / -1; padding: 40px 16px;
+  text-align: center; color: var(--text-3); font-size: 14px;
+}
+
+/* ── DISCLAIMER ── */
+.store-disclaimer {
+  margin-top: 28px; text-align: right;
+  font-size: 12px; color: var(--text-4);
+}
+
+/* ── CTA ── */
+.cta-section { background: linear-gradient(135deg, var(--red) 0%, #E5186E 100%); padding: 72px 0; text-align: center; }
+.cta-section h2 { font-family: var(--font-display); font-size: clamp(26px,4vw,42px); font-weight: 900; color: #fff; margin-bottom: 12px; line-height: 1.2; }
+.cta-section p { font-size: 16px; color: rgba(255,255,255,0.8); margin: 0 auto 32px; max-width: 480px; line-height: 1.65; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-white { background: #fff; color: var(--red); font-weight: 700; }
+.btn-white:hover { background: rgba(255,255,255,0.92); }
+.btn-lg { padding: 16px 36px; font-size: 16px; font-weight: 700; min-height: 52px; }
+
+/* ── FOOTER ── */
+.footer { background: var(--text-1); color: rgba(255,255,255,0.6); padding: 48px 0 32px; }
+.footer-inner { display: grid; gap: 32px; grid-template-columns: 1fr; }
+@media (min-width: 768px)  { .footer-inner { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+.footer-brand img { height: 32px; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; line-height: 1.6; max-width: 280px; }
+.footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col a { font-size: 13px; transition: color 120ms; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; }
+.footer-bottom img { height: 20px; opacity: 0.5; }
+.footer-ref { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 11px; color: rgba(255,255,255,0.28); line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../../index.html">
+        <img src="../../assets/logo-red.png" alt="妙利散® MIYARISAN">
+      </a>
+      <ul class="nav-links">
+        <li><a href="cbm588.html">醫療級酪酸菌</a></li>
+        <li><a href="ngp.html">次世代益生菌</a></li>
+        <li><a href="twstore.html" class="active">購買通路</a></li>
+        <li><a href="product.html">產品列表</a></li>
+        <li><a href="#">常見問題</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#cta" class="btn btn-line" style="padding:10px 22px;font-size:14px;min-width:120px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.61 5.79 4.1 7.55v3.45l3.24-1.78c.86.24 1.75.36 2.66.36 5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+          LINE 客服
+        </a>
+      </div>
+      <div class="nav-hamburger" aria-label="選單">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-eyebrow">WHERE TO BUY</div>
+    <h1>購買通路</h1>
+    <p>妙利散® 僅於合規實體通路販售，購買前請確認正版標誌。</p>
+  </div>
+</div>
+
+<!-- ══ STORE SECTION ══ -->
+<section class="store-section">
+  <div class="container">
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="chain">連鎖通路</button>
+      <button class="tab-btn" data-tab="drugstore">藥局店家</button>
+    </div>
+
+    <!-- ── Tab: 連鎖通路 ── -->
+    <div class="tab-panel active" id="panel-chain">
+      <div class="carousel-wrap">
+        <button class="carousel-arrow" id="chain-prev" aria-label="上一頁">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 1 1 9 9 17"/></svg>
+        </button>
+        <div class="carousel-viewport">
+          <div class="chain-grid" id="chain-grid"></div>
+        </div>
+        <button class="carousel-arrow" id="chain-next" aria-label="下一頁">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 9 9 1 17"/></svg>
+        </button>
+      </div>
+      <div class="store-disclaimer">北市衛藥廣字第111060105號</div>
+    </div>
+
+    <!-- ── Tab: 藥局店家 ── -->
+    <div class="tab-panel" id="panel-drugstore">
+      <div class="filter-row">
+        <div class="filter-select-wrap">
+          <select id="sel-county">
+            <option value="">選擇縣市</option>
+          </select>
+          <svg class="sel-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="filter-select-wrap">
+          <select id="sel-district" disabled>
+            <option value="">請先選擇縣市</option>
+          </select>
+          <svg class="sel-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="pharmacy-grid" id="pharmacy-list">
+        <div class="pharmacy-empty">請先選擇縣市與地區，查詢附近販售據點。</div>
+      </div>
+      <div class="store-disclaimer">北市衛藥廣字第111060105號</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <h2>不確定哪裡買得到？</h2>
+    <p>歡迎直接透過 LINE 聯絡我們，詢問離你最近的販售據點。</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-line btn-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.61 5.79 4.1 7.55v3.45l3.24-1.78c.86.24 1.75.36 2.66.36 5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+        LINE 詢問通路
+      </a>
+      <a href="index.html" class="btn btn-white btn-lg">回首頁</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../../assets/logo-rchever.png" alt="R-CHEVER 裕心" style="height:40px;width:auto;">
+        <p>台灣總代理：R-CHEVER 裕心<br>
+        原廠：ミヤリサン製薬株式会社<br>
+        妙利散® 為日本原廠製造醫療級整腸劑，<br>依台灣藥事法規販售。</p>
+      </div>
+      <div class="footer-col">
+        <h5>產品資訊</h5>
+        <ul>
+          <li><a href="product.html">妙利散® 全系列</a></li>
+          <li><a href="cbm588.html">CBM588 宮入菌</a></li>
+          <li><a href="ngp.html">次世代益生菌</a></li>
+          <li><a href="#">使用說明</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>聯絡我們</h5>
+        <ul>
+          <li><a href="twstore.html">購買通路查詢</a></li>
+          <li><a href="#">醫療專業諮詢</a></li>
+          <li><a href="#">消費者服務</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 R-CHEVER 裕心. All rights reserved. 本品為藥品，請依指示使用。</span>
+      <img src="../../assets/logo-red.png" alt="妙利散® MIYARISAN">
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════
+   1. CHAIN CAROUSEL DATA
+══════════════════════════════════════════════ */
+const CHAINS = [
+  { name: '松本清',        en: 'MATSUMOTOKIYOSHI', bg: '#F5C800', color: '#1a1a1a' },
+  { name: '大樹藥局',      en: 'BIG TREE PHARMACY', bg: '#1F7A35', color: '#fff' },
+  { name: '躍獅藥局',      en: 'YES+ CHAIN',        bg: '#1B2B5B', color: '#fff' },
+  { name: "Tomod's特美事", en: 'TOMODS',            bg: '#C8462A', color: '#fff' },
+  { name: '日藥本舖',      en: 'JPMED',             bg: '#CC0000', color: '#fff' },
+  { name: '佑全健康藥局',  en: 'YOU QUAN',          bg: '#00437A', color: '#fff' },
+  { name: '屈臣氏',        en: "WATSON'S",          bg: '#0060A9', color: '#fff' },
+  { name: '康是美',        en: 'COSMED',            bg: '#E60012', color: '#fff' },
+  { name: '丁丁藥局',      en: 'DING DING',         bg: '#006E4F', color: '#fff' },
+];
+
+const PER_PAGE = 6;
+let chainPage  = 0;
+const chainTotal = Math.ceil(CHAINS.length / PER_PAGE);
+
+function renderChain() {
+  const grid  = document.getElementById('chain-grid');
+  const start = chainPage * PER_PAGE;
+  const items = CHAINS.slice(start, start + PER_PAGE);
+
+  grid.innerHTML = items.map(c => `
+    <div class="chain-card">
+      <div class="chain-logo-box" style="background:${c.bg};color:${c.color}">
+        <div class="chain-name-label">${c.name}</div>
+        <div class="chain-en">${c.en}</div>
+      </div>
+      <div class="chain-card-name">${c.name}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('chain-prev').disabled = chainPage === 0;
+  document.getElementById('chain-next').disabled = chainPage >= chainTotal - 1;
+}
+
+document.getElementById('chain-prev').addEventListener('click', () => {
+  if (chainPage > 0) { chainPage--; renderChain(); }
+});
+document.getElementById('chain-next').addEventListener('click', () => {
+  if (chainPage < chainTotal - 1) { chainPage++; renderChain(); }
+});
+
+renderChain();
+
+
+/* ══════════════════════════════════════════════
+   2. TAIWAN POSTAL CODE DATA
+══════════════════════════════════════════════ */
+const TW_POSTAL = {
+  '台北市': [
+    {d:'中正區',z:100},{d:'大同區',z:103},{d:'中山區',z:104},
+    {d:'松山區',z:105},{d:'大安區',z:106},{d:'萬華區',z:108},
+    {d:'信義區',z:110},{d:'士林區',z:111},{d:'北投區',z:112},
+    {d:'內湖區',z:114},{d:'南港區',z:115},{d:'文山區',z:116}
+  ],
+  '基隆市': [
+    {d:'仁愛區',z:200},{d:'信義區',z:201},{d:'中正區',z:202},
+    {d:'中山區',z:203},{d:'安樂區',z:204},{d:'暖暖區',z:205},{d:'七堵區',z:206}
+  ],
+  '新北市': [
+    {d:'萬里區',z:207},{d:'金山區',z:208},{d:'板橋區',z:220},
+    {d:'汐止區',z:221},{d:'新店區',z:231},{d:'永和區',z:234},
+    {d:'中和區',z:235},{d:'土城區',z:236},{d:'三峽區',z:237},
+    {d:'樹林區',z:238},{d:'鶯歌區',z:239},{d:'三重區',z:241},
+    {d:'新莊區',z:242},{d:'泰山區',z:243},{d:'林口區',z:244},
+    {d:'蘆洲區',z:247},{d:'五股區',z:248},{d:'八里區',z:249},
+    {d:'淡水區',z:251},{d:'三芝區',z:252},{d:'石門區',z:253}
+  ],
+  '宜蘭縣': [
+    {d:'宜蘭市',z:260},{d:'頭城鎮',z:261},{d:'礁溪鄉',z:262},
+    {d:'壯圍鄉',z:263},{d:'員山鄉',z:264},{d:'羅東鎮',z:265},
+    {d:'三星鄉',z:266},{d:'大同鄉',z:267},{d:'五結鄉',z:268},
+    {d:'冬山鄉',z:269},{d:'蘇澳鎮',z:270},{d:'南澳鄉',z:272}
+  ],
+  '桃園市': [
+    {d:'中壢區',z:320},{d:'平鎮區',z:324},{d:'龍潭區',z:325},
+    {d:'楊梅區',z:326},{d:'新屋區',z:327},{d:'觀音區',z:328},
+    {d:'桃園區',z:330},{d:'龜山區',z:333},{d:'八德區',z:334},
+    {d:'大溪區',z:335},{d:'蘆竹區',z:338},{d:'大園區',z:337},
+    {d:'復興區',z:336}
+  ],
+  '新竹市': [
+    {d:'東區',z:300},{d:'北區',z:302},{d:'香山區',z:303}
+  ],
+  '新竹縣': [
+    {d:'竹北市',z:302},{d:'湖口鄉',z:303},{d:'新豐鄉',z:304},
+    {d:'新埔鎮',z:305},{d:'關西鎮',z:306},{d:'芎林鄉',z:307},
+    {d:'寶山鄉',z:308},{d:'竹東鎮',z:310},{d:'五峰鄉',z:311},
+    {d:'橫山鄉',z:312},{d:'尖石鄉',z:313},{d:'北埔鄉',z:314}
+  ],
+  '苗栗縣': [
+    {d:'苗栗市',z:360},{d:'苑裡鎮',z:358},{d:'通霄鎮',z:357},
+    {d:'竹南鎮',z:350},{d:'頭份市',z:351},{d:'三義鄉',z:367},
+    {d:'公館鄉',z:363},{d:'銅鑼鄉',z:366}
+  ],
+  '台中市': [
+    {d:'中區',z:400},{d:'東區',z:401},{d:'南區',z:402},
+    {d:'西區',z:403},{d:'北區',z:404},{d:'北屯區',z:406},
+    {d:'西屯區',z:407},{d:'南屯區',z:408},{d:'太平區',z:411},
+    {d:'大里區',z:412},{d:'霧峰區',z:413},{d:'烏日區',z:414},
+    {d:'豐原區',z:420},{d:'后里區',z:421},{d:'石岡區',z:422},
+    {d:'東勢區',z:423},{d:'大甲區',z:428},{d:'清水區',z:436},
+    {d:'沙鹿區',z:433},{d:'梧棲區',z:435}
+  ],
+  '彰化縣': [
+    {d:'彰化市',z:500},{d:'芬園鄉',z:502},{d:'花壇鄉',z:503},
+    {d:'秀水鄉',z:504},{d:'鹿港鎮',z:505},{d:'員林市',z:510},
+    {d:'溪湖鎮',z:514},{d:'田中鎮',z:520},{d:'北斗鎮',z:521}
+  ],
+  '南投縣': [
+    {d:'南投市',z:540},{d:'草屯鎮',z:542},{d:'竹山鎮',z:557},
+    {d:'集集鎮',z:552},{d:'名間鄉',z:551},{d:'埔里鎮',z:545}
+  ],
+  '雲林縣': [
+    {d:'斗六市',z:640},{d:'斗南鎮',z:630},{d:'虎尾鎮',z:632},
+    {d:'西螺鎮',z:648},{d:'土庫鎮',z:633},{d:'北港鎮',z:651}
+  ],
+  '嘉義市': [
+    {d:'東區',z:600},{d:'西區',z:600}
+  ],
+  '嘉義縣': [
+    {d:'太保市',z:612},{d:'朴子市',z:613},{d:'布袋鎮',z:614},
+    {d:'大林鎮',z:622},{d:'民雄鄉',z:621},{d:'溪口鄉',z:623}
+  ],
+  '台南市': [
+    {d:'中西區',z:700},{d:'東區',z:701},{d:'南區',z:702},
+    {d:'北區',z:704},{d:'安平區',z:708},{d:'安南區',z:709},
+    {d:'永康區',z:710},{d:'歸仁區',z:711},{d:'新化區',z:712},
+    {d:'仁德區',z:717},{d:'關廟區',z:718},{d:'官田區',z:720},
+    {d:'麻豆區',z:721},{d:'佳里區',z:722},{d:'新營區',z:730},
+    {d:'後壁區',z:731},{d:'白河區',z:732},{d:'善化區',z:741},
+    {d:'新市區',z:744}
+  ],
+  '高雄市': [
+    {d:'新興區',z:800},{d:'前金區',z:801},{d:'苓雅區',z:802},
+    {d:'鹽埕區',z:803},{d:'鼓山區',z:804},{d:'旗津區',z:805},
+    {d:'前鎮區',z:806},{d:'三民區',z:807},{d:'楠梓區',z:811},
+    {d:'小港區',z:812},{d:'左營區',z:813},{d:'仁武區',z:814},
+    {d:'大社區',z:815},{d:'岡山區',z:820},{d:'路竹區',z:821},
+    {d:'橋頭區',z:825},{d:'梓官區',z:826},{d:'永安區',z:828},
+    {d:'湖內區',z:829},{d:'鳳山區',z:830},{d:'大寮區',z:831},
+    {d:'林園區',z:832},{d:'鳥松區',z:833},{d:'大樹區',z:840},
+    {d:'旗山區',z:842},{d:'美濃區',z:843}
+  ],
+  '屏東縣': [
+    {d:'屏東市',z:900},{d:'九如鄉',z:904},{d:'里港鄉',z:905},
+    {d:'東港鎮',z:928},{d:'恆春鎮',z:946},{d:'潮州鎮',z:920},
+    {d:'萬丹鄉',z:913},{d:'長治鄉',z:908},{d:'麟洛鄉',z:909}
+  ],
+  '台東縣': [
+    {d:'台東市',z:950},{d:'卑南鄉',z:954},{d:'鹿野鄉',z:955},
+    {d:'關山鎮',z:956},{d:'池上鄉',z:958},{d:'東河鄉',z:959},
+    {d:'成功鎮',z:961},{d:'長濱鄉',z:962}
+  ],
+  '花蓮縣': [
+    {d:'花蓮市',z:970},{d:'新城鄉',z:971},{d:'吉安鄉',z:973},
+    {d:'壽豐鄉',z:974},{d:'鳳林鎮',z:975},{d:'光復鄉',z:976},
+    {d:'瑞穗鄉',z:978},{d:'玉里鎮',z:981}
+  ],
+  '澎湖縣': [
+    {d:'馬公市',z:880},{d:'西嶼鄉',z:881},{d:'望安鄉',z:882},
+    {d:'七美鄉',z:883},{d:'白沙鄉',z:884},{d:'湖西鄉',z:885}
+  ],
+  '金門縣': [
+    {d:'金城鎮',z:890},{d:'金湖鎮',z:891},{d:'金沙鎮',z:892},
+    {d:'金寧鄉',z:893},{d:'烈嶼鄉',z:894}
+  ],
+  '連江縣': [
+    {d:'南竿鄉',z:209},{d:'北竿鄉',z:210},{d:'莒光鄉',z:211},{d:'東引鄉',z:212}
+  ]
+};
+
+
+/* ══════════════════════════════════════════════
+   3. PHARMACY DATA (fake demo data)
+══════════════════════════════════════════════ */
+const PHARMACIES = [
+  // 台北市 信義區 (110)
+  { name: '新興健保藥局',     addr: '台北市信義區永吉路30巷113號',       phone: '(02)27494892', zip: 110 },
+  { name: '綠杏大藥局-北醫門市', addr: '台北市信義區吳興街241號',        phone: '(02)27582378', zip: 110 },
+  { name: '安佑藥局',         addr: '台北市信義區吳興街247號1樓',         phone: '(02)27222236', zip: 110 },
+  { name: '九州藥局',         addr: '台北市信義區和平東路三段239號1樓',   phone: '(02)87323331', zip: 110 },
+  { name: '立赫北醫藥局',     addr: '台北市信義區吳興街118巷26弄17號',   phone: '(02)27320100', zip: 110 },
+  { name: '專品藥局-信義店',  addr: '台北市信義區光復南路467-1號',        phone: '(02)27586682', zip: 110 },
+  // 台北市 大安區 (106)
+  { name: '大安健康藥局',     addr: '台北市大安區仁愛路四段88號',         phone: '(02)27512366', zip: 106 },
+  { name: '台大藥局',         addr: '台北市大安區羅斯福路三段45號',        phone: '(02)23639899', zip: 106 },
+  { name: '仁安藥局',         addr: '台北市大安區和平東路二段156號',       phone: '(02)27328081', zip: 106 },
+  { name: '安泰藥局',         addr: '台北市大安區忠孝東路四段218號2樓',   phone: '(02)27510338', zip: 106 },
+  // 台北市 中山區 (104)
+  { name: '中山藥局',         addr: '台北市中山區南京東路三段168號',       phone: '(02)27122581', zip: 104 },
+  { name: '信安藥局',         addr: '台北市中山區民生東路三段56號',        phone: '(02)27135669', zip: 104 },
+  { name: '康寧藥局',         addr: '台北市中山區松江路231號',            phone: '(02)25160638', zip: 104 },
+  // 台北市 士林區 (111)
+  { name: '士林大藥局',       addr: '台北市士林區中正路226號',            phone: '(02)28818999', zip: 111 },
+  { name: '天母健保藥局',     addr: '台北市士林區天母東路45號',            phone: '(02)28730156', zip: 111 },
+  { name: '維康藥局',         addr: '台北市士林區文林路88號',             phone: '(02)28316522', zip: 111 },
+  // 台北市 內湖區 (114)
+  { name: '內湖健保藥局',     addr: '台北市內湖區內湖路一段285號',         phone: '(02)26272376', zip: 114 },
+  { name: '美加藥局',         addr: '台北市內湖區成功路四段182號',         phone: '(02)27992819', zip: 114 },
+  { name: '新民藥局',         addr: '台北市內湖區民權東路六段103號',       phone: '(02)26328855', zip: 114 },
+  // 台北市 文山區 (116)
+  { name: '景美藥局',         addr: '台北市文山區景美街91號',             phone: '(02)29320688', zip: 116 },
+  { name: '木柵健保藥局',     addr: '台北市文山區木柵路三段108號',         phone: '(02)29379526', zip: 116 },
+  { name: '政大藥局',         addr: '台北市文山區指南路三段2號',           phone: '(02)22363197', zip: 116 },
+  // 台北市 松山區 (105)
+  { name: '松山聯合藥局',     addr: '台北市松山區南京東路五段123號',       phone: '(02)27639977', zip: 105 },
+  { name: '民生藥局',         addr: '台北市松山區民生東路五段88號',        phone: '(02)27662218', zip: 105 },
+  // 台北市 北投區 (112)
+  { name: '北投健保藥局',     addr: '台北市北投區中山路55號',             phone: '(02)28914622', zip: 112 },
+  { name: '溫泉藥局',         addr: '台北市北投區光明路119號',            phone: '(02)28912356', zip: 112 },
+  // 新北市 板橋區 (220)
+  { name: '板橋大藥局',       addr: '新北市板橋區文化路一段361號',         phone: '(02)29686629', zip: 220 },
+  { name: '仁和藥局',         addr: '新北市板橋區南雅南路二段68號',        phone: '(02)29533928', zip: 220 },
+  { name: '信義藥局',         addr: '新北市板橋區四川路二段139巷6號',      phone: '(02)29546602', zip: 220 },
+  // 新北市 中和區 (235)
+  { name: '中和大藥局',       addr: '新北市中和區景平路345號',            phone: '(02)22453815', zip: 235 },
+  { name: '秀峰藥局',         addr: '新北市中和區秀峰路67號',             phone: '(02)22487136', zip: 235 },
+  { name: '安康藥局',         addr: '新北市中和區安和路158號',            phone: '(02)22456219', zip: 235 },
+  // 新北市 新店區 (231)
+  { name: '新店健保藥局',     addr: '新北市新店區中興路一段233號',         phone: '(02)22185598', zip: 231 },
+  { name: '碧潭藥局',         addr: '新北市新店區碧潭路45號',             phone: '(02)29136658', zip: 231 },
+  // 新北市 三重區 (241)
+  { name: '三重聯合藥局',     addr: '新北市三重區重新路四段20號',          phone: '(02)22876541', zip: 241 },
+  { name: '新北藥局',         addr: '新北市三重區中正北路66號',            phone: '(02)22802368', zip: 241 },
+  { name: '北健藥局',         addr: '新北市三重區重陽路二段178號',         phone: '(02)29879922', zip: 241 },
+  // 新北市 永和區 (234)
+  { name: '永和健保藥局',     addr: '新北市永和區永和路二段68號',          phone: '(02)29283822', zip: 234 },
+  { name: '福和藥局',         addr: '新北市永和區福和路181號',            phone: '(02)29285339', zip: 234 },
+  // 桃園市 桃園區 (330)
+  { name: '桃園健保藥局',     addr: '桃園市桃園區中正路358號',            phone: '(03)3325987', zip: 330 },
+  { name: '長安藥局',         addr: '桃園市桃園區復興路165號',            phone: '(03)3568821', zip: 330 },
+  // 桃園市 中壢區 (320)
+  { name: '中壢安心藥局',     addr: '桃園市中壢區中山路215號',            phone: '(03)4225566', zip: 320 },
+  { name: '元培藥局',         addr: '桃園市中壢區中平路88號',             phone: '(03)4211987', zip: 320 },
+  // 台中市 西屯區 (407)
+  { name: '七期健康藥局',     addr: '台中市西屯區市政北二路218號',         phone: '(04)22540168', zip: 407 },
+  { name: '逢甲藥局',         addr: '台中市西屯區逢甲路68號',             phone: '(04)27076688', zip: 407 },
+  { name: '西屯聯合藥局',     addr: '台中市西屯區漢翔路119號',            phone: '(04)23503899', zip: 407 },
+  // 台中市 北屯區 (406)
+  { name: '北屯藥局',         addr: '台中市北屯區北屯路328號',            phone: '(04)22363618', zip: 406 },
+  { name: '大坑健保藥局',     addr: '台中市北屯區東山路一段136號',         phone: '(04)22396651', zip: 406 },
+  // 台中市 北區 (404)
+  { name: '台中北區藥局',     addr: '台中市北區雙十路二段82號',            phone: '(04)22251178', zip: 404 },
+  { name: '育德藥局',         addr: '台中市北區育德路215號',              phone: '(04)22022556', zip: 404 },
+  // 台南市 東區 (701)
+  { name: '裕安藥局',         addr: '台南市東區裕農路388號',              phone: '(06)2668833', zip: 701 },
+  { name: '成功大藥局',       addr: '台南市東區中華東路三段261號',         phone: '(06)2685688', zip: 701 },
+  { name: '台南聯合藥局',     addr: '台南市東區北門路二段128號',           phone: '(06)2285599', zip: 701 },
+  // 台南市 北區 (704)
+  { name: '北區健保藥局',     addr: '台南市北區民族路二段338號',           phone: '(06)2233556', zip: 704 },
+  { name: '民族藥局',         addr: '台南市北區公園路188號',              phone: '(06)2283366', zip: 704 },
+  // 台南市 安平區 (708)
+  { name: '安平藥局',         addr: '台南市安平區安平路658號',            phone: '(06)2989988', zip: 708 },
+  { name: '漁港健保藥局',     addr: '台南市安平區建平路91號',             phone: '(06)2910023', zip: 708 },
+  // 高雄市 苓雅區 (802)
+  { name: '苓雅大藥局',       addr: '高雄市苓雅區四維三路58號',            phone: '(07)3350888', zip: 802 },
+  { name: '和平藥局',         addr: '高雄市苓雅區和平一路85號',            phone: '(07)3360655', zip: 802 },
+  { name: '苓雅健保藥局',     addr: '高雄市苓雅區中正二路269號',           phone: '(07)2238568', zip: 802 },
+  // 高雄市 三民區 (807)
+  { name: '三民藥局',         addr: '高雄市三民區民族一路456號',           phone: '(07)3810088', zip: 807 },
+  { name: '自立藥局',         addr: '高雄市三民區自立一路178號',           phone: '(07)3232156', zip: 807 },
+  // 高雄市 鳳山區 (830)
+  { name: '鳳山健保藥局',     addr: '高雄市鳳山區中山東路66號',            phone: '(07)7188899', zip: 830 },
+  { name: '鳳翔藥局',         addr: '高雄市鳳山區鳳凌路128號',            phone: '(07)7219988', zip: 830 },
+  { name: '南高藥局',         addr: '高雄市鳳山區三民路115號',            phone: '(07)7689966', zip: 830 },
+];
+
+
+/* ══════════════════════════════════════════════
+   4. FILTER LOGIC
+══════════════════════════════════════════════ */
+const selCounty   = document.getElementById('sel-county');
+const selDistrict = document.getElementById('sel-district');
+const pharmList   = document.getElementById('pharmacy-list');
+
+// Populate county options
+Object.keys(TW_POSTAL).forEach(city => {
+  const opt = document.createElement('option');
+  opt.value = city; opt.textContent = city;
+  selCounty.appendChild(opt);
+});
+
+selCounty.addEventListener('change', () => {
+  const city = selCounty.value;
+  selDistrict.innerHTML = '<option value="">選擇地區</option>';
+  selDistrict.disabled = !city;
+
+  if (city && TW_POSTAL[city]) {
+    TW_POSTAL[city].forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = item.z; opt.textContent = item.d;
+      selDistrict.appendChild(opt);
+    });
+  }
+
+  pharmList.innerHTML = '<div class="pharmacy-empty">請選擇地區，查詢販售據點。</div>';
+});
+
+selDistrict.addEventListener('change', () => {
+  const zip = parseInt(selDistrict.value, 10);
+  if (!zip) {
+    pharmList.innerHTML = '<div class="pharmacy-empty">請選擇地區，查詢販售據點。</div>';
+    return;
+  }
+
+  const results = PHARMACIES.filter(p => p.zip === zip);
+
+  if (results.length === 0) {
+    pharmList.innerHTML = '<div class="pharmacy-empty">該地區目前暫無資料，歡迎 LINE 詢問最新據點。</div>';
+    return;
+  }
+
+  pharmList.innerHTML = results.map(p => `
+    <div class="pharmacy-item">
+      <div class="pharmacy-item-name">${p.name}</div>
+      <div class="pharmacy-item-addr">${p.addr}</div>
+      <a class="pharmacy-item-phone" href="tel:${p.phone.replace(/[()]/g,'')}">${p.phone}</a>
+    </div>
+  `).join('');
+});
+
+
+/* ══════════════════════════════════════════════
+   5. TAB SWITCHING
+══════════════════════════════════════════════ */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
