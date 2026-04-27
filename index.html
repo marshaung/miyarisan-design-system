@@ -776,6 +776,34 @@ section { padding: 80px 0; }
 
   /* Research grid：2 欄 */
   .research-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Doctor section：圖上文下 */
+  .doctor-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+  .doctor-bg {
+    position: relative;
+    inset: auto;
+    height: 300px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .doctor-bg::after {
+    background: linear-gradient(180deg,
+      rgba(247,248,250,0) 0%,
+      rgba(247,248,250,0) 55%,
+      rgba(247,248,250,0.85) 100%);
+  }
+  .doctor-section > .container {
+    position: static;
+    padding: 28px 20px 48px;
+  }
+  .doctor-content {
+    margin-left: 0;
+    max-width: 100%;
+  }
 }
 
 /* ══ Mobile Drawer ══ */
