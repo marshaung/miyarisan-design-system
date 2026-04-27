@@ -212,6 +212,13 @@ section { padding: 80px 0; }
 
 .criteria-content h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; line-height: 1.3; margin: 10px 0 16px; }
 .criteria-content p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 16px; }
+.strain-visual { margin-top: 36px; }
+.strain-img {
+  width: 70%; max-width: 280px; height: auto;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.10));
+  display: block;
+}
+@media (max-width: 1023px) { .strain-visual { display: none; } }
 
 .req-cards { display: flex; flex-direction: column; gap: 14px; }
 .req-card {
@@ -596,6 +603,9 @@ section { padding: 80px 0; }
           <span class="badge badge-navy-soft">全名可追溯至菌株</span>
           <span class="badge badge-navy-soft">芽孢耐酸結構</span>
           <span class="badge badge-navy-soft">日本 1967 年核准</span>
+        </div>
+        <div class="strain-visual">
+          <img src="../../assets/strain-cbm.png" alt="CBM588 酪酸菌菌株示意圖" class="strain-img">
         </div>
       </div>
 
