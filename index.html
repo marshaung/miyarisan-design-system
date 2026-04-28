@@ -730,6 +730,131 @@ section { padding: 80px 0; }
 }
 
 /* ══════════════════════════════════
+   CRITERIA V2 — 認明這三點（新設計）
+══════════════════════════════════ */
+.cv2-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (max-width: 1023px) {
+  .cv2-row { grid-template-columns: 1fr 1fr; }
+  .cv2-photo { display: none; }
+}
+@media (max-width: 639px) {
+  .cv2-row { grid-template-columns: 1fr; }
+}
+
+.cv2-photo {
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 380px;
+}
+.cv2-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+
+.cv2-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cv2-sphere {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cv2-sphere-red {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(206,14,45,0.20) 0%, rgba(206,14,45,0) 70%);
+  bottom: -70px; right: -70px;
+}
+.cv2-sphere-navy {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(23,47,96,0.16) 0%, rgba(23,47,96,0) 70%);
+  top: -50px; left: -50px;
+}
+
+.cv2-header { position: relative; z-index: 1; }
+.cv2-header h3 {
+  font-size: 20px; font-weight: 700;
+  color: var(--text-1); margin: 6px 0 8px;
+  font-family: var(--font-display);
+}
+.cv2-header p {
+  font-size: 13px; color: var(--text-3); line-height: 1.6;
+}
+
+.cv2-widget {
+  position: relative; z-index: 1;
+  background: var(--bg-gray);
+  border-radius: 12px;
+  padding: 16px 18px;
+  flex: 1;
+}
+
+/* — Bar widget — */
+.cv2-bar-item { display: flex; align-items: center; gap: 10px; }
+.cv2-bar-label { font-size: 12.5px; color: var(--text-2); width: 72px; flex-shrink: 0; }
+.cv2-bar-track { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.cv2-bar-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--red) 0%, #e84d6e 100%);
+}
+.cv2-bar-value { font-size: 12.5px; font-weight: 700; color: var(--text-1); min-width: 34px; text-align: right; }
+.cv2-bar-sep { height: 1px; background: var(--border); margin: 10px 0; }
+
+/* — Checklist widget — */
+.cv2-check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+}
+.cv2-check-item:last-of-type { border-bottom: none; }
+.cv2-check-icon { flex-shrink: 0; color: var(--red); }
+.cv2-check-text { font-size: 13px; color: var(--text-2); line-height: 1.45; }
+.cv2-progress-wrap { margin-top: 14px; }
+.cv2-progress-bar-track { width: 100%; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.cv2-progress-bar-fill {
+  height: 100%; width: 100%;
+  background: linear-gradient(90deg, var(--red) 0%, var(--navy) 100%);
+  border-radius: 99px;
+}
+.cv2-progress-footer {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-top: 8px;
+}
+.cv2-progress-footer span { font-size: 11.5px; color: var(--text-3); }
+.cv2-progress-footer strong { font-size: 18px; font-weight: 900; color: var(--text-1); font-family: var(--font-en); }
+
+/* — Metrics widget — */
+.cv2-metric-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.cv2-metric-head span {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--red);
+}
+.cv2-metric-item { padding: 9px 0; border-bottom: 1px solid var(--border); }
+.cv2-metric-item:last-child { border-bottom: none; }
+.cv2-metric-row { display: flex; align-items: center; justify-content: space-between; }
+.cv2-metric-name { font-size: 13px; color: var(--text-2); }
+.cv2-metric-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--navy); color: #fff;
+  border-radius: 6px; padding: 3px 9px;
+  font-size: 12px; font-weight: 700;
+}
+.cv2-metric-pill svg { width: 12px; height: 12px; flex-shrink: 0; }
+.cv2-metric-foot { margin-top: 12px; font-size: 11.5px; color: var(--text-3); line-height: 1.55; }
+
+/* ══════════════════════════════════
    手機版修正（iPhone 標準）
 ══════════════════════════════════ */
 @media (max-width: 767px) {
@@ -1161,28 +1286,144 @@ section { padding: 80px 0; }
       </div>
     </div>
 
+    <!-- ══ CRITERIA V2：認明這三點 ══ -->
     <div class="research-header">
       <div class="section-divider" style="margin:0 auto 20px;"></div>
       <span class="eyebrow" style="justify-content:center;margin-bottom:12px;">40 年研發團隊把關</span>
       <h2>認明這三點，選好益生菌</h2>
     </div>
 
-    <div class="criteria-grid">
-      <div class="criteria-card">
-        <span class="criteria-step">CRITERIA 01</span>
-        <h3>認明菌株</h3>
-        <p>選益生菌關鍵在菌株。CBM588 宮入菌株通過多項臨床驗證，能有效幫助維持消化道機能、促進腸道環境平衡。</p>
+    <div class="cv2-row">
+
+      <!-- 左側照片 -->
+      <div class="cv2-photo">
+        <img src="assets/doctor-bg-2.png" alt="醫療級益生菌研究">
       </div>
-      <div class="criteria-card">
-        <span class="criteria-step">CRITERIA 02</span>
-        <h3>有效認證</h3>
-        <p>CBM588 宮入菌株擁有台灣雙專利認證，並榮獲 Nutra Ingredients Awards 國際大獎肯定，科學背書有所依據。</p>
+
+      <!-- 卡 1：認明菌株 — Bar Chart -->
+      <div class="cv2-card">
+        <div class="cv2-sphere cv2-sphere-red"></div>
+        <div class="cv2-header">
+          <span class="criteria-step">CRITERIA 01</span>
+          <h3>認明菌株</h3>
+          <p>選益生菌關鍵在菌株。CBM588 宮入菌株通過多項臨床驗證，能有效幫助維持消化道機能。</p>
+        </div>
+        <div class="cv2-widget">
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">耐酸穩定性</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:95%"></div></div>
+            <span class="cv2-bar-value">95%</span>
+          </div>
+          <div class="cv2-bar-sep"></div>
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">耐熱特性</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:88%"></div></div>
+            <span class="cv2-bar-value">88%</span>
+          </div>
+          <div class="cv2-bar-sep"></div>
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">腸道定殖</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:92%"></div></div>
+            <span class="cv2-bar-value">92%</span>
+          </div>
+          <div class="cv2-bar-sep"></div>
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">臨床研究</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:100%"></div></div>
+            <span class="cv2-bar-value">70yr</span>
+          </div>
+        </div>
       </div>
-      <div class="criteria-card">
-        <span class="criteria-step">CRITERIA 03</span>
-        <h3>好菌延長</h3>
-        <p>擁有活加益生菌技術，能提高益生菌的強度與存活率，確保有效活菌數量能安全抵達腸道發揮作用。</p>
+
+      <!-- 卡 2：有效認證 — Checklist -->
+      <div class="cv2-card">
+        <div class="cv2-sphere cv2-sphere-navy"></div>
+        <div class="cv2-header">
+          <span class="criteria-step">CRITERIA 02</span>
+          <h3>有效認證</h3>
+          <p>CBM588 宮入菌株擁有台灣雙專利認證，並榮獲國際大獎肯定，科學背書有所依據。</p>
+        </div>
+        <div class="cv2-widget">
+          <div class="cv2-check-item">
+            <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none">
+              <path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="cv2-check-text">台灣雙專利認證</span>
+          </div>
+          <div class="cv2-check-item">
+            <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none">
+              <path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="cv2-check-text">Nutra Ingredients Awards</span>
+          </div>
+          <div class="cv2-check-item">
+            <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none">
+              <path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="cv2-check-text">RCT 人體臨床研究支持</span>
+          </div>
+          <div class="cv2-progress-wrap">
+            <div class="cv2-progress-bar-track">
+              <div class="cv2-progress-bar-fill"></div>
+            </div>
+            <div class="cv2-progress-footer">
+              <span>認證完整度</span>
+              <strong>100%</strong>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 卡 3：好菌延長 — Metrics -->
+      <div class="cv2-card">
+        <div class="cv2-sphere cv2-sphere-red" style="top:-60px;left:-60px;bottom:auto;right:auto;"></div>
+        <div class="cv2-header">
+          <span class="criteria-step">CRITERIA 03</span>
+          <h3>好菌延長</h3>
+          <p>活加益生菌技術，提高益生菌強度與存活率，確保有效活菌數量安全抵達腸道。</p>
+        </div>
+        <div class="cv2-widget">
+          <div class="cv2-metric-head">
+            <span>指標</span>
+            <span>效果</span>
+          </div>
+          <div class="cv2-metric-item">
+            <div class="cv2-metric-row">
+              <span class="cv2-metric-name">活菌存活率</span>
+              <div class="cv2-metric-pill">
+                高穩定
+                <svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.33 8.5L8 3.83L12.67 8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 13.17V3.83" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="cv2-metric-item">
+            <div class="cv2-metric-row">
+              <span class="cv2-metric-name">腸道到達率</span>
+              <div class="cv2-metric-pill">
+                耐酸保護
+                <svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.33 8.5L8 3.83L12.67 8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 13.17V3.83" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="cv2-metric-item">
+            <div class="cv2-metric-row">
+              <span class="cv2-metric-name">有效活菌數</span>
+              <div class="cv2-metric-pill" style="background:var(--red);">3×10⁸ CFU</div>
+            </div>
+          </div>
+          <p class="cv2-metric-foot">每批次嚴格品管，批號可追溯，從菌株到製劑全程品質保證。</p>
+        </div>
+      </div>
+
     </div>
 
   </div>
