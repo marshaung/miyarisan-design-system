@@ -380,31 +380,138 @@ section { padding: 80px 0; }
 .audience-card p  { font-size: 13px; color: var(--text-3); line-height: 1.6; }
 
 /* ── IDENTIFY ── */
-.criteria-grid {
-  display: grid; grid-template-columns: 1fr;
-  border: 1px solid var(--border); border-radius: 12px;
-  overflow: hidden; background: var(--white);
-  margin-bottom: 24px;
-}
-@media (min-width: 768px) { .criteria-grid { grid-template-columns: repeat(3,1fr); } }
-.criteria-card {
-  padding: 36px 32px; display: flex; flex-direction: column;
-  border-bottom: 1px solid var(--border);
-}
-@media (min-width: 768px) {
-  .criteria-card { border-bottom: none; border-right: 1px solid var(--border); }
-  .criteria-card:last-child { border-right: none; }
-}
-.criteria-step { font-family: var(--font-en); font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
-.criteria-card h3 { font-size: 21px; font-weight: 700; color: var(--text-1); margin-bottom: 12px; }
-.criteria-card p { font-size: 14px; font-weight: 350; color: var(--text-2); line-height: 1.72; flex-grow: 1; }
+#identify { background: var(--bg-gray); }
 
 .identify-note {
   background: var(--navy);
   border-radius: 12px; padding: 24px 28px;
   font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7;
+  margin-top: 24px;
 }
 .identify-note strong { color: #fff; }
+
+/* cv2 三卡版型（共用首頁設計） */
+.cv2-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (max-width: 1023px) {
+  .cv2-row { grid-template-columns: 1fr 1fr; }
+  .cv2-photo { display: none; }
+}
+@media (max-width: 639px) {
+  .cv2-row { grid-template-columns: 1fr; }
+}
+
+.cv2-photo {
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 380px;
+}
+.cv2-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+
+.cv2-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 26px 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cv2-sphere {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cv2-sphere-red {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(206,14,45,0.20) 0%, rgba(206,14,45,0) 70%);
+  bottom: -70px; right: -70px;
+}
+.cv2-sphere-navy {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(23,47,96,0.16) 0%, rgba(23,47,96,0) 70%);
+  top: -50px; left: -50px;
+}
+
+.cv2-header { position: relative; z-index: 1; }
+.cv2-header h3 {
+  font-size: 20px; font-weight: 700;
+  color: var(--text-1); margin: 6px 0 8px;
+  font-family: var(--font-display);
+}
+.cv2-header p {
+  font-size: 13px; color: var(--text-3); line-height: 1.6;
+}
+
+.cv2-widget {
+  position: relative; z-index: 1;
+  background: var(--bg-gray);
+  border-radius: 12px;
+  padding: 16px 18px;
+  flex: 1;
+}
+
+/* — Bar widget — */
+.cv2-bar-item { display: flex; align-items: center; gap: 10px; }
+.cv2-bar-label { font-size: 12.5px; color: var(--text-2); width: 72px; flex-shrink: 0; }
+.cv2-bar-track { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.cv2-bar-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--red) 0%, #e84d6e 100%);
+}
+.cv2-bar-value { font-size: 12.5px; font-weight: 700; color: var(--text-1); min-width: 34px; text-align: right; }
+.cv2-bar-sep { height: 1px; background: var(--border); margin: 10px 0; }
+
+/* — Checklist widget — */
+.cv2-check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+}
+.cv2-check-item:last-of-type { border-bottom: none; }
+.cv2-check-icon { flex-shrink: 0; color: var(--red); }
+.cv2-check-text { font-size: 13px; color: var(--text-2); line-height: 1.45; }
+.cv2-progress-wrap { margin-top: 14px; }
+.cv2-progress-bar-track { width: 100%; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.cv2-progress-bar-fill {
+  height: 100%; width: 100%;
+  background: linear-gradient(90deg, var(--red) 0%, var(--navy) 100%);
+  border-radius: 99px;
+}
+.cv2-progress-footer {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-top: 8px;
+}
+.cv2-progress-footer span { font-size: 11.5px; color: var(--text-3); }
+.cv2-progress-footer strong { font-size: 18px; font-weight: 900; color: var(--text-1); font-family: var(--font-en); }
+
+/* — Metrics widget — */
+.cv2-metric-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.cv2-metric-head span {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--red);
+}
+.cv2-metric-item { padding: 9px 0; border-bottom: 1px solid var(--border); }
+.cv2-metric-item:last-child { border-bottom: none; }
+.cv2-metric-row { display: flex; align-items: center; justify-content: space-between; }
+.cv2-metric-name { font-size: 13px; color: var(--text-2); }
+.cv2-metric-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--navy); color: #fff;
+  border-radius: 6px; padding: 3px 9px;
+  font-size: 12px; font-weight: 700;
+}
+.cv2-metric-pill svg { width: 12px; height: 12px; flex-shrink: 0; }
+.cv2-metric-foot { margin-top: 12px; font-size: 11.5px; color: var(--text-3); line-height: 1.55; }
 
 /* ── CTA ── */
 .cta-section { background: linear-gradient(135deg, var(--red) 0%, #E5186E 100%); padding: 80px 0; text-align: center; }
@@ -432,7 +539,7 @@ section { padding: 80px 0; }
   .definition-content p { font-size: 16px; }
   .mechanism-card p { font-size: 15px; }
   .audience-card p { font-size: 14px; }
-  .criteria-card p { font-size: 15px; }
+  .cv2-header p { font-size: 14px; }
 }
 
 /* ══ 手機版修正 ══ */
@@ -971,22 +1078,122 @@ section { padding: 80px 0; }
       <p>「次世代」這個詞目前沒有統一法規定義，任何人都可以標榜。<br>與其相信標籤，不如自己問這 3 個問題。</p>
     </div>
 
-    <div class="criteria-grid">
-      <div class="criteria-card">
-        <span class="criteria-step">QUESTION 01</span>
-        <h3>有人體臨床試驗嗎？</h3>
-        <p>不是動物實驗，不是含糊的「研究顯示」，而是在同行評審學術期刊上發表、有明確實驗設計和對照組的人體試驗。這類資料通常是公開可查的。如果找不到，這個菌株還停留在候選階段。</p>
+    <div class="cv2-row">
+
+      <!-- 左側照片 -->
+      <div class="cv2-photo">
+        <img src="assets/strain-cbm.png" alt="CBM588 宮入菌株顯微鏡影像">
       </div>
-      <div class="criteria-card">
-        <span class="criteria-step">QUESTION 02</span>
-        <h3>符合藥品等級 GMP 嗎？</h3>
-        <p>食品工廠與藥品工廠在品質控管上的要求差距很大——前者確保食品安全，後者要求每一批的活菌數、穩定性與一致性都在可驗證的規格範圍內。符合藥品標準的 NGP，其製程資料通常是可追溯的。</p>
+
+      <!-- 卡 1：臨床試驗 — Checklist -->
+      <div class="cv2-card">
+        <div class="cv2-sphere cv2-sphere-navy"></div>
+        <div class="cv2-header">
+          <span class="criteria-step">QUESTION 01</span>
+          <h3>有人體臨床試驗嗎？</h3>
+          <p>不是動物實驗，不是含糊的「研究顯示」，而是在同行評審期刊上發表的人體試驗。</p>
+        </div>
+        <div class="cv2-widget">
+          <div class="cv2-check-item">
+            <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none"><path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path><path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="cv2-check-text">同行評審學術期刊發表</span>
+          </div>
+          <div class="cv2-check-item">
+            <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none"><path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path><path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="cv2-check-text">明確實驗設計，有對照組</span>
+          </div>
+          <div class="cv2-check-item">
+            <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none"><path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path><path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span class="cv2-check-text">資料公開，可自行查核</span>
+          </div>
+          <div class="cv2-progress-wrap">
+            <div class="cv2-progress-bar-track">
+              <div class="cv2-progress-bar-fill" style="width:100%"></div>
+            </div>
+            <div class="cv2-progress-footer">
+              <span>通過條件完整度</span>
+              <strong>3 / 3</strong>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="criteria-card">
-        <span class="criteria-step">QUESTION 03</span>
-        <h3>菌株有明確鑑定嗎？</h3>
-        <p>你知道它的完整菌株名稱嗎？不只是「乳酸桿菌」這種物種層級的描述，而是具體到菌株層級的命名。它的基因序列有沒有被發表分析，確認不含任何已知有害成分？沒有這份紀錄，所謂的「安全」只是廠商的自我聲明。</p>
+
+      <!-- 卡 2：GMP — Bar Chart -->
+      <div class="cv2-card">
+        <div class="cv2-sphere cv2-sphere-red"></div>
+        <div class="cv2-header">
+          <span class="criteria-step">QUESTION 02</span>
+          <h3>符合藥品等級 GMP 嗎？</h3>
+          <p>藥品工廠的品管要求遠高於食品工廠，每批活菌數、穩定性與一致性都在可驗證的規格範圍內。</p>
+        </div>
+        <div class="cv2-widget">
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">活菌數控管</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:97%"></div></div>
+            <span class="cv2-bar-value">嚴格</span>
+          </div>
+          <div class="cv2-bar-sep"></div>
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">批次一致性</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:94%"></div></div>
+            <span class="cv2-bar-value">可驗</span>
+          </div>
+          <div class="cv2-bar-sep"></div>
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">製程追溯</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:100%"></div></div>
+            <span class="cv2-bar-value">完整</span>
+          </div>
+          <div class="cv2-bar-sep"></div>
+          <div class="cv2-bar-item">
+            <span class="cv2-bar-label">規格驗證</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:98%"></div></div>
+            <span class="cv2-bar-value">通過</span>
+          </div>
+        </div>
       </div>
+
+      <!-- 卡 3：菌株鑑定 — Metrics -->
+      <div class="cv2-card">
+        <div class="cv2-sphere cv2-sphere-navy" style="bottom:-50px;right:-50px;top:auto;left:auto;"></div>
+        <div class="cv2-header">
+          <span class="criteria-step">QUESTION 03</span>
+          <h3>菌株有明確鑑定嗎？</h3>
+          <p>知道完整菌株名稱，且基因序列已發表分析，確認不含已知有害成分。</p>
+        </div>
+        <div class="cv2-widget">
+          <div class="cv2-metric-head">
+            <span>鑑定項目</span>
+            <span>狀態</span>
+          </div>
+          <div class="cv2-metric-item">
+            <div class="cv2-metric-row">
+              <span class="cv2-metric-name">菌株層級命名</span>
+              <div class="cv2-metric-pill">
+                已確認
+                <svg viewBox="0 0 16 17" fill="none"><path d="M3.33 8.5L8 3.83L12.67 8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 13.17V3.83" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+            </div>
+          </div>
+          <div class="cv2-metric-item">
+            <div class="cv2-metric-row">
+              <span class="cv2-metric-name">基因序列發表</span>
+              <div class="cv2-metric-pill">
+                公開可查
+                <svg viewBox="0 0 16 17" fill="none"><path d="M3.33 8.5L8 3.83L12.67 8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 13.17V3.83" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+            </div>
+          </div>
+          <div class="cv2-metric-item">
+            <div class="cv2-metric-row">
+              <span class="cv2-metric-name">無毒素基因確認</span>
+              <div class="cv2-metric-pill" style="background:var(--red);">通過</div>
+            </div>
+          </div>
+          <p class="cv2-metric-foot">沒有這份紀錄，所謂的「安全」只是廠商自我聲明。</p>
+        </div>
+      </div>
+
     </div>
 
     <div class="identify-note">
