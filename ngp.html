@@ -204,8 +204,8 @@ section { padding: 80px 0; }
 .problem-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
 @media (min-width: 1024px) {
   .problem-inner { grid-template-columns: 1fr 1fr; align-items: stretch; gap: 64px; }
-  .problem-inner > div { display: flex; flex-direction: column; }
-  .problem-inner > div .chart-block { flex: 1; }
+  .problem-inner > div:last-child { display: flex; flex-direction: column; }
+  .problem-inner > div:last-child .chart-block { flex: 1; }
 }
 
 .body-text { font-size: 15px; color: var(--text-2); line-height: 1.8; }
