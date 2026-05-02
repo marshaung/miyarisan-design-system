@@ -828,16 +828,20 @@ section { padding: 80px 0; }
 
     </div>
 
-    <!-- Compare Cards: 全寬 2 欄 -->
-    <div style="margin-top:36px;">
-      <div class="chart-title" style="margin-bottom:16px;">你吞的 100 億菌，最後剩幾億？</div>
+    <!-- Flow diagram card -->
+    <div class="cv2-card" style="margin-top:36px;padding:28px 24px;">
+      <div class="cv2-sphere cv2-sphere-navy"></div>
+      <div class="cv2-header" style="margin-bottom:12px;">
+        <div class="chart-title" style="margin-bottom:0;">你吞的 100 億菌，最後剩幾億？</div>
+      </div>
       <!-- Split-merge flow: 100億 → [一般/NGP parallel paths] → 腸道 -->
       <div class="js-wrap">
 
         <!-- 起點：100億 -->
-        <div class="js-big-node">
-          <div class="journey-node-num">100<span style="font-size:0.55em;font-weight:500;color:var(--text-3);">億</span></div>
-          <div class="journey-node-label">吃下去</div>
+        <div class="js-big-node" style="position:relative;overflow:hidden;">
+          <div style="position:absolute;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(23,47,96,0.14) 0%,rgba(23,47,96,0) 70%);bottom:-28px;right:-20px;pointer-events:none;"></div>
+          <div class="journey-node-num" style="position:relative;z-index:1;">100<span style="font-size:0.55em;font-weight:500;color:var(--text-3);">億</span></div>
+          <div class="journey-node-label" style="position:relative;z-index:1;">吃下去</div>
         </div>
 
         <!-- Fork connector -->
@@ -894,9 +898,10 @@ section { padding: 80px 0; }
         </svg>
 
         <!-- 終點：腸道 -->
-        <div class="js-big-node is-safe" style="border-color:#bbf7d0;background:#f0fdf4;">
-          <div class="journey-node-num" style="font-size:clamp(14px,1.8vw,20px);color:#16a34a;letter-spacing:0;">腸道</div>
-          <div class="journey-node-label">目的地</div>
+        <div class="js-big-node is-safe" style="border-color:#bbf7d0;background:#f0fdf4;position:relative;overflow:hidden;">
+          <div style="position:absolute;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,0.18) 0%,rgba(22,163,74,0) 70%);top:-28px;left:-20px;pointer-events:none;"></div>
+          <div class="journey-node-num" style="font-size:clamp(14px,1.8vw,20px);color:#16a34a;letter-spacing:0;position:relative;z-index:1;">腸道</div>
+          <div class="journey-node-label" style="position:relative;z-index:1;">目的地</div>
         </div>
 
       </div>
