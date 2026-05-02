@@ -255,13 +255,13 @@ section { padding: 80px 0; }
   background: var(--white);
 }
 .journey-node.is-danger { background: #fff5f5; border-color: #fecaca; }
-.journey-node.is-safe   { background: #f0fdf4; border-color: #bbf7d0; }
+.journey-node.is-safe   { background: #eef1f8; border-color: #c8d2e8; }
 .journey-node-num {
   font-family: var(--font-en); font-size: clamp(16px, 2.5vw, 22px);
   font-weight: 900; line-height: 1;
 }
 .journey-node.is-danger .journey-node-num { color: var(--red); }
-.journey-node.is-safe   .journey-node-num { color: #16a34a; }
+.journey-node.is-safe   .journey-node-num { color: var(--navy); }
 .journey-node-label { font-size: 11px; font-weight: 600; color: var(--text-3); margin-top: 4px; }
 .journey-arrow { color: var(--text-4); flex-shrink: 0; }
 .journey-note { margin-top: 10px; font-size: 12px; color: var(--text-4); line-height: 1.6; }
@@ -273,7 +273,7 @@ section { padding: 80px 0; }
   padding: 3px 10px; border-radius: 4px; margin-bottom: 10px;
 }
 .journey-row-tag.danger { background: #fee2e2; color: var(--red); }
-.journey-row-tag.safe   { background: #dcfce7; color: #16a34a; }
+.journey-row-tag.safe   { background: #eef1f8; color: var(--navy); }
 .journey-divider { border: none; border-top: 1px dashed var(--border); margin: 18px 0; }
 
 /* ── JOURNEY CARDS (4-step vertical card layout) ── */
@@ -285,14 +285,14 @@ section { padding: 80px 0; }
   display: flex; flex-direction: column; gap: 16px;
 }
 .cc-card--danger { background: transparent; border-color: #fecaca; }
-.cc-card--safe   { background: transparent; border-color: #bbf7d0; }
+.cc-card--safe   { background: transparent; border-color: #c8d2e8; }
 .cc-flow { display: flex; flex-direction: column; flex: 1; }
 .cc-flow .journey-node { flex: none; }
 .cc-arrow {
   text-align: center; font-size: 16px; line-height: 1;
   padding: 5px 0; color: var(--text-4);
 }
-.cc-arrow--safe { color: #16a34a; }
+.cc-arrow--safe { color: var(--navy); }
 @media (max-width: 640px) { .cc-row { grid-template-columns: 1fr; } }
 
 /* ── SPLIT-MERGE FLOW DIAGRAM ── */
@@ -876,12 +876,12 @@ section { padding: 80px 0; }
             <div class="journey-row-tag safe">NGP 芽孢菌株</div>
             <div class="js-path-nodes">
               <div class="journey-node is-safe">
-                <div class="journey-node-num" style="color:#16a34a;">pH 2</div>
+                <div class="journey-node-num" style="color:var(--navy);">pH 2</div>
                 <div class="journey-node-label">胃酸關卡</div>
               </div>
-              <svg class="journey-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <svg class="journey-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               <div class="journey-node is-safe">
-                <div class="journey-node-num">95<span style="font-size:0.55em;font-weight:500;color:#16a34a;">億</span></div>
+                <div class="journey-node-num">95<span style="font-size:0.55em;font-weight:500;color:var(--navy);">億</span></div>
                 <div class="journey-node-label">存活下來</div>
               </div>
             </div>
@@ -898,10 +898,9 @@ section { padding: 80px 0; }
         </svg>
 
         <!-- 終點：腸道 -->
-        <div class="js-big-node is-safe" style="border-color:#bbf7d0;background:#f0fdf4;position:relative;overflow:hidden;">
-          <div style="position:absolute;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,0.18) 0%,rgba(22,163,74,0) 70%);top:-28px;left:-20px;pointer-events:none;"></div>
-          <div class="journey-node-num" style="font-size:clamp(14px,1.8vw,20px);color:#16a34a;letter-spacing:0;position:relative;z-index:1;">腸道</div>
-          <div class="journey-node-label" style="position:relative;z-index:1;">目的地</div>
+        <div class="js-big-node is-safe" style="border-color:#c8d2e8;background:#eef1f8;">
+          <div class="journey-node-num" style="font-size:clamp(14px,1.8vw,20px);color:var(--navy);letter-spacing:0;">腸道</div>
+          <div class="journey-node-label">目的地</div>
         </div>
 
       </div>
