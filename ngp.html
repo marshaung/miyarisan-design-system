@@ -272,6 +272,47 @@ section { padding: 80px 0; }
 .journey-row-tag.safe   { background: #dcfce7; color: #16a34a; }
 .journey-divider { border: none; border-top: 1px dashed var(--border); margin: 18px 0; }
 
+/* ── JOURNEY CARDS (4-step vertical card layout) ── */
+.jc-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 0; }
+.jc-title { font-size: 13px; font-weight: 700; color: var(--text-3); letter-spacing: 0.04em; margin-bottom: 16px; }
+.jc-card {
+  position: relative; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border); background: var(--white);
+  display: flex; flex-direction: column; min-height: 200px;
+}
+.jc-bg { position: absolute; inset: 0; z-index: 0; }
+.jc-bg--neutral { background: linear-gradient(150deg,#f8fafc 0%,#e2e8f0 100%); }
+.jc-bg--warn    { background: linear-gradient(150deg,#fff7ed 0%,#fed7aa 100%); }
+.jc-bg--split   { background: linear-gradient(150deg,#fff5f5 0%,#f0fdf4 100%); }
+.jc-bg--safe    { background: linear-gradient(150deg,#f0fdf4 0%,#bbf7d0 100%); }
+.jc-sphere {
+  position: absolute; width: 110px; height: 110px; border-radius: 50%;
+  bottom: -35px; right: -25px; opacity: 0.18;
+}
+.jc-bg--neutral .jc-sphere { background: #94a3b8; }
+.jc-bg--warn    .jc-sphere { background: #f97316; }
+.jc-bg--split   .jc-sphere { background: radial-gradient(circle at 40% 40%,#ef4444,#16a34a); }
+.jc-bg--safe    .jc-sphere { background: #16a34a; }
+.jc-header { position: relative; z-index: 1; padding: 18px 16px 10px; flex: 1; }
+.jc-step  { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-4); text-transform: uppercase; }
+.jc-name  { font-size: clamp(15px,1.6vw,18px); font-weight: 700; color: var(--text-1); margin: 4px 0 5px; }
+.jc-desc  { font-size: 11px; color: var(--text-3); line-height: 1.5; }
+.jc-stat  { position: relative; z-index: 1; padding: 0 16px 18px; }
+.jc-num   { font-family: var(--font-en); font-size: clamp(28px,3.2vw,38px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: var(--text-1); }
+.jc-num--danger { color: var(--red); }
+.jc-num--safe   { color: #16a34a; }
+.jc-unit  { font-size: 0.42em; font-weight: 600; color: var(--text-3); vertical-align: middle; }
+.jc-sub   { font-size: 11px; color: var(--text-4); margin-top: 5px; line-height: 1.4; }
+.jc-sub--green { color: #15803d; font-weight: 600; }
+.jc-compare { position: relative; z-index: 1; padding: 0 16px 18px; display: flex; align-items: flex-start; gap: 6px; }
+.jc-compare-col { flex: 1; }
+.jc-compare-num { font-family: var(--font-en); font-size: clamp(20px,2.4vw,28px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
+.jc-compare-col--danger .jc-compare-num { color: var(--red); }
+.jc-compare-col--safe   .jc-compare-num { color: #16a34a; }
+.jc-compare-label { font-size: 10px; color: var(--text-3); margin-top: 4px; font-weight: 600; }
+.jc-vs { font-size: 10px; color: var(--text-4); font-weight: 700; padding-top: 6px; flex-shrink: 0; }
+@media (max-width: 640px) { .jc-row { grid-template-columns: repeat(2,1fr); } }
+
 /* ── NGP DEFINITION ── */
 .definition-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
 @media (min-width: 1024px) { .definition-inner { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } }
@@ -781,65 +822,76 @@ section { padding: 80px 0; }
           <p class="journey-note">＊乳酸菌各菌株表現差異大，本數據為代表性趨勢比較。</p>
         </div>
 
-        <div class="chart-block">
-          <div class="chart-title">你吞的 100 億菌，最後剩幾億？</div>
+        <!-- Journey Cards: 你吞的 100 億菌，最後剩幾億？ -->
+        <div class="jc-title">你吞的 100 億菌，最後剩幾億？</div>
+        <div class="jc-row">
 
-          <!-- 一般乳酸菌 -->
-          <div class="journey-row">
-            <div class="journey-row-tag danger">一般乳酸菌</div>
-            <div class="journey-flow">
-              <div class="journey-node">
-                <div class="journey-node-num">100<span style="font-size:0.55em;font-weight:500;color:var(--text-3);">億</span></div>
-                <div class="journey-node-label">吃下去</div>
-              </div>
-              <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-danger">
-                <div class="journey-node-num">pH 2</div>
-                <div class="journey-node-label">胃酸關卡</div>
-              </div>
-              <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-danger">
-                <div class="journey-node-num">&lt;10<span style="font-size:0.55em;font-weight:500;">億</span></div>
-                <div class="journey-node-label">存活下來</div>
-              </div>
-              <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-safe">
-                <div class="journey-node-num" style="font-size:clamp(13px,1.8vw,16px);color:#16a34a;letter-spacing:0;">腸道</div>
-                <div class="journey-node-label">目的地</div>
-              </div>
+          <!-- STEP 1: 吃下去 -->
+          <div class="jc-card">
+            <div class="jc-bg jc-bg--neutral"><div class="jc-sphere"></div></div>
+            <div class="jc-header">
+              <div class="jc-step">STEP 1</div>
+              <div class="jc-name">吃下去</div>
+              <div class="jc-desc">兩種菌株，起跑線相同</div>
             </div>
-            <p class="journey-note">一般乳酸菌的旅程：99 億以上在抵達腸道前陣亡。</p>
+            <div class="jc-stat">
+              <div class="jc-num">100<span class="jc-unit">億</span></div>
+              <div class="jc-sub">出發時數量一致</div>
+            </div>
           </div>
 
-          <hr class="journey-divider">
+          <!-- STEP 2: 胃酸關卡 -->
+          <div class="jc-card">
+            <div class="jc-bg jc-bg--warn"><div class="jc-sphere"></div></div>
+            <div class="jc-header">
+              <div class="jc-step">STEP 2</div>
+              <div class="jc-name">胃酸關卡</div>
+              <div class="jc-desc">比市售醋酸酸上十倍的環境</div>
+            </div>
+            <div class="jc-stat">
+              <div class="jc-num jc-num--danger">pH 2</div>
+              <div class="jc-sub">大多數益生菌在此陣亡</div>
+            </div>
+          </div>
 
-          <!-- NGP 芽孢菌株 -->
-          <div class="journey-row">
-            <div class="journey-row-tag safe">NGP 芽孢菌株</div>
-            <div class="journey-flow">
-              <div class="journey-node is-safe">
-                <div class="journey-node-num">100<span style="font-size:0.55em;font-weight:500;color:#16a34a;">億</span></div>
-                <div class="journey-node-label">吃下去</div>
+          <!-- STEP 3: 存活下來（關鍵對比） -->
+          <div class="jc-card">
+            <div class="jc-bg jc-bg--split"><div class="jc-sphere"></div></div>
+            <div class="jc-header">
+              <div class="jc-step">STEP 3</div>
+              <div class="jc-name">存活下來</div>
+              <div class="jc-desc">這裡決定了一切</div>
+            </div>
+            <div class="jc-compare">
+              <div class="jc-compare-col jc-compare-col--danger">
+                <div class="jc-compare-num">&lt;10<span class="jc-unit">億</span></div>
+                <div class="jc-compare-label">一般乳酸菌</div>
               </div>
-              <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-safe">
-                <div class="journey-node-num" style="color:#16a34a;">pH 2</div>
-                <div class="journey-node-label">胃酸關卡</div>
-              </div>
-              <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-safe">
-                <div class="journey-node-num">95<span style="font-size:0.55em;font-weight:500;color:#16a34a;">億</span></div>
-                <div class="journey-node-label">存活下來</div>
-              </div>
-              <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-safe">
-                <div class="journey-node-num" style="font-size:clamp(13px,1.8vw,16px);color:#16a34a;letter-spacing:0;">腸道</div>
-                <div class="journey-node-label">目的地</div>
+              <div class="jc-vs">vs</div>
+              <div class="jc-compare-col jc-compare-col--safe">
+                <div class="jc-compare-num">95<span class="jc-unit">億</span></div>
+                <div class="jc-compare-label">NGP 芽孢菌株</div>
               </div>
             </div>
-            <p class="journey-note">NGP 菌株透過特殊結構，改寫了這條路的存活率。</p>
           </div>
+
+          <!-- STEP 4: 腸道 -->
+          <div class="jc-card">
+            <div class="jc-bg jc-bg--safe"><div class="jc-sphere"></div></div>
+            <div class="jc-header">
+              <div class="jc-step">STEP 4</div>
+              <div class="jc-name">腸道</div>
+              <div class="jc-desc">目的地</div>
+            </div>
+            <div class="jc-stat">
+              <div class="jc-num jc-num--safe">95<span class="jc-unit">億</span></div>
+              <div class="jc-sub jc-sub--green">NGP 成功抵達</div>
+              <div class="jc-sub" style="margin-top:4px;">一般乳酸菌：99 億在此之前陣亡</div>
+            </div>
+          </div>
+
         </div>
+        <p class="journey-note" style="margin-top:12px;">＊乳酸菌各菌株表現差異大，本數據為代表性趨勢比較。</p>
       </div>
 
     </div>
