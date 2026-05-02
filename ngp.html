@@ -281,17 +281,19 @@ section { padding: 80px 0; }
   display: flex; flex-direction: column; min-height: 200px;
 }
 .jc-bg { position: absolute; inset: 0; z-index: 0; }
-.jc-bg--neutral { background: linear-gradient(150deg,#f8fafc 0%,#e2e8f0 100%); }
-.jc-bg--warn    { background: linear-gradient(150deg,#fff7ed 0%,#fed7aa 100%); }
-.jc-bg--split   { background: linear-gradient(150deg,#fff5f5 0%,#f0fdf4 100%); }
-.jc-bg--safe    { background: linear-gradient(150deg,#f0fdf4 0%,#bbf7d0 100%); }
+.jc-bg--neutral { background: var(--white); }
+.jc-bg--warn    { background: #fff5f5; }
+.jc-bg--split   { background: var(--white); }
+.jc-bg--safe    { background: #f0fdf4; }
+.jc-card.jc-warn { border-color: #fecaca; }
+.jc-card.jc-safe { border-color: #bbf7d0; }
 .jc-sphere {
-  position: absolute; width: 110px; height: 110px; border-radius: 50%;
-  bottom: -35px; right: -25px; opacity: 0.18;
+  position: absolute; width: 100px; height: 100px; border-radius: 50%;
+  bottom: -30px; right: -20px; opacity: 0.10;
 }
-.jc-bg--neutral .jc-sphere { background: #94a3b8; }
-.jc-bg--warn    .jc-sphere { background: #f97316; }
-.jc-bg--split   .jc-sphere { background: radial-gradient(circle at 40% 40%,#ef4444,#16a34a); }
+.jc-bg--neutral .jc-sphere { background: var(--text-3); }
+.jc-bg--warn    .jc-sphere { background: var(--red); }
+.jc-bg--split   .jc-sphere { background: var(--text-3); }
 .jc-bg--safe    .jc-sphere { background: #16a34a; }
 .jc-header { position: relative; z-index: 1; padding: 18px 16px 10px; flex: 1; }
 .jc-step  { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-4); text-transform: uppercase; }
@@ -846,7 +848,7 @@ section { padding: 80px 0; }
         </div>
 
         <!-- STEP 2: 胃酸關卡 -->
-        <div class="jc-card">
+        <div class="jc-card jc-warn">
           <div class="jc-bg jc-bg--warn"><div class="jc-sphere"></div></div>
           <div class="jc-header">
             <div class="jc-step">STEP 2</div>
@@ -881,7 +883,7 @@ section { padding: 80px 0; }
         </div>
 
         <!-- STEP 4: 腸道 -->
-        <div class="jc-card">
+        <div class="jc-card jc-safe">
           <div class="jc-bg jc-bg--safe"><div class="jc-sphere"></div></div>
           <div class="jc-header">
             <div class="jc-step">STEP 4</div>
