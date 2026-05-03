@@ -398,6 +398,7 @@ section { padding: 80px 0; }
   display: flex; align-items: center; gap: 8px;
 }
 .evidence-highlight svg { color: var(--red); flex-shrink: 0; }
+.evidence-chart { margin: 14px 0 16px; background: var(--white); border-radius: 8px; border: 1px solid var(--border); padding: 14px 10px 8px; }
 
 /* ── CTA ── */
 .cta-section { background: linear-gradient(135deg, var(--navy) 0%, #0f2050 100%); padding: 80px 0; text-align: center; }
@@ -561,10 +562,6 @@ section { padding: 80px 0; }
       <span class="badge badge-ghost">50+ 年日本處方歷史</span>
       <span class="badge badge-ghost">peer-reviewed 臨床研究</span>
     </div>
-    <div class="hero-actions">
-      <a href="#criteria" class="btn btn-primary btn-lg">了解菌株特色</a>
-      <a href="#evidence" class="btn btn-ghost-white btn-lg">查看文獻報告</a>
-    </div>
   </div>
 </section>
 
@@ -574,22 +571,12 @@ section { padding: 80px 0; }
     <div class="trust-bar-inner">
       <div class="trust-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        菌株層級精確定義
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         pH 2 存活率 80～90%
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         可與抗生素同期使用
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        50+ 年日本醫療使用歷史
       </div>
     </div>
   </div>
@@ -890,30 +877,124 @@ section { padding: 80px 0; }
 
     <div class="evidence-grid">
 
+      <!-- STUDY 01 -->
       <div class="evidence-card">
         <div class="evidence-num">STUDY 01</div>
         <h3>功能性腸道症狀改善（600 例以上）</h3>
-        <p>日本早期多中心臨床觀察顯示，受試者連續使用 CBM588 後，腸道症狀發生率從基準的 97% 大幅降至約 5%，整體症狀改善率達 77.8%，包含腹痛、腹脹、腹瀉等症狀均有顯著改善。研究顯示 CBM588 對腸黏膜調節具有持續性作用，也影響整體腸道菌相穩定度。</p>
+        <div class="evidence-chart">
+          <svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+            <text x="130" y="9" text-anchor="middle" font-size="8" fill="#9ca3af" letter-spacing="0.04em">腹瀉症狀發生率（%）</text>
+            <line x1="40" y1="22" x2="244" y2="22" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="43.25" x2="244" y2="43.25" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="64.5" x2="244" y2="64.5" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="85.75" x2="244" y2="85.75" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="107" x2="244" y2="107" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="36" y="25" text-anchor="end" font-size="7.5" fill="#9ca3af">100</text>
+            <text x="36" y="46.5" text-anchor="end" font-size="7.5" fill="#9ca3af">75</text>
+            <text x="36" y="67.5" text-anchor="end" font-size="7.5" fill="#9ca3af">50</text>
+            <text x="36" y="89" text-anchor="end" font-size="7.5" fill="#9ca3af">25</text>
+            <text x="36" y="110" text-anchor="end" font-size="7.5" fill="#9ca3af">0</text>
+            <!-- 97% bar: h=82.45, y=24.55 -->
+            <rect x="68" y="24.55" width="58" height="82.45" fill="#CE0E2D" rx="3" opacity="0.85"/>
+            <text x="97" y="20.5" text-anchor="middle" font-size="10" font-weight="700" fill="#CE0E2D">97%</text>
+            <text x="97" y="119" text-anchor="middle" font-size="8.5" fill="#6b7280">治療前</text>
+            <!-- 5% bar: h=4.25, y=102.75 -->
+            <rect x="148" y="102.75" width="58" height="4.25" fill="#172F60" rx="3"/>
+            <text x="177" y="99.5" text-anchor="middle" font-size="10" font-weight="700" fill="#172F60">5%</text>
+            <text x="177" y="119" text-anchor="middle" font-size="8.5" fill="#6b7280">治療後</text>
+            <rect x="60" y="128" width="140" height="14" fill="#eef1f8" rx="4"/>
+            <text x="130" y="138" text-anchor="middle" font-size="8.5" font-weight="700" fill="#172F60">整體改善率 77.8%</text>
+          </svg>
+        </div>
+        <p>日本多中心臨床觀察，受試者使用 CBM588 後腸道症狀發生率從 97% 降至約 5%，整體改善率 77.8%，腹痛、腹脹、腹瀉均顯著改善。</p>
         <div class="evidence-highlight">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          症狀發生率 97% → 5%，改善率 77.8%
+          症狀發生率 97% → 5%
         </div>
       </div>
 
+      <!-- STUDY 02 -->
       <div class="evidence-card">
         <div class="evidence-num">STUDY 02</div>
         <h3>抗生素期間腸道記錄（兒科隨機試驗）</h3>
-        <p>試驗比較抗生素常用與兒科合併不同劑量 CBM588 的腹瀉發生率。Cephalosporin 系抗生素常用時腹瀉達 44%，合併 3g CBM588 後降至 5.8%；Penicillin 合併 3g 組腹瀉降至 0%。綜合兩系列，整體腹瀉率由 47.5% 降至 2.9%，達統計顯著差異。</p>
+        <div class="evidence-chart">
+          <svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+            <text x="130" y="9" text-anchor="middle" font-size="8" fill="#9ca3af" letter-spacing="0.04em">腹瀉發生率（%）— 合計</text>
+            <!-- scale 0–50%, chart h=85 (y=22→107), 1.7px/1% -->
+            <line x1="40" y1="22" x2="244" y2="22" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="64.5" x2="244" y2="64.5" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="107" x2="244" y2="107" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="36" y="25" text-anchor="end" font-size="7.5" fill="#9ca3af">50</text>
+            <text x="36" y="67.5" text-anchor="end" font-size="7.5" fill="#9ca3af">25</text>
+            <text x="36" y="110" text-anchor="end" font-size="7.5" fill="#9ca3af">0</text>
+            <!-- 47.5%: h=80.75, y=26.25 -->
+            <rect x="44" y="26.25" width="50" height="80.75" fill="#172F60" rx="3"/>
+            <text x="69" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#172F60">47.5%</text>
+            <text x="69" y="119" text-anchor="middle" font-size="8" fill="#6b7280">抗生素</text>
+            <text x="69" y="129" text-anchor="middle" font-size="7.5" fill="#9ca3af">單獨使用</text>
+            <!-- 28%: h=47.6, y=59.4 -->
+            <rect x="110" y="59.4" width="50" height="47.6" fill="#3a9e9a" rx="3"/>
+            <text x="135" y="55.5" text-anchor="middle" font-size="10" font-weight="700" fill="#3a9e9a">28%</text>
+            <text x="135" y="119" text-anchor="middle" font-size="8" fill="#6b7280">+CBM588</text>
+            <text x="135" y="129" text-anchor="middle" font-size="7.5" fill="#9ca3af">1g 合併</text>
+            <!-- 2.9%: h=4.93, y=102.07 -->
+            <rect x="176" y="102.07" width="50" height="4.93" fill="#CE0E2D" rx="3"/>
+            <text x="201" y="98.5" text-anchor="middle" font-size="10" font-weight="700" fill="#CE0E2D">2.9%</text>
+            <text x="201" y="119" text-anchor="middle" font-size="8" fill="#6b7280">+CBM588</text>
+            <text x="201" y="129" text-anchor="middle" font-size="7.5" fill="#9ca3af">3g 合併</text>
+            <text x="40" y="143" font-size="7.5" fill="#9ca3af">P&lt;0.05 vs 單獨使用　倉田晉, 小兒科臨床 1988</text>
+          </svg>
+        </div>
+        <p>兒科隨機試驗比較不同劑量 CBM588 合併抗生素的腹瀉發生率。加入 CBM588 3g 後整體腹瀉率從 47.5% 降至 2.9%，達統計顯著差異。</p>
         <div class="evidence-highlight">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           腹瀉發生率 47.5% → 2.9%
         </div>
       </div>
 
+      <!-- STUDY 03 -->
       <div class="evidence-card">
         <div class="evidence-num">STUDY 03</div>
-        <h3>除菌療法趨勢不遜色（H. pylori 三合一）</h3>
-        <p>臨床研究比較三合一除菌療法合併 CBM588 的效果。加入 CBM588 後，H. pylori 除菌成功率從 76.5% 提升至 94.4%，療程中腸胃不適症改善率從 17.6% 大幅提升至 72.2%，兩項指標均達顯著差異，顯示 CBM588 兼具提升療程完整性與減輕腸胃不適的輔助功效。</p>
+        <h3>配合 H. pylori 三合一除菌療法</h3>
+        <div class="evidence-chart">
+          <svg viewBox="0 0 260 148" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+            <text x="130" y="9" text-anchor="middle" font-size="8" fill="#9ca3af" letter-spacing="0.04em">合併 CBM588 前後比較（%）</text>
+            <line x1="40" y1="22" x2="244" y2="22" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="43.25" x2="244" y2="43.25" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="64.5" x2="244" y2="64.5" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="85.75" x2="244" y2="85.75" stroke="#f0f2f5" stroke-width="1"/>
+            <line x1="40" y1="107" x2="244" y2="107" stroke="#e5e7eb" stroke-width="1"/>
+            <text x="36" y="25" text-anchor="end" font-size="7.5" fill="#9ca3af">100</text>
+            <text x="36" y="46.5" text-anchor="end" font-size="7.5" fill="#9ca3af">75</text>
+            <text x="36" y="67.5" text-anchor="end" font-size="7.5" fill="#9ca3af">50</text>
+            <text x="36" y="89" text-anchor="end" font-size="7.5" fill="#9ca3af">25</text>
+            <text x="36" y="110" text-anchor="end" font-size="7.5" fill="#9ca3af">0</text>
+            <!-- G1: 除菌成功率 -->
+            <!-- before 76.5%: h=65.025→65, y=42 -->
+            <rect x="44" y="42" width="36" height="65" fill="#a0b4cc" rx="3"/>
+            <text x="62" y="38.5" text-anchor="middle" font-size="9" font-weight="700" fill="#6b7280">76.5%</text>
+            <!-- after 94.4%: h=80.24→80, y=27 -->
+            <rect x="86" y="27" width="36" height="80" fill="#172F60" rx="3"/>
+            <text x="104" y="23.5" text-anchor="middle" font-size="9" font-weight="700" fill="#172F60">94.4%</text>
+            <text x="83" y="119" text-anchor="middle" font-size="8" fill="#6b7280">除菌成功率</text>
+            <text x="62" y="130" text-anchor="middle" font-size="7" fill="#9ca3af">合併前</text>
+            <text x="104" y="130" text-anchor="middle" font-size="7" fill="#9ca3af">合併後</text>
+            <!-- divider -->
+            <line x1="138" y1="25" x2="138" y2="107" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+            <!-- G2: 腸胃不適改善 -->
+            <!-- before 17.6%: h=14.96→15, y=92 -->
+            <rect x="148" y="92" width="36" height="15" fill="#e8b0b8" rx="3"/>
+            <text x="166" y="88.5" text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af">17.6%</text>
+            <!-- after 72.2%: h=61.37→61, y=46 -->
+            <rect x="190" y="46" width="36" height="61" fill="#CE0E2D" rx="3" opacity="0.85"/>
+            <text x="208" y="42.5" text-anchor="middle" font-size="9" font-weight="700" fill="#CE0E2D">72.2%</text>
+            <text x="187" y="119" text-anchor="middle" font-size="8" fill="#6b7280">腸胃不適改善</text>
+            <text x="166" y="130" text-anchor="middle" font-size="7" fill="#9ca3af">合併前</text>
+            <text x="208" y="130" text-anchor="middle" font-size="7" fill="#9ca3af">合併後</text>
+            <text x="40" y="143" font-size="7.5" fill="#9ca3af">H. pylori 三合一除菌療法臨床研究</text>
+          </svg>
+        </div>
+        <p>三合一除菌療法加入 CBM588 後，除菌成功率從 76.5% 提升至 94.4%，腸胃不適改善率從 17.6% 大幅提升至 72.2%，兩項均達顯著差異。</p>
         <div class="evidence-highlight">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           除菌成功率 76.5% → 94.4%
