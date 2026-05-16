@@ -205,125 +205,110 @@ section { padding: 80px 0; }
    A — HERO
 ══════════════════════════════════ */
 .hero {
+  min-height: 100vh;
   position: relative;
-  min-height: 620px;
-  display: flex; align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  padding: 130px 48px 80px;
+  gap: 60px;
   overflow: hidden;
-  color: var(--white);
-  padding: 96px 0 80px;
 }
-/* 背景圖 */
-.hero-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background: url('../../assets/hero-bg.png') center 30% / cover no-repeat;
+.hero-photo {
+  position: absolute; inset: 0;
+  background-image: url('../../assets/hero-bg.png');
+  background-size: cover;
+  background-position: center 30%;
 }
-/* 漸層遮罩：左深右淡，保持圖片右側自然 */
-.hero-bg::after {
+.hero-photo::after {
   content: '';
   position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg,
-      rgba(15,30,60,0.88) 0%,
-      rgba(15,30,60,0.72) 45%,
-      rgba(15,30,60,0.20) 75%,
-      rgba(15,30,60,0.05) 100%),
-    linear-gradient(180deg,
-      rgba(15,30,60,0.15) 0%,
-      rgba(15,30,60,0.0) 50%,
-      rgba(15,30,60,0.35) 100%);
+  background: linear-gradient(
+    105deg,
+    rgba(11,30,61,0.92) 0%,
+    rgba(11,30,61,0.75) 50%,
+    rgba(11,30,61,0.55) 100%
+  );
 }
-.hero > .container { position: relative; z-index: 2; width: 100%; }
-
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px; align-items: center;
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
-@media (min-width: 1024px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 0;
-    align-items: center;
-  }
-  /* 桌機：headline 不換行，字體固定讓 13 字一行放得進去 */
-  .hero-title { font-size: 52px; white-space: nowrap; }
-  .hero-title br { display: none; }
+.hero-glow {
+  position: absolute; top: 15%; right: 8%; z-index: 1;
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,43,43,0.18) 0%, transparent 68%);
+  pointer-events: none;
 }
-
-.hero-content { max-width: 100%; }
-
-/* 前置品牌眉：妙利散® MIYARISAN */
-.hero-brand-label {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 16px;
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  padding-left: 72px;
 }
-.hero-brand-label img { height: 28px; width: auto; }
-.hero-brand-label .sep {
-  width: 1px; height: 18px;
-  background: rgba(255,255,255,0.3);
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 14px; margin-bottom: 28px; width: fit-content;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.6); text-transform: uppercase;
 }
-.hero-brand-label span {
-  font-family: var(--font-en);
-  font-size: 12px; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,43,43,0.55); }
+  50%       { box-shadow: 0 0 0 5px rgba(196,43,43,0); }
 }
-
-/* 主標：最大最醒目 */
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 6vw, 72px);
-  font-weight: 900; line-height: 1.12;
-  letter-spacing: -0.01em;
-  color: #fff;
-  margin-bottom: 0;
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+  animation: pulse-dot 2s ease-in-out infinite;
 }
-.hero-title .dot { color: var(--red); margin: 0 2px; }
-
-/* 次標：品牌信賴背書 */
+.hero-headline {
+  font-size: clamp(52px, 7.5vw, 108px);
+  font-weight: 900; line-height: 1.0;
+  letter-spacing: -0.025em; margin-bottom: 28px; color: #fff;
+}
+.hero-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, #C42B2B 0%, #E8632D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .hero-sub {
-  font-size: clamp(15px, 1.8vw, 18px);
-  font-weight: 350; line-height: 1.6;
-  color: rgba(255,255,255,0.72);
-  margin: 18px 0 0;
+  font-size: 15px; font-weight: 300; color: rgba(138,155,176,1);
+  line-height: 1.85; margin-bottom: 44px; max-width: 440px;
 }
-.hero-sub strong {
-  font-weight: 700; color: rgba(255,255,255,0.92);
+.hero-actions { display: flex; align-items: center; gap: 14px; }
+.hero-right {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 20px;
+  padding-right: 80px;
 }
-
-/* 輔助小標：CBM588、通路 */
-.hero-aux {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  margin: 20px 0 32px;
-}
-
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
-.hero-origin {
-  font-family: var(--font-en);
-  font-size: 11px; letter-spacing: 0.07em;
-  color: rgba(255,255,255,0.38); margin-top: 14px;
-}
-
-/* 右側：產品盒浮動 */
-.hero-visual {
-  display: none;
-  position: absolute;
-  right: 28%; bottom: 0;
-  z-index: 3;
-  align-items: flex-end; justify-content: center;
-}
-@media (min-width: 1024px) { .hero-visual { display: flex; } }
-
 .hero-product-img {
-  width: 300px; height: 300px;
-  object-fit: contain;
-  filter: drop-shadow(0 24px 56px rgba(0,0,0,0.6));
-  animation: float 4s ease-in-out infinite;
+  width: 340px;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
+  animation: float 5s ease-in-out infinite;
 }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50%       { transform: translateY(-12px); }
+}
+.hero-cert {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 16px 22px;
+  font-size: 11px; color: rgba(255,255,255,0.65); letter-spacing: 0.08em;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.hero-cert strong { display: block; color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.hero-logo-badge { height: 36px; width: auto; opacity: 0.85; }
+.hero-origin {
+  font-size: 10px; color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em; line-height: 1.6; text-align: right;
 }
 
 /* ══════════════════════════════════
@@ -804,57 +789,42 @@ section { padding: 80px 0; }
 </nav>
 
 <!-- ══ A — HERO ══ -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
 
-  <!-- 產品圖：絕對定位於 Hero 右下角 -->
-  <div class="hero-visual">
-    <img class="hero-product-img"
-      src="../../assets/product-box.png"
-      alt="妙利散® BM 產品盒">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      醫療級整腸製劑・台灣藥字號認證
+    </div>
+    <h1 class="hero-headline">
+      整腸<em>・</em><br>
+      消化<em>・</em><br>
+      次世代<em>益生菌</em>
+    </h1>
+    <p class="hero-sub">
+      日本原廠「妙利散製藥株式會社」原裝進口。<br>
+      含 LBP Clostridium Butyricum Miyairi 588 株酪酸菌，<br>
+      緩解腹瀉、腹痛及便祕，調整腸道。
+    </p>
+    <div class="hero-actions">
+      <a href="#solution" class="btn btn-primary btn-lg">了解酪酸菌</a>
+      <a href="#buy" class="btn btn-ghost-white btn-lg">查看研究報告</a>
+    </div>
   </div>
 
-  <div class="container">
-    <div class="hero-inner">
-
-      <div class="hero-content">
-
-        <!-- 前置眉：品牌 logo + 系列名 -->
-        <div class="hero-brand-label">
-          <img src="../../assets/logo-white.png" alt="妙利散® MIYARISAN">
-          <div class="sep"></div>
-          <span>CBM588 · 日本整腸藥</span>
-        </div>
-
-        <!-- 主標：最大最醒目 -->
-        <h1 class="hero-title">
-          整腸<span class="dot">・</span>消化<span class="dot">・</span><br>
-          次世代益生菌製劑
-        </h1>
-
-        <!-- 次標：品牌信賴背書 -->
-        <p class="hero-sub">
-          <strong>日本 No.&thinsp;1 整腸藥</strong>，70年以上にわたり愛されています<br>
-          MIYARISAN CBM588 次世代LBP製劑，醫院藥局販売
-        </p>
-
-        <!-- 輔助 badges -->
-        <div class="hero-aux">
-          <span class="badge badge-red">藥字號認證</span>
-          <span class="badge badge-gold">日本 No.1</span>
-          <span class="badge" style="color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);">70+ 年歷史</span>
-        </div>
-
-        <!-- CTA -->
-        <div class="hero-actions">
-          <a href="#solution" class="btn btn-primary btn-lg">了解產品</a>
-          <a href="#buy" class="btn btn-ghost-white btn-lg">購買途徑</a>
-        </div>
-
-        <p class="hero-origin">ミヤリサン製薬株式会社 · 台灣總代理：裕心企業有限公司</p>
-      </div>
-
+  <div class="hero-right">
+    <img class="hero-product-img"
+      src="../../assets/product-box.png"
+      alt="妙利散 BM 產品">
+    <img class="hero-logo-badge" src="../../assets/logo-white.png" alt="妙利散® MIYARISAN">
+    <div class="hero-cert">
+      <strong>日本整腸藥 No.1</strong>
+      益生菌市場・70 年以上
     </div>
+    <p class="hero-origin">ミヤリサン製薬株式会社 · 台灣總代理：裕心企業有限公司</p>
   </div>
 </section>
 
