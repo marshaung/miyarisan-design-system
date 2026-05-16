@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>醫療級酪酸菌 CBM588 — 妙利散® MIYARISAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 @font-face { font-family:'FZLanTingHei'; src:url('../../fonts/fzlt-w200.ttf') format('truetype'); font-weight:200; font-display:swap; }
@@ -139,46 +142,105 @@ section { padding: 80px 0; }
 .nav-dropdown-menu a + a { border-top: 1px solid var(--border); }
 
 /* ── HERO ── */
-.cbm-hero {
-  position: relative; min-height: 580px;
-  display: flex; align-items: center;
-  overflow: hidden; color: var(--white);
-  padding: 96px 0 80px;
+.hero {
+  min-height: 100vh; position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; padding: 130px 48px 80px;
+  gap: 60px; overflow: hidden; color: #fff;
+  background: #0B1E3D;
 }
-.cbm-hero-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background: url('https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
-.cbm-hero-bg::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(23,47,96,0.97) 0%, rgba(23,47,96,0.88) 55%, rgba(23,47,96,0.75) 100%);
+.hero-glow {
+  position: absolute; top: 15%; left: 8%; z-index: 1;
+  width: 440px; height: 440px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,43,43,0.18) 0%, transparent 68%);
+  pointer-events: none;
 }
-.cbm-hero > .container { position: relative; z-index: 2; width: 100%; }
-
-.hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-.hero-eyebrow-line { width: 32px; height: 2px; background: var(--red); border-radius: 2px; }
-.hero-eyebrow-text {
-  font-family: var(--font-en);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding-left: 72px;
 }
-.cbm-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 6vw, 72px);
-  font-weight: 900; line-height: 1.2;
-  color: #fff; margin-bottom: 20px; max-width: 720px;
+.hero-bacteria-img {
+  width: 300px; max-width: 90%;
+  filter: drop-shadow(0 0 48px rgba(196,43,43,0.28)) drop-shadow(0 24px 48px rgba(0,0,0,0.45));
+  animation: float 5s ease-in-out infinite;
 }
-.cbm-hero-sub {
-  font-size: clamp(15px, 1.8vw, 18px);
-  font-weight: 350; line-height: 1.75;
-  color: rgba(255,255,255,0.70);
-  max-width: 560px; margin-bottom: 28px;
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.hero-strain-label {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 10px 22px;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  text-align: center;
 }
-.cbm-hero-sub strong { color: rgba(255,255,255,0.92); font-weight: 600; }
-.hero-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-strain-label strong {
+  display: block; font-size: 13px; font-weight: 700;
+  color: #fff; letter-spacing: 0.04em; margin-bottom: 3px;
+}
+.hero-strain-label span {
+  font-size: 10px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
+}
+.hero-right {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  padding-right: 72px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 14px; margin-bottom: 28px; width: fit-content;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.6); text-transform: uppercase;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,43,43,0.55); }
+  50% { box-shadow: 0 0 0 5px rgba(196,43,43,0); }
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--red); animation: pulse-dot 2s ease-in-out infinite;
+}
+.hero-headline {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: clamp(42px, 5.5vw, 84px);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 24px; color: #fff;
+}
+.hero-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, #C42B2B 0%, #E8632D 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(138,155,176,1); line-height: 1.85;
+  margin-bottom: 44px; max-width: 420px;
+}
+.hero-actions { display: flex; align-items: center; gap: 14px; }
+.hero-cta-primary {
+  background: var(--red); color: var(--white); border: none;
+  padding: 15px 34px; font-size: 14px; font-weight: 700;
+  letter-spacing: 0.06em; cursor: pointer; font-family: inherit;
+  transition: background .2s, transform .15s;
+}
+.hero-cta-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.hero-cta-ghost {
+  background: transparent; color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 15px 34px; font-size: 14px; letter-spacing: 0.04em;
+  cursor: pointer; font-family: inherit; transition: all .2s;
+}
+.hero-cta-ghost:hover { border-color: var(--white); color: var(--white); transform: translateY(-1px); }
 
 /* ── TRUST BAR ── */
 .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 20px 0; }
@@ -425,7 +487,11 @@ section { padding: 80px 0; }
 @media (max-width: 767px) {
   section { padding: 64px 0; }
 
-  .cbm-hero { min-height: auto; padding: 64px 0 48px; }
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; min-height: auto; }
+  .hero-left { padding-left: 0; order: 2; }
+  .hero-right { padding-right: 0; order: 1; }
+  .hero-bacteria-img { width: 200px; }
+  .hero-headline { font-size: clamp(36px, 10vw, 56px); }
 
   /* Trust bar：2x2 grid */
   .trust-bar-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; justify-items: center; }
@@ -541,23 +607,23 @@ section { padding: 80px 0; }
 </div>
 
 <!-- ══ HERO ══ -->
-<section class="cbm-hero" id="hero">
-  <div class="cbm-hero-bg"></div>
-  <div class="container">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span class="hero-eyebrow-text">CLOSTRIDIUM BUTYRICUM MIYAIRI 588</span>
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <img class="hero-bacteria-img" src="../../assets/strain-cbm.png" alt="CBM588 酪酸菌菌株">
+    <div class="hero-strain-label">
+      <strong>CBM588 菌株</strong>
+      <span>Clostridium butyricum Miyairi 588</span>
     </div>
-    <h1 class="cbm-hero-title">不是所有益生菌，<br>都能在醫療情境下發揮作用</h1>
-    <p class="cbm-hero-sub">妙利散專利菌株 CBM588，具備芽孢結構、耐酸穩定性與酪酸代謝能力，在日本已有<strong>超過 50 年的醫療使用歷史</strong>。</p>
-    <div class="hero-badge-row">
-      <span class="badge badge-red">醫療級 GMP 製造</span>
-      <span class="badge badge-ghost">50+ 年日本處方歷史</span>
-      <span class="badge badge-ghost">peer-reviewed 臨床研究</span>
-    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-badge"><span class="hero-badge-dot"></span>日本醫療級認證菌株・50+ 年臨床使用</div>
+    <h1 class="hero-headline">酪酸菌<em>・</em><br>專利<em>菌株</em><br><em>CBM588</em></h1>
+    <p class="hero-sub">妙利散專利菌株，具備芽孢結構耐酸性強，<br>可與抗生素同期使用，pH 2 環境存活率 80～90%。</p>
     <div class="hero-actions">
-      <a href="#criteria" class="btn btn-primary btn-lg">了解菌株特色</a>
-      <a href="#evidence" class="btn btn-ghost-white btn-lg">查看文獻報告</a>
+      <button class="hero-cta-primary" onclick="location.href='#criteria'">了解菌株特色</button>
+      <button class="hero-cta-ghost" onclick="location.href='#evidence'">查看文獻報告</button>
     </div>
   </div>
 </section>
