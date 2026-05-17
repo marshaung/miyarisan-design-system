@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>次世代益生菌 NGP — 妙利散® MIYARISAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 @font-face { font-family:'FZLanTingHei'; src:url('fonts/fzlt-w200.ttf') format('truetype'); font-weight:200; font-display:swap; }
@@ -141,46 +144,105 @@ section { padding: 80px 0; }
 .nav-dropdown-menu a + a { border-top: 1px solid var(--border); }
 
 /* ── HERO ── */
-.ngp-hero {
-  position: relative; min-height: 620px;
-  display: flex; align-items: center;
-  overflow: hidden; color: var(--white);
-  padding: 96px 0 80px;
+.hero {
+  min-height: 100vh; position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; padding: 130px 48px 80px;
+  gap: 60px; overflow: hidden; color: #fff;
+  background: #0B1E3D;
 }
-.ngp-hero-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
-.ngp-hero-bg::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(10,20,50,0.96) 0%, rgba(10,20,50,0.84) 55%, rgba(10,20,50,0.72) 100%);
+.hero-glow {
+  position: absolute; top: 15%; left: 8%; z-index: 1;
+  width: 440px; height: 440px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,120,255,0.18) 0%, transparent 68%);
+  pointer-events: none;
 }
-.ngp-hero > .container { position: relative; z-index: 2; width: 100%; }
-
-.hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-.hero-eyebrow-line { width: 32px; height: 2px; background: var(--red); border-radius: 2px; }
-.hero-eyebrow-text {
-  font-family: var(--font-en);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding-left: 72px;
 }
-.ngp-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 6vw, 72px);
-  font-weight: 900; line-height: 1.15;
-  color: #fff; margin-bottom: 20px; max-width: 680px;
+.hero-chip-img {
+  width: 460px; max-width: 90%;
+  filter: drop-shadow(0 0 48px rgba(80,120,255,0.35)) drop-shadow(0 24px 48px rgba(0,0,0,0.45));
+  animation: float 5s ease-in-out infinite;
 }
-.ngp-hero-sub {
-  font-size: clamp(15px, 1.8vw, 18px);
-  font-weight: 350; line-height: 1.75;
-  color: rgba(255,255,255,0.70);
-  max-width: 520px; margin-bottom: 28px;
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.hero-chip-label {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 10px 22px;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  text-align: center;
 }
-.ngp-hero-sub strong { color: rgba(255,255,255,0.92); font-weight: 600; }
-.hero-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-chip-label strong {
+  display: block; font-size: 13px; font-weight: 700;
+  color: #fff; letter-spacing: 0.04em; margin-bottom: 3px;
+}
+.hero-chip-label span {
+  font-size: 10px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
+}
+.hero-right {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  padding-right: 72px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 14px; margin-bottom: 28px; width: fit-content;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.6); text-transform: uppercase;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,43,43,0.55); }
+  50% { box-shadow: 0 0 0 5px rgba(196,43,43,0); }
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--red); animation: pulse-dot 2s ease-in-out infinite;
+}
+.hero-headline {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: clamp(42px, 5.5vw, 84px);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 24px; color: #fff;
+}
+.hero-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, #C42B2B 0%, #E8632D 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(138,155,176,1); line-height: 1.85;
+  margin-bottom: 44px; max-width: 420px;
+}
+.hero-actions { display: flex; align-items: center; gap: 14px; }
+.hero-cta-primary {
+  background: var(--red); color: var(--white); border: none;
+  padding: 15px 34px; font-size: 14px; font-weight: 700;
+  letter-spacing: 0.06em; cursor: pointer; font-family: inherit;
+  transition: background .2s, transform .15s;
+}
+.hero-cta-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.hero-cta-ghost {
+  background: transparent; color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 15px 34px; font-size: 14px; letter-spacing: 0.04em;
+  cursor: pointer; font-family: inherit; transition: all .2s;
+}
+.hero-cta-ghost:hover { border-color: var(--white); color: var(--white); transform: translateY(-1px); }
 
 /* ── TRUST BAR ── */
 .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 20px 0; }
@@ -589,7 +651,11 @@ section { padding: 80px 0; }
 @media (max-width: 767px) {
   section { padding: 64px 0; }
 
-  .ngp-hero { min-height: auto; padding: 64px 0 48px; }
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; min-height: auto; }
+  .hero-left { padding-left: 0; order: 2; }
+  .hero-right { padding-right: 0; order: 1; }
+  .hero-chip-img { width: 200px; }
+  .hero-headline { font-size: clamp(36px, 10vw, 56px); }
 
   /* Trust bar：2x2 grid */
   .trust-bar-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; justify-items: center; }
@@ -710,23 +776,23 @@ section { padding: 80px 0; }
 </div>
 
 <!-- ══ HERO ══ -->
-<section class="ngp-hero" id="hero">
-  <div class="ngp-hero-bg"></div>
-  <div class="container">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span class="hero-eyebrow-text">NEXT GENERATION PROBIOTICS</span>
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <img class="hero-chip-img" src="assets/ngp-chip.png" alt="次世代益生菌 NGP">
+    <div class="hero-chip-label">
+      <strong>次世代益生菌 NGP</strong>
+      <span>Next-Generation Probiotics</span>
     </div>
-    <h1 class="ngp-hero-title">什麼是次世代益生菌</h1>
-    <p class="ngp-hero-sub">一般人以為益生菌就是補充好菌。但科學家現在關注的，<strong>已經是另一個等級的東西了</strong>。</p>
-    <div class="hero-badge-row">
-      <span class="badge badge-red">藥品等級研發</span>
-      <span class="badge badge-ghost">正式人體臨床試驗</span>
-      <span class="badge badge-ghost">菌株層級基因鑑定</span>
-    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-badge"><span class="hero-badge-dot"></span>次世代益生菌研究・突破傳統益生菌限制</div>
+    <h1 class="hero-headline"><em>次世代</em><br>益生菌<br><em>NGP</em></h1>
+    <p class="hero-sub">一般人以為益生菌就是補充好菌。但科學家現在關注的，<br>已經是另一個等級的東西了。</p>
     <div class="hero-actions">
-      <a href="#what-is-ngp" class="btn btn-primary btn-lg">了解 NGP</a>
-      <a href="https://lin.ee/RuxohDy" target="_blank" rel="noopener" class="btn btn-ghost-white btn-lg">LINE 諮詢</a>
+      <button class="hero-cta-primary" onclick="location.href='#what-is-ngp'">了解 NGP</button>
+      <button class="hero-cta-ghost" onclick="location.href='https://lin.ee/RuxohDy'">LINE 諮詢</button>
     </div>
   </div>
 </section>
