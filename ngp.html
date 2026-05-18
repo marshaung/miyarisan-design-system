@@ -894,82 +894,9 @@ section { padding: 80px 0; }
 
     </div>
 
-    <!-- Flow diagram card -->
-    <div class="cv2-card" style="margin-top:36px;padding:28px 24px;">
-      <div class="cv2-sphere cv2-sphere-navy"></div>
-      <div class="cv2-header" style="margin-bottom:12px;">
-        <div class="chart-title" style="margin-bottom:0;">你吞的 100 億菌，最後剩幾億？</div>
-      </div>
-      <!-- Split-merge flow: 100億 → [一般/NGP parallel paths] → 腸道 -->
-      <div class="js-wrap">
-
-        <!-- 起點：100億 -->
-        <div class="js-big-node">
-          <div class="journey-node-num">100<span style="font-size:0.55em;font-weight:500;color:var(--text-3);">億</span></div>
-          <div class="journey-node-label">吃下去</div>
-        </div>
-
-        <!-- Fork connector -->
-        <svg class="js-connector" viewBox="0 0 28 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="0"  y1="50" x2="14" y2="50" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="23" x2="14" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="23" x2="28" y2="23" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="77" x2="28" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-        </svg>
-
-        <!-- 兩條路 -->
-        <div class="js-paths-col">
-
-          <!-- 一般乳酸菌 -->
-          <div class="js-path">
-            <div class="journey-row-tag danger">一般乳酸菌</div>
-            <div class="js-path-nodes">
-              <div class="journey-node is-danger">
-                <div class="journey-node-num">pH 2</div>
-                <div class="journey-node-label">胃酸關卡</div>
-              </div>
-              <svg class="journey-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-danger">
-                <div class="journey-node-num">&lt;10<span style="font-size:0.55em;font-weight:500;">億</span></div>
-                <div class="journey-node-label">存活下來</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- NGP 芽孢菌株 -->
-          <div class="js-path">
-            <div class="journey-row-tag safe">NGP 芽孢菌株</div>
-            <div class="js-path-nodes">
-              <div class="journey-node is-safe">
-                <div class="journey-node-num" style="color:var(--navy);">pH 2</div>
-                <div class="journey-node-label">胃酸關卡</div>
-              </div>
-              <svg class="journey-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-safe">
-                <div class="journey-node-num">95<span style="font-size:0.55em;font-weight:500;color:var(--navy);">億</span></div>
-                <div class="journey-node-label">存活下來</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Merge connector -->
-        <svg class="js-connector" viewBox="0 0 28 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="0"  y1="23" x2="14" y2="23" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="0"  y1="77" x2="14" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="23" x2="14" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="50" x2="28" y2="50" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-        </svg>
-
-        <!-- 終點：腸道 -->
-        <div class="js-big-node is-safe" style="border-color:#c8d2e8;background:#eef1f8;">
-          <div class="journey-node-num" style="font-size:clamp(14px,1.8vw,20px);color:var(--navy);letter-spacing:0;">腸道</div>
-          <div class="journey-node-label">目的地</div>
-        </div>
-
-      </div>
-      <p class="journey-note" style="margin-top:10px;">＊乳酸菌各菌株表現差異大，本數據為代表性趨勢比較。</p>
+    <!-- Survival comparison infographic -->
+    <div style="margin-top:36px;">
+      <img src="assets/survival-comparison.png" alt="你吞的 100 億菌，最後剩幾億？腸胃保健菌株存活比較" style="width:100%;height:auto;display:block;border-radius:12px;">
     </div>
 
   </div>
