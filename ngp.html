@@ -103,7 +103,7 @@ section { padding: 80px 0; }
 .nav-logo img { height: 36px; width: auto; }
 .nav-links { display: none; gap: 28px; list-style: none; }
 @media (min-width: 1024px) { .nav-links { display: flex; } }
-.nav-links a { font-size: 15px; font-weight: 600; color: var(--text-2); transition: color 120ms; }
+.nav-links a { font-size: 17px; font-weight: 600; color: var(--text-2); transition: color 120ms; }
 .nav-links a:hover { color: var(--red); }
 .nav-links a.active { color: var(--red); }
 .nav-cta { display: none; }
@@ -438,38 +438,44 @@ section { padding: 80px 0; }
   font-size: 13px; color: var(--text-3); line-height: 1.6;
 }
 
-/* ── STATS BAR ── */
-.stats-bar { background: var(--navy); padding: 48px 0; }
-.stats-inner { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; text-align: center; }
-@media (min-width: 768px) { .stats-inner { grid-template-columns: repeat(4,1fr); } }
-.stat-num { font-family: var(--font-en); font-size: clamp(36px,5vw,52px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
-.stat-num sup { font-size: 0.5em; vertical-align: super; }
-.stat-unit { color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 400; margin-top: 2px; }
-.stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 6px; line-height: 1.4; }
 
 /* ── MECHANISM ── */
-.mechanism-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+#mechanism { background: #0B1E3D; }
+#mechanism .section-header h2 { color: #fff; }
+#mechanism .section-header p { color: rgba(255,255,255,0.5); }
+#mechanism .eyebrow { color: #E8632D; }
+#mechanism .eyebrow::before { background: #E8632D; }
+#mechanism .mechanism-note { color: rgba(255,255,255,0.25) !important; }
+
+.mechanism-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .mechanism-grid { grid-template-columns: repeat(3,1fr); } }
 
 .mechanism-card {
-  background: var(--bg-gray);
-  border: 1px solid var(--border);
-  border-radius: 16px; padding: 32px 28px;
-  position: relative;
-  transition: box-shadow 150ms, transform 150ms;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 28px 24px;
+  position: relative; overflow: hidden;
+  transition: background 150ms, transform 150ms;
 }
-.mechanism-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); transform: translateY(-3px); }
-.mechanism-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); border-radius: 16px 16px 0 0; }
+.mechanism-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.mechanism-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%); border-radius: 12px 12px 0 0; }
+.mechanism-card::after {
+  content: attr(data-num);
+  position: absolute; bottom: -16px; right: 8px;
+  font-family: var(--font-en); font-size: 100px; font-weight: 900;
+  color: rgba(255,255,255,0.04); line-height: 1;
+  pointer-events: none; user-select: none;
+}
 .mechanism-icon {
-  width: 52px; height: 52px; border-radius: 14px;
-  background: var(--red-pale);
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(255,255,255,0.08);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 16px;
 }
-.mechanism-icon svg { color: var(--red); }
-.mechanism-step { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-4); margin-bottom: 8px; }
-.mechanism-card h3 { font-size: 20px; font-weight: 700; color: var(--text-1); margin-bottom: 10px; }
-.mechanism-card p { font-size: 14px; color: var(--text-2); line-height: 1.72; }
+.mechanism-icon svg { color: rgba(255,255,255,0.65); }
+.mechanism-step { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(232,99,45,0.75); margin-bottom: 8px; }
+.mechanism-card h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.mechanism-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; }
 
 /* ── AUDIENCE ── */
 .audience-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
@@ -977,29 +983,6 @@ section { padding: 80px 0; }
   </div>
 </section>
 
-<!-- ══ STATS BAR ══ -->
-<div class="stats-bar">
-  <div class="container">
-    <div class="stats-inner">
-      <div>
-        <div class="stat-num">&lt;10<sup>%</sup></div>
-        <div class="stat-label">一般乳酸菌胃酸存活率</div>
-      </div>
-      <div>
-        <div class="stat-num">50<sup>+</sup></div>
-        <div class="stat-label">NGP日本醫療使用歷史</div>
-      </div>
-      <div>
-        <div class="stat-num">GMP</div>
-        <div class="stat-label">藥品等級製造標準</div>
-      </div>
-      <div>
-        <div class="stat-num">RCT</div>
-        <div class="stat-label">人體臨床試驗要求</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ══ MECHANISM ══ -->
 <section id="mechanism">
@@ -1011,33 +994,33 @@ section { padding: 80px 0; }
     </div>
 
     <div class="mechanism-grid">
-      <div class="mechanism-card">
+      <div class="mechanism-card" data-num="01">
         <div class="mechanism-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div class="mechanism-step">LEVEL 01</div>
-        <h3>存活</h3>
-        <p>某些 NGP 菌株具備特殊結構（如芽孢），能承受胃酸、膽鹽，甚至多種抗生素的衝擊，在抵達腸道後恢復活性。傳統乳酸菌沒有這個結構，在胃酸環境下往往直接瓦解。</p>
+        <h3>結構特性</h3>
+        <p>部分 NGP 候選菌株（如芽孢型）具備特殊的結構特性。科學界觀察到這類結構在不同環境條件下呈現出與一般乳酸菌不同的穩定性，是研究者深入研究此類菌株的原因之一。</p>
       </div>
-      <div class="mechanism-card">
+      <div class="mechanism-card" data-num="02">
         <div class="mechanism-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <div class="mechanism-step">LEVEL 02</div>
-        <h3>修復</h3>
-        <p>NGP 研究的重要方向之一，是促進短鏈脂肪酸（尤其是丁酸）的生產。丁酸是腸道黏膜細胞的主要能量來源，有助於維持腸道屏障穩定。這不是補菌，是在修復腸道的工作環境。</p>
+        <h3>代謝物研究</h3>
+        <p>短鏈脂肪酸（SCFA）的代謝，是 NGP 研究領域的核心方向之一。研究者目前正探索特定菌株與腸道代謝物之間的關聯性，相關基礎研究仍在持續進行中。</p>
       </div>
-      <div class="mechanism-card">
+      <div class="mechanism-card" data-num="03">
         <div class="mechanism-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
         </div>
         <div class="mechanism-step">LEVEL 03</div>
-        <h3>調節</h3>
-        <p>腸道聚集大量免疫細胞，是人體免疫系統的重要基地。研究顯示，某些 NGP 菌株能透過與腸道免疫細胞的互動，影響全身性的炎症調控——這也是 NGP 臨床研究範圍延伸至腸胃以外的原因。</p>
+        <h3>腸道生態研究</h3>
+        <p>腸道微生物與免疫系統的交互關係，是 NGP 研究的新興方向之一。部分研究在體外模型中探索了特定菌株的表現，進一步的人體數據仍在積累中。</p>
       </div>
     </div>
 
-    <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--text-4);">此領域研究仍在快速發展中，現有數據讓研究者有合理的樂觀，但不應被解讀為最終定論。</p>
+    <p class="mechanism-note" style="text-align:center;margin-top:28px;font-size:13px;">以上為學術研究方向的科普介紹，不構成任何醫療或健康建議。如有健康疑慮，請諮詢醫師。</p>
   </div>
 </section>
 
