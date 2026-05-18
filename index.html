@@ -333,12 +333,12 @@ section { padding: 80px 0; }
     linear-gradient(180deg,
       rgba(255,255,255,0) 0%,
       rgba(255,255,255,0) 50%,
-      rgba(247,248,250,1) 100%),
+      rgba(255,255,255,1) 100%),
     linear-gradient(90deg,
       rgba(255,255,255,0) 0%,
       rgba(255,255,255,0.05) 40%,
-      rgba(247,248,250,0.9) 65%,
-      rgba(247,248,250,1) 100%);
+      rgba(255,255,255,0.9) 65%,
+      rgba(255,255,255,1) 100%);
 }
 .doctor-section > .container { position: relative; z-index: 2; padding-top: 40px; padding-bottom: 40px; }
 .doctor-content {
@@ -419,7 +419,7 @@ section { padding: 80px 0; }
 /* ══════════════════════════════════
    C — SOLUTION
 ══════════════════════════════════ */
-.solution-section { background: var(--white); }
+.solution-section { background: var(--bg-gray); }
 .solution-inner {
   display: grid; grid-template-columns: 1fr;
   gap: 48px; align-items: center;
@@ -480,35 +480,52 @@ section { padding: 80px 0; }
   letter-spacing: -0.01em; color: #fff;
 }
 .channel-cards {
-  display: flex; gap: 16px; width: 100%;
+  display: flex; gap: 20px; width: 100%;
 }
 .channel-card {
   flex: 1; display: flex; flex-direction: column; align-items: center;
   background: var(--white);
-  border: 1.5px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px 16px 24px;
+  padding: 36px 20px 28px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  position: relative; overflow: hidden;
 }
+.channel-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--navy) 0%, #3b6cb7 100%);
+}
+.channel-card.retail::before {
+  background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+}
+.channel-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.channel-badge.hospital { background: #eef1f8; color: var(--navy); }
+.channel-badge.retail   { background: var(--red-pale); color: var(--red); }
 .channel-card img {
   height: 160px; width: auto; max-width: 100%;
-  object-fit: contain; margin-bottom: 24px;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.12));
+  object-fit: contain; margin-bottom: 20px;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.15));
 }
 .channel-label {
-  font-size: 22px; font-weight: 700; color: var(--text-1);
-  margin-bottom: 8px;
+  font-size: 20px; font-weight: 700; color: var(--text-1);
+  margin-bottom: 6px;
 }
 .channel-desc {
-  font-size: 14px; color: var(--text-3); line-height: 1.5;
+  font-size: 13px; color: var(--text-3); line-height: 1.5;
 }
 .strain-id span { color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 400; }
 
 /* ══════════════════════════════════
    D — TRUST / CRITERIA
 ══════════════════════════════════ */
-.trust-section { background: var(--bg-gray); }
+.trust-section { background: var(--white); padding-top: 0; }
 .trust-header { text-align: center; margin-bottom: 56px; }
 .trust-header h2 {
   font-size: clamp(22px, 3vw, 32px);
@@ -516,40 +533,50 @@ section { padding: 80px 0; }
 }
 .trust-header p { font-size: 15px; color: var(--text-3); }
 
-/* Criteria 共享邊框三欄 */
+/* Criteria 卡片 */
 .criteria-grid {
   display: grid;
   grid-template-columns: 1fr;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--white);
+  gap: 16px;
   margin-bottom: 64px;
 }
 @media (min-width: 768px) {
   .criteria-grid { grid-template-columns: repeat(3, 1fr); }
 }
 .criteria-card {
-  padding: 36px 32px;
+  padding: 28px 28px 22px;
   display: flex; flex-direction: column;
-  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  position: relative; overflow: hidden;
 }
-@media (min-width: 768px) {
-  .criteria-card { border-bottom: none; border-right: 1px solid var(--border); }
-  .criteria-card:last-child { border-right: none; }
+.criteria-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+  border-radius: 16px 16px 0 0;
+}
+.criteria-card::after {
+  content: attr(data-num);
+  position: absolute; bottom: -14px; right: 16px;
+  font-family: var(--font-en); font-size: 88px; font-weight: 900;
+  color: rgba(206,14,45,0.05); line-height: 1;
+  pointer-events: none; user-select: none;
 }
 .criteria-step {
   font-family: var(--font-en);
-  font-size: 10.5px; font-weight: 700;
+  font-size: 11px; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-3); margin-bottom: 16px;
+  color: var(--red); margin-bottom: 10px;
 }
 .criteria-card h3 {
-  font-size: 22px; font-weight: 700;
-  color: var(--text-1); margin-bottom: 12px;
+  font-size: 20px; font-weight: 700;
+  color: var(--text-1); margin-bottom: 10px;
 }
 .criteria-card p {
-  font-size: 15px; font-weight: 350;
+  font-size: 14px; font-weight: 400;
   color: var(--text-2); line-height: 1.7;
   flex-grow: 1; margin-bottom: 20px;
 }
@@ -1043,7 +1070,7 @@ section { padding: 80px 0; }
 
   <div class="hero-right">
     <img class="hero-product-img"
-      src="assets/product-box.png"
+      src="assets/product-box-bm.png"
       alt="妙利散 BM 產品">
     <img class="hero-logo-badge" src="assets/logo-white.png" alt="妙利散® MIYARISAN">
     <div class="hero-cert">
@@ -1163,12 +1190,14 @@ section { padding: 80px 0; }
       <div class="solution-visual">
         <div class="channel-cards">
           <div class="channel-card">
+            <span class="channel-badge hospital">醫療通路</span>
             <img src="assets/hospital-box.png" alt="妙利散® BM 醫療院所包裝">
             <div class="channel-label">醫療院所</div>
             <div class="channel-desc">用於特定疾病治療</div>
           </div>
-          <div class="channel-card">
-            <img src="assets/product-box.png" alt="妙利散® BM 藥局零售包裝">
+          <div class="channel-card retail">
+            <span class="channel-badge retail">藥局通路</span>
+            <img src="assets/product-box-bm.png" alt="妙利散® BM 藥局零售包裝">
             <div class="channel-label">藥局零售</div>
             <div class="channel-desc">日常保健常備藥品</div>
           </div>
@@ -1236,19 +1265,19 @@ section { padding: 80px 0; }
     </div>
 
     <div class="criteria-grid">
-      <div class="criteria-card">
+      <div class="criteria-card" data-num="01">
         <span class="criteria-step">CRITERIA 01</span>
         <h3>法規合格</h3>
         <p>符合台灣 OTC 醫療級相關規範，依規定進行登錄與管理，外包裝標示清楚、批號可追，並接受主管機關監督，作為藥品專業度與安全性的基本條件。</p>
         <a class="text-link" href="#">OTC 藥品規範 →</a>
       </div>
-      <div class="criteria-card">
+      <div class="criteria-card" data-num="02">
         <span class="criteria-step">CRITERIA 02</span>
         <h3>通路合格</h3>
         <p>僅於正規醫療通路（醫院、藥局）流通，是判斷益生菌專業度的重要基礎。符合藥事管理相關規範，並接受完整的來源與流向管理。</p>
         <a class="text-link" href="#">醫療通路規範 →</a>
       </div>
-      <div class="criteria-card">
+      <div class="criteria-card" data-num="03">
         <span class="criteria-step">CRITERIA 03</span>
         <h3>效果合格</h3>
         <p>基於菌株特性與製劑設計，具耐酸與耐熱特性，具備因應環境變化確保活菌的穩定性，並有可重複驗證的人體 RCT 臨床研究支持。</p>
