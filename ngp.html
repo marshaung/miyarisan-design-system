@@ -263,22 +263,31 @@ section { padding: 80px 0; }
 .text-link:hover { color: var(--red-dark); }
 
 /* ── PROBLEM ── */
-.problem-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
-@media (min-width: 1024px) {
-  .problem-inner { grid-template-columns: 1fr 1fr; align-items: stretch; gap: 64px; }
-  .problem-inner > div:last-child { display: flex; flex-direction: column; }
-  .problem-inner > div:last-child .chart-block { flex: 1; }
-}
+.problem-body { display: flex; flex-direction: column; gap: 32px; }
+
+.stat-panels { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; overflow: hidden; }
+@media (max-width: 599px) { .stat-panels { grid-template-columns: 1fr; } }
+.stat-panel { position: relative; padding: 40px 32px; min-height: 260px; display: flex; flex-direction: column; justify-content: flex-end; }
+.stat-panel-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.stat-panel.is-red .stat-panel-bg { background-image: url(assets/doctor-bg-2.png); }
+.stat-panel.is-red::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(90,8,18,0.88) 0%, rgba(160,12,28,0.78) 100%); }
+.stat-panel.is-navy .stat-panel-bg { background-image: url(assets/ngp-petri.jpg); }
+.stat-panel.is-navy::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(5,12,40,0.90) 0%, rgba(11,30,61,0.82) 100%); }
+.stat-panel-content { position: relative; z-index: 1; }
+.stat-panel-num { font-family: var(--font-en); font-size: clamp(52px,6.5vw,80px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; color: #fff; }
+.stat-panel-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.65); margin: 8px 0 10px; }
+.stat-panel-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
 .body-text { font-size: 15px; color: var(--text-2); line-height: 1.8; }
 .body-text + .body-text { margin-top: 16px; }
 .body-text strong { color: var(--text-1); font-weight: 700; }
 .callout {
-  margin-top: 24px; padding: 16px 20px;
-  border-left: 3px solid var(--red); background: var(--red-pale);
-  border-radius: 0 8px 8px 0;
-  font-size: 14px; font-weight: 600; color: var(--text-1); line-height: 1.6;
+  margin-top: 36px; padding: 0;
+  text-align: center;
+  font-size: clamp(17px,2vw,22px); font-weight: 700; color: var(--text-1); line-height: 1.65;
 }
+.callout::before { content: '\201C'; margin-right: 4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
+.callout::after  { content: '\201D'; margin-left:  4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
 
 /* Insight cards (left column) */
 .insight-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
@@ -835,68 +844,41 @@ section { padding: 80px 0; }
       <p class="body-text" style="max-width:620px;margin:0 auto;">保健食品等級的益生菌，從來沒有被要求「菌必須活著抵達腸道」<br>大部分廠商標榜的菌數，只是出廠時的數字。</p>
     </div>
 
-    <div class="problem-inner">
+    <div class="problem-body">
 
-      <!-- Left: insight cards -->
+      <!-- Left: stat panels + callout -->
       <div>
-        <div class="insight-cards">
-          <div class="insight-card">
-            <div class="insight-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </div>
-            <div>
-              <h4>胃酸屏障：第一道死亡關卡</h4>
-              <p>人體胃酸約 pH 1.5–3.5，比市售醋酸上十倍。一般乳酸菌在此環境下存活率<strong style="color:var(--text-1);">可能低於 10%</strong>——你吞一百億，到腸道的可能連十億都不到。</p>
-            </div>
-          </div>
-          <div class="insight-card">
-            <div class="insight-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <div>
-              <h4>抗生素：第二重打擊</h4>
-              <p>廣效抗生素清除感染時，不區分好菌壞菌。這對已過胃酸關卡、僅剩的少數活菌來說，是另一波消滅——剛好是最需要益生菌的時機，效果卻最差。</p>
-            </div>
-          </div>
-        </div>
+        <div class="stat-panels">
 
-        <div class="callout">這不是品牌的問題。保健食品等級的益生菌，本來就沒有被要求需要有效果。</div>
+          <!-- 一般乳酸菌 -->
+          <div class="stat-panel is-red">
+            <div class="stat-panel-bg"></div>
+            <div class="stat-panel-content">
+              <div class="stat-panel-num">&lt;10%</div>
+              <div class="stat-panel-title">一般乳酸菌</div>
+              <div class="stat-panel-desc">胃酸環境存活率<br>100 億吃下去，到腸道不到 10 億</div>
+            </div>
+          </div>
+
+          <!-- NGP 芽孢菌株 -->
+          <div class="stat-panel is-navy">
+            <div class="stat-panel-bg"></div>
+            <div class="stat-panel-content">
+              <div class="stat-panel-num">&gt;80%</div>
+              <div class="stat-panel-title">NGP 芽孢菌株</div>
+              <div class="stat-panel-desc">相同胃酸環境存活率<br>芽孢結構完整保護，順利抵達腸道</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="callout" style="margin-top:28px;">這不是品牌的問題。保健食品等級的益生菌，本來就沒有被要求需要有效果。</div>
       </div>
 
-      <!-- Right: chart blocks -->
+      <!-- Right: infographic -->
       <div>
-        <div class="chart-block">
-          <div class="chart-title">胃酸環境（pH 2）存活率比較</div>
-          <div class="bar-row">
-            <div>
-              <div class="bar-label">
-                <span>NGP 芽孢型菌株</span><span>&gt;80%</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill red" style="width:82%"></div></div>
-            </div>
-            <div>
-              <div class="bar-label">
-                <span>一般乳酸菌（L. acidophilus）</span><span>&lt;10%</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill gray" style="width:8%"></div></div>
-            </div>
-            <div>
-              <div class="bar-label">
-                <span>市售多菌種益生菌（多數）</span><span>&lt;10%</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill gray" style="width:6%"></div></div>
-            </div>
-          </div>
-          <p class="journey-note">＊乳酸菌各菌株表現差異大，本數據為代表性趨勢比較。</p>
-        </div>
-
+        <img src="assets/survival-comparison.png" alt="你吞的 100 億菌，最後剩幾億？腸胃保健菌株存活比較" style="width:100%;height:auto;display:block;border-radius:12px;">
       </div>
 
-    </div>
-
-    <!-- Survival comparison infographic -->
-    <div style="margin-top:36px;">
-      <img src="assets/survival-comparison.png" alt="你吞的 100 億菌，最後剩幾億？腸胃保健菌株存活比較" style="width:100%;height:auto;display:block;border-radius:12px;">
     </div>
 
   </div>
