@@ -74,7 +74,8 @@ section { padding: 80px 0; }
   background: var(--red); border-radius: 2px; flex-shrink: 0;
 }
 .trust-header .eyebrow::before,
-.research-header .eyebrow::before { display: none; }
+.research-header .eyebrow::before,
+.evidence-header .eyebrow::before { display: none; }
 
 /* ─── Badges ─── */
 .badge {
@@ -628,9 +629,23 @@ section { padding: 80px 0; }
 .stats-inner {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px; text-align: center;
+  gap: 0; text-align: center;
 }
 @media (min-width: 768px) { .stats-inner { grid-template-columns: repeat(4, 1fr); } }
+.stats-inner > div {
+  padding: 20px 24px;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+.stats-inner > div:first-child { border-left: none; }
+@media (max-width: 767px) {
+  .stats-inner > div:nth-child(2n+1) { border-left: none; }
+  .stats-inner > div { padding: 16px 12px; }
+}
+.stat-eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 8px;
+}
 .stat-num {
   font-family: var(--font-en);
   font-size: clamp(36px, 5vw, 52px);
@@ -643,7 +658,73 @@ section { padding: 80px 0; }
 .stat-label { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 6px; }
 
 /* ══════════════════════════════════
-   E — CTA
+   E — EVIDENCE TIMELINE
+══════════════════════════════════ */
+.evidence-section {
+  background: var(--bg-gray); padding: 80px 0;
+}
+.evidence-header {
+  text-align: center; margin-bottom: 56px;
+}
+.evidence-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 900; color: var(--text-1);
+  margin: 8px 0 12px;
+}
+.evidence-header p {
+  font-size: 15px; color: var(--text-3); max-width: 500px; margin: 0 auto;
+}
+.timeline {
+  position: relative;
+  max-width: 760px; margin: 0 auto;
+  padding-left: 32px;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--red) 0%, rgba(206,14,45,0.15) 100%);
+}
+.tl-item {
+  position: relative;
+  padding: 0 0 40px 40px;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -7px; top: 6px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 4px rgba(206,14,45,0.15);
+}
+.tl-year {
+  font-family: var(--font-en);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--red); margin-bottom: 4px;
+}
+.tl-title {
+  font-size: 17px; font-weight: 700;
+  color: var(--text-1); margin-bottom: 6px;
+  line-height: 1.35;
+}
+.tl-desc {
+  font-size: 14.5px; color: var(--text-2);
+  line-height: 1.7; max-width: 600px;
+}
+.tl-badge {
+  display: inline-block; margin-top: 10px;
+  padding: 3px 10px; border-radius: 4px;
+  font-size: 12px; font-weight: 600;
+  background: rgba(206,14,45,0.08); color: var(--red);
+}
+@media (min-width: 768px) {
+  .timeline { padding-left: 48px; }
+  .tl-item { padding-left: 56px; }
+}
+
+/* ══════════════════════════════════
+   F — CTA
 ══════════════════════════════════ */
 .cta-section {
   background: linear-gradient(135deg, var(--red) 0%, #E5186E 100%);
@@ -1213,18 +1294,22 @@ section { padding: 80px 0; }
   <div class="container">
     <div class="stats-inner">
       <div>
+        <div class="stat-eyebrow">HISTORY</div>
         <div class="stat-num">70<sup>+</sup></div>
         <div class="stat-label">年日本研究歷史</div>
       </div>
       <div>
+        <div class="stat-eyebrow">MARKET</div>
         <div class="stat-num">#1</div>
         <div class="stat-label">日本整腸藥市場</div>
       </div>
       <div>
+        <div class="stat-eyebrow">STANDARD</div>
         <div class="stat-num">OTC</div>
         <div class="stat-label">台灣藥字號認證</div>
       </div>
       <div>
+        <div class="stat-eyebrow">GRADE</div>
         <div class="stat-num">LBP</div>
         <div class="stat-label">次世代益生菌製劑</div>
       </div>
@@ -1238,7 +1323,7 @@ section { padding: 80px 0; }
   <div class="container">
     <div class="doctor-content">
       <span class="eyebrow">研發背景</span>
-      <h2>40 年研發團隊把關<br>從菌株到製劑的科學堅持</h2>
+      <h2>70 年研發團隊把關<br>從菌株到製劑的科學堅持</h2>
       <p>
         ミヤリサン製薬株式会社自 1955 年起持續投入腸道菌研究，
         以 LBP（次世代益生菌製劑）的嚴謹標準進行菌株篩選與製劑設計，
@@ -1428,7 +1513,65 @@ section { padding: 80px 0; }
   </div>
 </section>
 
-<!-- ══ E — CTA ══ -->
+<!-- ══ E — EVIDENCE TIMELINE ══ -->
+<section class="evidence-section" id="evidence">
+  <div class="container">
+
+    <div class="evidence-header">
+      <div class="section-divider" style="margin:0 auto 20px;"></div>
+      <span class="eyebrow">研究歷程</span>
+      <h2>70 年科學積累</h2>
+      <p>每一步都建立在可重複驗證的科學基礎上</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1955</div>
+        <div class="tl-title">ミヤリサン製薬創立，酪酸菌研究啟動</div>
+        <div class="tl-desc">ミヤリサン製薬株式会社於日本創立，正式投入腸道益生菌的科學研究，以 Clostridium butyricum 宮入菌株為核心進行系統性菌株開發。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1970s</div>
+        <div class="tl-title">廣泛臨床應用，確立市場地位</div>
+        <div class="tl-desc">CBM588 宮入菌株正式命名並廣泛應用於日本腸胃科臨床實務，長期居日本整腸藥市場第一，奠定品牌科學公信力。</div>
+        <span class="tl-badge">日本市場 #1</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1990s</div>
+        <div class="tl-title">妙利散® 正式引進台灣，取得 OTC 藥字號</div>
+        <div class="tl-desc">妙利散® 通過台灣主管機關審核，取得 OTC 藥字號認證，納入醫療體系管理，成為台灣醫院與藥局正規流通的整腸藥品。</div>
+        <span class="tl-badge">台灣 OTC 認證</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2010s</div>
+        <div class="tl-title">國際同行評審研究持續發表</div>
+        <div class="tl-desc">CBM588 相關 RCT 人體臨床研究陸續於國際期刊發表，涵蓋腸道菌相、免疫調節及耐熱耐酸特性，提供可重複驗證的科學實證。</div>
+        <span class="tl-badge">RCT 臨床研究支持</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2020s</div>
+        <div class="tl-title">獲認定符合 LBP 次世代益生菌製劑標準</div>
+        <div class="tl-desc">依 LBP（Live Biotherapeutic Products）嚴謹規格標準，妙利散® CBM588 菌株通過菌株鑑定、製劑穩定性與臨床實證三重門檻，並榮獲 Nutra Ingredients Awards 國際肯定。</div>
+        <span class="tl-badge">LBP 製劑認定</span>
+        <span class="tl-badge" style="margin-left:6px;">Nutra Ingredients Awards</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ F — CTA ══ -->
 <section class="cta-section" id="buy">
   <div class="container">
     <h2>了解購買途徑</h2>

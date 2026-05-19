@@ -394,23 +394,32 @@ section { padding: 80px 0; }
 
 .stability-points { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
 .stability-point {
-  display: flex; gap: 14px; align-items: flex-start;
+  display: flex; gap: 16px; align-items: flex-start;
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 10px; padding: 18px 20px;
+  border-radius: 14px; padding: 20px 22px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  position: relative; overflow: hidden;
+}
+.stability-point::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+  border-radius: 14px 14px 0 0;
 }
 .stability-point-icon {
-  width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px;
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 10px;
   background: var(--red-pale);
   display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
 }
 .stability-point-icon svg { color: var(--red); }
-.stability-point h4 { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
-.stability-point p  { font-size: 13px; color: var(--text-3); line-height: 1.6; }
+.stability-point h4 { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 5px; }
+.stability-point p  { font-size: 13px; color: var(--text-3); line-height: 1.65; }
 
 /* Bar chart */
-.chart-block { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+.chart-block { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
 .chart-block + .chart-block { margin-top: 20px; }
-.chart-title { font-size: 13px; font-weight: 700; color: var(--text-3); letter-spacing: 0.04em; margin-bottom: 20px; }
+.chart-title { font-size: 12px; font-weight: 700; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
 .bar-row { display: flex; flex-direction: column; gap: 16px; }
 .bar-item { }
 .bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
@@ -485,8 +494,15 @@ section { padding: 80px 0; }
 
 /* ── STATS BAR ── */
 .stats-bar { background: var(--navy); padding: 48px 0; }
-.stats-inner { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; text-align: center; }
+.stats-inner { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; text-align: center; }
 @media (min-width: 768px) { .stats-inner { grid-template-columns: repeat(4,1fr); } }
+.stats-inner > div { padding: 20px 24px; border-left: 1px solid rgba(255,255,255,0.1); }
+.stats-inner > div:first-child { border-left: none; }
+@media (max-width: 767px) {
+  .stats-inner > div:nth-child(2n+1) { border-left: none; }
+  .stats-inner > div { padding: 16px 12px; }
+}
+.stat-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
 .stat-num { font-family: var(--font-en); font-size: clamp(36px,5vw,52px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
 .stat-num sup { font-size: 0.5em; vertical-align: super; }
 .stat-unit { color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 400; margin-top: 2px; }
@@ -733,7 +749,7 @@ section { padding: 80px 0; }
       <div class="trust-divider"></div>
       <div class="trust-item">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        50+ 年日本醫療使用歷史
+        耐酸耐熱性佳
       </div>
     </div>
   </div>
@@ -908,18 +924,22 @@ section { padding: 80px 0; }
   <div class="container">
     <div class="stats-inner">
       <div>
+        <div class="stat-eyebrow">SUBJECTS</div>
         <div class="stat-num">600<sup>+</sup></div>
         <div class="stat-label">功能性腸道症狀受試者</div>
       </div>
       <div>
+        <div class="stat-eyebrow">ERADICATION</div>
         <div class="stat-num">94<sup>%</sup></div>
         <div class="stat-label">H. pylori 除菌成功率（+CBM588）</div>
       </div>
       <div>
+        <div class="stat-eyebrow">ADR RATE</div>
         <div class="stat-num">2.9<sup>%</sup></div>
         <div class="stat-label">抗生素腹瀉發生率</div>
       </div>
       <div>
+        <div class="stat-eyebrow">CURE RATE</div>
         <div class="stat-num">77.8<sup>%</sup></div>
         <div class="stat-label">整腸症狀綜合治癒率</div>
       </div>
@@ -935,7 +955,7 @@ section { padding: 80px 0; }
       <div class="stability-content">
         <span class="eyebrow">穩定性</span>
         <h2>醫療情境依舊可活</h2>
-        <p>芽孢結構讓 CBM588 在多數益生菌失效的環境下，依然能維持活性抵達目標部位。</p>
+        <p>芽孢結構讓 CBM588 在多數益生菌失效的環境下，依然能維持活性。</p>
 
         <div class="stability-points">
           <div class="stability-point">
@@ -943,7 +963,7 @@ section { padding: 80px 0; }
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             </div>
             <div>
-              <h4>耐酸性</h4>
+              <h4>耐酸耐熱性</h4>
               <p>芽孢形式在胃酸環境下展現出顯著較高的存活特性，乳酸菌在相同條件下存活率偏低，為代表性趨勢比較。</p>
             </div>
           </div>
@@ -962,7 +982,7 @@ section { padding: 80px 0; }
             </div>
             <div>
               <h4>室溫穩定保存</h4>
-              <p>CBM588 自 1967 年核准至今維持相同配方，芽孢型態不需冷鏈保存，在日本醫療體系持續使用逾 50 年。</p>
+              <p>芽孢型態不需冷鏈保存，在日本醫療體系持續使用逾 50 年。</p>
             </div>
           </div>
         </div>
