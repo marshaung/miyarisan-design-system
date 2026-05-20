@@ -28,6 +28,8 @@
   --red:       #CE0E2D;
   --red-dark:  #a80c24;
   --red-pale:  #fdf0f2;
+  --gradient-brand: linear-gradient(135deg, #CE0E2D 0%, #E5368D 100%);
+  --gradient-brand-h: linear-gradient(90deg, #CE0E2D 0%, #E5368D 100%);
   --navy:      #172F60;
   --text-1:    #111827;
   --text-2:    #374151;
@@ -57,8 +59,9 @@ section { padding: 80px 0; }
 /* ── Eyebrow ── */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--red);
+  margin-bottom: 12px;
 }
 .eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
 .eyebrow-center { justify-content: center; }
@@ -218,7 +221,7 @@ section { padding: 80px 0; }
 }
 .hero-headline em {
   font-style: normal;
-  background: linear-gradient(135deg, #C42B2B 0%, #E8632D 100%);
+  background: var(--gradient-brand);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
@@ -253,7 +256,7 @@ section { padding: 80px 0; }
 /* ── SHARED ── */
 .bg-gray { background: var(--bg-gray); }
 .section-header { margin-bottom: 48px; }
-.section-header h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; line-height: 1.3; margin: 10px 0 12px; }
+.section-header h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
 .section-header p { font-size: 15px; color: var(--text-2); line-height: 1.75; max-width: 580px; }
 .section-header.center { text-align: center; }
 .section-header.center p { margin: 0 auto; }
@@ -273,7 +276,7 @@ section { padding: 80px 0; }
 .criteria-outer { display: grid; gap: 48px; grid-template-columns: 1fr; }
 @media (min-width: 1024px) { .criteria-outer { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } }
 
-.criteria-content h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; line-height: 1.3; margin: 10px 0 16px; }
+.criteria-content h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; line-height: 1.3; margin: 0 0 16px; }
 .criteria-content p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 16px; }
 .strain-visual { margin-top: 36px; position: relative; display: inline-block; }
 .strain-visual::before {
@@ -301,7 +304,7 @@ section { padding: 80px 0; }
 .req-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0;
   height: 3px; width: auto; bottom: auto;
-  background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+  background: var(--gradient-brand-h);
   border-radius: 16px 16px 0 0;
 }
 .req-card::after {
@@ -324,8 +327,8 @@ section { padding: 80px 0; }
 #features { background: #0B1E3D; }
 #features .section-header h2 { color: #fff; }
 #features .section-header p { color: rgba(255,255,255,0.5); }
-#features .eyebrow { color: #E8632D; }
-#features .eyebrow::before { background: #E8632D; }
+#features .eyebrow { color: var(--red); }
+#features .eyebrow::before { background: var(--red); }
 
 .dual-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
 @media (min-width: 768px) { .dual-grid { grid-template-columns: 1fr 1fr; } }
@@ -351,7 +354,7 @@ section { padding: 80px 0; }
 }
 .dual-card.accent { background: rgba(140,10,28,0.28); }
 .dual-card.accent:hover { background: rgba(140,10,28,0.38); }
-.dual-card.accent::before { background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%); }
+.dual-card.accent::before { background: var(--gradient-brand-h); }
 .dual-card.accent::after { background: radial-gradient(circle, rgba(196,43,43,0.28) 0%, transparent 70%); }
 
 .dual-icon {
@@ -389,7 +392,7 @@ section { padding: 80px 0; }
 .stability-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
 @media (min-width: 1024px) { .stability-inner { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } }
 
-.stability-content h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; line-height: 1.3; margin: 10px 0 16px; }
+.stability-content h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; line-height: 1.3; margin: 0 0 16px; }
 .stability-content > p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 24px; }
 
 .stability-points { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
@@ -403,7 +406,7 @@ section { padding: 80px 0; }
 .stability-point::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+  background: var(--gradient-brand-h);
   border-radius: 14px 14px 0 0;
 }
 .stability-point-icon {
@@ -512,8 +515,8 @@ section { padding: 80px 0; }
 #evidence { background: #0B1E3D; }
 #evidence .section-header h2 { color: #fff; }
 #evidence .section-header p { color: rgba(255,255,255,0.5); }
-#evidence .eyebrow { color: #E8632D; }
-#evidence .eyebrow::before { background: #E8632D; }
+#evidence .eyebrow { color: var(--red); }
+#evidence .eyebrow::before { background: var(--red); }
 #evidence .evidence-ref { color: rgba(255,255,255,0.2) !important; }
 
 .evidence-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
@@ -527,7 +530,7 @@ section { padding: 80px 0; }
 .evidence-card:hover { background: rgba(255,255,255,0.08); }
 .evidence-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 3px; background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+  height: 3px; background: var(--gradient-brand-h);
   border-radius: 14px 14px 0 0;
 }
 .evidence-num {
@@ -761,7 +764,6 @@ section { padding: 80px 0; }
     <div class="criteria-outer">
 
       <div class="criteria-content">
-        <span class="eyebrow">品類定義</span>
         <h2>什麼讓一菌株<br>稱得上「醫療級」？</h2>
         <p class="body-text">「醫療級」並不是數字的比較，而是三個根本條件的整合，菌數多少是次要指標，更重要的是系統性的研究體系在背後支撐。</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;">
@@ -800,7 +802,6 @@ section { padding: 80px 0; }
 <section id="features">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">菌株特色</span>
       <h2>酪酸菌 × 芽孢菌的雙重優勢</h2>
       <p>CBM588 同時具備兩種特性，而這兩種特性在市售益生菌中幾乎不會同時出現。</p>
     </div>
@@ -841,7 +842,6 @@ section { padding: 80px 0; }
 <section class="compare-section" id="compare">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">七大差異</span>
       <h2>CBM588 vs. 市售益生菌</h2>
       <p>以非芽孢形態益生菌在市售標準下的代表性趨勢作為比較基準</p>
     </div>
@@ -953,7 +953,6 @@ section { padding: 80px 0; }
     <div class="stability-inner">
 
       <div class="stability-content">
-        <span class="eyebrow">穩定性</span>
         <h2>醫療情境依舊可活</h2>
         <p>芽孢結構讓 CBM588 在多數益生菌失效的環境下，依然能維持活性。</p>
 
@@ -1047,7 +1046,6 @@ section { padding: 80px 0; }
 <section id="evidence">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">臨床實證</span>
       <h2>以臨床試驗為基礎的研究</h2>
       <p>以下整理 CBM588 已完成人體臨床試驗中，具有較穩健支持的研究方向。<br>所有引用均來自已發表之學術期刊論文。</p>
     </div>
@@ -1064,8 +1062,8 @@ section { padding: 80px 0; }
             <span class="evidence-trend-tag">使用前</span>
             <svg class="evidence-trend-svg" viewBox="0 0 100 32" fill="none" preserveAspectRatio="none">
               <path d="M2 5 C25 5, 55 26, 98 28" stroke="rgba(232,99,45,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              <circle cx="2" cy="5" r="2.5" fill="#E8632D" opacity="0.5"/>
-              <circle cx="98" cy="28" r="2.5" fill="#E8632D" opacity="0.9"/>
+              <circle cx="2" cy="5" r="2.5" fill="#E5368D" opacity="0.5"/>
+              <circle cx="98" cy="28" r="2.5" fill="#E5368D" opacity="0.9"/>
             </svg>
             <span class="evidence-trend-tag end">觀察後</span>
           </div>
@@ -1082,8 +1080,8 @@ section { padding: 80px 0; }
             <span class="evidence-trend-tag">抗生素組</span>
             <svg class="evidence-trend-svg" viewBox="0 0 100 32" fill="none" preserveAspectRatio="none">
               <path d="M2 5 C25 5, 55 26, 98 28" stroke="rgba(232,99,45,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              <circle cx="2" cy="5" r="2.5" fill="#E8632D" opacity="0.5"/>
-              <circle cx="98" cy="28" r="2.5" fill="#E8632D" opacity="0.9"/>
+              <circle cx="2" cy="5" r="2.5" fill="#E5368D" opacity="0.5"/>
+              <circle cx="98" cy="28" r="2.5" fill="#E5368D" opacity="0.9"/>
             </svg>
             <span class="evidence-trend-tag end">合併組</span>
           </div>
@@ -1100,8 +1098,8 @@ section { padding: 80px 0; }
             <span class="evidence-trend-tag">對照組</span>
             <svg class="evidence-trend-svg" viewBox="0 0 100 32" fill="none" preserveAspectRatio="none">
               <path d="M2 28 C25 28, 55 6, 98 4" stroke="rgba(232,99,45,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              <circle cx="2" cy="28" r="2.5" fill="#E8632D" opacity="0.5"/>
-              <circle cx="98" cy="4" r="2.5" fill="#E8632D" opacity="0.9"/>
+              <circle cx="2" cy="28" r="2.5" fill="#E5368D" opacity="0.5"/>
+              <circle cx="98" cy="4" r="2.5" fill="#E5368D" opacity="0.9"/>
             </svg>
             <span class="evidence-trend-tag end">合併組</span>
           </div>

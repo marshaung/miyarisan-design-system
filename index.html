@@ -30,6 +30,8 @@
   --red:        #CE0E2D;
   --red-dark:   #a80c24;
   --red-pale:   #fdf0f2;
+  --gradient-brand: linear-gradient(135deg, #CE0E2D 0%, #E5368D 100%);
+  --gradient-brand-h: linear-gradient(90deg, #CE0E2D 0%, #E5368D 100%);
   --navy:       #172F60;
   --navy-mid:   #1e3d7a;
   --text-1:     #111827;
@@ -66,8 +68,9 @@ section { padding: 80px 0; }
 /* ─── Typography ─── */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--red);
+  margin-bottom: 12px;
 }
 .eyebrow::before {
   content: ''; width: 18px; height: 2px;
@@ -274,7 +277,7 @@ section { padding: 80px 0; }
 }
 .hero-headline em {
   font-style: normal;
-  background: linear-gradient(135deg, #C42B2B 0%, #E8632D 100%);
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -349,7 +352,7 @@ section { padding: 80px 0; }
 .doctor-content h2 {
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 700; color: var(--text-1);
-  line-height: 1.3; margin: 10px 0 16px;
+  line-height: 1.3; margin: 0 0 16px;
 }
 .doctor-content p {
   font-size: 15px; font-weight: 350;
@@ -371,7 +374,7 @@ section { padding: 80px 0; }
 }
 .trust-item {
   display: flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 600; color: var(--text-2);
+  font-size: 15px; font-weight: 600; color: var(--text-2);
 }
 .trust-item svg { color: var(--red); flex-shrink: 0; }
 .trust-divider { width: 1px; height: 20px; background: var(--border); }
@@ -388,7 +391,7 @@ section { padding: 80px 0; }
   font-weight: 900;
   line-height: 1; letter-spacing: -0.02em;
   color: var(--text-1);
-  margin: 16px 0 8px;
+  margin: 0 0 8px;
 }
 .pain-display .sep {
   color: var(--red); margin: 0 6px;
@@ -401,17 +404,22 @@ section { padding: 80px 0; }
 
 /* Pain → Flowing pill group（Carbon Tag / Read-only 模式）*/
 .pain-tags {
-  display: flex; flex-wrap: wrap;
-  gap: 12px; justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 12px;
+  justify-content: center;
   margin-top: 48px;
+}
+@media (min-width: 640px) {
+  .pain-tags { grid-template-columns: repeat(3, auto); }
 }
 .pain-chip {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 20px;
+  padding: 11px 22px;
   background: var(--white);
   border: 1.5px solid var(--border);
   border-radius: 99px;
-  font-size: 14px; font-weight: 600; color: var(--text-2);
+  font-size: 19px; font-weight: 600; color: var(--text-2);
   transition: border-color 150ms, color 150ms;
 }
 .pain-chip:hover { border-color: var(--red); color: var(--red); }
@@ -431,10 +439,10 @@ section { padding: 80px 0; }
 .solution-content h2 {
   font-size: clamp(24px, 3.5vw, 36px);
   font-weight: 700; line-height: 1.3;
-  margin: 12px 0 16px;
+  margin: 0 0 16px;
 }
 .solution-content .lead {
-  font-size: 16px; font-weight: 350; color: var(--text-2);
+  font-size: 14px; font-weight: 350; color: var(--text-2);
   line-height: 1.75; margin-bottom: 32px;
 }
 .solution-feats { display: flex; flex-direction: column; gap: 16px; }
@@ -449,7 +457,7 @@ section { padding: 80px 0; }
   flex-shrink: 0; margin-top: 1px;
 }
 .feat-text strong {
-  font-size: 15px; font-weight: 700; color: var(--text-1);
+  font-size: 18px; font-weight: 700; color: var(--text-1);
   display: block; margin-bottom: 2px;
 }
 .feat-text span { font-size: 14px; color: var(--text-3); line-height: 1.5; }
@@ -499,7 +507,7 @@ section { padding: 80px 0; }
   background: linear-gradient(90deg, var(--navy) 0%, #3b6cb7 100%);
 }
 .channel-card.retail::before {
-  background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+  background: var(--gradient-brand-h);
 }
 .channel-badge {
   display: inline-flex; align-items: center; gap: 5px;
@@ -530,7 +538,7 @@ section { padding: 80px 0; }
 .trust-header { text-align: center; margin-bottom: 56px; }
 .trust-header h2 {
   font-size: clamp(22px, 3vw, 32px);
-  font-weight: 700; margin: 10px 0 12px;
+  font-weight: 700; margin: 0 0 12px;
 }
 .trust-header p { font-size: 15px; color: var(--text-3); }
 
@@ -556,7 +564,7 @@ section { padding: 80px 0; }
 .criteria-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%);
+  background: var(--gradient-brand-h);
   border-radius: 16px 16px 0 0;
 }
 .criteria-card::after {
@@ -588,7 +596,7 @@ section { padding: 80px 0; }
 }
 .research-header h2 {
   font-size: clamp(22px, 3vw, 30px);
-  font-weight: 700; margin: 10px 0 8px;
+  font-weight: 700; margin: 0 0 8px;
 }
 .research-grid {
   display: grid; gap: 20px;
@@ -670,7 +678,7 @@ section { padding: 80px 0; }
   font-family: var(--font-display);
   font-size: clamp(26px, 4vw, 40px);
   font-weight: 900; color: var(--text-1);
-  margin: 8px 0 12px;
+  margin: 0 0 12px;
 }
 .evidence-header p {
   font-size: 15px; color: var(--text-3); max-width: 500px; margin: 0 auto;
@@ -783,10 +791,10 @@ section { padding: 80px 0; }
 ══════════════════════════════════ */
 @media (min-width: 1024px) {
   /* Solution — lead 段落（使用者回報主要問題） */
-  .solution-content .lead        { font-size: 19px; line-height: 1.8; }
+  .solution-content .lead        { font-size: 16px; line-height: 1.8; }
 
   /* Solution — feature list */
-  .feat-text strong              { font-size: 17px; }
+  .feat-text strong              { font-size: 20px; }
   .feat-text span                { font-size: 16px; line-height: 1.65; }
 
   /* Criteria 卡片 body */
@@ -806,13 +814,13 @@ section { padding: 80px 0; }
   /* Pain section 副標 */
   .pain-sub                      { font-size: 18px; }
   .pain-tag-label                { font-size: 14px; }
-  .pain-chip                     { font-size: 15px; }
+  .pain-chip                     { font-size: 20px; }
 
   /* CTA section */
   .cta-section p                 { font-size: 18px; line-height: 1.7; }
 
   /* Trust bar */
-  .trust-item                    { font-size: 14px; }
+  .trust-item                    { font-size: 16px; }
 
   /* Stats */
   .stat-label                    { font-size: 14px; }
@@ -966,7 +974,7 @@ section { padding: 80px 0; }
     justify-items: center;
   }
   .trust-divider { display: none; }
-  .trust-item { font-size: 13px; gap: 6px; }
+  .trust-item { font-size: 15px; gap: 6px; }
 
   /* Footer：品牌欄全寬，連結欄左右並排 */
   .footer-inner {
@@ -1167,22 +1175,22 @@ section { padding: 80px 0; }
   <div class="container">
     <div class="trust-bar-inner">
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         日本原廠製造
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         台灣藥字號認證
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         醫療院所指定
       </div>
       <div class="trust-divider"></div>
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         臨床研究支持
       </div>
     </div>
@@ -1193,7 +1201,6 @@ section { padding: 80px 0; }
 <section class="pain-section" id="pain">
   <div class="container">
     <div class="pain-header">
-      <span class="eyebrow">消費者困擾</span>
       <div class="pain-display">
         痛<span class="sep">·</span>硬<span class="sep">·</span>脹<span class="sep">·</span>瀉
       </div>
@@ -1202,27 +1209,27 @@ section { padding: 80px 0; }
 
     <div class="pain-tags">
       <span class="pain-chip">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/></svg>
         好菌減少
       </span>
       <span class="pain-chip">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
         壞菌增生
       </span>
       <span class="pain-chip">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/></svg>
         腹脹脹氣
       </span>
       <span class="pain-chip">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         消化不良
       </span>
       <span class="pain-chip">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         便秘腹瀉
       </span>
       <span class="pain-chip">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
         腸胃不適
       </span>
     </div>
@@ -1235,13 +1242,8 @@ section { padding: 80px 0; }
     <div class="solution-inner">
 
       <div class="solution-content">
-        <span class="eyebrow">解決方案</span>
-        <h2>妙利散<sup style="font-size:0.5em;">®</sup> 醫療級益生菌<br>搭配生醫研究，平衡腸道菌群</h2>
-        <p class="lead">
-          好的益生菌，<strong>關鍵在菌株</strong>。每個人需求不同，
-          選對菌株才會有效。妙利散採用日本獨家 CBM588 宮入菌株，
-          70 年以上臨床驗證，有效調整腸道環境。
-        </p>
+        <h2>妙利散<sup style="font-size:0.5em;">®</sup> 醫療級益生菌<br>研究實證平衡腸道菌群</h2>
+        <p class="lead">好的益生菌，關鍵在菌株。每個人需求不同，選對菌株才會有效。妙利散採用日本獨家 CBM588 宮入菌株，70 年以上臨床驗證，有效調整腸道環境。</p>
 
         <div class="solution-feats">
           <div class="feat-item">
@@ -1322,7 +1324,6 @@ section { padding: 80px 0; }
   <div class="doctor-bg"></div>
   <div class="container">
     <div class="doctor-content">
-      <span class="eyebrow">研發背景</span>
       <h2>70 年研發團隊把關<br>從菌株到製劑的科學堅持</h2>
       <p>
         ミヤリサン製薬株式会社自 1955 年起持續投入腸道菌研究，
@@ -1344,7 +1345,6 @@ section { padding: 80px 0; }
 
     <div class="trust-header">
       <div class="section-divider" style="margin:0 auto 20px;"></div>
-      <span class="eyebrow">專業標準</span>
       <h2>益生菌怎麼選？</h2>
       <p>從菌株到 LBP 製劑，決定益生菌定位</p>
     </div>
@@ -1373,7 +1373,6 @@ section { padding: 80px 0; }
     <!-- ══ CRITERIA V2：認明這三點 ══ -->
     <div class="research-header">
       <div class="section-divider" style="margin:0 auto 20px;"></div>
-      <span class="eyebrow" style="justify-content:center;margin-bottom:12px;">40 年研發團隊把關</span>
       <h2>認明這三點，選好益生菌</h2>
     </div>
 
@@ -1519,7 +1518,6 @@ section { padding: 80px 0; }
 
     <div class="evidence-header">
       <div class="section-divider" style="margin:0 auto 20px;"></div>
-      <span class="eyebrow">研究歷程</span>
       <h2>70 年科學積累</h2>
       <p>每一步都建立在可重複驗證的科學基礎上</p>
     </div>

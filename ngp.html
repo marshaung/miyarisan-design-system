@@ -28,6 +28,8 @@
   --red:       #CE0E2D;
   --red-dark:  #a80c24;
   --red-pale:  #fdf0f2;
+  --gradient-brand: linear-gradient(135deg, #CE0E2D 0%, #E5368D 100%);
+  --gradient-brand-h: linear-gradient(90deg, #CE0E2D 0%, #E5368D 100%);
   --navy:      #172F60;
   --text-1:    #111827;
   --text-2:    #374151;
@@ -220,7 +222,7 @@ section { padding: 80px 0; }
 }
 .hero-headline em {
   font-style: normal;
-  background: linear-gradient(135deg, #C42B2B 0%, #E8632D 100%);
+  background: var(--gradient-brand);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
@@ -443,8 +445,8 @@ section { padding: 80px 0; }
 #mechanism { background: #0B1E3D; }
 #mechanism .section-header h2 { color: #fff; }
 #mechanism .section-header p { color: rgba(255,255,255,0.5); }
-#mechanism .eyebrow { color: #E8632D; }
-#mechanism .eyebrow::before { background: #E8632D; }
+#mechanism .eyebrow { color: #E5368D; }
+#mechanism .eyebrow::before { background: #E5368D; }
 #mechanism .mechanism-note { color: rgba(255,255,255,0.25) !important; }
 
 .mechanism-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
@@ -458,7 +460,7 @@ section { padding: 80px 0; }
   transition: background 150ms, transform 150ms;
 }
 .mechanism-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-.mechanism-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #C42B2B 0%, #E8632D 100%); border-radius: 12px 12px 0 0; }
+.mechanism-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-brand-h); border-radius: 12px 12px 0 0; }
 .mechanism-card::after {
   content: attr(data-num);
   position: absolute; bottom: -16px; right: 8px;
@@ -818,7 +820,6 @@ section { padding: 80px 0; }
 
     <!-- Section header: top-centered -->
     <div style="text-align:center;margin-bottom:48px;">
-      <span class="eyebrow">問題所在</span>
       <h2 style="font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.2;margin:10px auto 20px;max-width:720px;">吃下去<br>不一定到得了</h2>
       <p class="body-text" style="max-width:620px;margin:0 auto;">保健食品等級的益生菌，從來沒有被要求「菌必須活著抵達腸道」<br>大部分廠商標榜的菌數，只是出廠時的數字。</p>
     </div>
@@ -870,7 +871,6 @@ section { padding: 80px 0; }
     <div class="definition-inner">
 
       <div class="definition-content">
-        <span class="eyebrow">品類定義</span>
         <h2>什麼是次世代益生菌（NGP）？</h2>
         <p>NGP 是 Next Generation Probiotics 的縮寫，是學術界基於近年研究進展提出的分類框架。這類菌株的特點是：在基因技術輔助下被精密鑑定、有完整的安全性確認，並具有可描述、可重現的作用機制。</p>
         <p>NGP 不是一個品牌，它描述的是一批在<strong>開發標準、機制理解、臨床驗證深度</strong>上，都與傳統保健益生菌本質不同的菌株。</p>
@@ -913,7 +913,6 @@ section { padding: 80px 0; }
 <section class="compare-section" id="compare">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">這不是功效差異，是類別差異</span>
       <h2>NGP vs. 一般市售益生菌</h2>
       <p>比益生菌之前，先搞清楚你比的是同一類東西嗎？</p>
     </div>
@@ -960,7 +959,6 @@ section { padding: 80px 0; }
 <section id="mechanism">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">作用機制</span>
       <h2>到了腸道之後，它做的事情不一樣</h2>
       <p>NGP 與一般益生菌最根本的差距，不只是「能不能活著到腸道」</p>
     </div>
@@ -1000,7 +998,6 @@ section { padding: 80px 0; }
 <section class="bg-gray" id="audience">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">適合對象</span>
       <h2>誰應該關注次世代益生菌？</h2>
       <p>如果你只是偶爾消化不太舒服，一般益生菌可能就夠了。<br>但以下情境，值得重新思考手上的選擇是否真的符合你的需求。</p>
     </div>
@@ -1070,7 +1067,6 @@ section { padding: 80px 0; }
 <section id="identify">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">選購指引</span>
       <h2>怎麼辨認一個真正的 NGP？</h2>
       <p>是否為次世代，先問三個問題。</p>
     </div>
