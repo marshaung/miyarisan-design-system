@@ -45,9 +45,11 @@
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-ui); color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-ui); color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; font-size: 16px; }
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
+a:visited { color: #9b3050; }
+*:focus-visible { outline: 2px solid #CE0E2D; outline-offset: 2px; border-radius: 2px; }
 
 /* ─── Layout ─── */
 .container {
@@ -152,6 +154,7 @@ section { padding: 80px 0; }
 .nav-links a {
   font-size: 14px; font-weight: 600; color: var(--text-2);
   transition: color 120ms;
+  padding: 12px 8px; display: inline-block;
 }
 .nav-links a:hover { color: var(--red); }
 .nav-links a.active { color: var(--red); }
@@ -440,7 +443,7 @@ section { padding: 80px 0; }
   .solution-inner { grid-template-columns: 1fr 1fr; gap: 80px; }
 }
 .solution-content h2 {
-  font-size: clamp(24px, 3.5vw, 36px);
+  font-size: clamp(24px, 3.5vw, 40px);
   font-weight: 700; line-height: 1.3;
   margin: 12px 0 16px;
 }
@@ -571,7 +574,7 @@ section { padding: 80px 0; }
   text-align: center; margin-bottom: 40px;
 }
 .research-header h2 {
-  font-size: clamp(22px, 3vw, 30px);
+  font-size: clamp(22px, 3vw, 32px);
   font-weight: 700; margin: 10px 0 8px;
 }
 .research-grid {
@@ -636,7 +639,7 @@ section { padding: 80px 0; }
 }
 .cta-section h2 {
   font-family: var(--font-display);
-  font-size: clamp(26px, 4vw, 42px);
+  font-size: clamp(26px, 4vw, 40px);
   font-weight: 900; color: #fff;
   margin-bottom: 12px; line-height: 1.2;
 }
