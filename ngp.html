@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>次世代益生菌 NGPs — 妙利散® MIYARISAN</title>
+<title>次世代益生菌 NGP — 妙利散® MIYARISAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 @font-face { font-family:'FZLanTingHei'; src:url('fonts/fzlt-w200.ttf') format('truetype'); font-weight:200; font-display:swap; }
@@ -25,6 +28,8 @@
   --red:       #CE0E2D;
   --red-dark:  #a80c24;
   --red-pale:  #fdf0f2;
+  --gradient-brand: linear-gradient(135deg, #CE0E2D 0%, #E5368D 100%);
+  --gradient-brand-h: linear-gradient(90deg, #CE0E2D 0%, #E5368D 100%);
   --navy:      #172F60;
   --text-1:    #111827;
   --text-2:    #374151;
@@ -100,7 +105,7 @@ section { padding: 80px 0; }
 .nav-logo img { height: 36px; width: auto; }
 .nav-links { display: none; gap: 28px; list-style: none; }
 @media (min-width: 1024px) { .nav-links { display: flex; } }
-.nav-links a { font-size: 15px; font-weight: 600; color: var(--text-2); transition: color 120ms; }
+.nav-links a { font-size: 17px; font-weight: 600; color: var(--text-2); transition: color 120ms; }
 .nav-links a:hover { color: var(--red); }
 .nav-links a.active { color: var(--red); }
 .nav-cta { display: none; }
@@ -141,46 +146,105 @@ section { padding: 80px 0; }
 .nav-dropdown-menu a + a { border-top: 1px solid var(--border); }
 
 /* ── HERO ── */
-.ngp-hero {
-  position: relative; min-height: 620px;
-  display: flex; align-items: center;
-  overflow: hidden; color: var(--white);
-  padding: 96px 0 80px;
+.hero {
+  min-height: 100vh; position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; padding: 130px 48px 80px;
+  gap: 60px; overflow: hidden; color: #fff;
+  background: #0B1E3D;
 }
-.ngp-hero-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
-.ngp-hero-bg::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(10,20,50,0.96) 0%, rgba(10,20,50,0.84) 55%, rgba(10,20,50,0.72) 100%);
+.hero-glow {
+  position: absolute; top: 15%; left: 8%; z-index: 1;
+  width: 440px; height: 440px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,120,255,0.18) 0%, transparent 68%);
+  pointer-events: none;
 }
-.ngp-hero > .container { position: relative; z-index: 2; width: 100%; }
-
-.hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-.hero-eyebrow-line { width: 32px; height: 2px; background: var(--red); border-radius: 2px; }
-.hero-eyebrow-text {
-  font-family: var(--font-en);
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding-left: 72px;
 }
-.ngp-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 6vw, 72px);
-  font-weight: 900; line-height: 1.15;
-  color: #fff; margin-bottom: 20px; max-width: 680px;
+.hero-chip-img {
+  width: 460px; max-width: 90%;
+  filter: drop-shadow(0 0 48px rgba(80,120,255,0.35)) drop-shadow(0 24px 48px rgba(0,0,0,0.45));
+  animation: float 5s ease-in-out infinite;
 }
-.ngp-hero-sub {
-  font-size: clamp(15px, 1.8vw, 18px);
-  font-weight: 350; line-height: 1.75;
-  color: rgba(255,255,255,0.70);
-  max-width: 520px; margin-bottom: 28px;
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.hero-chip-label {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 10px 22px;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  text-align: center;
 }
-.ngp-hero-sub strong { color: rgba(255,255,255,0.92); font-weight: 600; }
-.hero-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-chip-label strong {
+  display: block; font-size: 13px; font-weight: 700;
+  color: #fff; letter-spacing: 0.04em; margin-bottom: 3px;
+}
+.hero-chip-label span {
+  font-size: 10px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
+}
+.hero-right {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  padding-right: 72px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 14px; margin-bottom: 28px; width: fit-content;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.6); text-transform: uppercase;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,43,43,0.55); }
+  50% { box-shadow: 0 0 0 5px rgba(196,43,43,0); }
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--red); animation: pulse-dot 2s ease-in-out infinite;
+}
+.hero-headline {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: clamp(42px, 5.5vw, 84px);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 24px; color: #fff;
+}
+.hero-headline em {
+  font-style: normal;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(138,155,176,1); line-height: 1.85;
+  margin-bottom: 44px; max-width: 420px;
+}
+.hero-actions { display: flex; align-items: center; gap: 14px; }
+.hero-cta-primary {
+  background: var(--red); color: var(--white); border: none;
+  padding: 15px 34px; font-size: 14px; font-weight: 700;
+  letter-spacing: 0.06em; cursor: pointer; font-family: inherit;
+  transition: background .2s, transform .15s;
+}
+.hero-cta-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.hero-cta-ghost {
+  background: transparent; color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 15px 34px; font-size: 14px; letter-spacing: 0.04em;
+  cursor: pointer; font-family: inherit; transition: all .2s;
+}
+.hero-cta-ghost:hover { border-color: var(--white); color: var(--white); transform: translateY(-1px); }
 
 /* ── TRUST BAR ── */
 .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 20px 0; }
@@ -201,22 +265,31 @@ section { padding: 80px 0; }
 .text-link:hover { color: var(--red-dark); }
 
 /* ── PROBLEM ── */
-.problem-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
-@media (min-width: 1024px) {
-  .problem-inner { grid-template-columns: 1fr 1fr; align-items: stretch; gap: 64px; }
-  .problem-inner > div:last-child { display: flex; flex-direction: column; }
-  .problem-inner > div:last-child .chart-block { flex: 1; }
-}
+.problem-body { display: flex; flex-direction: column; gap: 32px; }
+
+.stat-panels { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; overflow: hidden; }
+@media (max-width: 599px) { .stat-panels { grid-template-columns: 1fr; } }
+.stat-panel { position: relative; padding: 40px 32px; min-height: 260px; display: flex; flex-direction: column; justify-content: flex-end; }
+.stat-panel-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.stat-panel.is-red .stat-panel-bg { background-image: url(assets/bacteria-bg.jpg); }
+.stat-panel.is-red::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(90,8,18,0.88) 0%, rgba(160,12,28,0.78) 100%); }
+.stat-panel.is-navy .stat-panel-bg { background-image: url(assets/ngp-petri.jpg); }
+.stat-panel.is-navy::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(5,12,40,0.90) 0%, rgba(11,30,61,0.82) 100%); }
+.stat-panel-content { position: relative; z-index: 1; }
+.stat-panel-num { font-family: var(--font-en); font-size: clamp(52px,6.5vw,80px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; color: #fff; }
+.stat-panel-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.65); margin: 8px 0 10px; }
+.stat-panel-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
 .body-text { font-size: 15px; color: var(--text-2); line-height: 1.8; }
 .body-text + .body-text { margin-top: 16px; }
 .body-text strong { color: var(--text-1); font-weight: 700; }
 .callout {
-  margin-top: 24px; padding: 16px 20px;
-  border-left: 3px solid var(--red); background: var(--red-pale);
-  border-radius: 0 8px 8px 0;
-  font-size: 14px; font-weight: 600; color: var(--text-1); line-height: 1.6;
+  margin-top: 36px; padding: 0;
+  text-align: center;
+  font-size: clamp(17px,2vw,22px); font-weight: 700; color: var(--text-1); line-height: 1.65;
 }
+.callout::before { content: '\201C'; margin-right: 4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
+.callout::after  { content: '\201D'; margin-left:  4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
 
 /* Insight cards (left column) */
 .insight-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
@@ -277,7 +350,7 @@ section { padding: 80px 0; }
 .journey-divider { border: none; border-top: 1px dashed var(--border); margin: 18px 0; }
 
 /* ── JOURNEY CARDS (4-step vertical card layout) ── */
-/* ── COMPARE CARDS (2 cards: 一般乳酸菌 / NGPs) ── */
+/* ── COMPARE CARDS (2 cards: 一般乳酸菌 / NGP) ── */
 .cc-row  { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .cc-card {
   border-radius: 16px; border: 1px solid var(--border);
@@ -315,7 +388,7 @@ section { padding: 80px 0; }
   .js-paths-col { gap: 10px; }
 }
 
-/* ── NGPs DEFINITION ── */
+/* ── NGP DEFINITION ── */
 .definition-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
 @media (min-width: 1024px) { .definition-inner { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } }
 
@@ -367,38 +440,44 @@ section { padding: 80px 0; }
   font-size: 13px; color: var(--text-3); line-height: 1.6;
 }
 
-/* ── STATS BAR ── */
-.stats-bar { background: var(--navy); padding: 48px 0; }
-.stats-inner { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; text-align: center; }
-@media (min-width: 768px) { .stats-inner { grid-template-columns: repeat(4,1fr); } }
-.stat-num { font-family: var(--font-en); font-size: clamp(36px,5vw,52px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
-.stat-num sup { font-size: 0.5em; vertical-align: super; }
-.stat-unit { color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 400; margin-top: 2px; }
-.stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 6px; line-height: 1.4; }
 
 /* ── MECHANISM ── */
-.mechanism-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+#mechanism { background: #0B1E3D; }
+#mechanism .section-header h2 { color: #fff; }
+#mechanism .section-header p { color: rgba(255,255,255,0.5); }
+#mechanism .eyebrow { color: #E5368D; }
+#mechanism .eyebrow::before { background: #E5368D; }
+#mechanism .mechanism-note { color: rgba(255,255,255,0.25) !important; }
+
+.mechanism-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .mechanism-grid { grid-template-columns: repeat(3,1fr); } }
 
 .mechanism-card {
-  background: var(--bg-gray);
-  border: 1px solid var(--border);
-  border-radius: 16px; padding: 32px 28px;
-  position: relative;
-  transition: box-shadow 150ms, transform 150ms;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 28px 24px;
+  position: relative; overflow: hidden;
+  transition: background 150ms, transform 150ms;
 }
-.mechanism-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); transform: translateY(-3px); }
-.mechanism-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); border-radius: 16px 16px 0 0; }
+.mechanism-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.mechanism-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-brand-h); border-radius: 12px 12px 0 0; }
+.mechanism-card::after {
+  content: attr(data-num);
+  position: absolute; bottom: -16px; right: 8px;
+  font-family: var(--font-en); font-size: 100px; font-weight: 900;
+  color: rgba(255,255,255,0.04); line-height: 1;
+  pointer-events: none; user-select: none;
+}
 .mechanism-icon {
-  width: 52px; height: 52px; border-radius: 14px;
-  background: var(--red-pale);
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(255,255,255,0.08);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 16px;
 }
-.mechanism-icon svg { color: var(--red); }
-.mechanism-step { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-4); margin-bottom: 8px; }
-.mechanism-card h3 { font-size: 20px; font-weight: 700; color: var(--text-1); margin-bottom: 10px; }
-.mechanism-card p { font-size: 14px; color: var(--text-2); line-height: 1.72; }
+.mechanism-icon svg { color: rgba(255,255,255,0.65); }
+.mechanism-step { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(232,99,45,0.75); margin-bottom: 8px; }
+.mechanism-card h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.mechanism-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; }
 
 /* ── AUDIENCE ── */
 .audience-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
@@ -589,7 +668,11 @@ section { padding: 80px 0; }
 @media (max-width: 767px) {
   section { padding: 64px 0; }
 
-  .ngp-hero { min-height: auto; padding: 64px 0 48px; }
+  .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; min-height: auto; }
+  .hero-left { padding-left: 0; order: 2; }
+  .hero-right { padding-right: 0; order: 1; }
+  .hero-chip-img { width: 200px; }
+  .hero-headline { font-size: clamp(36px, 10vw, 56px); }
 
   /* Trust bar：2x2 grid */
   .trust-bar-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; justify-items: center; }
@@ -710,39 +793,26 @@ section { padding: 80px 0; }
 </div>
 
 <!-- ══ HERO ══ -->
-<section class="ngp-hero" id="hero">
-  <div class="ngp-hero-bg"></div>
-  <div class="container">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span class="hero-eyebrow-text">NEXT GENERATION PROBIOTICS</span>
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <img class="hero-chip-img" src="assets/ngp-chip.png" alt="次世代益生菌 NGP">
+    <div class="hero-chip-label">
+      <strong>次世代益生菌 NGP</strong>
+      <span>Next-Generation Probiotics</span>
     </div>
-    <h1 class="ngp-hero-title">什麼是次世代益生菌</h1>
-    <p class="ngp-hero-sub">一般人以為益生菌就是補充好菌。但科學家現在關注的，<br><strong>已經是更高規格 NGPs</strong>。</p>
-    <div class="hero-badge-row">
-      <span class="badge badge-red">藥品等級研發</span>
-      <span class="badge badge-ghost">正式人體臨床試驗</span>
-      <span class="badge badge-ghost">菌株層級基因鑑定</span>
+  </div>
+  <div class="hero-right">
+    <div class="hero-badge"><span class="hero-badge-dot"></span>次世代益生菌研究・突破傳統益生菌限制</div>
+    <h1 class="hero-headline"><em>次世代</em><br>益生菌<br><em>NGP</em></h1>
+    <p class="hero-sub">一般人以為益生菌就是補充好菌。但科學家現在關注的，<br>已經是另一個等級的東西了。</p>
+    <div class="hero-actions">
+      <button class="hero-cta-primary" onclick="location.href='#what-is-ngp'">了解 NGP</button>
+      <button class="hero-cta-ghost" onclick="location.href='https://lin.ee/RuxohDy'">LINE 諮詢</button>
     </div>
   </div>
 </section>
-
-<!-- ══ TRUST BAR ══ -->
-<div class="trust-bar">
-  <div class="container">
-    <div class="trust-bar-inner">
-      <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        NGPs 藥品等級 GMP 製造
-      </div>
-      <div class="trust-divider"></div>
-      <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        正式人體臨床試驗
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ══ PROBLEM ══ -->
 <section class="bg-gray" id="problem">
@@ -750,163 +820,60 @@ section { padding: 80px 0; }
 
     <!-- Section header: top-centered -->
     <div style="text-align:center;margin-bottom:48px;">
-      <span class="eyebrow">問題所在</span>
       <h2 style="font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.2;margin:10px auto 20px;max-width:720px;">吃下去<br>不一定到得了</h2>
       <p class="body-text" style="max-width:620px;margin:0 auto;">保健食品等級的益生菌，從來沒有被要求「菌必須活著抵達腸道」<br>大部分廠商標榜的菌數，只是出廠時的數字。</p>
     </div>
 
-    <div class="problem-inner">
+    <div class="problem-body">
 
-      <!-- Left: insight cards -->
+      <!-- Left: stat panels + callout -->
       <div>
-        <div class="insight-cards">
-          <div class="insight-card">
-            <div class="insight-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </div>
-            <div>
-              <h4>胃酸屏障：第一道死亡關卡</h4>
-              <p>人體胃酸約 pH 1.5–3.5，比市售醋酸上十倍。一般乳酸菌在此環境下存活率<strong style="color:var(--text-1);">可能低於 10%</strong>——你吞一百億，到腸道的可能連十億都不到。</p>
-            </div>
-          </div>
-          <div class="insight-card">
-            <div class="insight-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <div>
-              <h4>抗生素：第二重打擊</h4>
-              <p>廣效抗生素清除感染時，不區分好菌壞菌。這對已過胃酸關卡、僅剩的少數活菌來說，是另一波消滅——剛好是最需要益生菌的時機，效果卻最差。</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="callout">這不是品牌的問題。保健食品等級的益生菌，本來就沒有被要求需要有效果。</div>
-      </div>
-
-      <!-- Right: chart blocks -->
-      <div>
-        <div class="chart-block">
-          <div class="chart-title">胃酸環境（pH 2）存活率比較</div>
-          <div class="bar-row">
-            <div>
-              <div class="bar-label">
-                <span>NGPs 芽孢型菌株</span><span>&gt;80%</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill red" style="width:82%"></div></div>
-            </div>
-            <div>
-              <div class="bar-label">
-                <span>一般乳酸菌（L. acidophilus）</span><span>&lt;10%</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill gray" style="width:8%"></div></div>
-            </div>
-            <div>
-              <div class="bar-label">
-                <span>市售多菌種益生菌（多數）</span><span>&lt;10%</span>
-              </div>
-              <div class="bar-track"><div class="bar-fill gray" style="width:6%"></div></div>
-            </div>
-          </div>
-          <p class="journey-note">＊乳酸菌各菌株表現差異大，本數據為代表性趨勢比較。</p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- Flow diagram card -->
-    <div class="cv2-card" style="margin-top:36px;padding:28px 24px;">
-      <div class="cv2-sphere cv2-sphere-navy"></div>
-      <div class="cv2-header" style="margin-bottom:12px;">
-        <div class="chart-title" style="margin-bottom:0;">你吞的 100 億菌，最後剩幾億？</div>
-      </div>
-      <!-- Split-merge flow: 100億 → [一般/NGPs parallel paths] → 腸道 -->
-      <div class="js-wrap">
-
-        <!-- 起點：100億 -->
-        <div class="js-big-node">
-          <div class="journey-node-num">100<span style="font-size:0.55em;font-weight:500;color:var(--text-3);">億</span></div>
-          <div class="journey-node-label">吃下去</div>
-        </div>
-
-        <!-- Fork connector -->
-        <svg class="js-connector" viewBox="0 0 28 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="0"  y1="50" x2="14" y2="50" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="23" x2="14" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="23" x2="28" y2="23" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="77" x2="28" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-        </svg>
-
-        <!-- 兩條路 -->
-        <div class="js-paths-col">
+        <div class="stat-panels">
 
           <!-- 一般乳酸菌 -->
-          <div class="js-path">
-            <div class="journey-row-tag danger">一般乳酸菌</div>
-            <div class="js-path-nodes">
-              <div class="journey-node is-danger">
-                <div class="journey-node-num">pH 2</div>
-                <div class="journey-node-label">胃酸關卡</div>
-              </div>
-              <svg class="journey-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-danger">
-                <div class="journey-node-num">&lt;10<span style="font-size:0.55em;font-weight:500;">億</span></div>
-                <div class="journey-node-label">存活下來</div>
-              </div>
+          <div class="stat-panel is-red">
+            <div class="stat-panel-bg"></div>
+            <div class="stat-panel-content">
+              <div class="stat-panel-num">&lt;10%</div>
+              <div class="stat-panel-title">一般乳酸菌</div>
+              <div class="stat-panel-desc">胃酸環境存活率<br>100 億吃下去，到腸道不到 10 億</div>
             </div>
           </div>
 
-          <!-- NGPs 芽孢菌株 -->
-          <div class="js-path">
-            <div class="journey-row-tag safe">NGPs 芽孢菌株</div>
-            <div class="js-path-nodes">
-              <div class="journey-node is-safe">
-                <div class="journey-node-num" style="color:var(--navy);">pH 2</div>
-                <div class="journey-node-label">胃酸關卡</div>
-              </div>
-              <svg class="journey-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <div class="journey-node is-safe">
-                <div class="journey-node-num">95<span style="font-size:0.55em;font-weight:500;color:var(--navy);">億</span></div>
-                <div class="journey-node-label">存活下來</div>
-              </div>
+          <!-- NGP 芽孢菌株 -->
+          <div class="stat-panel is-navy">
+            <div class="stat-panel-bg"></div>
+            <div class="stat-panel-content">
+              <div class="stat-panel-num">&gt;80%</div>
+              <div class="stat-panel-title">NGP 芽孢菌株</div>
+              <div class="stat-panel-desc">相同胃酸環境存活率<br>芽孢結構完整保護，順利抵達腸道</div>
             </div>
           </div>
 
         </div>
-
-        <!-- Merge connector -->
-        <svg class="js-connector" viewBox="0 0 28 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="0"  y1="23" x2="14" y2="23" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="0"  y1="77" x2="14" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="23" x2="14" y2="77" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-          <line x1="14" y1="50" x2="28" y2="50" stroke="#d1d5db" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
-        </svg>
-
-        <!-- 終點：腸道 -->
-        <div class="js-big-node is-safe" style="border-color:#c8d2e8;background:#eef1f8;">
-          <div class="journey-node-num" style="font-size:clamp(14px,1.8vw,20px);color:var(--navy);letter-spacing:0;">腸道</div>
-          <div class="journey-node-label">目的地</div>
-        </div>
-
+        <div class="callout" style="margin-top:28px;">這不是品牌的問題。保健食品等級的益生菌，本來就沒有被要求需要有效果。</div>
       </div>
-      <p class="journey-note" style="margin-top:10px;">＊乳酸菌各菌株表現差異大，本數據為代表性趨勢比較。</p>
+
+      <!-- Right: infographic -->
+      <div>
+        <img src="assets/survival-comparison.png" alt="你吞的 100 億菌，最後剩幾億？腸胃保健菌株存活比較" style="width:100%;height:auto;display:block;border-radius:12px;">
+      </div>
+
     </div>
 
   </div>
 </section>
 
 
-<!-- ══ WHAT IS NGPs ══ -->
+<!-- ══ WHAT IS NGP ══ -->
 <section id="what-is-ngp">
   <div class="container">
     <div class="definition-inner">
 
       <div class="definition-content">
-        <span class="eyebrow">品類定義</span>
-        <h2>什麼是次世代益生菌（NGPs）？</h2>
-        <p>NGPs 是 Next Generation Probiotics 的縮寫，是學術界基於近年研究進展提出的分類框架。這類菌株的特點是：在基因技術輔助下被精密鑑定、有完整的安全性確認，並具有可描述、可重現的作用機制。</p>
-        <p>NGPs 不是一個品牌，也不是行銷話術，它描述的是一批在<strong>開發標準、機制理解、臨床驗證深度</strong>上，都與傳統保健益生菌本質不同的菌株。</p>
-        <p>在監管層面，各國已開始為這類新型益生菌建立法律框架，統稱為 LBP（Live Biotherapeutic Products，活體生物治療產品）。</p>
+        <h2>什麼是次世代益生菌（NGP）？</h2>
+        <p>NGP 是 Next Generation Probiotics 的縮寫，是學術界基於近年研究進展提出的分類框架。這類菌株的特點是：在基因技術輔助下被精密鑑定、有完整的安全性確認，並具有可描述、可重現的作用機制。</p>
+        <p>NGP 不是一個品牌，它描述的是一批在<strong>開發標準、機制理解、臨床驗證深度</strong>上，都與傳統保健益生菌本質不同的菌株。</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;">
           <span class="badge badge-navy-soft">LBP 活體生物治療產品</span>
           <span class="badge badge-navy-soft">全基因體定序</span>
@@ -920,21 +887,21 @@ section { padding: 80px 0; }
             <span class="reg-tag">美國 FDA</span>
             <span class="reg-card-title">LBP 藥品審查框架</span>
           </div>
-          <p>美國 FDA 將 NGPs 定位為 LBP，需依藥品法規開發，提交 IND（試驗用新藥申請）並通過正式人體臨床試驗審查。截至 2026 年初，全球 FDA 正式核准上市的 LBP 僅 2 項，可見門檻之高。</p>
+          <p>美國 FDA 將 NGP 定位為 LBP，需依藥品法規開發，提交 IND（試驗用新藥申請）並通過正式人體臨床試驗審查。截至 2026 年初，全球 FDA 正式核准上市的 LBP 僅 2 項，可見門檻之高。</p>
         </div>
         <div class="reg-card">
           <div class="reg-card-header">
             <span class="reg-tag">日本</span>
             <span class="reg-card-title">數十年處方藥使用歷史</span>
           </div>
-          <p>日本已有依藥品法規核准、由醫師處方開立的 NGPs 性質製劑，有數十年臨床使用歷史。在法律定義上，這類製劑與超市買到的保健益生菌是完全不同的東西。</p>
+          <p>日本已有依藥品法規核准、由醫師處方開立的 NGP 性質製劑，有數十年臨床使用歷史。在法律定義上，這類製劑與超市買到的保健益生菌是完全不同的東西。</p>
         </div>
         <div class="reg-card">
           <div class="reg-card-header">
             <span class="reg-tag">歐盟 EFSA</span>
             <span class="reg-card-title">新型食品審查進行中</span>
           </div>
-          <p>歐洲食品安全局（EFSA）正在審核部分 NGPs 候選菌株的新型食品申請，審查標準同樣嚴格，相關規範仍在建立中。</p>
+          <p>歐洲食品安全局（EFSA）正在審核部分 NGP 候選菌株的新型食品申請，審查標準同樣嚴格，相關規範仍在建立中。</p>
         </div>
       </div>
 
@@ -946,8 +913,7 @@ section { padding: 80px 0; }
 <section class="compare-section" id="compare">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">這不是功效差異，是類別差異</span>
-      <h2>NGPs vs. 一般市售益生菌</h2>
+      <h2>NGP vs. 一般市售益生菌</h2>
       <p>比益生菌之前，先搞清楚你比的是同一類東西嗎？</p>
     </div>
 
@@ -957,7 +923,7 @@ section { padding: 80px 0; }
           <tr>
             <th></th>
             <th class="col-regular">一般市售益生菌</th>
-            <th class="col-ngp">次世代益生菌（NGPs）</th>
+            <th class="col-ngp">次世代益生菌（NGP）</th>
           </tr>
         </thead>
         <tbody>
@@ -984,71 +950,47 @@ section { padding: 80px 0; }
         </tbody>
       </table>
     </div>
-    <p class="compare-caption">菌種 vs. 菌株：同一個菌種下，不同菌株的特性差異可能極大。NGPs 的鑑定要求到菌株層級，意味著研究者知道用的是哪一株、在臨床上看到了什麼結果。</p>
+    <p class="compare-caption">菌種 vs. 菌株：同一個菌種下，不同菌株的特性差異可能極大。NGP 的鑑定要求到菌株層級，意味著研究者知道用的是哪一株、那株接受過什麼測試、在臨床上看到了什麼結果。</p>
   </div>
 </section>
 
-<!-- ══ STATS BAR ══ -->
-<div class="stats-bar">
-  <div class="container">
-    <div class="stats-inner">
-      <div>
-        <div class="stat-num">&lt;10<sup>%</sup></div>
-        <div class="stat-label">一般乳酸菌胃酸存活率</div>
-      </div>
-      <div>
-        <div class="stat-num">20<sup>+</sup></div>
-        <div class="stat-label">NGPs 概念發現</div>
-      </div>
-      <div>
-        <div class="stat-num">GMP</div>
-        <div class="stat-label">藥品等級製造標準</div>
-      </div>
-      <div>
-        <div class="stat-num">RCT</div>
-        <div class="stat-label">人體臨床試驗要求</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ══ MECHANISM ══ -->
 <section id="mechanism">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">作用機制</span>
       <h2>到了腸道之後，它做的事情不一樣</h2>
-      <p>NGPs 與一般益生菌最根本的差距，不只是「能不能活著到腸道」，而是到了之後做的事情本質不同。</p>
+      <p>NGP 與一般益生菌最根本的差距，不只是「能不能活著到腸道」</p>
     </div>
 
     <div class="mechanism-grid">
-      <div class="mechanism-card">
+      <div class="mechanism-card" data-num="01">
         <div class="mechanism-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <div class="mechanism-step">LEVEL 01</div>
-        <h3>存活</h3>
-        <p>某些 NGPs 菌株具備特殊結構（如芽孢），能承受胃酸、膽鹽，甚至多種抗生素的衝擊，在抵達腸道後恢復活性。傳統乳酸菌沒有這個結構，在胃酸環境下往往直接瓦解。</p>
+        <h3>結構特性</h3>
+        <p>部分 NGP 候選菌株（如芽孢型）具備特殊的結構特性。科學界觀察到這類結構在不同環境條件下呈現出與一般乳酸菌不同的穩定性，是研究者深入研究此類菌株的原因之一。</p>
       </div>
-      <div class="mechanism-card">
+      <div class="mechanism-card" data-num="02">
         <div class="mechanism-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <div class="mechanism-step">LEVEL 02</div>
-        <h3>修復</h3>
-        <p>NGPs 研究的重要方向之一，是促進短鏈脂肪酸（尤其是丁酸）的生產。丁酸是腸道黏膜細胞的主要能量來源，有助於維持腸道屏障穩定。這不是補菌，是在修復腸道的工作環境。</p>
+        <h3>代謝物研究</h3>
+        <p>短鏈脂肪酸（SCFA）的代謝，是 NGP 研究領域的核心方向之一。研究者目前正探索特定菌株與腸道代謝物之間的關聯性，相關基礎研究仍在持續進行中。</p>
       </div>
-      <div class="mechanism-card">
+      <div class="mechanism-card" data-num="03">
         <div class="mechanism-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
         </div>
         <div class="mechanism-step">LEVEL 03</div>
-        <h3>調節</h3>
-        <p>腸道聚集大量免疫細胞，是人體免疫系統的重要基地。研究顯示，某些 NGPs 菌株能透過與腸道免疫細胞的互動，影響全身性的炎症調控——這也是 NGPs 臨床研究範圍延伸至腸胃以外的原因。</p>
+        <h3>腸道生態研究</h3>
+        <p>腸道微生物與免疫系統的交互關係，是 NGP 研究的新興方向之一。部分研究在體外模型中探索了特定菌株的表現，進一步的人體數據仍在積累中。</p>
       </div>
     </div>
 
-    <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--text-4);">此領域研究仍在快速發展中，現有數據讓研究者有合理的樂觀，但不應被解讀為最終定論。</p>
+    <p class="mechanism-note" style="text-align:center;margin-top:28px;font-size:13px;">以上為學術研究方向的科普介紹，不構成任何醫療或健康建議。如有健康疑慮，請諮詢醫師。</p>
   </div>
 </section>
 
@@ -1056,7 +998,6 @@ section { padding: 80px 0; }
 <section class="bg-gray" id="audience">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">適合對象</span>
       <h2>誰應該關注次世代益生菌？</h2>
       <p>如果你只是偶爾消化不太舒服，一般益生菌可能就夠了。<br>但以下情境，值得重新思考手上的選擇是否真的符合你的需求。</p>
     </div>
@@ -1086,7 +1027,7 @@ section { padding: 80px 0; }
         </div>
         <div>
           <h4>正在進行化療或免疫治療</h4>
-          <p>此類醫療介入對腸道菌相的影響顯著，是 NGPs 臨床研究最活躍的應用方向之一。</p>
+          <p>此類醫療介入對腸道菌相的影響顯著，是 NGP 臨床研究最活躍的應用方向之一。</p>
         </div>
       </div>
       <div class="audience-card">
@@ -1095,7 +1036,7 @@ section { padding: 80px 0; }
         </div>
         <div>
           <h4>免疫相關困擾</h4>
-          <p>過敏體質或反覆感染，在腸道菌相與免疫系統的交互影響上，正是 NGPs 研究最前沿的方向之一。</p>
+          <p>過敏體質或反覆感染，在腸道菌相與免疫系統的交互影響上，正是 NGP 研究最前沿的方向之一。</p>
         </div>
       </div>
       <div class="audience-card">
@@ -1113,7 +1054,7 @@ section { padding: 80px 0; }
         </div>
         <div>
           <h4>要求有實證支撐的選擇</h4>
-          <p>如果你希望有正式發表的人體臨床試驗數據作為依據，NGPs 的框架才能提供這個基礎。</p>
+          <p>如果你希望有正式發表的人體臨床試驗數據作為依據，NGP 的框架才能提供這個基礎。</p>
         </div>
       </div>
     </div>
@@ -1126,9 +1067,8 @@ section { padding: 80px 0; }
 <section id="identify">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">辨認指引</span>
-      <h2>怎麼才知道是不是 NGPs?</h2>
-      <p>與其相信宣傳包裝，不如自己問這 3 個問題。</p>
+      <h2>怎麼辨認一個真正的 NGP？</h2>
+      <p>是否為次世代，先問三個問題。</p>
     </div>
 
     <div class="cv2-row">
@@ -1249,9 +1189,7 @@ section { padding: 80px 0; }
 
     </div>
 
-    <div class="identify-note">
-      三個條件都符合的，才算次世代益生菌（NGPs）。<strong>這樣的產品，通常不會在超商貨架上看到。</strong>如果你想知道哪些通路可以找到符合 NGPs 標準的選擇，歡迎透過下方連結聯絡我們。
-    </div>
+    <div class="callout" style="margin-top:28px;">三個條件都符合的，才算次世代益生菌（NGP）。這樣的產品，通常不會在超商貨架上看到。</div>
   </div>
 </section>
 
@@ -1259,7 +1197,7 @@ section { padding: 80px 0; }
 <section class="cta-section" id="cta">
   <div class="container">
     <h2>想進一步了解次世代益生菌？</h2>
-    <p>歡迎直接透過 LINE 聯絡我們，取得相關資訊，讓你帶著足夠的背景知識，和你的醫師討論是否適合你的情況。</p>
+    <p>透過 LINE 聯絡我們，由專業人員提供相關資訊</p>
     <div class="cta-actions">
       <a href="https://lin.ee/RuxohDy" target="_blank" rel="noopener" class="btn btn-line btn-lg">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.61 5.79 4.1 7.55v3.45l3.24-1.78c.86.24 1.75.36 2.66.36 5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
