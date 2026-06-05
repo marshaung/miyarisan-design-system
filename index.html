@@ -353,8 +353,9 @@ section { padding: 80px 0; }
 }
 @media (min-width: 1024px) { .doctor-content { max-width: 440px; } }
 .doctor-content h2 {
+  font-family: var(--font-display);
   font-size: clamp(22px, 3vw, 32px);
-  font-weight: 700; color: var(--text-1);
+  font-weight: 900; color: var(--text-1);
   line-height: 1.3; margin: 0 0 16px;
 }
 .doctor-content p {
@@ -440,8 +441,9 @@ section { padding: 80px 0; }
   .solution-inner { grid-template-columns: 1fr 1fr; gap: 80px; }
 }
 .solution-content h2 {
+  font-family: var(--font-display);
   font-size: clamp(24px, 3.5vw, 40px);
-  font-weight: 700; line-height: 1.3;
+  font-weight: 900; line-height: 1.3;
   margin: 0 0 16px;
 }
 .solution-content .lead {
@@ -540,8 +542,9 @@ section { padding: 80px 0; }
 .trust-section { background: var(--white); padding-top: 0; }
 .trust-header { text-align: center; margin-bottom: 56px; }
 .trust-header h2 {
+  font-family: var(--font-display);
   font-size: clamp(22px, 3vw, 32px);
-  font-weight: 700; margin: 0 0 12px;
+  font-weight: 900; margin: 0 0 12px;
 }
 .trust-header p { font-size: 15px; color: var(--text-3); }
 
@@ -598,8 +601,9 @@ section { padding: 80px 0; }
   text-align: center; margin-bottom: 40px;
 }
 .research-header h2 {
+  font-family: var(--font-display);
   font-size: clamp(22px, 3vw, 32px);
-  font-weight: 700; margin: 0 0 8px;
+  font-weight: 900; margin: 0 0 8px;
 }
 .research-grid {
   display: grid; gap: 20px;
@@ -838,7 +842,7 @@ section { padding: 80px 0; }
 ══════════════════════════════════ */
 .cv2-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.78fr 1fr 1fr 1fr;
   gap: 16px;
   align-items: stretch;
 }
@@ -890,12 +894,12 @@ section { padding: 80px 0; }
 
 .cv2-header { position: relative; z-index: 1; }
 .cv2-header h3 {
-  font-size: 20px; font-weight: 700;
+  font-size: 22px; font-weight: 700;
   color: var(--text-1); margin: 6px 0 8px;
   font-family: var(--font-display);
 }
 .cv2-header p {
-  font-size: 13px; color: var(--text-3); line-height: 1.6;
+  font-size: 15px; color: var(--text-3); line-height: 1.6;
 }
 
 .cv2-widget {
@@ -908,13 +912,13 @@ section { padding: 80px 0; }
 
 /* — Bar widget — */
 .cv2-bar-item { display: flex; align-items: center; gap: 10px; }
-.cv2-bar-label { font-size: 12.5px; color: var(--text-2); width: 72px; flex-shrink: 0; }
+.cv2-bar-label { font-size: 14.5px; color: var(--text-2); width: 82px; flex-shrink: 0; }
 .cv2-bar-track { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
 .cv2-bar-fill {
   height: 100%; border-radius: 99px;
   background: linear-gradient(90deg, var(--red) 0%, #e84d6e 100%);
 }
-.cv2-bar-value { font-size: 12.5px; font-weight: 700; color: var(--text-1); min-width: 34px; text-align: right; }
+.cv2-bar-value { font-size: 14.5px; font-weight: 700; color: var(--text-1); min-width: 38px; text-align: right; }
 .cv2-bar-sep { height: 1px; background: var(--border); margin: 10px 0; }
 
 /* — Checklist widget — */
@@ -924,7 +928,7 @@ section { padding: 80px 0; }
 }
 .cv2-check-item:last-of-type { border-bottom: none; }
 .cv2-check-icon { flex-shrink: 0; color: var(--red); }
-.cv2-check-text { font-size: 13px; color: var(--text-2); line-height: 1.45; }
+.cv2-check-text { font-size: 15px; color: var(--text-2); line-height: 1.45; }
 .cv2-progress-wrap { margin-top: 14px; }
 .cv2-progress-bar-track { width: 100%; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
 .cv2-progress-bar-fill {
@@ -936,27 +940,28 @@ section { padding: 80px 0; }
   display: flex; justify-content: space-between; align-items: baseline;
   margin-top: 8px;
 }
-.cv2-progress-footer span { font-size: 11.5px; color: var(--text-3); }
+.cv2-progress-footer span { font-size: 13px; color: var(--text-3); }
 .cv2-progress-footer strong { font-size: 18px; font-weight: 900; color: var(--text-1); font-family: var(--font-en); }
 
 /* — Metrics widget — */
 .cv2-metric-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .cv2-metric-head span {
-  font-size: 11px; font-weight: 700;
+  font-size: 12.5px; font-weight: 700;
   letter-spacing: 0.07em; text-transform: uppercase; color: var(--red);
 }
 .cv2-metric-item { padding: 9px 0; border-bottom: 1px solid var(--border); }
 .cv2-metric-item:last-child { border-bottom: none; }
 .cv2-metric-row { display: flex; align-items: center; justify-content: space-between; }
-.cv2-metric-name { font-size: 13px; color: var(--text-2); }
+.cv2-metric-name { font-size: 15px; color: var(--text-2); }
 .cv2-metric-pill {
-  display: inline-flex; align-items: center; gap: 4px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
   background: var(--navy); color: #fff;
-  border-radius: 6px; padding: 3px 9px;
-  font-size: 12px; font-weight: 700;
+  border-radius: 6px; padding: 0 10px;
+  min-height: 28px; box-sizing: border-box;
+  font-size: 13.5px; font-weight: 700; line-height: 1;
 }
-.cv2-metric-pill svg { width: 12px; height: 12px; flex-shrink: 0; }
-.cv2-metric-foot { margin-top: 12px; font-size: 11.5px; color: var(--text-3); line-height: 1.55; }
+.cv2-metric-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+.cv2-metric-foot { margin-top: 12px; font-size: 13px; color: var(--text-3); line-height: 1.55; }
 
 /* ══════════════════════════════════
    手機版修正（iPhone 標準）
@@ -1151,7 +1156,7 @@ section { padding: 80px 0; }
     </h1>
     <p class="hero-sub">
       日本原廠「妙利散製藥株式會社」原裝進口。<br>
-      含 LBP Clostridium Butyricum Miyairi 588 株酪酸菌，<br>
+      含 NGP Clostridium Butyricum Miyairi 588 株酪酸菌，<br>
       緩解腹瀉、腹痛及便祕，調整腸道。
     </p>
     <div class="hero-actions">
@@ -1221,7 +1226,7 @@ section { padding: 80px 0; }
       </span>
       <span class="pain-chip">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/></svg>
-        腹脹脹氣
+        腹痛脹氣
       </span>
       <span class="pain-chip">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -1253,7 +1258,7 @@ section { padding: 80px 0; }
             <div class="feat-num">1</div>
             <div class="feat-text">
               <strong>耐酸耐熱設計</strong>
-              <span>特殊製劑技術，保護活菌安全抵達腸道，不怕胃酸破壞。</span>
+              <span>芽孢結構，保護活菌安全抵達腸道，不怕胃酸破壞。</span>
             </div>
           </div>
           <div class="feat-item">
@@ -1279,13 +1284,13 @@ section { padding: 80px 0; }
             <span class="channel-badge hospital">醫療通路</span>
             <img src="assets/hospital-box.png" alt="妙利散® BM 醫療院所包裝">
             <div class="channel-label">醫療院所</div>
-            <div class="channel-desc">用於特定疾病治療</div>
+            <div class="channel-desc">疾病治療</div>
           </div>
           <div class="channel-card retail">
             <span class="channel-badge retail">藥局通路</span>
             <img src="assets/product-box-bm.png" alt="妙利散® BM 藥局零售包裝">
             <div class="channel-label">藥局零售</div>
-            <div class="channel-desc">日常保健常備藥品</div>
+            <div class="channel-desc">常備藥品</div>
           </div>
         </div>
       </div>
@@ -1334,8 +1339,7 @@ section { padding: 80px 0; }
         確保每一批妙利散® 都達到臨床驗證的品質基準。
       </p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <span class="badge badge-navy-soft">台灣雙專利認證</span>
-        <span class="badge badge-green">Nutra Ingredients Awards</span>
+        <span class="badge badge-navy-soft">日本雙專利認證</span>
         <span class="badge badge-red-soft">RCT 臨床研究支持</span>
       </div>
     </div>
@@ -1427,7 +1431,7 @@ section { padding: 80px 0; }
         <div class="cv2-header">
           <span class="criteria-step">CRITERIA 02</span>
           <h3>有效認證</h3>
-          <p>CBM588 宮入菌株擁有台灣雙專利認證，並榮獲國際大獎肯定，科學背書有所依據。</p>
+          <p>CBM588 宮入菌株擁有日本雙專利認證，並榮獲國際大獎肯定，科學背書有所依據。</p>
         </div>
         <div class="cv2-widget">
           <div class="cv2-check-item">
@@ -1435,14 +1439,7 @@ section { padding: 80px 0; }
               <path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
               <path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="cv2-check-text">台灣雙專利認證</span>
-          </div>
-          <div class="cv2-check-item">
-            <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none">
-              <path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              <path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="cv2-check-text">Nutra Ingredients Awards</span>
+            <span class="cv2-check-text">日本雙專利認證</span>
           </div>
           <div class="cv2-check-item">
             <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none">
@@ -1478,21 +1475,9 @@ section { padding: 80px 0; }
           </div>
           <div class="cv2-metric-item">
             <div class="cv2-metric-row">
-              <span class="cv2-metric-name">活菌存活率</span>
-              <div class="cv2-metric-pill">
-                高穩定
-                <svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3.33 8.5L8 3.83L12.67 8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M8 13.17V3.83" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="cv2-metric-item">
-            <div class="cv2-metric-row">
               <span class="cv2-metric-name">腸道到達率</span>
               <div class="cv2-metric-pill">
-                耐酸保護
+                耐酸耐熱性
                 <svg viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M3.33 8.5L8 3.83L12.67 8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M8 13.17V3.83" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1561,10 +1546,9 @@ section { padding: 80px 0; }
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-year">2020s</div>
-        <div class="tl-title">獲認定符合 LBP 次世代益生菌製劑標準</div>
-        <div class="tl-desc">依 LBP（Live Biotherapeutic Products）嚴謹規格標準，妙利散® CBM588 菌株通過菌株鑑定、製劑穩定性與臨床實證三重門檻，並榮獲 Nutra Ingredients Awards 國際肯定。</div>
-        <span class="tl-badge">LBP 製劑認定</span>
-        <span class="tl-badge" style="margin-left:6px;">Nutra Ingredients Awards</span>
+        <div class="tl-title">台灣醫院唯一具使用經驗的藥品級次世代益生菌</div>
+        <div class="tl-desc">妙利散 CBM588 菌株具備次世代益生菌（NGP）特性及條件，研發製程符合美國 LBP（Live Biotherapeutic Products）精神，通過菌株鑑定、製劑穩定與臨床實證三重門檻，榮獲國際肯定。</div>
+        <span class="tl-badge">LBP 製劑標準</span>
       </div>
 
     </div>
