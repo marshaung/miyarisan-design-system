@@ -28,15 +28,8 @@
   --red:       #CE0E2D;
   --red-dark:  #a80c24;
   --red-pale:  #fdf0f2;
-  --pink:      #E5368D;
-  --pink-soft: #fbe9f1;
   --gradient-brand: linear-gradient(135deg, #CE0E2D 0%, #E5368D 100%);
   --gradient-brand-h: linear-gradient(90deg, #CE0E2D 0%, #E5368D 100%);
-  /* 深色 section 主背景：深酒紅（取代原本的深藍） */
-  --wine-dark:  #2A0A18;
-  --wine-deep:  #1C0610;
-  --gradient-dark: linear-gradient(160deg, #320B1E 0%, #1A0610 100%);
-  /* 藍色降為點綴：footer / 局部 */
   --navy:      #172F60;
   --text-1:    #111827;
   --text-2:    #374151;
@@ -78,7 +71,7 @@ section { padding: 80px 0; }
 .badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; }
 .badge-red  { background: #DC411E; color: #fff; }
 .badge-navy { background: var(--navy); color: #fff; }
-.badge-navy-soft { background: var(--pink-soft); color: #9e1242; }
+.badge-navy-soft { background: #eef1f8; color: var(--navy); }
 .badge-ghost { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2); }
 
 /* ── Buttons ── */
@@ -154,52 +147,51 @@ section { padding: 80px 0; }
 /* ── HERO ── */
 .hero {
   min-height: 100vh; position: relative;
-  display: grid; grid-template-columns: 1.05fr 0.95fr;
-  align-items: center; padding: 100px 48px 60px;
-  gap: 32px; overflow: hidden; color: var(--text-1);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FDF1F5 100%);
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; padding: 130px 48px 80px;
+  gap: 60px; overflow: hidden; color: #fff;
+  background: #0B1E3D;
 }
 .hero-grid {
   position: absolute; inset: 0; z-index: 1;
-  background-image: linear-gradient(rgba(206,14,45,0.045) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(206,14,45,0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(circle at 30% 48%, #000 0%, transparent 70%);
-  mask-image: radial-gradient(circle at 30% 48%, #000 0%, transparent 70%);
+  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
 .hero-glow {
-  position: absolute; top: 6%; left: 2%; z-index: 1;
-  width: 760px; height: 760px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(229,54,141,0.16) 0%, rgba(229,54,141,0.06) 40%, transparent 66%);
+  position: absolute; top: 15%; left: 8%; z-index: 1;
+  width: 440px; height: 440px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,43,43,0.18) 0%, transparent 68%);
   pointer-events: none;
 }
 .hero-left {
   position: relative; z-index: 2;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
+  padding-left: 72px;
 }
 .hero-bacteria-img {
-  height: min(78vh, 720px); width: auto; max-width: 108%;
-  filter: drop-shadow(0 30px 50px rgba(206,14,45,0.16)) drop-shadow(0 10px 22px rgba(0,0,0,0.10));
+  width: 300px; max-width: 90%;
+  filter: drop-shadow(0 0 48px rgba(196,43,43,0.28)) drop-shadow(0 24px 48px rgba(0,0,0,0.45));
   animation: float 5s ease-in-out infinite;
 }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 .hero-strain-label {
   margin-top: 20px;
-  background: rgba(255,255,255,0.7);
-  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
   padding: 10px 22px;
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 28px rgba(206,14,45,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
   text-align: center;
 }
 .hero-strain-label strong {
-  display: block; font-size: 15px; font-weight: 700;
-  color: var(--text-1); letter-spacing: 0.04em; margin-bottom: 3px;
+  display: block; font-size: 13px; font-weight: 700;
+  color: #fff; letter-spacing: 0.04em; margin-bottom: 3px;
 }
 .hero-strain-label span {
-  font-size: 10px; color: var(--text-4);
-  letter-spacing: 0.06em; text-transform: uppercase; font-style: italic;
+  font-size: 10px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
 }
 .hero-right {
   position: relative; z-index: 2;
@@ -208,11 +200,10 @@ section { padding: 80px 0; }
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.2);
   padding: 6px 14px; margin-bottom: 28px; width: fit-content;
-  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-  color: var(--text-3); text-transform: uppercase;
-  background: rgba(255,255,255,0.6);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.6); text-transform: uppercase;
 }
 @keyframes pulse-dot {
   0%, 100% { box-shadow: 0 0 0 0 rgba(196,43,43,0.55); }
@@ -226,7 +217,7 @@ section { padding: 80px 0; }
   font-family: 'Noto Sans TC', sans-serif;
   font-size: clamp(42px, 5.5vw, 84px);
   font-weight: 900; line-height: 1.05;
-  letter-spacing: -0.02em; margin-bottom: 24px; color: var(--text-1);
+  letter-spacing: -0.02em; margin-bottom: 24px; color: #fff;
 }
 .hero-headline em {
   font-style: normal;
@@ -234,8 +225,8 @@ section { padding: 80px 0; }
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
-  font-size: 15px; font-weight: 400;
-  color: var(--text-2); line-height: 1.85;
+  font-size: 15px; font-weight: 300;
+  color: rgba(138,155,176,1); line-height: 1.85;
   margin-bottom: 44px; max-width: 420px;
 }
 .hero-actions { display: flex; align-items: center; gap: 14px; }
@@ -247,30 +238,20 @@ section { padding: 80px 0; }
 }
 .hero-cta-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
 .hero-cta-ghost {
-  background: transparent; color: var(--text-2);
-  border: 1px solid var(--border);
+  background: transparent; color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.2);
   padding: 15px 34px; font-size: 14px; letter-spacing: 0.04em;
   cursor: pointer; font-family: inherit; transition: all .2s;
 }
-.hero-cta-ghost:hover { border-color: var(--red); color: var(--red); transform: translateY(-1px); }
+.hero-cta-ghost:hover { border-color: var(--white); color: var(--white); transform: translateY(-1px); }
 
 /* ── TRUST BAR ── */
-.trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 26px 0; }
-.trust-bar-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
-.trust-item {
-  display: flex; align-items: center; gap: 13px;
-  padding: 6px 22px; justify-content: center;
-  border-left: 1px solid var(--border);
-}
-.trust-item:first-child { border-left: none; }
-.trust-ico {
-  width: 46px; height: 46px; flex-shrink: 0; border-radius: 13px;
-  background: var(--pink-soft); display: grid; place-items: center;
-}
-.trust-ico svg { color: var(--red); }
-.trust-txt { display: flex; flex-direction: column; line-height: 1.3; }
-.trust-txt strong { font-size: 15px; font-weight: 700; color: var(--text-1); }
-.trust-txt span { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+.trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 20px 0; }
+.trust-bar-inner { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text-2); }
+.trust-item svg { color: var(--red); flex-shrink: 0; }
+.trust-divider { width: 1px; height: 20px; background: var(--border); }
+@media (max-width: 600px) { .trust-divider { display: none; } }
 
 /* ── SHARED ── */
 .bg-gray { background: var(--bg-gray); }
@@ -287,15 +268,8 @@ section { padding: 80px 0; }
   margin-top: 24px; padding: 16px 20px;
   border-left: 3px solid var(--red); background: var(--red-pale);
   border-radius: 0 8px 8px 0;
-  font-size: 15px; font-weight: 600; color: var(--text-1); line-height: 1.6;
+  font-size: 14px; font-weight: 600; color: var(--text-1); line-height: 1.6;
 }
-
-/* ── MID BANNER（滿版過場大圖） ── */
-.mid-banner {
-  width: 100%; height: clamp(180px, 22vw, 300px);
-  overflow: hidden; position: relative; background: #f7eef1;
-}
-.mid-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; }
 
 /* ── CRITERIA SECTION ── */
 #criteria { background: var(--white); }
@@ -319,31 +293,40 @@ section { padding: 80px 0; }
 }
 @media (max-width: 1023px) { .strain-visual { display: none; } }
 
-/* Criteria → editorial 數字清單（無框，hairline 分隔） */
-.req-list { display: flex; flex-direction: column; }
-.req-item {
-  display: grid; grid-template-columns: 64px 1fr; gap: 24px;
-  padding: 28px 0; border-top: 1px solid var(--border);
+.req-cards { display: flex; flex-direction: column; gap: 16px; }
+.req-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 28px 22px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  position: relative; overflow: hidden;
 }
-.req-item:first-child { padding-top: 4px; border-top: none; }
-.req-no {
-  font-family: var(--font-en); font-size: 40px; font-weight: 800;
-  line-height: 1; letter-spacing: -0.03em;
-  background: var(--gradient-brand); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
+.req-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; width: auto; bottom: auto;
+  background: var(--gradient-brand-h);
+  border-radius: 16px 16px 0 0;
 }
-.req-text h3 { font-size: 19px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
-.req-text p { font-size: 15px; color: var(--text-2); line-height: 1.75; }
-.req-text em { font-style: normal; font-weight: 600; color: var(--red); }
-@media (max-width: 600px) {
-  .req-item { grid-template-columns: 48px 1fr; gap: 16px; }
-  .req-no { font-size: 32px; }
+.req-card::after {
+  content: attr(data-num);
+  position: absolute; bottom: -14px; right: 18px;
+  font-family: var(--font-en); font-size: 88px; font-weight: 900;
+  color: rgba(206,14,45,0.05); line-height: 1;
+  pointer-events: none; user-select: none;
 }
+.req-card-num {
+  font-family: var(--font-en); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px;
+}
+.req-card-title { font-size: 16px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+.req-card p { font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
+.req-card em { font-style: normal; font-weight: 600; color: var(--text-1); }
 
 /* ── DUAL FEATURE ── */
-#features { background: var(--white); }
-#features .section-header h2 { color: var(--text-1); }
-#features .section-header p { color: var(--text-2); }
+#features { background: #0B1E3D; }
+#features .section-header h2 { color: #fff; }
+#features .section-header p { color: rgba(255,255,255,0.5); }
 #features .eyebrow { color: var(--red); }
 #features .eyebrow::before { background: var(--red); }
 
@@ -351,48 +334,59 @@ section { padding: 80px 0; }
 @media (min-width: 768px) { .dual-grid { grid-template-columns: 1fr 1fr; } }
 
 .dual-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 18px; overflow: hidden;
-  position: relative;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-  transition: box-shadow 200ms, transform 200ms;
-  display: flex; flex-direction: column;
+  background: rgba(23,47,96,0.45);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 36px 32px;
+  position: relative; overflow: hidden;
+  transition: background 150ms;
 }
-.dual-card:hover { box-shadow: 0 18px 44px rgba(206,14,45,0.12); transform: translateY(-3px); }
-.dual-card:hover .dual-media img { transform: scale(1.04); }
-
-.dual-media { position: relative; height: 220px; overflow: hidden; background: #fff; }
-.dual-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 500ms ease; }
-.dual-media::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(255,255,255,0.0) 100%);
+.dual-card:hover { background: rgba(23,47,96,0.6); }
+.dual-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, #172F60 0%, #3b6cb7 100%);
+  border-radius: 16px 16px 0 0;
+}
+.dual-card::after {
+  content: ''; position: absolute; bottom: -80px; right: -80px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,108,183,0.25) 0%, transparent 70%);
   pointer-events: none;
 }
-.dual-media-tag {
-  position: absolute; left: 18px; bottom: 16px;
-  font-family: var(--font-en); font-size: 10px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase; color: #fff;
-  background: rgba(206,14,45,0.92); padding: 5px 12px; border-radius: 999px;
-  backdrop-filter: blur(4px);
-}
-.dual-card.accent .dual-media-tag { background: rgba(229,54,141,0.92); }
+.dual-card.accent { background: rgba(140,10,28,0.28); }
+.dual-card.accent:hover { background: rgba(140,10,28,0.38); }
+.dual-card.accent::before { background: var(--gradient-brand-h); }
+.dual-card.accent::after { background: radial-gradient(circle, rgba(196,43,43,0.28) 0%, transparent 70%); }
 
-.dual-body { padding: 30px 32px 34px; display: flex; flex-direction: column; flex: 1; }
-.dual-card h3 { font-size: 22px; font-weight: 700; color: var(--text-1); margin-bottom: 12px; }
-.dual-body > p { font-size: 15px; color: var(--text-2); line-height: 1.75; }
-.dual-body > p em { font-style: normal; font-weight: 600; color: var(--text-1); }
-.dual-body > p strong { color: var(--red); }
+.dual-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; position: relative; z-index: 1;
+}
+.dual-icon.navy-bg svg { color: rgba(160,195,255,0.85); }
+.dual-icon.red-bg svg  { color: rgba(255,160,145,0.85); }
+
+.dual-tag {
+  font-family: var(--font-en); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(160,195,255,0.55); margin-bottom: 8px; position: relative; z-index: 1;
+}
+.dual-card.accent .dual-tag { color: rgba(255,160,145,0.6); }
+
+.dual-card h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; position: relative; z-index: 1; }
+.dual-card > p { font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.75; position: relative; z-index: 1; }
+.dual-card > p em { font-style: normal; font-weight: 600; color: rgba(255,255,255,0.85); }
+.dual-card > p strong { color: #fff; }
 
 .dual-pill {
   display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 22px; align-self: flex-start; padding: 8px 16px; border-radius: 999px;
-  font-size: 13px; font-weight: 700;
-  background: var(--pink-soft); border: 1px solid #f6d4e2;
+  margin-top: 20px; padding: 7px 16px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; position: relative; z-index: 1;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
 }
-.dual-pill.navy { color: var(--pink); }
-.dual-pill.red  { color: var(--red); }
-.dual-pill svg { opacity: 0.85; }
+.dual-pill.navy { color: rgba(180,210,255,0.9); }
+.dual-pill.red  { color: rgba(255,175,165,0.9); }
+.dual-pill svg { opacity: 0.7; }
 
 /* ── STABILITY ── */
 .stability-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
@@ -401,21 +395,29 @@ section { padding: 80px 0; }
 .stability-content h2 { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; line-height: 1.3; margin: 0 0 16px; }
 .stability-content > p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 24px; }
 
-.stability-points { display: flex; flex-direction: column; margin-bottom: 24px; }
+.stability-points { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
 .stability-point {
-  display: flex; gap: 18px; align-items: flex-start;
-  padding: 22px 0; border-top: 1px solid var(--border);
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 22px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  position: relative; overflow: hidden;
 }
-.stability-point:first-child { border-top: none; padding-top: 4px; }
+.stability-point::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-brand-h);
+  border-radius: 14px 14px 0 0;
+}
 .stability-point-icon {
-  width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px;
-  background: var(--pink-soft);
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 10px;
+  background: var(--red-pale);
   display: flex; align-items: center; justify-content: center;
   margin-top: 2px;
 }
 .stability-point-icon svg { color: var(--red); }
-.stability-point h4 { font-size: 17px; font-weight: 700; color: var(--text-1); margin-bottom: 7px; }
-.stability-point p  { font-size: 15px; color: var(--text-3); line-height: 1.7; }
+.stability-point h4 { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 5px; }
+.stability-point p  { font-size: 13px; color: var(--text-3); line-height: 1.65; }
 
 /* Bar chart */
 .chart-block { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
@@ -452,132 +454,49 @@ section { padding: 80px 0; }
 .flow-arrow-icon { color: var(--text-3); flex-shrink: 0; }
 .flow-note { margin-top: 12px; font-size: 12px; color: var(--text-3); line-height: 1.6; }
 
-/* ── HEAT 數字表（去 Excel 格線，色標籤 + 等寬數字） ── */
-.chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
-.chart-unit { font-size: 11px; color: var(--text-4); font-family: var(--font-en); letter-spacing: 0.02em; }
-.heat-num { width: 100%; border-collapse: collapse; }
-.heat-num th {
-  font-size: 11px; font-weight: 700; color: var(--text-4);
-  letter-spacing: 0.04em; text-align: center; padding: 0 0 12px;
+/* ── HEAT TABLE ── */
+.heat-timerow {
+  display: grid; grid-template-columns: 56px repeat(4, 1fr);
+  gap: 4px; margin-bottom: 10px; text-align: center;
 }
-.heat-num th.heat-num-cond { text-align: left; }
-.heat-num td {
-  text-align: center; padding: 14px 4px;
-  border-top: 1px solid var(--border);
-  font-family: var(--font-en); font-size: 15px; font-weight: 700;
-  color: var(--text-1); font-variant-numeric: tabular-nums;
+.heat-timecell, .heat-time-cell { text-align: center; }
+.heat-time-num {
+  font-family: var(--font-en); font-size: 16px; font-weight: 900;
+  color: var(--navy); line-height: 1;
 }
-.heat-num td:first-child { text-align: left; }
-.heat-cond {
-  display: inline-block; font-family: var(--font-ui);
-  font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 999px;
-}
-.heat-cond.normal { color: var(--navy); background: #eef1f8; }
-.heat-cond.warm   { color: #b45309; background: #fdf0dc; }
-.heat-cond.hot    { color: var(--red); background: var(--pink-soft); }
-.heat-num-foot {
-  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-  margin-top: 14px; font-size: 11.5px; color: var(--text-4);
-  font-family: var(--font-en); letter-spacing: 0.02em;
-}
-.heat-num-foot span:last-child { color: var(--red); font-weight: 700; }
+.heat-time-unit { font-size: 10px; color: var(--text-3); margin-top: 2px; }
+.heat-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.heat-table td { padding: 9px 6px; text-align: center; border-top: 1px solid var(--border); font-family: var(--font-en); color: var(--text-2); }
+.heat-table td:first-child { text-align: left; font-family: var(--font-ui); font-weight: 700; font-size: 14px; padding-left: 0; }
+.heat-cond.normal { color: var(--navy); }
+.heat-cond.warm   { color: #d97706; }
+.heat-cond.hot    { color: var(--red); }
 
-/* ── COMPARE TABLE（漸層 header + 粉色淡出欄 + 圓形紅勾） ── */
+/* ── COMPARE TABLE ── */
 .compare-section { background: var(--bg-gray); }
 .compare-wrap {
-  --compare-cbm: var(--red);
-  --compare-cbm-soft: #fde9f0;
-  overflow-x: auto; padding: 8px;
+  overflow-x: auto; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
 }
-.compare-table {
-  width: 100%; min-width: 760px;
-  border-collapse: separate; border-spacing: 0; overflow: hidden;
-  color: var(--text-1); background: var(--white);
-  border: 1px solid var(--border); border-radius: 18px;
-  box-shadow: none;
+.compare-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+.compare-table th {
+  padding: 14px 20px; text-align: left;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
 }
-.compare-table th,
-.compare-table td {
-  padding: 18px 22px; text-align: left; vertical-align: middle;
-  border-bottom: 1px solid var(--border); line-height: 1.6;
-  font-family: var(--font-ui); font-weight: 700;
-  font-size: 14px; letter-spacing: 0.06em;
-}
-.compare-table thead th {
-  color: var(--text-3); background: #fbfcfd;
-}
-.compare-table thead th:first-child {
-  color: var(--text-1);
-}
-.compare-table tbody th {
-  width: 20%;
-  color: var(--text-1); background: #fbfcfd; white-space: nowrap;
-}
-.compare-table tbody td { color: var(--text-2); }
-.compare-table th + th,
-.compare-table td + td { border-left: 1px solid var(--border); }
-.compare-table tr:last-child th,
-.compare-table tr:last-child td { border-bottom: 0; }
-.compare-table .col-regular { color: var(--text-3); background: #fafafa; }
-.compare-table thead .col-regular { border-left: none; }
-.compare-table .col-cbm {
-  position: relative; color: #9e1242;
-  background: linear-gradient(90deg, var(--compare-cbm-soft), #fff);
-}
-.compare-table thead .col-cbm {
-  color: #fff;
-  background: linear-gradient(135deg, var(--compare-cbm), #E5368D);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
-  border-left: 1px solid rgba(255,255,255,0.25);
-}
-.compare-table tbody td.col-cbm { padding-left: 54px; }
-.compare-table tbody td.col-cbm::before {
-  content: "✓"; position: absolute; left: 22px; top: 50%;
-  width: 22px; height: 22px; transform: translateY(-50%);
-  display: grid; place-items: center; border-radius: 999px;
-  color: #fff; font-size: 14px; font-weight: 900;
-  background: var(--compare-cbm); box-shadow: 0 8px 16px rgba(206,14,45,0.22);
-}
-.compare-table tbody tr:hover th,
-.compare-table tbody tr:hover td { background: #fffaf4; }
-.compare-table tbody tr:hover td.col-cbm { background: linear-gradient(90deg, #ffe5eb, #fff); }
-.compare-note { margin-top: 16px; font-size: 12px; color: var(--text-4); line-height: 1.7; text-align: right; }
-@media (max-width: 720px) {
-  .compare-wrap { overflow: visible; padding: 0; }
-  .compare-table,
-  .compare-table thead,
-  .compare-table tbody,
-  .compare-table tr,
-  .compare-table th,
-  .compare-table td { display: block; width: 100%; min-width: 0; }
-  .compare-table { border: 0; border-radius: 0; box-shadow: none; background: transparent; }
-  .compare-table thead { display: none; }
-  .compare-table tr {
-    margin-bottom: 14px; overflow: hidden;
-    background: var(--white); border: 1px solid var(--border); border-radius: 16px;
-    box-shadow: 0 12px 28px rgba(17,24,39,0.07);
-  }
-  .compare-table tbody th {
-    width: auto; padding: 16px 18px; border-bottom: 1px solid var(--border);
-    background: #fbfcfd; white-space: normal;
-  }
-  .compare-table td { padding: 14px 18px; border-left: 0; border-bottom: 1px solid var(--border); }
-  .compare-table th + th,
-  .compare-table td + td { border-left: 0; }
-  .compare-table td::before {
-    content: attr(data-label); display: block; margin-bottom: 4px;
-    font-size: 12px; font-weight: 900; color: var(--text-3);
-  }
-  .compare-table tbody td.col-cbm { padding-left: 52px; background: var(--compare-cbm-soft); }
-  .compare-table tbody td.col-cbm::before { content: "✓"; top: 42px; }
-  .compare-table tbody td.col-cbm::after {
-    content: attr(data-label); display: block; margin-bottom: 4px;
-    font-size: 12px; font-weight: 900; color: var(--compare-cbm);
-  }
-}
+.compare-table th:first-child { color: var(--text-3); width: 130px; }
+.compare-table th.col-regular { background: var(--bg-gray); color: var(--text-2); border-left: 1px solid var(--border); }
+.compare-table th.col-cbm { background: var(--navy); color: #fff; border-left: 1px solid var(--border); }
+.compare-table td { padding: 16px 20px; vertical-align: middle; line-height: 1.55; border-top: 1px solid var(--border); color: var(--text-2); }
+.compare-table td:first-child { font-weight: 700; color: var(--text-1); background: var(--bg-gray); white-space: nowrap; }
+.compare-table td.col-regular { border-left: 1px solid var(--border); }
+.compare-table td.col-cbm { border-left: 1px solid var(--border); background: #f4f7ff; color: var(--navy); font-weight: 600; }
+.check-icon { color: var(--red); vertical-align: middle; margin-right: 4px; }
+.compare-note { margin-top: 16px; font-size: 12px; color: var(--text-4); line-height: 1.7; }
 
 /* ── STATS BAR ── */
-.stats-bar { background: var(--gradient-brand); padding: 56px 0; }
+.stats-bar { background: var(--navy); padding: 48px 0; }
 .stats-inner { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; text-align: center; }
 @media (min-width: 768px) { .stats-inner { grid-template-columns: repeat(4,1fr); } }
 .stats-inner > div { padding: 20px 24px; border-left: 1px solid rgba(255,255,255,0.1); }
@@ -586,56 +505,58 @@ section { padding: 80px 0; }
   .stats-inner > div:nth-child(2n+1) { border-left: none; }
   .stats-inner > div { padding: 16px 12px; }
 }
-.stats-inner > div { border-left-color: rgba(255,255,255,0.22) !important; }
-.stat-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-bottom: 8px; }
-.stat-num { font-family: var(--font-en); font-size: clamp(40px,5.4vw,58px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
+.stat-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+.stat-num { font-family: var(--font-en); font-size: clamp(36px,5vw,52px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
 .stat-num sup { font-size: 0.5em; vertical-align: super; }
-.stat-unit { color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 400; margin-top: 2px; }
-.stat-label { font-size: 12px; color: rgba(255,255,255,0.78); margin-top: 6px; line-height: 1.4; }
+.stat-unit { color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 400; margin-top: 2px; }
+.stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 6px; line-height: 1.4; }
 
 /* ── EVIDENCE ── */
-#evidence { background: var(--white); }
-#evidence .section-header h2 { color: var(--text-1); }
-#evidence .section-header p { color: var(--text-2); }
+#evidence { background: #0B1E3D; }
+#evidence .section-header h2 { color: #fff; }
+#evidence .section-header p { color: rgba(255,255,255,0.5); }
 #evidence .eyebrow { color: var(--red); }
 #evidence .eyebrow::before { background: var(--red); }
-#evidence .evidence-ref { color: var(--text-4) !important; }
+#evidence .evidence-ref { color: rgba(255,255,255,0.2) !important; }
 
-/* Evidence → 2 欄：左 sticky intro + 培養皿圖，右 editorial 研究清單 */
-.evidence-outer { display: grid; gap: 56px; grid-template-columns: 1fr; }
-@media (min-width: 1024px) { .evidence-outer { grid-template-columns: 0.85fr 1.15fr; gap: 72px; align-items: start; } }
-@media (min-width: 1024px) { .evidence-intro { position: sticky; top: 92px; } }
-.evidence-intro h2 { font-family: var(--font-display); font-size: clamp(24px,3.5vw,36px); font-weight: 900; line-height: 1.25; margin: 0 0 14px; }
-.evidence-intro > p { font-size: 15px; color: var(--text-2); line-height: 1.8; }
-.evidence-photo {
-  margin-top: 28px; border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(206,14,45,0.10);
-  aspect-ratio: 1 / 1; max-width: 360px;
-}
-.evidence-photo img { width: 100%; height: 100%; object-fit: cover; }
+.evidence-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .evidence-grid { grid-template-columns: repeat(3,1fr); } }
 
-.evidence-studies { display: flex; flex-direction: column; }
-.study { padding: 30px 0; border-top: 1px solid var(--border); }
-.study:first-child { padding-top: 4px; border-top: none; }
-.study-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.study-no {
-  font-family: var(--font-en); font-size: 26px; font-weight: 800; letter-spacing: -0.02em;
-  background: var(--gradient-brand); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
+.evidence-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 28px 24px; position: relative; overflow: hidden;
+  transition: background 150ms;
 }
-.study-tag {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
-  color: var(--red); background: var(--pink-soft);
-  padding: 4px 12px; border-radius: 999px;
+.evidence-card:hover { background: rgba(255,255,255,0.08); }
+.evidence-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--gradient-brand-h);
+  border-radius: 14px 14px 0 0;
 }
-.study h3 { font-size: 20px; font-weight: 700; color: var(--text-1); margin-bottom: 10px; }
-.study > p { font-size: 15px; color: var(--text-2); line-height: 1.75; margin-bottom: 14px; }
-.study-result {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 15px; color: var(--text-1); font-weight: 600;
-  padding-left: 14px; border-left: 3px solid var(--red);
+.evidence-num {
+  font-family: var(--font-en); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(232,99,45,0.75); margin-bottom: 8px;
 }
-.study-result strong { color: var(--red); font-weight: 800; }
+.evidence-card h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.4; }
+.evidence-card > p { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.72; }
+
+.evidence-trend {
+  margin-top: 20px; padding: 12px 14px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+.evidence-trend-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.28); margin-bottom: 8px;
+}
+.evidence-trend-row { display: flex; align-items: center; gap: 8px; }
+.evidence-trend-tag {
+  font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+}
+.evidence-trend-tag.end { color: rgba(255,255,255,0.7); }
+.evidence-trend-svg { flex: 1; height: 32px; display: block; }
 
 /* ── CTA ── */
 .cta-section { background: linear-gradient(135deg, var(--red) 0%, #E5186E 100%); padding: 80px 0; text-align: center; }
@@ -649,19 +570,19 @@ section { padding: 80px 0; }
 @media (min-width: 768px)  { .footer-inner { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1024px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
 .footer-brand img { height: 32px; margin-bottom: 16px; }
-.footer-brand p { font-size: 15px; line-height: 1.7; max-width: 280px; }
-.footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+.footer-brand p { font-size: 13px; line-height: 1.6; max-width: 280px; }
+.footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.footer-col a { font-size: 15px; transition: color 120ms; }
+.footer-col a { font-size: 13px; transition: color 120ms; }
 .footer-col a:hover { color: #fff; }
-.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; }
+.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; }
 .footer-bottom img { height: 20px; opacity: 0.5; }
 
 @media (min-width: 1024px) {
   .body-text { font-size: 16px; }
-  .req-card p { font-size: 15px; }
+  .req-card p { font-size: 14px; }
   .dual-card > p { font-size: 16px; }
-  .evidence-card p { font-size: 15px; }
+  .evidence-card p { font-size: 14px; }
 }
 
 /* ══ 手機版修正 ══ */
@@ -674,14 +595,10 @@ section { padding: 80px 0; }
   .hero-bacteria-img { width: 200px; }
   .hero-headline { font-size: clamp(36px, 10vw, 56px); }
 
-  /* Trust bar：2x2 圖示格 */
-  .trust-bar { padding: 22px 0; }
-  .trust-bar-inner { grid-template-columns: 1fr 1fr; gap: 20px 6px; }
-  .trust-item { border-left: none; padding: 0 4px; gap: 10px; }
-  .trust-ico { width: 40px; height: 40px; border-radius: 11px; }
-  .trust-ico svg { width: 19px; height: 19px; }
-  .trust-txt strong { font-size: 14px; }
-  .trust-txt span { font-size: 12px; }
+  /* Trust bar：2x2 grid */
+  .trust-bar-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; justify-items: center; }
+  .trust-divider { display: none; }
+  .trust-item { font-size: 13px; gap: 6px; }
 
   /* CTA buttons：全寬堆疊 */
   .cta-actions { flex-direction: column; align-items: stretch; }
@@ -818,28 +735,23 @@ section { padding: 80px 0; }
   <div class="container">
     <div class="trust-bar-inner">
       <div class="trust-item">
-        <span class="trust-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
-        </span>
-        <div class="trust-txt"><strong>菌株層級精確</strong><span>可追溯試驗</span></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        菌株層級精確定義
       </div>
+      <div class="trust-divider"></div>
       <div class="trust-item">
-        <span class="trust-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.7l5.7 5.7a8 8 0 11-11.4 0z"/></svg>
-        </span>
-        <div class="trust-txt"><strong>pH 2 存活 80～90%</strong><span>芽孢耐胃酸</span></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        pH 2 存活率 80～90%
       </div>
+      <div class="trust-divider"></div>
       <div class="trust-item">
-        <span class="trust-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.5 20.5l-7-7a4.95 4.95 0 017-7l7 7a4.95 4.95 0 01-7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg>
-        </span>
-        <div class="trust-txt"><strong>抗生素同期使用</strong><span>療程中不失效</span></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        可與抗生素同期使用
       </div>
+      <div class="trust-divider"></div>
       <div class="trust-item">
-        <span class="trust-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>
-        </span>
-        <div class="trust-txt"><strong>耐酸耐熱性佳</strong><span>芽孢結構穩定</span></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        耐酸耐熱性佳
       </div>
     </div>
   </div>
@@ -851,37 +763,33 @@ section { padding: 80px 0; }
     <div class="criteria-outer">
 
       <div class="criteria-content">
-        <span class="eyebrow">MEDICAL GRADE</span>
-        <h2>什麼讓一個菌株<br>稱得上「醫療級」？</h2>
-        <p class="body-text">「醫療級」並不是數字的比較，而是三個根本條件的整合。菌數多少是次要指標，更重要的是系統性的研究體系在背後支撐。</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;">
+        <h2>什麼讓一菌株<br>稱得上「醫療級」？</h2>
+        <p class="body-text">「醫療級」並不是數字的比較，而是三個根本條件的整合，菌數多少是次要指標，更重要的是系統性的研究體系在背後支撐。</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;">
           <span class="badge badge-navy-soft">CBM588 全名可追溯至菌株</span>
           <span class="badge badge-navy-soft">芽孢耐酸結構</span>
           <span class="badge badge-navy-soft">日本 1967 年核准</span>
         </div>
+        <div class="strain-visual">
+          <img src="assets/strain-cbm.png" alt="CBM588 酪酸菌菌株示意圖" class="strain-img">
+        </div>
       </div>
 
-      <div class="req-list">
-        <div class="req-item">
-          <div class="req-no">01</div>
-          <div class="req-text">
-            <h3>菌株身份精確可追溯</h3>
-            <p>必須精確到菌株層級（genus, species, strain），才能對應可重複驗證的臨床試驗。CBM588 的全名 <em>Clostridium butyricum MIYAIRI 588</em> 對應到數十篇 peer-reviewed 論文的精確微生物身份，不是行銷詞彙。</p>
-          </div>
+      <div class="req-cards">
+        <div class="req-card" data-num="01">
+          <div class="req-card-num">條件 01</div>
+          <div class="req-card-title">菌株身份精確可追溯</div>
+          <p>必須精確到菌株層級（genus, species, strain），才能對應可重複驗證的臨床試驗。CBM588 的全名 <em>Clostridium butyricum MIYAIRI 588</em> 對應到數十篇 peer-reviewed 論文的精確微生物身份，不是行銷詞彙。</p>
         </div>
-        <div class="req-item">
-          <div class="req-no">02</div>
-          <div class="req-text">
-            <h3>生物環境穩定性</h3>
-            <p>益生菌必須穿越胃酸（pH 1.5–3.5）才能抵達結腸。CBM588 以芽孢形式通過胃腸屏障，在 pH 2 環境下存活率達 <em>80～90%</em>，且可與抗生素同期使用而不失效。</p>
-          </div>
+        <div class="req-card" data-num="02">
+          <div class="req-card-num">條件 02</div>
+          <div class="req-card-title">生物環境穩定性</div>
+          <p>益生菌必須穿越胃酸（pH 1.5–3.5）才能抵達結腸。CBM588 以芽孢形式通過胃腸屏障，在 pH 2 環境下存活率達 <em>80～90%</em>，且可與抗生素同期使用而不失效。</p>
         </div>
-        <div class="req-item">
-          <div class="req-no">03</div>
-          <div class="req-text">
-            <h3>人體臨床試驗數據</h3>
-            <p>需要針對特定疾病、特定適應症，以人體受試者為基礎的臨床研究，而非僅著眼在體外或動物實驗層次。CBM588 在日本自 <em>1967 年</em>起被核准為處方藥，涵蓋兒科、中高齡等多條群試驗。</p>
-          </div>
+        <div class="req-card" data-num="03">
+          <div class="req-card-num">條件 03</div>
+          <div class="req-card-title">人體臨床試驗數據</div>
+          <p>需要針對特定疾病、特定適應症，以人體受試者為基礎的臨床研究，而非僅著眼在體外或動物實驗層次。CBM588 在日本自 <em>1967 年</em>起被核准為處方藥，涵蓋兒科、中高齡等多條群試驗。</p>
         </div>
       </div>
 
@@ -889,16 +797,10 @@ section { padding: 80px 0; }
   </div>
 </section>
 
-<!-- ══ MID BANNER ══ -->
-<div class="mid-banner">
-  <img src="assets/sci-lab-banner.png" alt="日本製藥級實驗室——CBM588 醫療級研究基礎">
-</div>
-
 <!-- ══ DUAL FEATURE ══ -->
 <section id="features">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">DUAL ADVANTAGE</span>
       <h2>酪酸菌 × 芽孢菌的雙重優勢</h2>
       <p>CBM588 同時具備兩種特性，而這兩種特性在市售益生菌中幾乎不會同時出現。</p>
     </div>
@@ -906,32 +808,28 @@ section { padding: 80px 0; }
     <div class="dual-grid">
 
       <div class="dual-card">
-        <div class="dual-media">
-          <img src="assets/sci-bacteria-pink.png" alt="桿狀酪酸菌 Clostridium butyricum">
-          <span class="dual-media-tag">BUTYRATE PRODUCER</span>
+        <div class="dual-icon navy-bg">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M12 6v6l4 2"/></svg>
         </div>
-        <div class="dual-body">
-          <h3>酪酸菌 — 大量產生 Butyrate</h3>
-          <p><em>Clostridium butyricum</em> 的代謝終產物是「酪酸」（butyrate），而非一般乳酸菌所產生的乳酸。酪酸是大腸上皮細胞最主要的能量來源，提供結腸細胞約 <strong>50～70% 的 ATP 產能</strong>，同時具備調節腸道環境的功能，是乳酸在生化機制上無法替代的分子。</p>
-          <div class="dual-pill navy">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            結腸細胞主要能量燃料
-          </div>
+        <div class="dual-tag">BUTYRATE PRODUCER</div>
+        <h3>酪酸菌 — 大量產生 Butyrate</h3>
+        <p><em>Clostridium butyricum</em> 的代謝終產物是「酪酸」（butyrate），而非一般乳酸菌所產生的乳酸。酪酸是大腸上皮細胞最主要的能量來源，提供結腸細胞約 <strong>50～70% 的 ATP 產能</strong>，同時具備調節腸道環境的功能，是乳酸在生化機制上無法替代的分子。</p>
+        <div class="dual-pill navy">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          結腸細胞主要能量燃料
         </div>
       </div>
 
       <div class="dual-card accent">
-        <div class="dual-media">
-          <img src="assets/sci-spore-pink.png" alt="CBM588 芽孢剖面結構">
-          <span class="dual-media-tag">SPORE FORMING</span>
+        <div class="dual-icon red-bg">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <div class="dual-body">
-          <h3>芽孢菌 — 待機觸發啟動機制</h3>
-          <p>CBM588 能以芽孢形式進入消化道，在 pH 2 的胃酸環境中維持 <strong>60～90% 存活率</strong>，抵達結腸後偵測到特定化學訊號（如 L-丙胺酸）才啟動萌發，轉化為有完整代謝活性的活菌。這讓 CBM588 不需要冷藏保存，在物理結構上就具備穿越消化道的能力。</p>
-          <div class="dual-pill red">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            無需冷藏，室溫穩定保存
-          </div>
+        <div class="dual-tag">SPORE FORMING</div>
+        <h3>芽孢菌 — 待機觸發啟動機制</h3>
+        <p>CBM588 能以芽孢形式進入消化道，在 pH 2 的胃酸環境中維持 <strong>60～90% 存活率</strong>，抵達結腸後偵測到特定化學訊號（如 L-丙胺酸）才啟動萌發，轉化為有完整代謝活性的活菌。這讓 CBM588 不需要冷藏保存，在物理結構上就具備穿越消化道的能力。</p>
+        <div class="dual-pill red">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          無需冷藏，室溫穩定保存
         </div>
       </div>
 
@@ -943,7 +841,6 @@ section { padding: 80px 0; }
 <section class="compare-section" id="compare">
   <div class="container">
     <div class="section-header center">
-      <span class="eyebrow eyebrow-center">HEAD TO HEAD</span>
       <h2>CBM588 vs. 市售益生菌</h2>
       <p>以非芽孢形態益生菌在市售標準下的代表性趨勢作為比較基準</p>
     </div>
@@ -952,46 +849,67 @@ section { padding: 80px 0; }
       <table class="compare-table">
         <thead>
           <tr>
-            <th scope="col">比較項目</th>
+            <th></th>
             <th class="col-regular">一般市售益生菌</th>
             <th class="col-cbm">CBM588 宮入菌</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">菌株精確度</th>
-            <td class="col-regular" data-label="一般市售益生菌">多為菌種層級，批次差異大</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">精確到菌株層級，可追溯試驗</td>
+            <td>菌株精確度</td>
+            <td class="col-regular">多為菌種層級，批次差異大</td>
+            <td class="col-cbm">
+              <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              精確到菌株層級，可追溯試驗
+            </td>
           </tr>
           <tr>
-            <th scope="row">耐酸（pH 2）</th>
-            <td class="col-regular" data-label="一般市售益生菌">多數不確定，普遍偏低</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">芽孢存活率 60～90%</td>
+            <td>耐酸（pH 2）</td>
+            <td class="col-regular">多數不確定，普遍偏低</td>
+            <td class="col-cbm">
+              <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              芽孢存活率 60～90%
+            </td>
           </tr>
           <tr>
-            <th scope="row">產生酪酸</th>
-            <td class="col-regular" data-label="一般市售益生菌">主要產乳酸，不具酪酸功能</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">大量產生，結腸黏膜主要能量</td>
+            <td>產生酪酸</td>
+            <td class="col-regular">主要產乳酸，不具酪酸功能</td>
+            <td class="col-cbm">
+              <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              大量產生，結腸黏膜主要能量
+            </td>
           </tr>
           <tr>
-            <th scope="row">抗生素配用</th>
-            <td class="col-regular" data-label="一般市售益生菌">建議間隔服用，效果打折</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">可同期使用，療程中不失效</td>
+            <td>抗生素配用</td>
+            <td class="col-regular">建議間隔服用，效果打折</td>
+            <td class="col-cbm">
+              <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              可同期使用，療程中不失效
+            </td>
           </tr>
           <tr>
-            <th scope="row">保存條件</th>
-            <td class="col-regular" data-label="一般市售益生菌">多需冷藏，低溫保存</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">室溫穩定，無需冷鏈</td>
+            <td>保存條件</td>
+            <td class="col-regular">多需冷藏，低溫保存</td>
+            <td class="col-cbm">
+              <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              室溫穩定，無需冷鏈
+            </td>
           </tr>
           <tr>
-            <th scope="row">促進好菌</th>
-            <td class="col-regular" data-label="一般市售益生菌">因品牌而異</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">促進腸道 A 菌 / B 菌增殖</td>
+            <td>促進好菌</td>
+            <td class="col-regular">因品牌而異</td>
+            <td class="col-cbm">
+              <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              促進腸道 A 菌 / B 菌增殖
+            </td>
           </tr>
           <tr>
-            <th scope="row">醫療研究基礎</th>
-            <td class="col-regular" data-label="一般市售益生菌">文獻品質參差，多為食品研究</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">50+ 年人體試驗，多科別驗證</td>
+            <td>醫療研究基礎</td>
+            <td class="col-regular">文獻品質參差，多為食品研究</td>
+            <td class="col-cbm">
+              <svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              50+ 年人體試驗，多科別驗證
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1091,17 +1009,15 @@ section { padding: 80px 0; }
         </div>
 
         <div class="chart-block">
-          <div class="chart-head">
-            <div class="chart-title">耐熱實驗 — 活菌數隨時間變化</div>
-            <div class="chart-unit">單位 ×10⁷ ／ 時間軸：立刻→60 分鐘</div>
+          <div class="chart-title">耐熱實驗（CBM588 宮入菌，活菌數）</div>
+          <div class="heat-timerow">
+            <div></div>
+            <div class="heat-time-cell"><div class="heat-time-num">0</div><div class="heat-time-unit">立刻</div></div>
+            <div class="heat-time-cell"><div class="heat-time-num">10</div><div class="heat-time-unit">分鐘後</div></div>
+            <div class="heat-time-cell"><div class="heat-time-num">30</div><div class="heat-time-unit">分鐘後</div></div>
+            <div class="heat-time-cell"><div class="heat-time-num">60</div><div class="heat-time-unit">分鐘後</div></div>
           </div>
-          <table class="heat-num">
-            <thead>
-              <tr>
-                <th class="heat-num-cond">溫度條件</th>
-                <th>立刻</th><th>10 分</th><th>30 分</th><th>60 分</th>
-              </tr>
-            </thead>
+          <table class="heat-table">
             <tbody>
               <tr>
                 <td><span class="heat-cond normal">常溫水</span></td>
@@ -1113,14 +1029,10 @@ section { padding: 80px 0; }
               </tr>
               <tr>
                 <td><span class="heat-cond hot">55°C</span></td>
-                <td>4×10⁷</td><td>4×10⁷</td><td>3×10⁷</td><td>3×10⁷</td>
+                <td>4×10⁷</td><td>4×10⁷</td><td>3×10⁷</td><td>4×10⁷</td>
               </tr>
             </tbody>
           </table>
-          <div class="heat-num-foot">
-            <span>活菌數（CFU）</span>
-            <span>規格 ≥ 5×10⁷</span>
-          </div>
           <p class="flow-note">宮入菌錠（Miyarisan Tab.）規格：每錠含活菌數 5×10⁷ 以上。常溫至 55°C 熱水中 60 分鐘，活菌數維持穩定。</p>
         </div>
       </div>
@@ -1132,59 +1044,77 @@ section { padding: 80px 0; }
 <!-- ══ EVIDENCE ══ -->
 <section id="evidence">
   <div class="container">
-    <div class="evidence-outer">
+    <div class="section-header center">
+      <h2>以臨床試驗為基礎的研究</h2>
+      <p>以下整理 CBM588 已完成人體臨床試驗中，具有較穩健支持的研究方向。<br>所有引用均來自已發表之學術期刊論文。</p>
+    </div>
 
-      <div class="evidence-intro">
-        <span class="eyebrow">CLINICAL EVIDENCE</span>
-        <h2>以臨床試驗<br>為基礎的研究</h2>
-        <p>整理 CBM588 已完成人體臨床試驗中，具有較穩健支持的研究方向，引用均來自已發表之學術期刊論文。</p>
-        <div class="evidence-photo">
-          <img src="assets/sci-petri-pink.png" alt="CBM588 菌落培養觀察">
+    <div class="evidence-grid">
+
+      <div class="evidence-card">
+        <div class="evidence-num">STUDY 01</div>
+        <h3>功能性腸道症狀研究（日本多中心）</h3>
+        <p>日本多中心臨床觀察中，受試者連續使用 CBM588 後，腸道症狀發生率呈現顯著下降趨勢，腹痛、腹脹、腹瀉等多項指標均有改善記錄。整體症狀改善比例達研究者設定之顯著差異標準。</p>
+        <div class="evidence-trend">
+          <div class="evidence-trend-label">研究趨勢</div>
+          <div class="evidence-trend-row">
+            <span class="evidence-trend-tag">使用前</span>
+            <svg class="evidence-trend-svg" viewBox="0 0 100 32" fill="none" preserveAspectRatio="none">
+              <path d="M2 5 C25 5, 55 26, 98 28" stroke="rgba(232,99,45,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <circle cx="2" cy="5" r="2.5" fill="#E5368D" opacity="0.5"/>
+              <circle cx="98" cy="28" r="2.5" fill="#E5368D" opacity="0.9"/>
+            </svg>
+            <span class="evidence-trend-tag end">觀察後</span>
+          </div>
         </div>
       </div>
 
-      <div class="evidence-studies">
-        <div class="study">
-          <div class="study-head">
-            <span class="study-no">01</span>
-            <span class="study-tag">日本多中心觀察</span>
+      <div class="evidence-card">
+        <div class="evidence-num">STUDY 02</div>
+        <h3>抗生素合併使用觀察（兒科 RCT）</h3>
+        <p>兒科隨機對照試驗比較抗生素合併 CBM588 的腸道狀況。合併組的腹瀉發生率顯著低於單純使用抗生素組，Cephalosporin 及 Penicillin 兩個系列均觀察到相近趨勢，整體達統計顯著差異。</p>
+        <div class="evidence-trend">
+          <div class="evidence-trend-label">研究趨勢</div>
+          <div class="evidence-trend-row">
+            <span class="evidence-trend-tag">抗生素組</span>
+            <svg class="evidence-trend-svg" viewBox="0 0 100 32" fill="none" preserveAspectRatio="none">
+              <path d="M2 5 C25 5, 55 26, 98 28" stroke="rgba(232,99,45,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <circle cx="2" cy="5" r="2.5" fill="#E5368D" opacity="0.5"/>
+              <circle cx="98" cy="28" r="2.5" fill="#E5368D" opacity="0.9"/>
+            </svg>
+            <span class="evidence-trend-tag end">合併組</span>
           </div>
-          <h3>功能性腸道症狀研究</h3>
-          <p>日本多中心臨床觀察中，受試者連續使用 CBM588 後，腸道症狀發生率呈現顯著下降趨勢，腹痛、腹脹、腹瀉等多項指標均有改善記錄，整體改善比例達研究者設定之顯著差異標準。</p>
-          <div class="study-result"><strong>多項腸道症狀</strong>改善，達顯著差異</div>
         </div>
+      </div>
 
-        <div class="study">
-          <div class="study-head">
-            <span class="study-no">02</span>
-            <span class="study-tag">兒科 RCT</span>
+      <div class="evidence-card">
+        <div class="evidence-num">STUDY 03</div>
+        <h3>H. pylori 除菌療法輔助研究</h3>
+        <p>臨床試驗比較三合一除菌療法加入 CBM588 的結果。加入 CBM588 組別的除菌成功率及療程中腸胃不適症狀改善率均優於對照組，兩項指標均達統計顯著差異。</p>
+        <div class="evidence-trend">
+          <div class="evidence-trend-label">研究趨勢</div>
+          <div class="evidence-trend-row">
+            <span class="evidence-trend-tag">對照組</span>
+            <svg class="evidence-trend-svg" viewBox="0 0 100 32" fill="none" preserveAspectRatio="none">
+              <path d="M2 28 C25 28, 55 6, 98 4" stroke="rgba(232,99,45,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <circle cx="2" cy="28" r="2.5" fill="#E5368D" opacity="0.5"/>
+              <circle cx="98" cy="4" r="2.5" fill="#E5368D" opacity="0.9"/>
+            </svg>
+            <span class="evidence-trend-tag end">合併組</span>
           </div>
-          <h3>抗生素合併使用觀察</h3>
-          <p>兒科隨機對照試驗比較抗生素合併 CBM588 的腸道狀況。合併組的腹瀉發生率顯著低於單純使用抗生素組，Cephalosporin 及 Penicillin 兩個系列均觀察到相近趨勢，整體達統計顯著差異。</p>
-          <div class="study-result">合併組<strong>腹瀉發生率顯著較低</strong></div>
-        </div>
-
-        <div class="study">
-          <div class="study-head">
-            <span class="study-no">03</span>
-            <span class="study-tag">除菌療法輔助</span>
-          </div>
-          <h3>H. pylori 除菌療法輔助研究</h3>
-          <p>臨床試驗比較三合一除菌療法加入 CBM588 的結果。加入 CBM588 組別的除菌成功率及療程中腸胃不適症狀改善率均優於對照組，兩項指標均達統計顯著差異。</p>
-          <div class="study-result">除菌成功率與耐受度<strong>同步提升</strong></div>
         </div>
       </div>
 
     </div>
 
-    <p class="evidence-ref" style="margin-top:40px;font-size:13px;line-height:1.7;">參考文獻：Teramoto et al. (2003) J Pediatr Gastroenterol Nutr &nbsp;|&nbsp; Fujimoto et al. (2019) iScience &nbsp;|&nbsp; Sun et al. (2018) Front Microbiol &nbsp;|&nbsp; Hayashi et al. (2021) J Immunol</p>
+    <p class="evidence-ref" style="text-align:center;margin-top:32px;font-size:13px;line-height:1.7;">參考文獻：Teramoto et al. (2003) J Pediatr Gastroenterol Nutr &nbsp;|&nbsp; Fujimoto et al. (2019) iScience &nbsp;|&nbsp; Sun et al. (2018) Front Microbiol &nbsp;|&nbsp; Hayashi et al. (2021) J Immunol</p>
   </div>
 </section>
 
 <!-- ══ CTA ══ -->
 <section class="cta-section" id="cta">
   <div class="container">
-    <h2>了解妙利散哪邊購買</h2>
+    <h2>了解 CBM588 是否適合您的情境</h2>
     <p>透過 LINE 聯絡我們，由專業人員提供相關資訊</p>
     <div class="cta-actions">
       <a href="https://lin.ee/RuxohDy" target="_blank" rel="noopener" class="btn btn-line btn-lg">
@@ -1193,6 +1123,7 @@ section { padding: 80px 0; }
       </a>
       <a href="index.html" class="btn btn-white btn-lg">回首頁</a>
     </div>
+    <p style="margin-top:24px;margin-bottom:0;font-size:12px;color:rgba(255,255,255,0.4);">本頁內容為衛生教育資訊，不構成醫療建議。如有健康疑慮，請諮詢醫師。</p>
   </div>
 </section>
 
@@ -1225,7 +1156,7 @@ section { padding: 80px 0; }
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 裕心企業. All rights reserved. 藥品請依指示使用。</span>
+      <span>© 2025 R-CHEVER 裕心. All rights reserved. 本品為藥品，請依指示使用。</span>
       <img src="assets/logo-red.png" alt="妙利散® MIYARISAN">
     </div>
   </div>
