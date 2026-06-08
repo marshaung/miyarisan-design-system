@@ -109,43 +109,14 @@
 
 | 字型 | 定位 | 特性 |
 |------|------|------|
-| **FZLanTingHei（方正蘭亭黑）** | 主字型 — UI、內文、標題 | 幾何理性、乾淨俐落、日系無襯線 |
+| **PingFang TC（蘋方-繁）** | 主字型 — UI、內文、標題 | 系統內建、清晰中性、跨 Apple 裝置一致 |
 | **JF Jinxuan（jf 金萱）** | 展示字型 — Hero、Display | 人文溫暖、獨特個性、適合大字輸出 |
 
 ### @font-face 宣告
 
 ```css
-/* ── 方正蘭亭黑 FZLanTingHei ── */
-@font-face {
-  font-family: 'FZLanTingHei';
-  src: url('fonts/fzlt-w200.ttf') format('truetype');
-  font-weight: 200; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'FZLanTingHei';
-  src: url('fonts/fzlt-w300.ttf') format('truetype');
-  font-weight: 300; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'FZLanTingHei';
-  src: url('fonts/fzlt-w350.ttf') format('truetype');
-  font-weight: 350; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'FZLanTingHei';
-  src: url('fonts/fzlt-w400.ttf') format('truetype');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'FZLanTingHei';
-  src: url('fonts/fzlt-w700.ttf') format('truetype');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'FZLanTingHei';
-  src: url('fonts/fzlt-w900.ttf') format('truetype');
-  font-weight: 900; font-style: normal; font-display: swap;
-}
+/* ── PingFang TC 為 macOS / iOS 系統內建字型，無需 @font-face 載入 ── */
+/*    非 Apple 環境由字型堆疊 fallback 至 Noto Sans TC（見下）       */
 
 /* ── jf 金萱 JF Jinxuan ── */
 @font-face {
@@ -179,8 +150,8 @@
 
 ```css
 :root {
-  --font-ui:      'FZLanTingHei', 'PingFang TC', 'Noto Sans TC', sans-serif;
-  --font-display: 'JFJinxuan', 'FZLanTingHei', 'PingFang TC', sans-serif;
+  --font-ui:      'PingFang TC', 'Noto Sans TC', sans-serif;
+  --font-display: 'JFJinxuan', 'PingFang TC', sans-serif;
   --font-en:      'Inter', system-ui, sans-serif;
 }
 
@@ -192,16 +163,17 @@ body         { font-family: var(--font-ui); }
 
 ### 字重對照
 
-#### 方正蘭亭黑 FZLanTingHei
+#### PingFang TC（蘋方-繁，系統字型，依 font-weight 取用）
 
-| 字重值 | 檔案 | 使用情境 |
+| font-weight | 字面 | 使用情境 |
 |-------|------|---------|
-| 200 | `fzlt-w200.ttf` | 極細輕量標注、裝飾文字 |
-| 300 | `fzlt-w300.ttf` | 長文副標、說明文字 |
-| 350 | `fzlt-w350.ttf` | Body 內文（推薦正文用） |
-| 400 | `fzlt-w400.ttf` | UI 標準內文 |
-| 700 | `fzlt-w700.ttf` | 標題、Badge、強調 |
-| 900 | `fzlt-w900.ttf` | 特粗展示標題、數字統計 |
+| 300 | Light | 長文副標、說明文字 |
+| 400 | Regular | UI 標準內文、Body 正文 |
+| 500 | Medium | 卡片標題、中等強調 |
+| 600 | Semibold | 標題、Badge、Eyebrow、強調 |
+| 700 | Bold（瀏覽器合成） | 特粗標題、數字統計 |
+
+> PingFang TC 原生字重到 Semibold(600)；700 以上由瀏覽器合成 Bold，更重的展示字交給 JF 金萱。
 
 #### jf 金萱 JF Jinxuan
 
@@ -219,17 +191,17 @@ body         { font-family: var(--font-ui); }
 |------|------|------|------|------|
 | Hero 主標 | 48–56px | JFJinxuan | 900 | 1.15 |
 | Hero 副標 | 20–24px | JFJinxuan | 500 | 1.35 |
-| 頁面標題 H1 | 32–40px | FZLanTingHei | 700 | 1.25 |
-| 區塊標題 H2 | 24–28px | FZLanTingHei | 700 | 1.3 |
-| 卡片標題 H3 | 18–22px | FZLanTingHei | 700 | 1.4 |
-| 內文 Body | 16px | FZLanTingHei | 350 | 1.65 |
-| 輔助說明 | 14px | FZLanTingHei | 350 | 1.6 |
-| 標籤・Badge | 11–13px | FZLanTingHei | 700 | — |
-| 數字統計 | 40–56px | FZLanTingHei | 900 | 1.0 |
-| Eyebrow | 11px | FZLanTingHei | 700 | — |
-| 微標注 | 10–11px | FZLanTingHei | 700 | — |
+| 頁面標題 H1 | 32–40px | PingFang TC | 600 | 1.25 |
+| 區塊標題 H2 | 24–28px | PingFang TC | 600 | 1.3 |
+| 卡片標題 H3 | 18–22px | PingFang TC | 600 | 1.4 |
+| 內文 Body | 16px | PingFang TC | 400 | 1.65 |
+| 輔助說明 | 14px | PingFang TC | 400 | 1.6 |
+| 標籤・Badge | 11–13px | PingFang TC | 600 | — |
+| 數字統計 | 40–56px | PingFang TC | 700 | 1.0 |
+| Eyebrow | 11px | PingFang TC | 600 | — |
+| 微標注 | 10–11px | PingFang TC | 600 | — |
 
-> **正文推薦用 W350**（`fzlt-w350.ttf`）而非 W400，視覺重量更舒適。
+> **正文用 Regular(400)**；需更輕的長文副標可用 Light(300)。
 
 **規則**：
 - 最小可讀字體 12px；行動版 Body 不低於 15px
@@ -776,7 +748,7 @@ Text:         #111827 / #374151 / #6b7280 / #9ca3af
 Border:       #e5e7eb
 BG:           #f7f8fa / #f0f2f5 / #ffffff
 
-Font UI:      FZLanTingHei (W350 body / W700 title / W900 display)
+Font UI:      PingFang TC (400 body / 600 title / 700 display)
 Font Display: JFJinxuan (W900 hero / W700 section / W500 card)
 Font EN/Num:  Inter
 
