@@ -31,12 +31,20 @@
   --font-en:      'Inter',system-ui,sans-serif;
 }
 
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-ui); color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; }
-img  { display: block; max-width: 100%; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { 
+  font-family: var(--font-ui); 
+  color: var(--text-1); 
+  background: var(--white); 
+  -webkit-font-smoothing: antialiased; 
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+img  { display: block; max-width: 100%; height: auto; }
 a    { text-decoration: none; color: inherit; }
 
-.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 @media (min-width: 768px)  { .container { padding: 0 24px; } }
 @media (min-width: 1024px) { .container { padding: 0 40px; } }
 
@@ -51,7 +59,7 @@ a    { text-decoration: none; color: inherit; }
 .btn-lg { padding: 16px 36px; font-size: 16px; font-weight: 700; min-height: 52px; }
 .btn-primary { background: var(--red); color: #fff; }
 .btn-primary:hover { background: var(--red-dark); }
-.btn-line { background: #00B900; color: #fff; }
+.btn-line { background: #00B900; color: #fff; gap: 8px; padding: 10px 22px; font-size: 14px; min-width: 120px; }
 .btn-line:hover { background: #00a000; }
 .btn-white { background: #fff; color: var(--red); font-weight: 700; }
 .btn-white:hover { background: rgba(255,255,255,0.92); }
@@ -60,10 +68,12 @@ a    { text-decoration: none; color: inherit; }
 .nav {
   position: sticky; top: 0; z-index: 100;
   background: var(--white); border-bottom: 1px solid var(--border);
-  height: 68px; display: flex; align-items: center;
+  height: 64px; display: flex; align-items: center;
 }
+@media (min-width: 1024px) { .nav { height: 68px; } }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-.nav-logo img { height: 36px; width: auto; }
+.nav-logo img { height: 28px; width: auto; }
+@media (min-width: 768px) { .nav-logo img { height: 36px; } }
 .nav-links { display: none; gap: 28px; list-style: none; }
 @media (min-width: 1024px) { .nav-links { display: flex; } }
 .nav-links a { font-size: 17px; font-weight: 600; color: var(--text-2); transition: color 120ms; }
@@ -306,10 +316,48 @@ a    { text-decoration: none; color: inherit; }
   .cta-actions { flex-direction: column; align-items: stretch; }
   .cta-actions .btn { width: 100%; justify-content: center; }
 
-  /* Footer */
-  .footer-brand { grid-column: 1 / -1; }
-  .footer-brand p { max-width: 100%; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  /* Footer：手機版改為品牌資訊卡 + 觸控友善連結 */
+  .footer {
+    padding: 36px 0 24px;
+    background:
+      radial-gradient(circle at top left, rgba(198, 18, 66, 0.22), transparent 34%),
+      var(--text-1);
+  }
+  .footer-inner { grid-template-columns: 1fr; gap: 14px; }
+  .footer-brand {
+    grid-column: 1 / -1;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.06);
+  }
+  .footer-brand img { height: 30px; margin-bottom: 14px; }
+  .footer-brand p { max-width: 100%; font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.72); }
+  .footer-col { padding: 16px 0 2px; }
+  .footer-col h5 { margin-bottom: 10px; font-size: 11px; letter-spacing: 0.12em; color: rgba(255,255,255,0.76); }
+  .footer-col ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .footer-col a {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.84);
+    font-size: 14px;
+  }
+  .footer-bottom {
+    margin-top: 24px;
+    padding-top: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .footer-bottom img { display: none; }
 }
 
 /* ══ Mobile Drawer ══ */
@@ -354,6 +402,10 @@ a    { text-decoration: none; color: inherit; }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* ─── P0: Mobile Overflow Safety ─── */
+.nav-drawer { overflow-x: hidden; }
+.footer { overflow-x: hidden; }
+.container { overflow: visible; }
 @media (min-width: 1024px) { .nav-overlay, .nav-drawer { display: none !important; } }
 </style>
 </head>
@@ -374,7 +426,7 @@ a    { text-decoration: none; color: inherit; }
         <li><a href="#">常見問題</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="#cta" class="btn btn-line" style="padding:10px 22px;font-size:14px;min-width:120px;">
+        <a href="#cta" class="btn btn-line">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.61 5.79 4.1 7.55v3.45l3.24-1.78c.86.24 1.75.36 2.66.36 5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
           LINE 客服
         </a>
