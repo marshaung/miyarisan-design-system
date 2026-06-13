@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
+<html lang="zh-TW"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>次世代益生菌 NGP — 妙利散® MIYARISAN</title>
@@ -22,8 +21,15 @@
   --red:       #CE0E2D;
   --red-dark:  #a80c24;
   --red-pale:  #fdf0f2;
+  --pink:      #E5368D;
+  --pink-soft: #fbe9f1;
   --gradient-brand: linear-gradient(135deg, #CE0E2D 0%, #E5368D 100%);
   --gradient-brand-h: linear-gradient(90deg, #CE0E2D 0%, #E5368D 100%);
+  /* 深色 section 主背景：深酒紅（取代原本的深藍） */
+  --wine-dark:  #2A0A18;
+  --wine-deep:  #1C0610;
+  --gradient-dark: linear-gradient(160deg, #320B1E 0%, #1A0610 100%);
+  /* 藍色降為點綴：footer / 局部 */
   --navy:      #172F60;
   --text-1:    #111827;
   --text-2:    #374151;
@@ -61,8 +67,9 @@ section { padding: 64px 0; }
 /* ── Eyebrow ── */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--red);
+  margin-bottom: 12px;
 }
 .eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
 .eyebrow-center { justify-content: center; }
@@ -72,7 +79,7 @@ section { padding: 64px 0; }
 .badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; }
 .badge-red  { background: #DC411E; color: #fff; }
 .badge-navy { background: var(--navy); color: #fff; }
-.badge-navy-soft { background: #eef1f8; color: var(--navy); }
+.badge-navy-soft { background: var(--pink-soft); color: #9e1242; }
 .badge-ghost { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2); }
 
 /* ── Buttons ── */
@@ -112,8 +119,8 @@ section { padding: 64px 0; }
 .nav-links a.active { color: var(--red); }
 .nav-cta { display: none; }
 @media (min-width: 768px) { .nav-cta { display: block; } }
-.btn-line         { background: #00B900; color: #fff; gap: 8px; padding: 10px 22px; font-size: 14px; min-width: 120px; }
-.btn-line:hover   { background: #00a000; }
+.btn-line { background: #00B900; color: #fff; gap: 8px; padding: 10px 22px; font-size: 14px; min-width: 120px; }
+.btn-line:hover { background: #00a000; }
 .nav-hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
 @media (min-width: 1024px) { .nav-hamburger { display: none; } }
 .nav-hamburger span { width: 22px; height: 2px; background: var(--text-1); border-radius: 2px; }
@@ -152,58 +159,59 @@ section { padding: 64px 0; }
   min-height: 100vh; position: relative;
   display: flex; flex-direction: column;
   padding: 100px 20px 60px;
-  gap: 40px; overflow: hidden; color: #fff;
-  background: #0B1E3D;
+  gap: 40px; overflow: hidden; color: var(--text-1);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FDF1F5 100%);
   text-align: center;
 }
 @media (min-width: 1024px) {
   .hero {
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center; padding: 130px 48px 80px;
-    gap: 60px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr;
+    align-items: center; padding: 100px 48px 60px;
+    gap: 32px;
     text-align: left;
   }
 }
 .hero-grid {
   position: absolute; inset: 0; z-index: 1;
-  background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
+  background-image: linear-gradient(rgba(206,14,45,0.045) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(206,14,45,0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(circle at 30% 48%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(circle at 30% 48%, #000 0%, transparent 70%);
 }
 .hero-glow {
-  position: absolute; top: 15%; left: 8%; z-index: 1;
-  width: 440px; height: 440px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(80,120,255,0.18) 0%, transparent 68%);
+  position: absolute; top: 6%; left: 2%; z-index: 1;
+  width: 760px; height: 760px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(229,54,141,0.16) 0%, rgba(229,54,141,0.06) 40%, transparent 66%);
   pointer-events: none;
 }
 .hero-left {
   position: relative; z-index: 2;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding-left: 72px;
 }
-.hero-chip-img {
-  width: 460px; max-width: 90%;
-  filter: drop-shadow(0 0 48px rgba(80,120,255,0.35)) drop-shadow(0 24px 48px rgba(0,0,0,0.45));
+.hero-bacteria-img {
+  height: min(78vh, 720px); width: auto; max-width: 108%;
+  filter: drop-shadow(0 30px 50px rgba(206,14,45,0.16)) drop-shadow(0 10px 22px rgba(0,0,0,0.10));
   animation: float 5s ease-in-out infinite;
 }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-.hero-chip-label {
+.hero-strain-label {
   margin-top: 20px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border);
   padding: 10px 22px;
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+  box-shadow: 0 8px 28px rgba(206,14,45,0.08);
   text-align: center;
 }
-.hero-chip-label strong {
-  display: block; font-size: 13px; font-weight: 700;
-  color: #fff; letter-spacing: 0.04em; margin-bottom: 3px;
+.hero-strain-label strong {
+  display: block; font-size: 15px; font-weight: 700;
+  color: var(--text-1); letter-spacing: 0.04em; margin-bottom: 3px;
 }
-.hero-chip-label span {
-  font-size: 10px; color: rgba(255,255,255,0.4);
-  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
+.hero-strain-label span {
+  font-size: 10px; color: var(--text-4);
+  letter-spacing: 0.06em; text-transform: uppercase; font-style: italic;
 }
 .hero-right {
   position: relative; z-index: 2;
@@ -212,10 +220,11 @@ section { padding: 64px 0; }
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--border);
   padding: 6px 14px; margin-bottom: 28px; width: fit-content;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
-  color: rgba(255,255,255,0.6); text-transform: uppercase;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  color: var(--text-3); text-transform: uppercase;
+  background: rgba(255,255,255,0.6);
 }
 @keyframes pulse-dot {
   0%, 100% { box-shadow: 0 0 0 0 rgba(196,43,43,0.55); }
@@ -227,37 +236,23 @@ section { padding: 64px 0; }
 }
 .hero-headline {
   font-family: 'Noto Sans TC', sans-serif;
-  font-size: clamp(40px, 12vw, 108px);
-  font-weight: 900; line-height: 1.1;
-  letter-spacing: -0.02em; margin-bottom: 24px; color: #fff;
-}
-@media (min-width: 1024px) {
-  .hero-headline { font-size: clamp(52px, 7.5vw, 108px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 28px; }
+  font-size: clamp(42px, 5.5vw, 84px);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 24px; color: var(--text-1);
 }
 .hero-headline em {
   font-style: normal;
   background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
-  font-size: 14px; font-weight: 300; color: rgba(138,155,176,1);
-  line-height: 1.75; margin-bottom: 36px; max-width: 440px;
-}
-@media (min-width: 1024px) {
-  .hero-sub { font-size: 15px; line-height: 1.85; margin-bottom: 44px; }
+  font-size: 16px; font-weight: 400;
+  color: var(--text-2); line-height: 1.85;
+  margin-bottom: 44px; max-width: 420px;
 }
 .hero-actions { display: flex; align-items: center; gap: 14px; }
 @media (max-width: 767px) {
-  .hero-actions { display: flex !important; width: 100%; gap: 10px; }
-  .hero-actions button {
-    flex: 1;
-    min-height: 44px;
-    padding: 12px 14px;
-    border-radius: 999px;
-    font-size: 13px;
-  }
+  .hero-actions { display: none !important; }
 }
 .hero-cta-primary {
   background: var(--red); color: var(--white); border: none;
@@ -267,406 +262,400 @@ section { padding: 64px 0; }
 }
 .hero-cta-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
 .hero-cta-ghost {
-  background: transparent; color: rgba(255,255,255,0.55);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent; color: var(--text-2);
+  border: 1px solid var(--border);
   padding: 15px 34px; font-size: 14px; letter-spacing: 0.04em;
   cursor: pointer; font-family: inherit; transition: all .2s;
 }
-.hero-cta-ghost:hover { border-color: var(--white); color: var(--white); transform: translateY(-1px); }
+.hero-cta-ghost:hover { border-color: var(--red); color: var(--red); transform: translateY(-1px); }
 
 /* ── TRUST BAR ── */
-.trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 20px 0; }
-.trust-bar-inner { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text-2); }
-.trust-item svg { color: var(--red); flex-shrink: 0; }
-.trust-divider { width: 1px; height: 20px; background: var(--border); }
-@media (max-width: 600px) { .trust-divider { display: none; } }
+.trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 26px 0; }
+.trust-bar-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+.trust-item {
+  display: flex; align-items: center; gap: 13px;
+  padding: 6px 22px; justify-content: center;
+  border-left: 1px solid var(--border);
+}
+.trust-item:first-child { border-left: none; }
+.trust-ico {
+  width: 46px; height: 46px; flex-shrink: 0; border-radius: 13px;
+  background: var(--pink-soft); display: grid; place-items: center;
+}
+.trust-ico svg { color: var(--red); }
+.trust-txt { display: flex; flex-direction: column; line-height: 1.3; }
+.trust-txt strong { font-size: 15px; font-weight: 700; color: var(--text-1); }
+.trust-txt span { font-size: 12px; color: var(--text-3); margin-top: 2px; }
 
 /* ── SHARED ── */
 .bg-gray { background: var(--bg-gray); }
 .section-header { margin-bottom: 48px; }
-.section-header h2 { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; line-height: 1.3; margin: 10px 0 12px; }
+.section-header h2 { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; line-height: 1.3; margin: 0 0 12px; }
 .section-header p { font-size: 15px; color: var(--text-2); line-height: 1.75; max-width: 580px; }
 .section-header.center { text-align: center; }
 .section-header.center p { margin: 0 auto; }
-.text-link { color: var(--red); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-.text-link:hover { color: var(--red-dark); }
-
-/* ── PROBLEM ── */
-.problem-body { display: flex; flex-direction: column; gap: 32px; }
-
-.stat-panels { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; overflow: hidden; }
-@media (max-width: 599px) { .stat-panels { grid-template-columns: 1fr; } }
-.stat-panel { position: relative; padding: 40px 32px; min-height: 260px; display: flex; flex-direction: column; justify-content: flex-end; }
-.stat-panel-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.stat-panel.is-red .stat-panel-bg { background-image: url(assets/bacteria-bg.jpg); }
-.stat-panel.is-red::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(90,8,18,0.88) 0%, rgba(160,12,28,0.78) 100%); }
-.stat-panel.is-navy .stat-panel-bg { background-image: url(assets/ngp-petri.jpg); }
-.stat-panel.is-navy::after { content:''; position:absolute; inset:0; background: linear-gradient(160deg, rgba(5,12,40,0.90) 0%, rgba(11,30,61,0.82) 100%); }
-.stat-panel-content { position: relative; z-index: 1; }
-.stat-panel-num { font-family: var(--font-en); font-size: clamp(52px,6.5vw,80px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; color: #fff; }
-.stat-panel-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.65); margin: 8px 0 10px; }
-.stat-panel-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; }
 
 .body-text { font-size: 15px; color: var(--text-2); line-height: 1.8; }
 .body-text + .body-text { margin-top: 16px; }
 .body-text strong { color: var(--text-1); font-weight: 700; }
 .callout {
-  margin-top: 36px; padding: 0;
-  text-align: center;
-  font-size: clamp(17px,2vw,22px); font-weight: 700; color: var(--text-1); line-height: 1.65;
+  margin-top: 24px; padding: 16px 20px;
+  border-left: 3px solid var(--red); background: var(--red-pale);
+  border-radius: 0 8px 8px 0;
+  font-size: 15px; font-weight: 600; color: var(--text-1); line-height: 1.6;
 }
-.callout::before { content: '\201C'; margin-right: 4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
-.callout::after  { content: '\201D'; margin-left:  4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
 
-/* Insight cards (left column) */
-.insight-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
-.insight-card {
-  display: flex; gap: 14px; align-items: flex-start;
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: 10px; padding: 18px 20px;
+/* ── MID BANNER（滿版過場大圖） ── */
+.mid-banner {
+  width: 100%; height: clamp(180px, 22vw, 300px);
+  overflow: hidden; position: relative; background: #f7eef1;
 }
-.insight-card-icon {
-  width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px;
-  background: var(--red-pale);
+.mid-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; }
+
+/* ── CRITERIA SECTION ── */
+#criteria { background: var(--white); }
+.criteria-outer { display: grid; gap: 48px; grid-template-columns: 1fr; }
+@media (min-width: 1024px) { .criteria-outer { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } }
+
+.criteria-content h2 { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; line-height: 1.3; margin: 0 0 16px; }
+.criteria-content p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 16px; }
+.strain-visual { margin-top: 36px; position: relative; display: inline-block; }
+.strain-visual::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(206,14,45,0.08) 0%, transparent 68%);
+  pointer-events: none;
+}
+.strain-img {
+  width: auto; height: auto; max-height: 280px; max-width: 100%;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.10));
+  display: block; position: relative;
+}
+@media (max-width: 1023px) { .strain-visual { display: none; } }
+
+/* Criteria → editorial 數字清單（無框，hairline 分隔） */
+.req-list { display: flex; flex-direction: column; }
+.req-item {
+  display: grid; grid-template-columns: 64px 1fr; gap: 24px;
+  padding: 28px 0; border-top: 1px solid var(--border);
+}
+.req-item:first-child { padding-top: 4px; border-top: none; }
+.req-no {
+  font-family: var(--font-en); font-size: 40px; font-weight: 800;
+  line-height: 1; letter-spacing: -0.03em;
+  background: var(--gradient-brand); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.req-text h3 { font-size: 19px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+.req-text p { font-size: 15px; color: var(--text-2); line-height: 1.75; }
+.req-text em { font-style: normal; font-weight: 600; color: var(--red); }
+@media (max-width: 600px) {
+  .req-item { grid-template-columns: 48px 1fr; gap: 16px; }
+  .req-no { font-size: 32px; }
+}
+
+/* ── DUAL FEATURE ── */
+#features { background: var(--white); }
+#features .section-header h2 { color: var(--text-1); }
+#features .section-header p { color: var(--text-2); }
+#features .eyebrow { color: var(--red); }
+#features .eyebrow::before { background: var(--red); }
+
+.dual-grid { display: grid; gap: 24px; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .dual-grid { grid-template-columns: 1fr 1fr; } }
+
+.dual-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px; overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  transition: box-shadow 200ms, transform 200ms;
+  display: flex; flex-direction: column;
+}
+.dual-card:hover { box-shadow: 0 18px 44px rgba(206,14,45,0.12); transform: translateY(-3px); }
+.dual-card:hover .dual-media img { transform: scale(1.04); }
+
+.dual-media { position: relative; height: 220px; overflow: hidden; background: #fff; }
+.dual-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 500ms ease; }
+.dual-media::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(255,255,255,0.0) 100%);
+  pointer-events: none;
+}
+.dual-media-tag {
+  position: absolute; left: 18px; bottom: 16px;
+  font-family: var(--font-en); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #fff;
+  background: rgba(206,14,45,0.92); padding: 5px 12px; border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.dual-card.accent .dual-media-tag { background: rgba(229,54,141,0.92); }
+
+.dual-body { padding: 30px 32px 34px; display: flex; flex-direction: column; flex: 1; }
+.dual-card h3 { font-size: 22px; font-weight: 700; color: var(--text-1); margin-bottom: 12px; }
+.dual-body > p { font-size: 15px; color: var(--text-2); line-height: 1.75; }
+.dual-body > p em { font-style: normal; font-weight: 600; color: var(--text-1); }
+.dual-body > p strong { color: var(--red); }
+
+.dual-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 22px; align-self: flex-start; padding: 8px 16px; border-radius: 999px;
+  font-size: 13px; font-weight: 700;
+  background: var(--pink-soft); border: 1px solid #f6d4e2;
+}
+.dual-pill.navy { color: var(--pink); }
+.dual-pill.red  { color: var(--red); }
+.dual-pill svg { opacity: 0.85; }
+
+/* ── STABILITY ── */
+.stability-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
+@media (min-width: 1024px) { .stability-inner { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } }
+
+.stability-content h2 { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; line-height: 1.3; margin: 0 0 16px; }
+.stability-content > p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 24px; }
+
+.stability-points { display: flex; flex-direction: column; margin-bottom: 24px; }
+.stability-point {
+  display: flex; gap: 18px; align-items: flex-start;
+  padding: 22px 0; border-top: 1px solid var(--border);
+}
+.stability-point:first-child { border-top: none; padding-top: 4px; }
+.stability-point-icon {
+  width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px;
+  background: var(--pink-soft);
   display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
 }
-.insight-card-icon svg { color: var(--red); }
-.insight-card h4 { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
-.insight-card p  { font-size: 13px; color: var(--text-3); line-height: 1.6; }
+.stability-point-icon svg { color: var(--red); }
+.stability-point h4 { font-size: 17px; font-weight: 700; color: var(--text-1); margin-bottom: 7px; }
+.stability-point p  { font-size: 15px; color: var(--text-3); line-height: 1.7; }
 
-/* Chart blocks (right column) */
-.chart-block { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+/* Bar chart */
+.chart-block { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
 .chart-block + .chart-block { margin-top: 20px; }
-.chart-title { font-size: 13px; font-weight: 700; color: var(--text-3); letter-spacing: 0.04em; margin-bottom: 20px; }
+.chart-title { font-size: 12px; font-weight: 700; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; }
 .bar-row { display: flex; flex-direction: column; gap: 16px; }
+.bar-item { }
 .bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
 .bar-label span:first-child { font-size: 13px; font-weight: 600; color: var(--text-1); }
 .bar-label span:last-child { font-size: 13px; font-weight: 700; color: var(--text-1); font-family: var(--font-en); }
 .bar-track { height: 10px; background: var(--bg-gray-2); border-radius: 999px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 999px; }
-.bar-fill.red  { background: var(--red); }
-.bar-fill.gray { background: var(--text-4); }
+.bar-fill.red   { background: var(--red); }
+.bar-fill.navy  { background: var(--navy); }
+.bar-fill.gray  { background: var(--text-4); }
 
-/* Journey (inside chart block) */
-.journey-flow { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-top: 4px; }
-.journey-node {
-  flex: 1; text-align: center; padding: 16px 8px;
-  border-radius: 8px; border: 1px solid var(--border);
-  background: var(--white);
+.flow-arrow {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-top: 4px;
 }
-.journey-node.is-danger { background: #fff5f5; border-color: #fecaca; }
-.journey-node.is-safe   { background: #eef1f8; border-color: #c8d2e8; }
-.journey-node-num {
-  font-family: var(--font-en); font-size: clamp(16px, 2.5vw, 22px);
-  font-weight: 900; line-height: 1;
+.flow-box {
+  flex: 1; min-width: 100px; text-align: center;
+  padding: 16px; border-radius: 8px;
 }
-.journey-node.is-danger .journey-node-num { color: var(--red); }
-.journey-node.is-safe   .journey-node-num { color: var(--navy); }
-.journey-node-label { font-size: 11px; font-weight: 600; color: var(--text-3); margin-top: 4px; }
-.journey-arrow { color: var(--text-4); flex-shrink: 0; }
-.journey-note { margin-top: 10px; font-size: 12px; color: var(--text-4); line-height: 1.6; }
-.journey-row { margin-top: 18px; }
-.journey-row:first-child { margin-top: 0; }
-.journey-row-tag {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
-  padding: 3px 10px; border-radius: 4px; margin-bottom: 10px;
+.flow-box.before { background: #fee2e2; }
+.flow-box.after  { background: #dcfce7; }
+.flow-num {
+  font-family: var(--font-en); font-size: 28px; font-weight: 900;
+  line-height: 1; letter-spacing: -0.02em;
 }
-.journey-row-tag.danger { background: transparent; color: var(--red); }
-.journey-row-tag.safe   { background: transparent; color: var(--navy); }
-.journey-divider { border: none; border-top: 1px dashed var(--border); margin: 18px 0; }
+.flow-box.before .flow-num { color: var(--red); }
+.flow-box.after  .flow-num { color: #16a34a; }
+.flow-label { font-size: 11px; color: var(--text-3); margin-top: 4px; font-weight: 600; }
+.flow-arrow-icon { color: var(--text-3); flex-shrink: 0; }
+.flow-note { margin-top: 12px; font-size: 12px; color: var(--text-3); line-height: 1.6; }
 
-/* ── JOURNEY CARDS (4-step vertical card layout) ── */
-/* ── COMPARE CARDS (2 cards: 一般乳酸菌 / NGP) ── */
-.cc-row  { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.cc-card {
-  border-radius: 16px; border: 1px solid var(--border);
-  background: var(--white); padding: 24px;
-  display: flex; flex-direction: column; gap: 16px;
+/* ── HEAT 數字表（去 Excel 格線，色標籤 + 等寬數字） ── */
+.chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
+.chart-unit { font-size: 11px; color: var(--text-4); font-family: var(--font-en); letter-spacing: 0.02em; }
+.heat-num { width: 100%; border-collapse: collapse; }
+.heat-num th {
+  font-size: 11px; font-weight: 700; color: var(--text-4);
+  letter-spacing: 0.04em; text-align: center; padding: 0 0 12px;
 }
-.cc-card--danger { background: transparent; border-color: #fecaca; }
-.cc-card--safe   { background: transparent; border-color: #c8d2e8; }
-.cc-flow { display: flex; flex-direction: column; flex: 1; }
-.cc-flow .journey-node { flex: none; }
-.cc-arrow {
-  text-align: center; font-size: 16px; line-height: 1;
-  padding: 5px 0; color: var(--text-4);
+.heat-num th.heat-num-cond { text-align: left; }
+.heat-num td {
+  text-align: center; padding: 14px 4px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-en); font-size: 15px; font-weight: 700;
+  color: var(--text-1); font-variant-numeric: tabular-nums;
 }
-.cc-arrow--safe { color: var(--navy); }
-@media (max-width: 640px) { .cc-row { grid-template-columns: 1fr; } }
+.heat-num td:first-child { text-align: left; }
+.heat-cond {
+  display: inline-block; font-family: var(--font-ui);
+  font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 999px;
+}
+.heat-cond.normal { color: var(--navy); background: #eef1f8; }
+.heat-cond.warm   { color: #b45309; background: #fdf0dc; }
+.heat-cond.hot    { color: var(--red); background: var(--pink-soft); }
+.heat-num-foot {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin-top: 14px; font-size: 11.5px; color: var(--text-4);
+  font-family: var(--font-en); letter-spacing: 0.02em;
+}
+.heat-num-foot span:last-child { color: var(--red); font-weight: 700; }
 
-/* ── SPLIT-MERGE FLOW DIAGRAM ── */
-.js-wrap { display: flex; align-items: stretch; width: 100%; }
-.js-big-node {
-  flex-shrink: 0; min-width: 82px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 20px 12px; border-radius: 8px; border: 1px solid var(--border);
-  background: var(--white); text-align: center;
-}
-.js-connector { width: 28px; flex-shrink: 0; align-self: stretch; overflow: visible; }
-.js-paths-col { flex: 1; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
-.js-path { display: flex; flex-direction: column; gap: 6px; }
-.js-path-nodes { display: flex; align-items: center; gap: 8px; }
-.js-path-nodes .journey-node { flex: 1; }
-@media (max-width: 680px) {
-  .js-wrap { flex-direction: column; gap: 4px; }
-  .js-connector { display: none; }
-  .js-big-node { padding: 14px 16px; }
-  .js-paths-col { gap: 10px; }
-}
-
-/* ── NGP DEFINITION ── */
-.definition-inner { display: grid; gap: 48px; grid-template-columns: 1fr; }
-@media (min-width: 1024px) { .definition-inner { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } }
-
-.definition-content h2 { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 36px); font-weight: 900; line-height: 1.3; margin: 10px 0 20px; }
-.definition-content p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 16px; }
-
-.reg-cards { display: flex; flex-direction: column; gap: 14px; }
-.reg-card {
-  background: var(--bg-gray);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 22px;
-}
-.reg-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-.reg-tag {
-  font-family: var(--font-en);
-  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 3px 9px; border-radius: 4px;
-  background: var(--navy); color: #fff;
-}
-.reg-card-title { font-size: 15px; font-weight: 700; color: var(--text-1); }
-.reg-card p { font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
-
-/* ── COMPARE TABLE ── */
+/* ── COMPARE TABLE（漸層 header + 粉色淡出欄 + 圓形紅勾） ── */
 .compare-section { background: var(--bg-gray); }
 .compare-wrap {
-  overflow-x: auto;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--white);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  --compare-cbm: var(--red);
+  --compare-cbm-soft: #fde9f0;
+  overflow-x: auto; padding: 8px;
 }
-.compare-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
-.compare-table th {
-  padding: 14px 20px; text-align: left;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
-  border-bottom: 1px solid var(--border);
+.compare-table {
+  width: 100%; min-width: 760px;
+  border-collapse: separate; border-spacing: 0; overflow: hidden;
+  color: var(--text-1); background: var(--white);
+  border: 1px solid var(--border); border-radius: 18px;
+  box-shadow: none;
 }
-.compare-table th:first-child { color: var(--text-3); width: 130px; }
-.compare-table th.col-regular { background: var(--bg-gray); color: var(--text-2); border-left: 1px solid var(--border); }
-.compare-table th.col-ngp { background: var(--navy); color: #fff; border-left: 1px solid var(--border); }
-.compare-table td { padding: 16px 20px; vertical-align: top; line-height: 1.55; border-top: 1px solid var(--border); color: var(--text-2); }
-.compare-table td:first-child { font-weight: 700; color: var(--text-1); background: var(--bg-gray); white-space: nowrap; }
-.compare-table td.col-regular { border-left: 1px solid var(--border); }
-.compare-table td.col-ngp { border-left: 1px solid var(--border); background: #f4f7ff; color: var(--navy); font-weight: 600; }
-.compare-caption {
-  text-align: center; margin-top: 20px;
-  font-size: 13px; color: var(--text-3); line-height: 1.6;
+.compare-table th,
+.compare-table td {
+  padding: 18px 22px; text-align: left; vertical-align: middle;
+  border-bottom: 1px solid var(--border); line-height: 1.6;
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 14px; letter-spacing: 0.06em;
 }
-
-
-/* ── MECHANISM ── */
-#mechanism { background: #0B1E3D; }
-#mechanism .section-header h2 { color: #fff; }
-#mechanism .section-header p { color: rgba(255,255,255,0.5); }
-#mechanism .eyebrow { color: #E5368D; }
-#mechanism .eyebrow::before { background: #E5368D; }
-#mechanism .mechanism-note { color: rgba(255,255,255,0.25) !important; }
-
-.mechanism-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
-@media (min-width: 640px) { .mechanism-grid { grid-template-columns: repeat(3,1fr); } }
-
-.mechanism-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px; padding: 28px 24px;
-  position: relative; overflow: hidden;
-  transition: background 150ms, transform 150ms;
+.compare-table thead th {
+  color: var(--text-3); background: #fbfcfd;
 }
-.mechanism-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-.mechanism-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-brand-h); border-radius: 12px 12px 0 0; }
-.mechanism-card::after {
-  content: attr(data-num);
-  position: absolute; bottom: -16px; right: 8px;
-  font-family: var(--font-en); font-size: 100px; font-weight: 900;
-  color: rgba(255,255,255,0.04); line-height: 1;
-  pointer-events: none; user-select: none;
+.compare-table thead th:first-child {
+  color: var(--text-1);
 }
-.mechanism-icon {
-  width: 44px; height: 44px; border-radius: 10px;
-  background: rgba(255,255,255,0.08);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
+.compare-table tbody th {
+  width: 20%;
+  color: var(--text-1); background: #fbfcfd; white-space: nowrap;
 }
-.mechanism-icon svg { color: rgba(255,255,255,0.65); }
-.mechanism-step { font-family: var(--font-en); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(232,99,45,0.75); margin-bottom: 8px; }
-.mechanism-card h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-.mechanism-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; }
-
-/* ── AUDIENCE ── */
-.audience-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
-@media (min-width: 480px) { .audience-grid { grid-template-columns: repeat(2,1fr); } }
-@media (min-width: 900px) { .audience-grid { grid-template-columns: repeat(3,1fr); } }
-
-.audience-card {
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: 12px; padding: 22px 20px;
-  display: flex; gap: 14px; align-items: flex-start;
-  transition: border-color 150ms, box-shadow 150ms;
+.compare-table tbody td { color: var(--text-2); }
+.compare-table th + th,
+.compare-table td + td { border-left: 1px solid var(--border); }
+.compare-table tr:last-child th,
+.compare-table tr:last-child td { border-bottom: 0; }
+.compare-table .col-regular { color: var(--text-3); background: #fafafa; }
+.compare-table thead .col-regular { border-left: none; }
+.compare-table .col-cbm {
+  position: relative; color: #9e1242;
+  background: linear-gradient(90deg, var(--compare-cbm-soft), #fff);
 }
-.audience-card:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(206,14,45,0.08); }
-.audience-icon-wrap {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--red-pale);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+.compare-table thead .col-cbm {
+  color: #fff;
+  background: linear-gradient(135deg, var(--compare-cbm), #E5368D);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+  border-left: 1px solid rgba(255,255,255,0.25);
 }
-.audience-icon-wrap svg { color: var(--red); }
-.audience-card h4 { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
-.audience-card p  { font-size: 13px; color: var(--text-3); line-height: 1.6; }
-
-/* ── IDENTIFY ── */
-#identify { background: var(--bg-gray); }
-
-.identify-note {
-  background: var(--navy);
-  border-radius: 12px; padding: 24px 28px;
-  font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7;
-  margin-top: 24px;
+.compare-table tbody td.col-cbm { padding-left: 54px; }
+.compare-table tbody td.col-cbm::before {
+  content: "✓"; position: absolute; left: 22px; top: 50%;
+  width: 22px; height: 22px; transform: translateY(-50%);
+  display: grid; place-items: center; border-radius: 999px;
+  color: #fff; font-size: 14px; font-weight: 900;
+  background: var(--compare-cbm); box-shadow: 0 8px 16px rgba(206,14,45,0.22);
 }
-.identify-note strong { color: #fff; }
-
-/* cv2 三卡版型（共用首頁設計） */
-.cv2-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 16px;
-  align-items: stretch;
-}
-@media (max-width: 1023px) {
-  .cv2-row { grid-template-columns: 1fr 1fr; }
-  .cv2-photo { display: none; }
-}
-@media (max-width: 639px) {
-  .cv2-row { grid-template-columns: 1fr; }
+.compare-table tbody tr:hover th,
+.compare-table tbody tr:hover td { background: #fffaf4; }
+.compare-table tbody tr:hover td.col-cbm { background: linear-gradient(90deg, #ffe5eb, #fff); }
+.compare-note { margin-top: 16px; font-size: 12px; color: var(--text-4); line-height: 1.7; text-align: right; }
+@media (max-width: 720px) {
+  .compare-wrap { overflow: visible; padding: 0; }
+  .compare-table,
+  .compare-table thead,
+  .compare-table tbody,
+  .compare-table tr,
+  .compare-table th,
+  .compare-table td { display: block; width: 100%; min-width: 0; }
+  .compare-table { border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+  .compare-table thead { display: none; }
+  .compare-table tr {
+    margin-bottom: 14px; overflow: hidden;
+    background: var(--white); border: 1px solid var(--border); border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(17,24,39,0.07);
+  }
+  .compare-table tbody th {
+    width: auto; padding: 16px 18px; border-bottom: 1px solid var(--border);
+    background: #fbfcfd; white-space: normal;
+  }
+  .compare-table td { padding: 14px 18px; border-left: 0; border-bottom: 1px solid var(--border); }
+  .compare-table th + th,
+  .compare-table td + td { border-left: 0; }
+  .compare-table td::before {
+    content: attr(data-label); display: block; margin-bottom: 4px;
+    font-size: 12px; font-weight: 900; color: var(--text-3);
+  }
+  .compare-table tbody td.col-cbm { padding-left: 52px; background: var(--compare-cbm-soft); }
+  .compare-table tbody td.col-cbm::before { content: "✓"; top: 42px; }
+  .compare-table tbody td.col-cbm::after {
+    content: attr(data-label); display: block; margin-bottom: 4px;
+    font-size: 12px; font-weight: 900; color: var(--compare-cbm);
+  }
 }
 
-.cv2-photo {
-  border-radius: 16px;
-  overflow: hidden;
-  min-height: 380px;
+/* ── STATS BAR ── */
+.stats-bar { background: var(--gradient-brand); padding: 56px 0; }
+.stats-inner { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; text-align: center; }
+@media (min-width: 768px) { .stats-inner { grid-template-columns: repeat(4,1fr); } }
+.stats-inner > div { padding: 20px 24px; border-left: 1px solid rgba(255,255,255,0.1); }
+.stats-inner > div:first-child { border-left: none; }
+@media (max-width: 767px) {
+  .stats-inner > div:nth-child(2n+1) { border-left: none; }
+  .stats-inner > div { padding: 16px 12px; }
 }
-.cv2-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-}
+.stats-inner > div { border-left-color: rgba(255,255,255,0.22) !important; }
+.stat-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-bottom: 8px; }
+.stat-num { font-family: var(--font-en); font-size: clamp(40px,5.4vw,58px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
+.stat-num sup { font-size: 0.5em; vertical-align: super; }
+.stat-unit { color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 400; margin-top: 2px; }
+.stat-label { font-size: 12px; color: rgba(255,255,255,0.78); margin-top: 6px; line-height: 1.4; }
 
-.cv2-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 26px 22px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
+/* ── EVIDENCE ── */
+#evidence { background: var(--white); }
+#evidence .section-header h2 { color: var(--text-1); }
+#evidence .section-header p { color: var(--text-2); }
+#evidence .eyebrow { color: var(--red); }
+#evidence .eyebrow::before { background: var(--red); }
+#evidence .evidence-ref { color: var(--text-4) !important; }
 
-.cv2-sphere {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
+/* Evidence → 2 欄：左 sticky intro + 培養皿圖，右 editorial 研究清單 */
+.evidence-outer { display: grid; gap: 56px; grid-template-columns: 1fr; }
+@media (min-width: 1024px) { .evidence-outer { grid-template-columns: 0.85fr 1.15fr; gap: 72px; align-items: start; } }
+@media (min-width: 1024px) { .evidence-intro { position: sticky; top: 92px; } }
+.evidence-intro h2 { font-family: var(--font-display); font-size: clamp(24px,3.5vw,36px); font-weight: 900; line-height: 1.25; margin: 0 0 14px; }
+.evidence-intro > p { font-size: 15px; color: var(--text-2); line-height: 1.8; }
+.evidence-photo {
+  margin-top: 28px; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(206,14,45,0.10);
+  aspect-ratio: 1 / 1; max-width: 360px;
 }
-.cv2-sphere-red {
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(206,14,45,0.20) 0%, rgba(206,14,45,0) 70%);
-  bottom: -70px; right: -70px;
-}
-.cv2-sphere-navy {
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(23,47,96,0.16) 0%, rgba(23,47,96,0) 70%);
-  top: -50px; left: -50px;
-}
+.evidence-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-.cv2-header { position: relative; z-index: 1; }
-.cv2-header h3 {
-  font-size: 20px; font-weight: 700;
-  color: var(--text-1); margin: 6px 0 8px;
-  font-family: var(--font-display);
+.evidence-studies { display: flex; flex-direction: column; }
+.study { padding: 30px 0; border-top: 1px solid var(--border); }
+.study:first-child { padding-top: 4px; border-top: none; }
+.study-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.study-no {
+  font-family: var(--font-en); font-size: 26px; font-weight: 800; letter-spacing: -0.02em;
+  background: var(--gradient-brand); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
 }
-.cv2-header p {
-  font-size: 13px; color: var(--text-3); line-height: 1.6;
+.study-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--red); background: var(--pink-soft);
+  padding: 4px 12px; border-radius: 999px;
 }
-
-.cv2-widget {
-  position: relative; z-index: 1;
-  background: var(--bg-gray);
-  border-radius: 12px;
-  padding: 16px 18px;
-  flex: 1;
+.study h3 { font-size: 20px; font-weight: 700; color: var(--text-1); margin-bottom: 10px; }
+.study > p { font-size: 15px; color: var(--text-2); line-height: 1.75; margin-bottom: 14px; }
+.study-result {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; color: var(--text-1); font-weight: 600;
+  padding-left: 14px; border-left: 3px solid var(--red);
 }
-
-/* — Bar widget — */
-.cv2-bar-item { display: flex; align-items: center; gap: 10px; }
-.cv2-bar-label { font-size: 12.5px; color: var(--text-2); width: 72px; flex-shrink: 0; }
-.cv2-bar-track { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
-.cv2-bar-fill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, var(--red) 0%, #e84d6e 100%);
-}
-.cv2-bar-value { font-size: 12.5px; font-weight: 700; color: var(--text-1); min-width: 34px; text-align: right; }
-.cv2-bar-sep { height: 1px; background: var(--border); margin: 10px 0; }
-
-/* — Checklist widget — */
-.cv2-check-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 0; border-bottom: 1px solid var(--border);
-}
-.cv2-check-item:last-of-type { border-bottom: none; }
-.cv2-check-icon { flex-shrink: 0; color: var(--red); }
-.cv2-check-text { font-size: 13px; color: var(--text-2); line-height: 1.45; }
-.cv2-progress-wrap { margin-top: 14px; }
-.cv2-progress-bar-track { width: 100%; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
-.cv2-progress-bar-fill {
-  height: 100%; width: 100%;
-  background: linear-gradient(90deg, var(--red) 0%, var(--navy) 100%);
-  border-radius: 99px;
-}
-.cv2-progress-footer {
-  display: flex; justify-content: space-between; align-items: baseline;
-  margin-top: 8px;
-}
-.cv2-progress-footer span { font-size: 11.5px; color: var(--text-3); }
-.cv2-progress-footer strong { font-size: 18px; font-weight: 900; color: var(--text-1); font-family: var(--font-en); }
-
-/* — Metrics widget — */
-.cv2-metric-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
-.cv2-metric-head span {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.07em; text-transform: uppercase; color: var(--red);
-}
-.cv2-metric-item { padding: 9px 0; border-bottom: 1px solid var(--border); }
-.cv2-metric-item:last-child { border-bottom: none; }
-.cv2-metric-row { display: flex; align-items: center; justify-content: space-between; }
-.cv2-metric-name { font-size: 13px; color: var(--text-2); }
-.cv2-metric-pill {
-  display: inline-flex; align-items: center; gap: 4px;
-  background: var(--navy); color: #fff;
-  border-radius: 6px; padding: 3px 9px;
-  font-size: 12px; font-weight: 700;
-}
-.cv2-metric-pill svg { width: 12px; height: 12px; flex-shrink: 0; }
-.cv2-metric-foot { margin-top: 12px; font-size: 11.5px; color: var(--text-3); line-height: 1.55; }
+.study-result strong { color: var(--red); font-weight: 800; }
 
 /* ── CTA ── */
 .cta-section { background: linear-gradient(135deg, var(--red) 0%, #E5186E 100%); padding: 80px 0; text-align: center; }
 .cta-section h2 { font-family: var(--font-display); font-size: clamp(26px,4vw,42px); font-weight: 900; color: #fff; margin-bottom: 12px; line-height: 1.2; }
-.cta-section p { font-size: 16px; color: rgba(255,255,255,0.8); margin: 0 auto 36px; max-width: 520px; line-height: 1.65; }
+.cta-section p { font-size: 16px; color: #fff; margin: 0 auto 36px; max-width: 520px; line-height: 1.65; }
 .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 /* ── FOOTER ── */
@@ -685,10 +674,9 @@ section { padding: 64px 0; }
 
 @media (min-width: 1024px) {
   .body-text { font-size: 16px; }
-  .definition-content p { font-size: 16px; }
-  .mechanism-card p { font-size: 15px; }
-  .audience-card p { font-size: 14px; }
-  .cv2-header p { font-size: 14px; }
+  .req-card p { font-size: 15px; }
+  .dual-card > p { font-size: 16px; }
+  .evidence-card p { font-size: 15px; }
 }
 
 /* ══ 手機版修正 ══ */
@@ -716,7 +704,7 @@ section { padding: 64px 0; }
     padding-top: 40px;
     align-items: flex-start;
   }
-  .hero-chip-img { width: 180px; }
+  .hero-bacteria-img { width: 180px; }
   .hero-headline {
     font-size: 70px;
     font-weight: 900;
@@ -733,15 +721,14 @@ section { padding: 64px 0; }
     margin-bottom: 0;
   }
 
-  /* Trust bar：2x2 grid */
-  .trust-bar-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; justify-items: center; }
-  .trust-divider { display: none; }
-  .trust-item { font-size: 13px; gap: 6px; }
-
-  /* Journey flow：允許換行 */
-  .journey-flow { flex-wrap: wrap; gap: 6px; }
-  .journey-node { flex: 0 0 calc(33% - 4px); min-width: 80px; }
-  .journey-arrow { display: none; }
+  /* Trust bar：2x2 圖示格 */
+  .trust-bar { padding: 22px 0; }
+  .trust-bar-inner { grid-template-columns: 1fr 1fr; gap: 20px 6px; }
+  .trust-item { border-left: none; padding: 0 4px; gap: 10px; }
+  .trust-ico { width: 40px; height: 40px; border-radius: 11px; }
+  .trust-ico svg { width: 19px; height: 19px; }
+  .trust-txt strong { font-size: 14px; }
+  .trust-txt span { font-size: 12px; }
 
   /* CTA buttons：全寬堆疊 */
   .cta-actions { flex-direction: column; align-items: stretch; }
@@ -879,6 +866,146 @@ section { padding: 64px 0; }
     display: none !important;
   }
 }
+
+/* ════════ NGP PAGE COMPONENTS（桃紅日系）════════ */
+
+/* CALLOUT — 置中引言（覆蓋 cbm588 的左紅邊方框版） */
+.callout {
+  margin-top: 36px; padding: 0;
+  text-align: center; border: none; background: none; border-radius: 0;
+  font-size: clamp(17px,2vw,22px); font-weight: 700; color: var(--text-1); line-height: 1.65;
+}
+.callout::before { content: '\201C'; margin-right: 4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
+.callout::after  { content: '\201D'; margin-left:  4px; color: var(--red); font-size: 1.3em; line-height: 0; vertical-align: -0.2em; }
+
+/* HERO — 晶片圖（框成科技裝置卡） */
+.hero-chip-img {
+  width: 100%; max-width: 520px;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(206,14,45,0.16), 0 12px 28px rgba(0,0,0,0.18);
+  animation: float 5s ease-in-out infinite;
+}
+.hero-chip-label {
+  margin-top: 20px; border-radius: 12px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border);
+  padding: 10px 22px;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 28px rgba(206,14,45,0.08);
+  text-align: center;
+}
+.hero-chip-label strong { display:block; font-size:15px; font-weight:700; color:var(--text-1); letter-spacing:0.04em; margin-bottom:3px; }
+.hero-chip-label span { font-size:10px; color:var(--text-4); letter-spacing:0.06em; text-transform:uppercase; font-style:italic; }
+
+/* PROBLEM — stat 面板 */
+.problem-body { display:grid; gap:40px; grid-template-columns:1fr; align-items:center; }
+@media (min-width:1024px){ .problem-body { grid-template-columns:0.92fr 1.08fr; gap:56px; } }
+.stat-panels { display:grid; gap:16px; grid-template-columns:1fr; }
+@media (min-width:480px){ .stat-panels { grid-template-columns:1fr 1fr; } }
+.stat-panel { position:relative; overflow:hidden; border-radius:18px; padding:28px 26px; color:#fff; box-shadow:0 14px 32px rgba(0,0,0,0.10); }
+.stat-panel.is-red  { background:linear-gradient(150deg,#5a616e 0%,#2b2f37 100%); }
+.stat-panel.is-navy { background:var(--gradient-brand); }
+.stat-panel-bg { position:absolute; inset:0; background:radial-gradient(circle at 82% 0%, rgba(255,255,255,0.20), transparent 60%); pointer-events:none; }
+.stat-panel-content { position:relative; z-index:1; }
+.stat-panel-num { font-family:var(--font-en); font-size:clamp(38px,5vw,52px); font-weight:900; letter-spacing:-0.03em; line-height:1; margin-bottom:12px; }
+.stat-panel-title { font-size:16px; font-weight:700; margin-bottom:8px; }
+.stat-panel-desc { font-size:12.5px; line-height:1.65; color:rgba(255,255,255,0.85); }
+.problem-img { width:100%; height:auto; display:block; border-radius:16px; border:1px solid var(--border); box-shadow:0 14px 34px rgba(206,14,45,0.08); }
+
+/* WHAT IS NGP — 定義 + 法規卡 */
+.definition-inner { display:grid; gap:48px; grid-template-columns:1fr; }
+@media (min-width:1024px){ .definition-inner { grid-template-columns:1fr 1fr; gap:64px; align-items:start; } }
+.definition-content h2 { font-family:var(--font-display); font-size:clamp(24px,3.5vw,36px); font-weight:900; line-height:1.3; margin:0 0 16px; }
+.definition-content p { font-size:15px; color:var(--text-2); line-height:1.8; margin-bottom:14px; }
+.definition-content p strong { color:var(--red); font-weight:700; }
+.reg-cards { display:flex; flex-direction:column; gap:16px; }
+.reg-card { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:22px 24px; box-shadow:0 2px 14px rgba(0,0,0,0.05); transition:box-shadow 200ms, transform 200ms; }
+.reg-card:hover { box-shadow:0 14px 34px rgba(206,14,45,0.10); transform:translateY(-2px); }
+.reg-card-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+.reg-tag { font-size:11px; font-weight:700; letter-spacing:0.04em; color:var(--red); background:var(--pink-soft); padding:4px 12px; border-radius:999px; }
+.reg-card-title { font-size:16px; font-weight:700; color:var(--text-1); }
+.reg-card p { font-size:14px; color:var(--text-2); line-height:1.75; }
+
+/* COMPARE — NGP 欄（鏡像 col-cbm 桃紅樣式） */
+.compare-table .col-ngp { position:relative; color:#9e1242; background:linear-gradient(90deg,#fde9f0,#fff); }
+.compare-table thead .col-ngp { color:#fff; background:linear-gradient(135deg,var(--red),#E5368D); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.12); border-left:1px solid rgba(255,255,255,0.25); }
+.compare-table tbody td.col-ngp { padding-left:54px; }
+.compare-table tbody td.col-ngp::before { content:"\2713"; position:absolute; left:22px; top:50%; width:22px; height:22px; transform:translateY(-50%); display:grid; place-items:center; border-radius:999px; color:#fff; font-size:14px; font-weight:900; background:var(--red); box-shadow:0 8px 16px rgba(206,14,45,0.22); }
+.compare-table tbody tr:hover td.col-ngp { background:linear-gradient(90deg,#ffe5eb,#fff); }
+.compare-caption { margin-top:16px; font-size:12px; color:var(--text-4); line-height:1.7; text-align:right; }
+@media (max-width:720px){
+  .compare-table tbody td.col-ngp { padding-left:52px; background:#fde9f0; }
+  .compare-table tbody td.col-ngp::before { content:"\2713"; top:42px; }
+  .compare-table tbody td.col-ngp::after { content:attr(data-label); display:block; margin-bottom:4px; font-size:12px; font-weight:900; color:var(--red); }
+}
+
+/* MID BANNER — 粉色濾鏡疊加 */
+.mid-banner.tint::after { content:''; position:absolute; inset:0; background:linear-gradient(120deg, rgba(206,14,45,0.22), rgba(229,54,141,0.12)); mix-blend-mode:multiply; pointer-events:none; }
+
+/* MECHANISM */
+.mechanism-grid { display:grid; gap:24px; grid-template-columns:1fr; }
+@media (min-width:768px){ .mechanism-grid { grid-template-columns:1fr 1fr; } }
+@media (min-width:1024px){ .mechanism-grid { grid-template-columns:repeat(3,1fr); } }
+.mechanism-card { position:relative; background:var(--white); border:1px solid var(--border); border-radius:18px; padding:32px 30px; box-shadow:0 2px 16px rgba(0,0,0,0.05); transition:box-shadow 200ms, transform 200ms; overflow:hidden; }
+.mechanism-card:hover { box-shadow:0 18px 44px rgba(206,14,45,0.12); transform:translateY(-3px); }
+.mechanism-icon { width:48px; height:48px; border-radius:14px; background:var(--pink-soft); display:grid; place-items:center; margin-bottom:18px; }
+.mechanism-icon svg { color:var(--red); }
+.mechanism-step { font-family:var(--font-en); font-size:11px; font-weight:700; letter-spacing:0.12em; color:var(--text-4); margin-bottom:8px; }
+.mechanism-card h3 { font-size:20px; font-weight:700; color:var(--text-1); margin-bottom:10px; }
+.mechanism-card p { font-size:14px; color:var(--text-2); line-height:1.75; }
+.mechanism-note { color:var(--text-4); }
+
+/* AUDIENCE */
+.audience-grid { display:grid; gap:18px; grid-template-columns:1fr; }
+@media (min-width:768px){ .audience-grid { grid-template-columns:1fr 1fr; } }
+@media (min-width:1024px){ .audience-grid { grid-template-columns:repeat(3,1fr); } }
+.audience-card { display:flex; gap:16px; align-items:flex-start; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:box-shadow 200ms, transform 200ms; }
+.audience-card:hover { box-shadow:0 14px 32px rgba(206,14,45,0.10); transform:translateY(-2px); }
+.audience-icon-wrap { width:44px; height:44px; flex-shrink:0; border-radius:12px; background:var(--pink-soft); display:flex; align-items:center; justify-content:center; }
+.audience-icon-wrap svg { color:var(--red); }
+.audience-card h4 { font-size:16px; font-weight:700; color:var(--text-1); margin-bottom:6px; }
+.audience-card p { font-size:13.5px; color:var(--text-3); line-height:1.7; }
+
+/* IDENTIFY — cv2 互動卡 */
+.cv2-row { display:grid; gap:24px; grid-template-columns:1fr; }
+@media (min-width:768px){ .cv2-row { grid-template-columns:1fr 1fr; } }
+@media (min-width:1024px){ .cv2-row { grid-template-columns:0.78fr 1fr 1fr 1fr; align-items:stretch; } }
+.cv2-photo { border-radius:18px; overflow:hidden; min-height:240px; }
+.cv2-photo img { width:100%; height:100%; object-fit:cover; }
+.cv2-card { position:relative; overflow:hidden; background:var(--white); border:1px solid var(--border); border-radius:18px; padding:26px 24px; box-shadow:0 2px 16px rgba(0,0,0,0.05); display:flex; flex-direction:column; }
+.cv2-sphere { position:absolute; width:170px; height:170px; border-radius:50%; top:-54px; right:-54px; pointer-events:none; }
+.cv2-sphere-navy { background:radial-gradient(circle, rgba(229,54,141,0.16), transparent 68%); }
+.cv2-sphere-red  { background:radial-gradient(circle, rgba(206,14,45,0.14), transparent 68%); }
+.cv2-header { position:relative; z-index:1; margin-bottom:18px; }
+.criteria-step { font-family:var(--font-en); font-size:11px; font-weight:700; letter-spacing:0.12em; color:var(--red); display:block; margin-bottom:10px; }
+.cv2-header h3 { font-size:18px; font-weight:700; color:var(--text-1); margin-bottom:8px; }
+.cv2-header p { font-size:13px; color:var(--text-3); line-height:1.7; }
+.cv2-widget { position:relative; z-index:1; margin-top:auto; }
+/* checklist */
+.cv2-check-item { display:flex; align-items:center; gap:10px; padding:7px 0; }
+.cv2-check-icon { color:var(--red); flex-shrink:0; }
+.cv2-check-text { font-size:13px; font-weight:600; color:var(--text-2); }
+.cv2-progress-wrap { margin-top:16px; }
+.cv2-progress-bar-track { height:8px; background:var(--bg-gray-2); border-radius:999px; overflow:hidden; }
+.cv2-progress-bar-fill { height:100%; background:var(--gradient-brand); border-radius:999px; }
+.cv2-progress-footer { display:flex; justify-content:space-between; align-items:center; margin-top:8px; font-size:12px; color:var(--text-3); }
+.cv2-progress-footer strong { font-family:var(--font-en); color:var(--red); font-weight:800; }
+/* bars */
+.cv2-bar-item { display:grid; grid-template-columns:1fr auto; gap:6px 12px; }
+.cv2-bar-label { grid-column:1; grid-row:1; font-size:13px; font-weight:600; color:var(--text-2); }
+.cv2-bar-value { grid-column:2; grid-row:1; text-align:right; font-size:12px; font-weight:700; color:var(--red); }
+.cv2-bar-track { grid-column:1 / -1; grid-row:2; height:8px; background:var(--bg-gray-2); border-radius:999px; overflow:hidden; }
+.cv2-bar-fill { height:100%; background:var(--gradient-brand); border-radius:999px; }
+.cv2-bar-sep { height:12px; }
+/* metrics */
+.cv2-metric-head { display:flex; justify-content:space-between; font-size:11px; font-weight:700; letter-spacing:0.04em; color:var(--text-4); padding-bottom:10px; border-bottom:1px solid var(--border); margin-bottom:4px; text-transform:uppercase; }
+.cv2-metric-item { padding:11px 0; border-bottom:1px solid var(--border); }
+.cv2-metric-row { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.cv2-metric-name { font-size:13px; font-weight:600; color:var(--text-2); }
+.cv2-metric-pill { display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:700; color:#fff; background:#16a34a; padding:4px 11px; border-radius:999px; }
+.cv2-metric-pill svg { width:13px; height:13px; }
+.cv2-metric-foot { font-size:12px; color:var(--text-4); line-height:1.65; margin-top:12px; }
+
 </style>
 </head>
 <body>
@@ -911,8 +1038,8 @@ section { padding: 64px 0; }
 </nav>
 
 <!-- ══ MOBILE DRAWER ══ -->
-<div class="nav-overlay" id="navOverlay" style="position:fixed;inset:0;opacity:0;visibility:hidden;"></div>
-<div class="nav-drawer" id="navDrawer" style="position:fixed;top:0;right:0;transform:translateX(100%);">
+<div class="nav-overlay" id="navOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
   <div class="drawer-head">
     <img src="assets/logo-red.png" alt="妙利散® MIYARISAN" style="height:28px;">
     <button class="drawer-close" id="drawerClose" aria-label="關閉選單">
@@ -948,7 +1075,7 @@ section { padding: 64px 0; }
   <div class="hero-right">
     <div class="hero-badge"><span class="hero-badge-dot"></span>次世代益生菌研究・突破傳統益生菌限制</div>
     <h1 class="hero-headline"><em>次世代</em><br>益生菌<br><em>NGP</em></h1>
-    <p class="hero-sub">一般人以為益生菌就是補充好菌。但科學家現在關注的，<br>已經是另一個等級的東西了。</p>
+    <p class="hero-sub">一般人以為益生菌就是補充好菌。<br>但科學家現在關注的，已經是另一個等級的東西了。</p>
     <div class="hero-actions">
       <button class="hero-cta-primary" onclick="location.href='#what-is-ngp'">了解 NGP</button>
       <button class="hero-cta-ghost" onclick="location.href='https://lin.ee/RuxohDy'">LINE 諮詢</button>
@@ -956,23 +1083,50 @@ section { padding: 64px 0; }
   </div>
 </section>
 
+<!-- ══ TRUST BAR ══ -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <span class="trust-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <div class="trust-txt"><strong>藥品級開發標準</strong><span>依 GMP 製造</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <div class="trust-txt"><strong>菌株層級鑑定</strong><span>全基因體定序</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </span>
+        <div class="trust-txt"><strong>正式人體 RCT</strong><span>同行評審發表</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+        </span>
+        <div class="trust-txt"><strong>醫療專業通路</strong><span>非超商貨架</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ PROBLEM ══ -->
 <section class="bg-gray" id="problem">
   <div class="container">
-
-    <!-- Section header: top-centered -->
-    <div style="text-align:center;margin-bottom:48px;">
-      <h2 style="font-family:var(--font-display);font-size:clamp(32px,5vw,56px);font-weight:900;line-height:1.2;margin:10px auto 20px;max-width:720px;">吃下去<br>不一定到得了</h2>
-      <p class="body-text" style="max-width:620px;margin:0 auto;">保健食品等級的益生菌，從來沒有被要求「菌必須活著抵達腸道」<br>大部分廠商標榜的菌數，只是出廠時的數字。</p>
+    <div class="section-header center">
+      <span class="eyebrow eyebrow-center">THE REALITY</span>
+      <h2>吃下去，不一定到得了</h2>
+      <p>保健食品等級的益生菌，從來沒有被要求「菌必須活著抵達腸道」。<br>大部分廠商標榜的菌數，只是出廠時的數字。</p>
     </div>
 
     <div class="problem-body">
-
-      <!-- Left: stat panels + callout -->
       <div>
         <div class="stat-panels">
-
-          <!-- 一般乳酸菌 -->
           <div class="stat-panel is-red">
             <div class="stat-panel-bg"></div>
             <div class="stat-panel-content">
@@ -981,8 +1135,6 @@ section { padding: 64px 0; }
               <div class="stat-panel-desc">胃酸環境存活率<br>100 億吃下去，到腸道不到 10 億</div>
             </div>
           </div>
-
-          <!-- NGP 芽孢菌株 -->
           <div class="stat-panel is-navy">
             <div class="stat-panel-bg"></div>
             <div class="stat-panel-content">
@@ -991,21 +1143,16 @@ section { padding: 64px 0; }
               <div class="stat-panel-desc">相同胃酸環境存活率<br>芽孢結構完整保護，順利抵達腸道</div>
             </div>
           </div>
-
         </div>
         <div class="callout" style="margin-top:28px;">這不是品牌的問題。保健食品等級的益生菌，本來就沒有被要求需要有效果。</div>
       </div>
 
-      <!-- Right: infographic -->
       <div>
-        <img src="assets/survival-comparison.png" alt="你吞的 100 億菌，最後剩幾億？腸胃保健菌株存活比較" style="width:100%;height:auto;display:block;border-radius:12px;">
+        <img class="problem-img" src="assets/survival-comparison.png" alt="你吞的 100 億菌，最後剩幾億？腸胃保健菌株存活比較">
       </div>
-
     </div>
-
   </div>
 </section>
-
 
 <!-- ══ WHAT IS NGP ══ -->
 <section id="what-is-ngp">
@@ -1013,6 +1160,7 @@ section { padding: 64px 0; }
     <div class="definition-inner">
 
       <div class="definition-content">
+        <span class="eyebrow">NEXT GENERATION</span>
         <h2>什麼是次世代益生菌（NGP）？</h2>
         <p>NGP 是 Next Generation Probiotics 的縮寫，是學術界基於近年研究進展提出的分類框架。這類菌株的特點是：在基因技術輔助下被精密鑑定、有完整的安全性確認，並具有可描述、可重現的作用機制。</p>
         <p>NGP 不是一個品牌，它描述的是一批在<strong>開發標準、機制理解、臨床驗證深度</strong>上，都與傳統保健益生菌本質不同的菌株。</p>
@@ -1051,10 +1199,16 @@ section { padding: 64px 0; }
   </div>
 </section>
 
+<!-- ══ MID BANNER ══ -->
+<div class="mid-banner tint">
+  <img src="assets/ngp-petri.jpg" alt="次世代益生菌研究——實驗室基礎">
+</div>
+
 <!-- ══ COMPARE TABLE ══ -->
 <section class="compare-section" id="compare">
   <div class="container">
     <div class="section-header center">
+      <span class="eyebrow eyebrow-center">HEAD TO HEAD</span>
       <h2>NGP vs. 一般市售益生菌</h2>
       <p>比益生菌之前，先搞清楚你比的是同一類東西嗎？</p>
     </div>
@@ -1063,31 +1217,31 @@ section { padding: 64px 0; }
       <table class="compare-table">
         <thead>
           <tr>
-            <th></th>
+            <th scope="col">比較項目</th>
             <th class="col-regular">一般市售益生菌</th>
             <th class="col-ngp">次世代益生菌（NGP）</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>研發標準</td>
-            <td class="col-regular">食品 / 保健食品等級</td>
-            <td class="col-ngp">藥品等級，依 GMP 製造</td>
+            <th scope="row">研發標準</th>
+            <td class="col-regular" data-label="一般市售益生菌">食品 / 保健食品等級</td>
+            <td class="col-ngp" data-label="次世代益生菌（NGP）">藥品等級，依 GMP 製造</td>
           </tr>
           <tr>
-            <td>臨床驗證</td>
-            <td class="col-regular">通常為一般保健功效研究</td>
-            <td class="col-ngp">正式人體臨床試驗，針對特定健康狀態</td>
+            <th scope="row">臨床驗證</th>
+            <td class="col-regular" data-label="一般市售益生菌">通常為一般保健功效研究</td>
+            <td class="col-ngp" data-label="次世代益生菌（NGP）">正式人體臨床試驗，針對特定健康狀態</td>
           </tr>
           <tr>
-            <td>菌株鑑定</td>
-            <td class="col-regular">多為菌種層級，批次品質差異大</td>
-            <td class="col-ngp">菌株層級，全基因體定序，安全性基因確認</td>
+            <th scope="row">菌株鑑定</th>
+            <td class="col-regular" data-label="一般市售益生菌">多為菌種層級，批次品質差異大</td>
+            <td class="col-ngp" data-label="次世代益生菌（NGP）">菌株層級，全基因體定序，安全性基因確認</td>
           </tr>
           <tr>
-            <td>取得管道</td>
-            <td class="col-regular">超商、藥妝店、一般藥局</td>
-            <td class="col-ngp">醫療院所或專業醫療通路</td>
+            <th scope="row">取得管道</th>
+            <td class="col-regular" data-label="一般市售益生菌">超商、藥妝店、一般藥局</td>
+            <td class="col-ngp" data-label="次世代益生菌（NGP）">醫療院所或專業醫療通路</td>
           </tr>
         </tbody>
       </table>
@@ -1096,11 +1250,11 @@ section { padding: 64px 0; }
   </div>
 </section>
 
-
 <!-- ══ MECHANISM ══ -->
 <section id="mechanism">
   <div class="container">
     <div class="section-header center">
+      <span class="eyebrow eyebrow-center">MECHANISM</span>
       <h2>到了腸道之後，它做的事情不一樣</h2>
       <p>NGP 與一般益生菌最根本的差距，不只是「能不能活著到腸道」</p>
     </div>
@@ -1140,6 +1294,7 @@ section { padding: 64px 0; }
 <section class="bg-gray" id="audience">
   <div class="container">
     <div class="section-header center">
+      <span class="eyebrow eyebrow-center">WHO NEEDS IT</span>
       <h2>誰應該關注次世代益生菌？</h2>
       <p>如果你只是偶爾消化不太舒服，一般益生菌可能就夠了。<br>但以下情境，值得重新思考手上的選擇是否真的符合你的需求。</p>
     </div>
@@ -1209,15 +1364,15 @@ section { padding: 64px 0; }
 <section id="identify">
   <div class="container">
     <div class="section-header center">
+      <span class="eyebrow eyebrow-center">HOW TO IDENTIFY</span>
       <h2>怎麼辨認一個真正的 NGP？</h2>
       <p>是否為次世代，先問三個問題。</p>
     </div>
 
     <div class="cv2-row">
 
-      <!-- 左側照片 -->
       <div class="cv2-photo">
-        <img src="assets/strain-cbm.png" alt="CBM588 宮入菌株顯微鏡影像">
+        <img src="assets/strain-cbm.png" alt="NGP 候選菌株顯微影像">
       </div>
 
       <!-- 卡 1：臨床試驗 — Checklist -->
@@ -1264,33 +1419,33 @@ section { padding: 64px 0; }
         <div class="cv2-widget">
           <div class="cv2-bar-item">
             <span class="cv2-bar-label">活菌數控管</span>
-            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:97%"></div></div>
             <span class="cv2-bar-value">嚴格</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:97%"></div></div>
           </div>
           <div class="cv2-bar-sep"></div>
           <div class="cv2-bar-item">
             <span class="cv2-bar-label">批次一致性</span>
-            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:94%"></div></div>
             <span class="cv2-bar-value">可驗</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:94%"></div></div>
           </div>
           <div class="cv2-bar-sep"></div>
           <div class="cv2-bar-item">
             <span class="cv2-bar-label">製程追溯</span>
-            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:100%"></div></div>
             <span class="cv2-bar-value">完整</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:100%"></div></div>
           </div>
           <div class="cv2-bar-sep"></div>
           <div class="cv2-bar-item">
             <span class="cv2-bar-label">規格驗證</span>
-            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:98%"></div></div>
             <span class="cv2-bar-value">通過</span>
+            <div class="cv2-bar-track"><div class="cv2-bar-fill" style="width:98%"></div></div>
           </div>
         </div>
       </div>
 
       <!-- 卡 3：菌株鑑定 — Metrics -->
       <div class="cv2-card">
-        <div class="cv2-sphere cv2-sphere-navy" style="bottom:-50px;right:-50px;top:auto;left:auto;"></div>
+        <div class="cv2-sphere cv2-sphere-navy" style="bottom:-54px;right:-54px;top:auto;left:auto;"></div>
         <div class="cv2-header">
           <span class="criteria-step">QUESTION 03</span>
           <h3>菌株有明確鑑定嗎？</h3>
@@ -1347,7 +1502,7 @@ section { padding: 64px 0; }
       </a>
       <a href="index.html" class="btn btn-white btn-lg">回首頁</a>
     </div>
-    <p style="margin-top:24px;margin-bottom:0;font-size:12px;color:rgba(255,255,255,0.5);">本頁內容為衛生教育資訊，不構成醫療建議。如有健康疑慮，請諮詢醫師。</p>
+    <p style="margin-top:24px;margin-bottom:0;font-size:12px;color:rgba(255,255,255,0.65);">本頁內容為衛生教育資訊，不構成醫療建議。如有健康疑慮，請諮詢醫師。</p>
   </div>
 </section>
 
@@ -1356,7 +1511,7 @@ section { padding: 64px 0; }
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="assets/logo-richever-exclusive.png" alt="RICHEVER Exclusive Distributor" style="height:40px;width:auto;">
+        <img src="assets/logo-richever-exclusive.png" alt="RICHEVER Exclusive Distributor" style="height:32px;margin-bottom:16px;">
         <p>RICHEVER Exclusive Distributor<br>ミヤリサン製薬株式会社<br>Miyarisan®日本原廠醫療級整腸益生菌<br>
         衛署藥輸字第014618號<br>
         高市衛藥廣字第11008003號</p>
@@ -1392,18 +1547,8 @@ section { padding: 64px 0; }
   var burger  = document.querySelector('.nav-hamburger');
   var drawer  = document.getElementById('navDrawer');
   var overlay = document.getElementById('navOverlay');
-  function open()  {
-    burger.classList.add('open'); drawer.classList.add('open'); overlay.classList.add('open');
-    drawer.style.transform='translateX(0)';
-    overlay.style.opacity='1'; overlay.style.visibility='visible';
-    document.body.style.overflow='hidden';
-  }
-  function close() {
-    burger.classList.remove('open'); drawer.classList.remove('open'); overlay.classList.remove('open');
-    drawer.style.transform='translateX(100%)';
-    overlay.style.opacity='0'; overlay.style.visibility='hidden';
-    document.body.style.overflow='';
-  }
+  function open()  { burger.classList.add('open');    drawer.classList.add('open');    overlay.classList.add('open');    document.body.style.overflow='hidden'; }
+  function close() { burger.classList.remove('open'); drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
   burger.addEventListener('click', function(){ drawer.classList.contains('open') ? close() : open(); });
   overlay.addEventListener('click', close);
   document.getElementById('drawerClose').addEventListener('click', close);
