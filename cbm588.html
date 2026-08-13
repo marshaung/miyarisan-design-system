@@ -684,11 +684,11 @@ section { padding: 64px 0; }
   section { padding: 64px 0; }
 
   .hero {
-    min-height: 80vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 100px 20px 60px;
+    padding: 100px 20px 0;
     text-align: left;
   }
   .hero-left {
@@ -704,7 +704,12 @@ section { padding: 64px 0; }
     padding-top: 40px;
     align-items: flex-start;
   }
-  .hero-bacteria-img { width: 180px; }
+  .hero-bacteria-img {
+    display: block;
+    width: min(62vw, 240px);
+    max-width: 100%;
+    height: auto;
+  }
   .hero-headline {
     font-size: 70px;
     font-weight: 900;
@@ -721,13 +726,19 @@ section { padding: 64px 0; }
     margin-bottom: 0;
   }
 
-  /* Trust bar：2x2 圖示格 */
-  .trust-bar { padding: 22px 0; }
-  .trust-bar-inner { grid-template-columns: 1fr 1fr; gap: 20px 6px; }
-  .trust-item { border-left: none; padding: 0 4px; gap: 10px; }
+  /* Trust bar：手機版保留四個重點，改成兩欄較好掃讀 */
+  .trust-bar-inner { grid-template-columns: 1fr 1fr; gap: 20px 8px; }
+  .trust-item {
+    border-left: none;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    justify-content: start;
+    padding: 0 2px;
+    gap: 9px;
+  }
   .trust-ico { width: 40px; height: 40px; border-radius: 11px; }
   .trust-ico svg { width: 19px; height: 19px; }
-  .trust-txt strong { font-size: 14px; }
+  .trust-txt strong { font-size: 13px; white-space: nowrap; }
   .trust-txt span { font-size: 12px; }
 
   /* CTA buttons：全寬堆疊 */
@@ -829,36 +840,58 @@ section { padding: 64px 0; }
 /* ─── P0: Hero Visual Reinforcement (Mobile) ─── */
 @media (max-width: 767px) {
   .hero {
-    min-height: 80vh;
+    min-height: calc(100svh - 64px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 100px 20px 60px;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 64px 20px 16px;
     text-align: left;
   }
   .hero-left {
-    display: none; /* 在手機版隱藏左側裝飾圖，聚焦標題 */
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0 0;
+    padding-left: 0;
   }
   .hero-right {
     padding-right: 0;
+    order: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
   }
+  .hero-badge {
+    margin-bottom: 14px;
+    padding: 5px 10px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+  .hero-bacteria-img {
+    display: block;
+    width: min(48vw, 180px);
+    max-width: 100%;
+    height: auto;
+  }
   .hero-headline {
+    font-family: 'Noto Sans TC', sans-serif;
     font-size: 70px;
     font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 40px;
+    line-height: 1.03;
+    margin-bottom: 18px;
     text-align: left;
   }
   .hero-headline br {
     display: block !important;
   }
   .hero-sub {
-    font-size: 16px;
-    line-height: 1.75;
+    font-size: 15px;
+    line-height: 1.62;
     margin-bottom: 0;
     text-align: left;
   }
@@ -927,15 +960,12 @@ section { padding: 64px 0; }
   <div class="hero-glow"></div>
   <div class="hero-left">
     <img class="hero-bacteria-img" src="assets/strain-cbm.png" alt="CBM588 酪酸菌菌株">
-    <div class="hero-strain-label">
-      <strong>CBM588 菌株</strong>
-      <span>Clostridium butyricum Miyairi 588</span>
-    </div>
+    
   </div>
   <div class="hero-right">
-    <div class="hero-badge"><span class="hero-badge-dot"></span>日本醫療級認證菌株・50+ 年臨床使用</div>
+    <div class="hero-badge"><span class="hero-badge-dot"></span>日本醫療級認證菌株・80+ 年臨床使用</div>
     <h1 class="hero-headline"><em>酪酸菌</em>・<br>專利菌株<br><em>CBM588</em></h1>
-    <p class="hero-sub">妙利散專利菌株，具備芽孢結構耐酸性耐熱性強，<br>可與抗生素同期使用，pH 2 環境存活率 80-90%</p>
+    <p class="hero-sub">妙利散專利菌株，具備芽孢結構，<br>耐酸、耐熱、可與抗生素同時使用</p>
     <div class="hero-actions">
       <button class="hero-cta-primary" onclick="location.href='#criteria'">了解菌株特色</button>
       <button class="hero-cta-ghost" onclick="location.href='#evidence'">查看文獻報告</button>
@@ -957,13 +987,13 @@ section { padding: 64px 0; }
         <span class="trust-ico">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.7l5.7 5.7a8 8 0 11-11.4 0z"/></svg>
         </span>
-        <div class="trust-txt"><strong>pH 2 存活80-90%</strong><span>芽孢耐胃酸</span></div>
+        <div class="trust-txt"><strong>胃酸pH 1.4 可存活</strong><span>芽孢耐胃酸</span></div>
       </div>
       <div class="trust-item">
         <span class="trust-ico">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.5 20.5l-7-7a4.95 4.95 0 017-7l7 7a4.95 4.95 0 01-7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg>
         </span>
-        <div class="trust-txt"><strong>抗生素同期使用</strong><span>療程中不失效</span></div>
+        <div class="trust-txt"><strong>耐抗生素無礙</strong><span>療程中不失效</span></div>
       </div>
       <div class="trust-item">
         <span class="trust-ico">
@@ -996,21 +1026,21 @@ section { padding: 64px 0; }
           <div class="req-no">01</div>
           <div class="req-text">
             <h3>菌株身份精確可追溯</h3>
-            <p>必須精確到菌株層級（genus, species, strain），才能對應可重複驗證的臨床試驗。CBM588 的全名 <em>Clostridium butyricum MIYAIRI 588</em> 對應到上百篇 peer-reviewed 論文的精確微生物身份，不是行銷詞彙。</p>
+            <p>必須精確到菌株層級（genus, species, strain），才能對應可重複驗證的臨床試驗。CBM588 的全名 <em>Clostridium butyricum MIYAIRI 588</em> 對應到上百篇期刊論文的精確微生物身份，不是行銷詞彙。</p>
           </div>
         </div>
         <div class="req-item">
           <div class="req-no">02</div>
           <div class="req-text">
             <h3>生物環境穩定性</h3>
-            <p>益生菌必須穿越胃酸（pH 1.5–3.5）才能抵達結腸。CBM588 以芽孢形式通過胃腸屏障，在 pH 2 環境下存活率達 <em>80-90%</em>，且可與抗生素同期使用而不失效。</p>
+            <p>益生菌必須穿越胃酸（pH 1.5–3.5）才能抵達結腸。CBM588 以芽孢形式通過胃腸屏障，即使在空腹胃酸 <em>pH 1.4 環境</em> 下仍可存活，且可與抗生素同時使用而不失效。</p>
           </div>
         </div>
         <div class="req-item">
           <div class="req-no">03</div>
           <div class="req-text">
             <h3>人體臨床試驗數據</h3>
-            <p>需要針對特定疾病、特定適應症，以人體受試者為基礎的臨床研究，而非僅著眼在體外或動物實驗層次。CBM588 在日本自 <em>1967 年</em>起被核准為處方藥，涵蓋兒科、中高齡等多條群試驗。</p>
+            <p>需要針對特定疾病、特定適應症，以人體受試者為基礎的臨床研究，而非僅著眼在體外或動物實驗層次。CBM588 在日本自 <em>1967 年</em>起被核准為處方藥，涵蓋兒科、中高齡等多項臨床試驗。</p>
           </div>
         </div>
       </div>
@@ -1045,7 +1075,7 @@ section { padding: 64px 0; }
           <p><em>Clostridium butyricum</em> 的代謝終產物是「酪酸」（butyrate），而非一般乳酸菌所產生的乳酸。酪酸是大腸上皮細胞最主要的能量來源，提供結腸細胞約 <strong>50～70% 的 ATP 產能</strong>，同時具備調節腸道環境的功能，是乳酸在生化機制上無法替代的分子。</p>
           <div class="dual-pill navy">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            結腸細胞主要能量燃料
+            結腸細胞主要能量來源
           </div>
         </div>
       </div>
@@ -1057,7 +1087,7 @@ section { padding: 64px 0; }
         </div>
         <div class="dual-body">
           <h3>芽孢菌 — 待機觸發啟動機制</h3>
-          <p>CBM588 能以芽孢形式進入消化道，在 pH 2 的胃酸環境中維持 <strong>60～90% 存活率</strong>，抵達結腸後偵測到特定化學訊號（如 L-丙胺酸）才啟動萌發，轉化為有完整代謝活性的活菌。這讓 CBM588 不需要冷藏保存，在物理結構上就具備穿越消化道的能力。</p>
+          <p>CBM588 擁有獨特的「芽孢」結構，能順利通過 pH 1.4 的強酸胃環境，不畏胃酸與膽鹽的考驗。抵達結腸後偵測到特定化學訊號（如 L-丙胺酸），才啟動萌發，轉化為具備完整代謝活性的強效活菌。獨特的物理結構讓 CBM588 不需冷藏保存，即可確保活菌直達腸道，發揮守護力。</p>
           <div class="dual-pill red">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             無需冷藏，室溫穩定保存
@@ -1094,24 +1124,25 @@ section { padding: 64px 0; }
             <td class="col-cbm" data-label="CBM588 宮入菌">精確到菌株層級，可追溯試驗</td>
           </tr>
           <tr>
-            <th scope="row">耐酸（pH 2）</th>
-            <td class="col-regular" data-label="一般市售益生菌">多數不確定，普遍偏低</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">芽孢存活率 60～90%</td>
+            <th scope="row">耐酸</th>
+            <td class="col-regular" data-label="一般市售益生菌">普遍無法通過空腹胃酸，需藉由食物中和胃酸</td>
+            <td class="col-cbm" data-label="CBM588 宮入菌">pH 1.4 強胃酸下仍可存活</td>
           </tr>
           <tr>
             <th scope="row">產生酪酸</th>
             <td class="col-regular" data-label="一般市售益生菌">主要產乳酸，不具酪酸功能</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">大量產生，結腸黏膜主要能量</td>
+            <td class="col-cbm" data-label="CBM588 宮入菌">大量產生酪酸，結腸黏膜主要能量</td>
           </tr>
           <tr>
-            <th scope="row">抗生素配用</th>
-            <td class="col-regular" data-label="一般市售益生菌">建議間隔服用，效果打折</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">可同期使用，療程中不失效</td>
+            <th scope="row">抗生素同服</th>
+            <td class="col-regular" data-label="一般市售益生菌">必須間隔服用，活性易受損，療程易中斷</td>
+            <td class="col-cbm" data-label="CBM588 宮入菌">可同時服用，療程中不失效，簡化服藥流程
+</td>
           </tr>
           <tr>
             <th scope="row">保存條件</th>
             <td class="col-regular" data-label="一般市售益生菌">多需冷藏，低溫保存</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">室溫穩定，無需冷鏈</td>
+            <td class="col-cbm" data-label="CBM588 宮入菌">室溫穩定，無需冷藏</td>
           </tr>
           <tr>
             <th scope="row">促進好菌</th>
@@ -1120,13 +1151,13 @@ section { padding: 64px 0; }
           </tr>
           <tr>
             <th scope="row">醫療研究基礎</th>
-            <td class="col-regular" data-label="一般市售益生菌">文獻品質參差，多為食品研究</td>
-            <td class="col-cbm" data-label="CBM588 宮入菌">50+ 年人體試驗，多科別驗證</td>
+            <td class="col-regular" data-label="一般市售益生菌">文獻品質參差，多為基礎食品研究</td>
+            <td class="col-cbm" data-label="CBM588 宮入菌">半世紀以上的醫學實證，多科別臨床驗證</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="compare-note">乳酸菌族就涵蓋數百個個別種與上千個菌株，各菌株表現差異顯著。本表為代表性趨勢比較，不代表所有產品一概如此。建議確認個別菌株的研究資料。</p>
+    <p class="compare-note">乳酸菌種類繁多且表現各異，本表僅供概括性比較。各產品實際功效，建議參閱單一菌株之專屬科學實證。</p>
   </div>
 </section>
 
@@ -1192,7 +1223,7 @@ section { padding: 64px 0; }
             </div>
             <div>
               <h4>室溫穩定保存</h4>
-              <p>芽孢型態不需冷鏈保存，在日本醫療體系持續使用逾 50 年。</p>
+              <p>芽孢型態不需冷鏈保存，在日本醫療體系持續使用逾 80 年。</p>
             </div>
           </div>
         </div>
@@ -1200,21 +1231,28 @@ section { padding: 64px 0; }
 
       <div>
         <div class="chart-block">
-          <div class="chart-title">耐酸性比較（pH 2 環境，代表性趨勢）</div>
+          <div class="chart-title">耐酸性比較（pH 1.4 環境，代表性趨勢）</div>
           <div class="bar-row">
             <div class="bar-item">
               <div class="bar-label">
                 <span>CBM588（芽孢形式）</span>
                 <span>顯著較高</span>
               </div>
-              <div class="bar-track"><div class="bar-fill red" style="width:85%"></div></div>
+              <div class="bar-track"><div class="bar-fill red" style="width:89%"></div></div>
             </div>
             <div class="bar-item">
               <div class="bar-label">
-                <span>一般乳酸菌（非芽孢型）</span>
+                <span>Lactobacillus acidophilus</span>
                 <span>偏低</span>
               </div>
-              <div class="bar-track"><div class="bar-fill gray" style="width:8%"></div></div>
+              <div class="bar-track"><div class="bar-fill gray" style="width:5%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label">
+                <span>Enterococcus faecalis</span>
+                <span>偏低</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill gray" style="width:5%"></div></div>
             </div>
           </div>
           <p style="margin-top:14px;font-size:11.5px;color:var(--text-4);line-height:1.6;">＊各菌株表現差異大，本圖為代表性趨勢示意，不代表所有產品。</p>
@@ -1222,8 +1260,8 @@ section { padding: 64px 0; }
 
         <div class="chart-block">
           <div class="chart-head">
-            <div class="chart-title">耐熱實驗 — 活菌數隨時間變化</div>
-            <div class="chart-unit">單位 ×10⁷ ／ 時間軸：立刻→60 分鐘</div>
+            <div class="chart-title">熱穩定性試驗 — 活菌數隨時間變化</div>
+            <div class="chart-unit">時間軸：立刻 → 60 分鐘</div>
           </div>
           <table class="heat-num">
             <thead>
@@ -1243,15 +1281,15 @@ section { padding: 64px 0; }
               </tr>
               <tr>
                 <td><span class="heat-cond hot">55°C</span></td>
-                <td>4×10⁷</td><td>4×10⁷</td><td>3×10⁷</td><td>3×10⁷</td>
+                <td>4×10⁷</td><td>4×10⁷</td><td>3×10⁷</td><td>4×10⁷</td>
               </tr>
             </tbody>
           </table>
           <div class="heat-num-foot">
             <span>活菌數（CFU）</span>
-            <span>規格 ≥ 5×10⁷</span>
+            
           </div>
-          <p class="flow-note">宮入菌錠（Miyarisan Tab.）規格：每錠含活菌數 5×10⁷ 以上。常溫至 55°C 熱水中 60 分鐘，活菌數維持穩定。</p>
+          <p class="flow-note">將宮入菌 CBM588 （活菌數 4.0 x 10⁷ CFU）置於不同水溫環境，檢測其存活菌數。結果證實宮入菌具備優異的耐熱特質，能克服高溫環境挑戰。</p>
         </div>
       </div>
 
@@ -1281,7 +1319,7 @@ section { padding: 64px 0; }
           </div>
           <h3>功能性腸道症狀研究</h3>
           <p>日本多中心臨床觀察中，受試者連續使用 CBM588 後，腸道症狀發生率呈現顯著下降趨勢，腹痛、腹脹、腹瀉等多項指標均有改善記錄，整體改善比例達研究者設定之顯著差異標準。</p>
-          <div class="study-result"><strong>多項腸道症狀</strong>改善，達顯著差異</div>
+          <div class="study-result"><strong>多項腸道症狀改善</strong>，達顯著差異</div>
         </div>
 
         <div class="study">
@@ -1307,7 +1345,7 @@ section { padding: 64px 0; }
 
     </div>
 
-    <p class="evidence-ref" style="margin-top:40px;font-size:13px;line-height:1.7;">參考文獻：Teramoto et al. (2003) J Pediatr Gastroenterol Nutr &nbsp;|&nbsp; Fujimoto et al. (2019) iScience &nbsp;|&nbsp; Sun et al. (2018) Front Microbiol &nbsp;|&nbsp; Hayashi et al. (2021) J Immunol</p>
+    <p class="evidence-ref" style="margin-top:40px;font-size:13px;line-height:1.7;">參考文獻：Di Pierro F, et al. (2025) Microorganisms &nbsp;|&nbsp; Kurata S, et al. (1988). Jpn J Pediatr (小兒科臨床) &nbsp;|&nbsp; Shimbo I, et al. (2005) World J Gastroenterol</p>
   </div>
 </section>
 
@@ -1375,5 +1413,9 @@ section { padding: 64px 0; }
   document.querySelectorAll('.drawer-links a').forEach(function(a){ a.addEventListener('click', close); });
 })();
 </script>
-</body>
-</html>
+
+
+
+
+
+</body></html>

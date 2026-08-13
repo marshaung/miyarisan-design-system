@@ -983,8 +983,10 @@ section { padding: 64px 0; }
 .cv2-widget { position:relative; z-index:1; margin-top:auto; }
 /* checklist */
 .cv2-check-item { display:flex; align-items:center; gap:10px; padding:7px 0; }
+.cv2-check-item-feature { padding:10px 0; gap:12px; }
 .cv2-check-icon { color:var(--red); flex-shrink:0; }
 .cv2-check-text { font-size:13px; font-weight:600; color:var(--text-2); }
+.cv2-check-item-feature .cv2-check-text { font-size:15px; line-height:1.5; }
 .cv2-progress-wrap { margin-top:16px; }
 .cv2-progress-bar-track { height:8px; background:var(--bg-gray-2); border-radius:999px; overflow:hidden; }
 .cv2-progress-bar-fill { height:100%; background:var(--gradient-brand); border-radius:999px; }
@@ -1132,15 +1134,15 @@ section { padding: 64px 0; }
             <div class="stat-panel-content">
               <div class="stat-panel-num">&lt;10%</div>
               <div class="stat-panel-title">一般乳酸菌</div>
-              <div class="stat-panel-desc">胃酸環境存活率<br>100 億吃下去，到腸道不到 10 億</div>
+              <div class="stat-panel-desc">空腹胃酸環境存活率<br>100 億吃下去，到腸道不到 10 億</div>
             </div>
           </div>
           <div class="stat-panel is-navy">
             <div class="stat-panel-bg"></div>
             <div class="stat-panel-content">
-              <div class="stat-panel-num">&gt;80%</div>
+              <div class="stat-panel-num">100%</div>
               <div class="stat-panel-title">NGP 芽孢菌株</div>
-              <div class="stat-panel-desc">相同胃酸環境存活率<br>芽孢結構完整保護，順利抵達腸道</div>
+              <div class="stat-panel-desc">空腹胃酸環境存活率<br>芽孢結構保護，順利抵達腸道</div>
             </div>
           </div>
         </div>
@@ -1177,14 +1179,14 @@ section { padding: 64px 0; }
             <span class="reg-tag">美國 FDA</span>
             <span class="reg-card-title">LBP 藥品審查框架</span>
           </div>
-          <p>美國 FDA 將 NGP 定位為 LBP，需依藥品法規開發，提交 IND（試驗用新藥申請）並通過正式人體臨床試驗審查。截至 2026 年初，全球 FDA 正式核准上市的 LBP 僅 2 項，可見門檻之高。</p>
+          <p>美國 FDA 將「含有活體微生物、用於預防或治療人類疾病」的非疫苗產品定義為 LBP（Live Biotherapeutic Products，活體生物藥物），需依照新藥法規開發，提交 IND（新藥臨床試驗申請）並完成正式人體臨床試驗審查。截至2026年初，全球獲 FDA 正式核准上市的 LBP 僅有 2 項，足見其機理驗證與法規審查之嚴苛。</p>
         </div>
         <div class="reg-card">
           <div class="reg-card-header">
             <span class="reg-tag">日本</span>
             <span class="reg-card-title">數十年處方藥使用歷史</span>
           </div>
-          <p>日本已有依藥品法規核准、由醫師處方開立的 NGP 性質製劑，有數十年臨床使用歷史。在法律定義上，這類製劑與超市買到的保健益生菌是完全不同的東西。</p>
+          <p>日本已有依藥品法規核准、由醫師處方開立的 NGP 性質製劑，有數十年臨床使用歷史。在法律定義上，這類製劑與一般市售的傳統益生菌是完全不同層級的產品</p>
         </div>
         <div class="reg-card">
           <div class="reg-card-header">
@@ -1210,7 +1212,7 @@ section { padding: 64px 0; }
     <div class="section-header center">
       <span class="eyebrow eyebrow-center">HEAD TO HEAD</span>
       <h2>NGP vs. 一般市售益生菌</h2>
-      <p>比益生菌之前，先搞清楚你比的是同一類東西嗎？</p>
+      <p>評比益生菌之前，先搞清楚你比的是同一類東西嗎？</p>
     </div>
 
     <div class="compare-wrap">
@@ -1235,8 +1237,8 @@ section { padding: 64px 0; }
           </tr>
           <tr>
             <th scope="row">菌株鑑定</th>
-            <td class="col-regular" data-label="一般市售益生菌">多為菌種層級，批次品質差異大</td>
-            <td class="col-ngp" data-label="次世代益生菌（NGP）">菌株層級，全基因體定序，安全性基因確認</td>
+            <td class="col-regular" data-label="一般市售益生菌">傳統多為菌種層級，批次品質差異大</td>
+            <td class="col-ngp" data-label="次世代益生菌（NGP）">菌株層級，安全性基因確認</td>
           </tr>
           <tr>
             <th scope="row">取得管道</th>
@@ -1296,7 +1298,7 @@ section { padding: 64px 0; }
     <div class="section-header center">
       <span class="eyebrow eyebrow-center">WHO NEEDS IT</span>
       <h2>誰應該關注次世代益生菌？</h2>
-      <p>如果你只是偶爾消化不太舒服，一般益生菌可能就夠了。<br>但以下情境，值得重新思考手上的選擇是否真的符合你的需求。</p>
+      <p>如果你只是偶爾想要腸道保養，一般益生菌可能就夠了。<br>但以下情境，值得重新思考手上的選擇是否真的符合你的需求。</p>
     </div>
 
     <div class="audience-grid">
@@ -1381,18 +1383,18 @@ section { padding: 64px 0; }
         <div class="cv2-header">
           <span class="criteria-step">QUESTION 01</span>
           <h3>有人體臨床試驗嗎？</h3>
-          <p>不是動物實驗，不是含糊的「研究顯示」，而是在同行評審期刊上發表的人體試驗。</p>
+          <p>不是動物實驗，不是含糊的「研究顯示」，而是在<strong style="color:var(--red);font-weight:800;">國際具代表性之期刊</strong>上發表的人體試驗。</p>
         </div>
         <div class="cv2-widget">
-          <div class="cv2-check-item">
+          <div class="cv2-check-item cv2-check-item-feature">
             <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none"><path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span class="cv2-check-text">同行評審學術期刊發表</span>
+            <span class="cv2-check-text">國際指標學術期刊發表</span>
           </div>
-          <div class="cv2-check-item">
+          <div class="cv2-check-item cv2-check-item-feature">
             <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none"><path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="cv2-check-text">明確實驗設計，有對照組</span>
           </div>
-          <div class="cv2-check-item">
+          <div class="cv2-check-item cv2-check-item-feature">
             <svg class="cv2-check-icon" width="18" height="18" viewBox="0 0 18 19" fill="none"><path d="M16.35 8C16.69 9.68 16.45 11.43 15.66 12.95C14.87 14.47 13.58 15.68 12.01 16.37C10.44 17.06 8.68 17.18 7.02 16.73C5.37 16.28 3.92 15.27 2.92 13.88C1.91 12.49 1.42 10.8 1.51 9.08C1.61 7.37 2.29 5.74 3.44 4.47C4.59 3.2 6.14 2.36 7.83 2.09C9.53 1.82 11.26 2.14 12.75 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6.75 8.75L9 11L16.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="cv2-check-text">資料公開，可自行查核</span>
           </div>
@@ -1502,7 +1504,7 @@ section { padding: 64px 0; }
       </a>
       <a href="index.html" class="btn btn-white btn-lg">回首頁</a>
     </div>
-    <p style="margin-top:24px;margin-bottom:0;font-size:12px;color:rgba(255,255,255,0.65);">本頁內容為衛生教育資訊，不構成醫療建議。如有健康疑慮，請諮詢醫師。</p>
+    <p style="margin-top:24px;margin-bottom:0;font-size:12px;color:rgba(255,255,255,0.65);">本頁內容為衛教資訊參考，不構成醫療建議。如有健康疑慮，請諮詢醫師。</p>
   </div>
 </section>
 
@@ -1555,5 +1557,6 @@ section { padding: 64px 0; }
   document.querySelectorAll('.drawer-links a').forEach(function(a){ a.addEventListener('click', close); });
 })();
 </script>
-</body>
-</html>
+
+
+</body></html>
