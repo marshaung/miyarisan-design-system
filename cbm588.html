@@ -405,6 +405,9 @@ section { padding: 64px 0; }
   font-size: 13px; font-weight: 700;
   background: var(--pink-soft); border: 1px solid #f6d4e2;
 }
+.dual-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.dual-pills .dual-pill { margin-top: 0; }
+.sp { font-style: italic; }
 .dual-pill.navy { color: var(--pink); }
 .dual-pill.red  { color: var(--red); }
 .dual-pill svg { opacity: 0.85; }
@@ -1017,7 +1020,7 @@ section { padding: 64px 0; }
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;">
           <span class="badge badge-navy-soft">衛署藥輸字號藥品</span>
           <span class="badge badge-navy-soft">菌株層級可追溯</span>
-          <span class="badge badge-navy-soft">日本 1967 年核准</span>
+          <span class="badge badge-navy-soft">日本 1940 年核准製造</span>
         </div>
       </div>
 
@@ -1026,7 +1029,7 @@ section { padding: 64px 0; }
           <div class="req-no">01</div>
           <div class="req-text">
             <h3>菌株身份精確可追溯</h3>
-            <p>必須精確到菌株層級（genus, species, strain），才能對應可重複驗證的臨床試驗。CBM588 的全名 <em>Clostridium butyricum MIYAIRI 588</em> 對應到上百篇期刊論文的精確微生物身份，不是行銷詞彙。</p>
+            <p>必須精確到菌株層級（genus, species, strain），才能對應可重複驗證的臨床試驗。CBM588 的全名 <em><i class="sp">Clostridium butyricum</i> MIYAIRI 588</em> 對應到上百篇期刊論文的精確微生物身份，不是行銷詞彙。</p>
           </div>
         </div>
         <div class="req-item">
@@ -1040,7 +1043,7 @@ section { padding: 64px 0; }
           <div class="req-no">03</div>
           <div class="req-text">
             <h3>人體臨床試驗數據</h3>
-            <p>需要針對特定疾病、特定適應症，以人體受試者為基礎的臨床研究，而非僅著眼在體外或動物實驗層次。CBM588 在日本自 <em>1967 年</em>起被核准為處方藥，涵蓋兒科、中高齡等多項臨床試驗。</p>
+            <p>需要針對特定疾病、特定適應症，以人體受試者為基礎的臨床研究，而非僅著眼在體外或動物實驗層次。CBM588 在日本自 <em>1940 年</em>起被核准為處方藥，涵蓋兒科、中高齡等多項臨床試驗。</p>
           </div>
         </div>
       </div>
@@ -1088,9 +1091,15 @@ section { padding: 64px 0; }
         <div class="dual-body">
           <h3>芽孢菌 — 待機觸發啟動機制</h3>
           <p>CBM588 擁有獨特的「芽孢」結構，能順利通過 pH 1.4 的強酸胃環境，不畏胃酸與膽鹽的考驗。抵達結腸後偵測到特定化學訊號（如 L-丙胺酸），才啟動萌發，轉化為具備完整代謝活性的強效活菌。獨特的物理結構讓 CBM588 不需冷藏保存，即可確保活菌直達腸道，發揮守護力。</p>
-          <div class="dual-pill red">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            無需冷藏，室溫穩定保存
+          <div class="dual-pills">
+            <div class="dual-pill red">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              無需冷藏，室溫穩定保存
+            </div>
+            <div class="dual-pill red">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              空腹可服用
+            </div>
           </div>
         </div>
       </div>
@@ -1173,7 +1182,7 @@ section { padding: 64px 0; }
       <div>
         <div class="stat-eyebrow">ERADICATION</div>
         <div class="stat-num">94<sup>%</sup></div>
-        <div class="stat-label">H. pylori 除菌成功率（+CBM588）</div>
+        <div class="stat-label"><i class="sp">H. pylori</i> 除菌成功率（+CBM588）</div>
       </div>
       <div>
         <div class="stat-eyebrow">ADR RATE</div>
@@ -1231,7 +1240,7 @@ section { padding: 64px 0; }
 
       <div>
         <div class="chart-block">
-          <div class="chart-title">耐酸性比較（pH 1.4 環境，代表性趨勢）</div>
+          <div class="chart-title">耐酸性比較（pH 1.4 環境，菌株存活狀況）</div>
           <div class="bar-row">
             <div class="bar-item">
               <div class="bar-label">
@@ -1319,7 +1328,7 @@ section { padding: 64px 0; }
           </div>
           <h3>功能性腸道症狀研究</h3>
           <p>日本多中心臨床觀察中，受試者連續使用 CBM588 後，腸道症狀發生率呈現顯著下降趨勢，腹痛、腹脹、腹瀉等多項指標均有改善記錄，整體改善比例達研究者設定之顯著差異標準。</p>
-          <div class="study-result"><strong>多項腸道症狀改善</strong>，達顯著差異</div>
+          <div class="study-result"><strong>多項腸道症狀改善</strong>達顯著差異</div>
         </div>
 
         <div class="study">
@@ -1337,7 +1346,7 @@ section { padding: 64px 0; }
             <span class="study-no">03</span>
             <span class="study-tag">除菌療法輔助</span>
           </div>
-          <h3>H. pylori 除菌療法輔助研究</h3>
+          <h3><i class="sp">H. pylori</i> 除菌療法輔助研究</h3>
           <p>臨床試驗比較三合一除菌療法加入 CBM588 的結果。加入 CBM588 組別的除菌成功率及療程中腸胃不適症狀改善率均優於對照組，兩項指標均達統計顯著差異。</p>
           <div class="study-result">除菌成功率與耐受度<strong>同步提升</strong></div>
         </div>
@@ -1345,7 +1354,7 @@ section { padding: 64px 0; }
 
     </div>
 
-    <p class="evidence-ref" style="margin-top:40px;font-size:13px;line-height:1.7;">參考文獻：Di Pierro F, et al. (2025) Microorganisms &nbsp;|&nbsp; Kurata S, et al. (1988). Jpn J Pediatr (小兒科臨床) &nbsp;|&nbsp; Shimbo I, et al. (2005) World J Gastroenterol</p>
+    <p class="evidence-ref" style="margin-top:40px;font-size:13px;line-height:1.7;">參考文獻：Di Pierro F, et al. (2025) <i class="sp">Microorganisms</i> &nbsp;|&nbsp; Kurata S, et al. (1988). <i class="sp">Jpn J Pediatr</i> (小兒科臨床) &nbsp;|&nbsp; Shimbo I, et al. (2005) <i class="sp">World J Gastroenterol</i></p>
   </div>
 </section>
 
@@ -1370,7 +1379,7 @@ section { padding: 64px 0; }
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="assets/logo-richever-exclusive.png" alt="RICHEVER Exclusive Distributor" style="height:32px;margin-bottom:16px;">
-        <p>RICHEVER Exclusive Distributor<br>ミヤリサン製薬株式会社<br>Miyarisan®日本原廠醫療級整腸益生菌<br>
+        <p>Exclusive Distributor：RICHEVER<br>Manufacturer：ミヤリサン製薬株式会社<br>Miyarisan®日本原廠醫療級整腸益生菌<br>
         衛署藥輸字第014618號<br>
         高市衛藥廣字第11008003號</p>
       </div>
